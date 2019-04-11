@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<link rel="shortcut icon" type="image/png" href="https://cdn.pixabay.com/photo/2015/10/31/12/56/google-1015752_1280.png"/>-->
+    <title>TigerRides</title>
+    <link rel="stylesheet" href="https://use.typekit.net/adz8rjg.css">
+    <!--<link rel="stylesheet" type="text/css" href="home.css">-->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+    <script src="main.js"></script>
+</head>
+<body class="bg">
+<header>
+    <ul>
+        <li style="float:right"><a href='currentprof.html'>yournetid</a></li>
+        <li style="float:right"><a href="#contact">contact us</a></li>
+        <li style="float:right"><a href="#about">about us</a></li>
+        <li style="float:right"><a href="{% url 'welcome' %}">home</a></li>
+    </ul>
+</header>
+
+<main>
+    <div class="center">
+        Welcome to your TigerRides home page! <br>
+        Click the following buttons below to organize a trip or see your trip history.
+        <ul>
+            <li style="padding-bottom: 0px">
+                <button onclick="location.href='createride.html'" class="buttons tooltip"
+                         type="button">
+                ORGANIZE A TRIP
+                </button>
+            </li>
+            <li class="tooltip" style="padding-top: 0px;">
+                <button onclick="location.href='ridehistory.html'" class="buttons tooltip"
+                        type="button">
+                    SEE TRIP LOG
+                </button>
+            </li>
+
+        </ul>
+        <!--<button class="buttons"-->
+                <!--type="button">-->
+            <!--USE TIGERBOOK DATA-->
+        <!--</button>-->
+        <!--<br>-->
+        <!--or-->
+        <!--<br>-->
+        <!--<button class="buttons"-->
+                <!--type="button">-->
+            <!--CREATE NEW PROFILE-->
+        <!--</button>-->
+
+    </div>
+</main>
+<!--<footer>-->
+    <!--&lt;!&ndash; <div class="footer"> &ndash;&gt;-->
+    <!--<ul>-->
+        <!--<li><a href="#advertising">Advertising</a></li>-->
+        <!--<li><a href="#business">Business</a></li>-->
+        <!--<li style="float:right"><a href="#settings">Settings</a></li>-->
+        <!--<li style="float:right"><a href="#terms">Terms</a></li>-->
+        <!--<li style="float:right"><a href="#privacy">Privacy</a></li>-->
+    <!--</ul>-->
+    <!--&lt;!&ndash; </div> &ndash;&gt;-->
+<!--</footer>-->
+
+</body>
+</html>
