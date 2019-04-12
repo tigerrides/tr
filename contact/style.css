@@ -1,0 +1,43 @@
+
+main {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+body, a, p, ul, input[type=text], .buttons, .footer {
+    font-family: "Comic Sans MS";
+}
+
+.bg {
+    background-color: #cbdaff;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 8px;
+}
+
+header li a {
+    float: left;
+    font-size: 13px;
+    /* display: inline-block; */
+    padding: 10px;
+    color: #000;
+    text-decoration: none;
+}
+
+
+.center {
+    font-family: "Comic Sans MS";
+}
+
+
+#special-text {
+    font-size: small;
+    text-decoration: none;
+    margin-bottom: 35px;
+}
