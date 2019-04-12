@@ -27,15 +27,17 @@
     <div class="description">
         You can edit your profile information below. Remember that others can view this information! <br><br>
     </div>
-    <form>
+    <form action="{% url 'profile_create' %}" method = "post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
         Preferred first name:<br>
-        <input type="text" name="firstname" value="Mickey"><br>
+        <input type="text" name="first_name" value="{{ first_name }}" required><br>
         Preferred last name:<br>
-        <input type="text" name="lastname" value="Mouse"><br>
+        <input type="text" name="last_name" value="{{ last_name }}" required><br>
         Phone number:<br>
-        <input type="text" name="phonenumber" value="911"><br>
+        <input type="text" name="phone_number" value="{{ phone_number }}" required><br>
         Upload a profile photo:<br>
-        <input type="file" name="pic" accept="image/*"><br><br>
+        <input type="file" name="img" accept="image/*" value="{{ img }}" required><br><br>
         <input type="submit" value="Submit">
     </form>
         <!--<ul>-->
