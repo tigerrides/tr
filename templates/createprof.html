@@ -8,12 +8,12 @@
     <title>TigerRides</title>
     <link rel="stylesheet" href="https://use.typekit.net/adz8rjg.css">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'createprof.css' %}">    <script src="main.js"></script>
+    <link rel="stylesheet" href="{% static 'createprof.css' %}">
 </head>
 <body class="bg">
 <header>
     <ul style="list-style-type: none;">
-                <li style="float:right"><a href="{% url 'currentprof' %}">yournetid</a></li>
+        <li style="float:right"><a href="{% url 'currentprof' %}">yournetid</a></li>
         <li style="float:right"><a href="#contact">contact us</a></li>
         <li style="float:right"><a href="#about">about us</a></li>
         <li style="float:right"><a href="{% url 'home' %}">home</a></li>
@@ -27,17 +27,17 @@
     <div class="description">
         You can edit your profile information below. Remember that others can view this information! <br><br>
     </div>
-    <form method = "post" enctype="multipart/form-data">
+    <form action="{% url 'profile_create' %}" method = "post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form }}
         Preferred first name:<br>
-        <input type="text" name="firstname" value="{{ first_name }}"><br>
+        <input type="text" name="first_name" value="{{ first_name }}" required><br>
         Preferred last name:<br>
-        <input type="text" name="lastname" value="{{ last_name }}"><br>
+        <input type="text" name="last_name" value="{{ last_name }}" required><br>
         Phone number:<br>
-        <input type="text" name="phonenumber" value="{{ phone_number }}"><br>
+        <input type="text" name="phone_number" value="{{ phone_number }}" required><br>
         Upload a profile photo:<br>
-        <input type="file" name="pic" accept="image/*" value="{{ img }}"><br><br>
+        <input type="file" name="img" accept="image/*" value="{{ img }}" required><br><br>
         <input type="submit" value="Submit">
     </form>
         <!--<ul>-->
