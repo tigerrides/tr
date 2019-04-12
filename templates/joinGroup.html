@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TigerRides</title>
     <link rel="stylesheet" href="https://use.typekit.net/adz8rjg.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'currentprof-style.css' %}">
+    <link rel="stylesheet" href="{% static 'joinGroup.css' %}">
+
 </head>
     
 <body>
@@ -25,22 +25,18 @@
 
     
     <!-- // Body -->
-<div class="row">
-  <div class="columnleft">
-    {% load static %}
-    <img src="{% static "my_app/christine.jpg" %}" alt="Christine" class="w3-round-xxlarge" style="width:40%">
-  </div>
-  <div class="columnright">
 		<div class="content-wrap">
-    <h2>NAME</h2>
-		<p>&#9733;&#9733;&#9733;&#9733;&#9733;<br/><br/></p>
-    <p>name@princeton.edu</p>
-		<p>(000) 000 - 0000</p>
-		<p>trips taken: 0</p>
-		<a href='{% url 'createprof' %}' class="button">edit profile</a>
+    <h2>SUCCESS !</h2>
+			<div class="row">
+			<div class="columnleft">
+			<img class="pic" src="egg.jpg"><p>u</p>
+			</div>
+			<div class="columnright"> 
+			<img class="pic" src="christy.jpg"><p>buddy 1</p>
+			<img class="pic" src="anabelle.jpg"><p>buddy 2</p>
+				</div></div>
+			<p><br/>Your potential buddies have been notified of your request to join their group. <br/>Once your request has been approved, you will receive an e-mail confirming the details of your upcoming trip.</p>
 		</div>
-  </div>
-</div>
     <footer>
         <p>copyright 2019 by a. chang, c. kwon, c. lee, n. schmeller</p>
     </footer>

@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ride history</title>
+  <link rel="stylesheet" href="https://use.typekit.net/adz8rjg.css">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'rideHistory.css' %}">
+
+</head>
+
+<body>
+  <!-- // Intro -->
+  <main> 
+    <header>
+          <ul style="list-style-type: none;">
+                <li style="float:right"><a href="{% url 'currentprof' %}">yournetid</a></li>
+        <li style="float:right"><a href="{% url 'contact' %}">contact us</a></li>
+        <li style="float:right"><a href="{% url 'about' %}">about us</a></li>
+        <li style="float:right"><a href="{% url 'home' %}">home</a></li>
+          </ul>
+    </header>
+
+    
+    <!-- // Body -->
+    <h1>TRIP LOG</h1>
+    <section class="current">
+     <h2>current trips</h2>
+     <div class="cover">
+      <span class="sub">destination<br/>time/date<br/>riders<br/></span>
+      {% load static %}
+      <img class="buddies" src="{% static "my_app/christy.jpg" %}" alt="Christy" class="w3-round-xxlarge">
+      {% load static %}
+      <img class="buddies" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">
+      <br/>
+      <a href="#" class="button">leave ride</a>
+    </div><br/>
+    <div class="cover">
+      <span class="sub">destination<br/>time/date<br/>riders<br/></span>
+      {% load static %}
+      <img class="buddies" src="{% static "my_app/christine.jpg" %}" alt="Christine" class="w3-round-xxlarge">
+      {% load static %}
+      <img class="buddies" src="{% static "my_app/nick.jpg" %}" alt="Nick" class="w3-round-xxlarge">
+      <br/>
+      <a href="#" class="button">leave ride</a>
+    </div>
+  </section><br/>
+  <section class="past">
+   <h2>past trips</h2>
+   <div class="cover">
+    <span class="sub">destination<br/>time/date<br/>riders<br/></span>
+    {% load static %}
+    <img class="buddies" src="{% static "my_app/christy.jpg" %}" alt="Christy" class="w3-round-xxlarge">
+    {% load static %}
+    <img class="buddies" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">
+    <br/>
+  </div>
+  <br/>
+  <div class="cover">
+    <span class="sub">destination<br/>time/date<br/>riders<br/></span>
+    {% load static %}
+    <img class="buddies" src="{% static "my_app/christine.jpg" %}" alt="Christine" class="w3-round-xxlarge">
+    {% load static %}
+    <img class="buddies" src="{% static "my_app/nick.jpg" %}" alt="Nick" class="w3-round-xxlarge">
+    <br/>
+  </div>
+</section>
+<footer>
+  <div class="content-wrap">
+    <p>copyright 2019 by a. chang, c. kwon, c. lee, n. schmeller</p>
+  </div>
+</footer>
+</main>
+
+</body>
+
+</html>

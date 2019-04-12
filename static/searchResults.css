@@ -1,0 +1,163 @@
+/*global*/
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+cursor: url(cursor.png), auto;
+    background: #cbdaff;
+    color: floralwhite;
+    font-family: "houschka-rounded", sans-serif;
+    font-style: normal;
+}
+
+ul {
+		display: block;
+    list-style-type: none;
+    margin: 80px;
+    padding: 80px;
+}
+
+li a:hover {
+    text-decoration: underline;
+    opacity: .85;
+}
+
+header li a {
+    list-style-type: none;
+    float: left;
+    font-size: 16px;
+    display: inline-block;
+    padding-left: 20px;
+    color: #748AB5;
+    /*color: #000;*/
+    text-decoration: none;
+}
+
+.content-wrap {
+    max-width: 500px;
+    margin: auto;
+    padding: 50px;
+    overflow: auto;
+	
+}
+
+/*header*/
+
+h1 {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+	text-align: right;
+	padding-right: 5%;
+}
+
+/*footer*/
+footer {
+    text-align: center;
+    margin-bottom: 0;
+		font-size: 15px;
+}
+
+
+a {
+    color: #748ab5;
+	font-size: 15px;
+	padding-left: 10px;
+}
+
+a:hover {
+    text-decoration: none;
+cursor: url(cursor.png), auto;
+}
+
+
+/*body*/
+
+.options {
+display: block;
+margin-bottom: 50px;
+margin-left: auto;
+margin-right: auto;
+padding-left: auto;
+padding-right: auto;
+	align-content: center;
+}
+
+
+main {
+	align-content: center;
+text-align: center;
+margin-left: 50px;
+margin-right: 50px;
+}
+
+
+.cover {
+margin-left: 40%;
+margin-right: 40%;
+padding: 20px 20px 20px 20px;
+background-color: #748ab5;
+-webkit-transition: 300ms; 
+    transition: 300ms;
+	align-content: left;
+}
+
+.cover:hover {
+opacity: .8;
+filter: alpha(opacity=0);
+-webkit-transition: 300ms; 
+    transition: 300ms;
+	box-shadow: 0 0 10px 10px floralwhite;
+}
+
+.button {
+  background-color: none;
+  border: 1px solid floralwhite;
+  color: floralwhite;
+	border-radius: 8px;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin: 15px 4px 4px 2px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: floralwhite;
+  border: 1px solid floralwhite;
+  color: #748ab5;
+	border-radius: 8px;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.buddies {
+/*	display: block;*/
+    object-fit: cover;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 50%;
+margin: 20px 10px 0px 20px;
+border: 1px solid #FAEBD7;
+}
+
+.sub {
+text-transform: uppercase;
+    font-family: "houschka-rounded", sans-serif;
+    font-style: normal;
+text-align: left;
+letter-spacing: 3px;
+line-height: 2pt;
+font-size: 10pt;
+	align-content: center;
+}

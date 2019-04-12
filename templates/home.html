@@ -27,13 +27,13 @@
         Click the following buttons below to organize a trip or see your trip history.
         <ul>
             <li style="padding-bottom: 0px">
-                <button onclick="location.href='createride.html'" class="buttons tooltip"
+                <button onclick="location.href='{% url 'createRide' %}'" class="buttons tooltip"
                          type="button">
                 ORGANIZE A TRIP
                 </button>
             </li>
             <li class="tooltip" style="padding-top: 0px;">
-                <button onclick="location.href='ridehistory.html'" class="buttons tooltip"
+                <button onclick="location.href='{% url 'rideHistory' %}'" class="buttons tooltip"
                         type="button">
                     SEE TRIP LOG
                 </button>

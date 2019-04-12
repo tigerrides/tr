@@ -23,3 +23,18 @@ def about(request):
 
 def contact(request):
 	return render(request, 'contact.html')
+
+def createRide(request):
+	return render(request, 'createRide.html')
+
+def groupInfo(request):
+	return render(request, 'groupInfo.html')
+
+def joinGroup(request):
+	return render(request, 'joinGroup.html')
+
+def rideHistory(request):
+	return render(request, 'rideHistory.html')
+
+def searchResults(request):
+	return render(request, 'searchResults.html')
