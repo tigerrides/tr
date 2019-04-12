@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TigerRides</title>
     <link rel="stylesheet" href="https://use.typekit.net/adz8rjg.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     {% load static %}
     <link rel="stylesheet" href="{% static 'currentprof-style.css' %}">
-
 </head>
     
 <body>
@@ -17,8 +17,8 @@
 <header>
     <ul style="list-style-type: none;">
         <li style="float:right"><a href="{% url 'currentprof' %}">yournetid</a></li>
-        <li style="float:right"><a href="#contact">contact us</a></li>
-        <li style="float:right"><a href="#about">about us</a></li>
+        <li style="float:right"><a href="{% url 'contact' %}">contact us</a></li>
+        <li style="float:right"><a href="{% url 'about' %}">about us</a></li>
         <li style="float:right"><a href="{% url 'home' %}">home</a></li>
     </ul>
 </header>
@@ -27,7 +27,8 @@
     <!-- // Body -->
 <div class="row">
   <div class="columnleft">
-    <img class="pic" src="egg.jpg">
+    {% load static %}
+    <img src="{% static "my_app/christine.jpg" %}" alt="Christine" class="w3-round-xxlarge" style="width:40%">
   </div>
   <div class="columnright">
 		<div class="content-wrap">

@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!--<link rel="shortcut icon" type="image/png" href="https://cdn.pixabay.com/photo/2015/10/31/12/56/google-1015752_1280.png"/>-->
+    <title>TigerRides</title>
+    <!--<link rel="stylesheet" type="text/css" href="style.css">-->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'contact.css' %}">
+</head>
+
+<body class="bg">
+<header>
+    <ul>
+        <li style="float:right"><a href="{% url 'currentprof' %}">yournetid</a></li>
+        <li style="float:right"><a href="{% url 'contact' %}">contact us</a></li>
+        <li style="float:right"><a href="{% url 'about' %}">about us</a></li>
+        <li style="float:right"><a href="{% url 'home' %}">home</a></li>
+    </ul>
+</header>
+
+<main>
+    <div class="w3-padding-24">
+            <h1>About Us</h1>
+    </div>
+
+    <div class="w3-cell-row" style="width:100%">
+        <div class="w3-container w3-cell">
+            {% load static %}
+            <img src="{% static "my_app/christy.jpg" %}" alt="Christy" class="w3-round-xxlarge" style="width:60%">
+            <h3>Christy Lee</h3>
+            <p>christyl@princeton.edu</p>
+        </div>
+        <div class="w3-container w3-cell">
+            {% load static %}
+            <img src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge" style="width:60%">
+            <h3>Anabelle Chang</h3>
+            <p>anabelle@princeton.edu</p>
+        </div>
+    </div>
+    <div class="w3-cell-row w3-padding-24" style="width:100%">
+        <div class="w3-container w3-cell">
+            {% load static %}
+            <img src="{% static "my_app/christine.jpg" %}" alt="Christine" class="w3-round-xxlarge" style="width:60%">
+            <h3>Christine Kwon</h3>
+            <p>cmkwon@princeton.edu</p>
+        </div>
+        <div class="w3-container w3-cell">
+            {% load static %}
+            <img src="{% static "my_app/nick.jpg" %}" alt="Nick" class="w3-round-xxlarge" style="width:60%">
+            <h3>Nick Schmeller</h3>
+            <p>nbs@princeton.edu</p>
+        </div>
+    </div>
+    <footer>
+        <p>copyright 2019 by a. chang, c. kwon, c. lee, n. schmeller</p>
+    </footer>
+</main>
+</body>
+</html>
