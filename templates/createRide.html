@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<link rel="shortcut icon" type="image/png" href="https://cdn.pixabay.com/photo/2015/10/31/12/56/google-1015752_1280.png"/>-->
+    <title>TigerRides</title>
+    <link rel="stylesheet" href="https://use.typekit.net/adz8rjg.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'createRide.css' %}">
+    <script src="main.js"></script>
+</head>
+<body class="bg">
+<header>
+    <ul>
+        <li style="float:right"><a href="{% url 'currentprof' %}">yournetid</a></li>
+        <li style="float:right"><a href="{% url 'contact' %}">contact us</a></li>
+        <li style="float:right"><a href="{% url 'about' %}">about us</a></li>
+        <li style="float:right"><a href="{% url 'home' %}">home</a></li>
+    </ul>
+</header>
+
+<main>
+    <div class="welcome">
+        PLAN YOUR NEXT TRIP
+    </div>
+    <form>
+        Depart from:<br>
+        <select>
+            <option value="EWR" selected>EWR</option>
+            <option value="PHL">PHL</option>
+            <option value="JFK">JFK</option>
+            <option value="campus">Princeton</option>
+        </select> <br>
+        Destination: <br>
+        <select>
+            <option value="EWR" selected>EWR</option>
+            <option value="PHL">PHL</option>
+            <option value="JFK">JFK</option>
+            <option value="campus">Princeton</option>
+        </select> <br>
+        Date: <br>
+        <input type="date" id="travel-date" name="trip-date"
+               value="yyyy-mm-dd"><br>
+        Time frame: <br>
+        <input type="time" name="usr_time"> to
+        <input type="time" name="usr_time"> <br>
+        Notes: (i.e. you are traveling with a lot of lugagge, prefer to sit up front, etc.) <br>
+        <textarea rows="5" cols="60" id="myTextarea"></textarea> <br>
+        I have an account with:<br>
+        <label class="container">Uber
+            <input type="checkbox">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container">Lyft
+            <input type="checkbox">
+            <span class="checkmark"></span>
+        </label>
+        <!--<input type="checkbox" name="vehicle1" value="Bike">Uber-->
+        <!--<br>-->
+        <!--<input type="checkbox" name="vehicle2" value="Car">Lyft-->
+        <br><br>
+        <input type="submit" value="Find your rideshare buddies!">
+    </form>
+    <!--<ul>-->
+    <!--<li style="padding-bottom: 0px">-->
+    <!--<button class="buttons tooltip"-->
+    <!--type="button">-->
+    <!--USE TIGERBOOK DATA-->
+    <!--<span class="tooltiptext">Tooltip text</span>-->
+    <!--</button>-->
+    <!--</li>-->
+    <!--<li class="tooltip" style="padding-top: 0px;">-->
+    <!--<button class="buttons tooltip"-->
+    <!--type="button">-->
+    <!--CREATE NEW PROFILE-->
+    <!--<span class="tooltiptext">Tooltip text</span>-->
+    <!--</button>-->
+    <!--</li>-->
+
+    <!--</ul>-->
+    <!--<button class="buttons"-->
+    <!--type="button">-->
+    <!--USE TIGERBOOK DATA-->
+    <!--</button>-->
+    <!--<br>-->
+    <!--or-->
+    <!--<br>-->
+    <!--<button class="buttons"-->
+    <!--type="button">-->
+    <!--CREATE NEW PROFILE-->
+    <!--</button>-->
+
+    </div>
+</main>
+<!--<footer>-->
+<!--&lt;!&ndash; <div class="footer"> &ndash;&gt;-->
+<!--<ul>-->
+<!--<li><a href="#advertising">Advertising</a></li>-->
+<!--<li><a href="#business">Business</a></li>-->
+<!--<li style="float:right"><a href="#settings">Settings</a></li>-->
+<!--<li style="float:right"><a href="#terms">Terms</a></li>-->
+<!--<li style="float:right"><a href="#privacy">Privacy</a></li>-->
+<!--</ul>-->
+<!--&lt;!&ndash; </div> &ndash;&gt;-->
+<!--</footer>-->
+
+</body>
+</html>
