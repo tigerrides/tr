@@ -1,0 +1,122 @@
+
+main {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+body, a, p, ul, input[type=text], .buttons, .footer {
+    /*font-family: "Helvetica Neue";*/
+    font-family: "houschka-rounded", sans-serif;
+    font-style: normal;
+}
+
+.bg {
+    background-color: #cbdaff;
+}
+
+/*ul {*/
+    /*!*display: block;*!*/
+    /*list-style-type: none;*/
+    /*    margin: 80px;*/
+    /*    padding: 80px;*/
+/*}*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 8px;
+}
+
+li a:hover {
+    text-decoration: underline;
+    opacity: .85;
+}
+
+header li a {
+    list-style-type: none;
+    float: left;
+    font-size: 16px;
+    display: inline-block;
+    padding-left: 20px;
+    color: #748AB5;
+    /*color: #000;*/
+    text-decoration: none;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 100px;
+    background-color: #535353;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    /*padding: 0px 0;*/
+
+    /* Position the tooltip */
+    position: absolute;
+    /*z-index: 1;*/
+    /*top: -5px;*/
+    left: 80%;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+li a:hover {
+    text-decoration: underline;
+    opacity: .85;
+}
+
+.buttons {
+    outline: none;
+    height: 36px;
+    line-height: 27px;
+    -webkit-user-select: none;
+    background-color: #f2f2f2;
+    border: 1px solid #f2f2f2;
+    border-radius: 2px;
+    color: #757575;
+    cursor: default;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 11px 4px;
+    min-width: 54px;
+    padding: 0 16px;
+    text-align: center;
+}
+
+.buttons:hover {
+    border: 1px solid #c6c6c6;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    color: #222;
+}
+
+#special-text {
+    font-size: small;
+    text-decoration: none;
+    margin-bottom: 35px;
+}
+
+input[type=text] {
+    border: none;
+    outline: none;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    font-size: 13px;
+    width: 100%;
+    padding: 12px 12px;
+    margin: 0px;
+    box-sizing: border-box;
+    background-color: white;
+    background-image: url('//www.gstatic.com/images/branding/googlemic/2x/googlemic_color_24dp.png');
+    background-size: 25px 25px;
+    background-position: 444px;
+    background-repeat: no-repeat;
+    padding-right: 75px;
+    margin-bottom: 20px;
+  }
+
+input[type=text]:hover {
+  box-shadow: 2px 4px 8px 0px rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}

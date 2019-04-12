@@ -7,9 +7,9 @@
     <!--<link rel="shortcut icon" type="image/png" href="https://cdn.pixabay.com/photo/2015/10/31/12/56/google-1015752_1280.png"/>-->
     <title>TigerRides</title>
     <link rel="stylesheet" href="https://use.typekit.net/adz8rjg.css">
-    <!--<link rel="stylesheet" type="text/css" href="home.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="createprof.css">-->
     {% load static %}
-    <link rel="stylesheet" href="{% static 'home.css' %}">
+    <link rel="stylesheet" href="{% static 'login.css' %}">
     <script src="main.js"></script>
 </head>
 <body class="bg">
@@ -24,19 +24,22 @@
 
 <main>
     <div class="center">
-        Welcome to your TigerRides home page! <br>
-        Click the following buttons below to organize a trip or see your trip history.
+        Thank you for choosing TigerRides! To use our service,
+        you need a profile others can see...
         <ul>
             <li style="padding-bottom: 0px">
-                <button onclick="location.href='createride.html'" class="buttons tooltip"
+                <button class="buttons tooltip"
                          type="button">
-                ORGANIZE A TRIP
+                USE TIGERBOOK DATA
+                    <span class="tooltiptext">Tooltip text</span>
                 </button>
             </li>
             <li class="tooltip" style="padding-top: 0px;">
-                <button onclick="location.href='ridehistory.html'" class="buttons tooltip"
+                <button onclick="location.href='{% url 'createprof' %}'"
+                        class="buttons tooltip"
                         type="button">
-                    SEE TRIP LOG
+                    CREATE NEW PROFILE
+                    <span class="tooltiptext">Tooltip text</span>
                 </button>
             </li>
 

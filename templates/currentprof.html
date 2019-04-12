@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TigerRides</title>
+    <link rel="stylesheet" href="https://use.typekit.net/adz8rjg.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'currentprof-style.css' %}">
+
+</head>
+    
+<body>
+    <!-- // Intro -->
+<main> 
+<header>
+    <ul style="list-style-type: none;">
+        <li style="float:right"><a href="{% url 'currentprof' %}">yournetid</a></li>
+        <li style="float:right"><a href="#contact">contact us</a></li>
+        <li style="float:right"><a href="#about">about us</a></li>
+        <li style="float:right"><a href="{% url 'home' %}">home</a></li>
+    </ul>
+</header>
+
+    
+    <!-- // Body -->
+<div class="row">
+  <div class="columnleft">
+    <img class="pic" src="egg.jpg">
+  </div>
+  <div class="columnright">
+		<div class="content-wrap">
+    <h2>NAME</h2>
+		<p>&#9733;&#9733;&#9733;&#9733;&#9733;<br/><br/></p>
+    <p>name@princeton.edu</p>
+		<p>(000) 000 - 0000</p>
+		<p>trips taken: 0</p>
+		<a href="#" class="button">edit profile</a>
+		</div>
+  </div>
+</div>
+    <footer>
+        <p>copyright 2019 by a. chang, c. kwon, c. lee, n. schmeller</p>
+    </footer>
+</main>
+    
+</body>
+
+</html>
