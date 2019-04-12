@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="https://use.typekit.net/adz8rjg.css">
     {% load static %}
     <link rel="stylesheet" href="{% static 'home.css' %}">
-    <script src="main.js"></script>
 </head>
 <body class="bg">
 <header>
     <ul>
-        <li style="float:right"><a href="#contact">contact us</a></li>
-        <li style="float:right"><a href="#about">about us</a></li>
+        <li style="float:right"><a href="{% url 'currentprof' %}">yournetid</a></li>
+        <li style="float:right"><a href="{% url 'contact' %}">contact us</a></li>
+        <li style="float:right"><a href="{% url 'about' %}">about us</a></li>
+        <li style="float:right"><a href="{% url 'home' %}">home</a></li>
     </ul>
 </header>
 
@@ -35,6 +36,9 @@
         </button>
 
     </div>
+    <footer>
+        <p>copyright 2019 by a. chang, c. kwon, c. lee, n. schmeller</p>
+    </footer>
 </main>
 <!--<footer>-->
     <!--&lt;!&ndash; <div class="footer"> &ndash;&gt;-->
