@@ -1,0 +1,2 @@
+postgres: could not access directory "/Users/nschmeller/Desktop/tr/./pg_data": No such file or directory
+Run initdb or pg_basebackup to initialize a PostgreSQL data directory.
