@@ -30,3 +30,15 @@ Run initdb or pg_basebackup to initialize a PostgreSQL data directory.
 2019-04-20 16:00:00.575 EDT [42324] LOG:  background worker "logical replication launcher" (PID 42331) exited with exit code 1
 2019-04-20 16:00:00.576 EDT [42326] LOG:  shutting down
 2019-04-20 16:00:00.583 EDT [42324] LOG:  database system is shut down
+2019-04-20 16:03:00.006 EDT [42384] LOG:  listening on IPv6 address "::1", port 5432
+2019-04-20 16:03:00.007 EDT [42384] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-04-20 16:03:00.008 EDT [42384] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2019-04-20 16:03:00.045 EDT [42385] LOG:  database system was shut down at 2019-04-20 16:00:00 EDT
+2019-04-20 16:03:00.068 EDT [42384] LOG:  database system is ready to accept connections
+2019-04-20 17:45:46.102 EDT [42831] FATAL:  lock file "postmaster.pid" already exists
+2019-04-20 17:45:46.102 EDT [42831] HINT:  Is another postmaster (PID 42384) running in data directory "/Users/nschmeller/Desktop/tr/./postgres_local_db"?
+2019-04-20 17:46:08.526 EDT [42384] LOG:  received fast shutdown request
+2019-04-20 17:46:08.528 EDT [42384] LOG:  aborting any active transactions
+2019-04-20 17:46:08.535 EDT [42384] LOG:  background worker "logical replication launcher" (PID 42391) exited with exit code 1
+2019-04-20 17:46:08.535 EDT [42386] LOG:  shutting down
+2019-04-20 17:46:08.546 EDT [42384] LOG:  database system is shut down
