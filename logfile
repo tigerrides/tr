@@ -42,3 +42,28 @@ Run initdb or pg_basebackup to initialize a PostgreSQL data directory.
 2019-04-20 17:46:08.535 EDT [42384] LOG:  background worker "logical replication launcher" (PID 42391) exited with exit code 1
 2019-04-20 17:46:08.535 EDT [42386] LOG:  shutting down
 2019-04-20 17:46:08.546 EDT [42384] LOG:  database system is shut down
+2019-04-20 17:47:11.893 EDT [42856] LOG:  listening on IPv6 address "::1", port 5432
+2019-04-20 17:47:11.893 EDT [42856] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-04-20 17:47:11.894 EDT [42856] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2019-04-20 17:47:11.907 EDT [42857] LOG:  database system was shut down at 2019-04-20 17:46:08 EDT
+2019-04-20 17:47:11.911 EDT [42856] LOG:  database system is ready to accept connections
+2019-04-20 17:47:30.101 EDT [42856] LOG:  received fast shutdown request
+2019-04-20 17:47:30.105 EDT [42856] LOG:  aborting any active transactions
+2019-04-20 17:47:30.106 EDT [42856] LOG:  background worker "logical replication launcher" (PID 42863) exited with exit code 1
+2019-04-20 17:47:30.106 EDT [42858] LOG:  shutting down
+2019-04-20 17:47:30.113 EDT [42856] LOG:  database system is shut down
+2019-04-20 17:47:49.576 EDT [42882] LOG:  listening on IPv6 address "::1", port 5432
+2019-04-20 17:47:49.577 EDT [42882] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-04-20 17:47:49.577 EDT [42882] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2019-04-20 17:47:49.589 EDT [42883] LOG:  database system was shut down at 2019-04-20 17:47:30 EDT
+2019-04-20 17:47:49.592 EDT [42882] LOG:  database system is ready to accept connections
+2019-04-20 17:47:55.249 EDT [42882] LOG:  received fast shutdown request
+2019-04-20 17:47:55.250 EDT [42882] LOG:  aborting any active transactions
+2019-04-20 17:47:55.251 EDT [42882] LOG:  background worker "logical replication launcher" (PID 42889) exited with exit code 1
+2019-04-20 17:47:55.251 EDT [42884] LOG:  shutting down
+2019-04-20 17:47:55.259 EDT [42882] LOG:  database system is shut down
+2019-04-20 17:48:29.061 EDT [42904] LOG:  listening on IPv6 address "::1", port 5432
+2019-04-20 17:48:29.061 EDT [42904] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-04-20 17:48:29.062 EDT [42904] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2019-04-20 17:48:29.073 EDT [42905] LOG:  database system was shut down at 2019-04-20 17:47:55 EDT
+2019-04-20 17:48:29.077 EDT [42904] LOG:  database system is ready to accept connections

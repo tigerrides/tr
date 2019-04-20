@@ -16,6 +16,7 @@ git branch
 echo ""
 echo "Putting you in the virtualenv"
 alias activate="source . django_env/bin/activate"
+activate
 
 echo ""
 echo "Are you running tigerride locally?"
