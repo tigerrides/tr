@@ -67,3 +67,33 @@ Run initdb or pg_basebackup to initialize a PostgreSQL data directory.
 2019-04-20 17:48:29.062 EDT [42904] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
 2019-04-20 17:48:29.073 EDT [42905] LOG:  database system was shut down at 2019-04-20 17:47:55 EDT
 2019-04-20 17:48:29.077 EDT [42904] LOG:  database system is ready to accept connections
+2019-04-20 17:52:48.077 EDT [42904] LOG:  received fast shutdown request
+2019-04-20 17:52:48.079 EDT [42904] LOG:  aborting any active transactions
+2019-04-20 17:52:48.080 EDT [42904] LOG:  background worker "logical replication launcher" (PID 42911) exited with exit code 1
+2019-04-20 17:52:48.081 EDT [42906] LOG:  shutting down
+2019-04-20 17:52:48.088 EDT [42904] LOG:  database system is shut down
+2019-04-20 17:52:57.860 EDT [42951] LOG:  listening on IPv6 address "::1", port 5432
+2019-04-20 17:52:57.860 EDT [42951] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-04-20 17:52:57.861 EDT [42951] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2019-04-20 17:52:57.872 EDT [42952] LOG:  database system was shut down at 2019-04-20 17:52:48 EDT
+2019-04-20 17:52:57.875 EDT [42951] LOG:  database system is ready to accept connections
+2019-04-20 17:53:32.874 EDT [42951] LOG:  received fast shutdown request
+2019-04-20 17:53:32.876 EDT [42951] LOG:  aborting any active transactions
+2019-04-20 17:53:32.877 EDT [42951] LOG:  background worker "logical replication launcher" (PID 42958) exited with exit code 1
+2019-04-20 17:53:32.877 EDT [42953] LOG:  shutting down
+2019-04-20 17:53:32.884 EDT [42951] LOG:  database system is shut down
+2019-04-20 17:53:39.209 EDT [42976] LOG:  listening on IPv6 address "::1", port 5432
+2019-04-20 17:53:39.209 EDT [42976] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-04-20 17:53:39.210 EDT [42976] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2019-04-20 17:53:39.223 EDT [42977] LOG:  database system was shut down at 2019-04-20 17:53:32 EDT
+2019-04-20 17:53:39.226 EDT [42976] LOG:  database system is ready to accept connections
+2019-04-20 17:54:31.415 EDT [42976] LOG:  received fast shutdown request
+2019-04-20 17:54:31.417 EDT [42976] LOG:  aborting any active transactions
+2019-04-20 17:54:31.418 EDT [42976] LOG:  background worker "logical replication launcher" (PID 42983) exited with exit code 1
+2019-04-20 17:54:31.418 EDT [42978] LOG:  shutting down
+2019-04-20 17:54:31.425 EDT [42976] LOG:  database system is shut down
+2019-04-20 17:54:42.344 EDT [43001] LOG:  listening on IPv6 address "::1", port 5432
+2019-04-20 17:54:42.344 EDT [43001] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-04-20 17:54:42.344 EDT [43001] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2019-04-20 17:54:42.357 EDT [43002] LOG:  database system was shut down at 2019-04-20 17:54:31 EDT
+2019-04-20 17:54:42.360 EDT [43001] LOG:  database system is ready to accept connections

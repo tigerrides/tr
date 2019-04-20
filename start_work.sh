@@ -14,9 +14,8 @@ echo "Check your current branch!"
 git branch
 
 echo ""
-echo "Putting you in the virtualenv"
-alias activate="source . django_env/bin/activate"
-activate
+echo "DO THIS MANUALLY: START VIRTUALENV ON YOUR OWN"
+echo "Run the command 'source django_env/bin/activate'"
 
 echo ""
 echo "Are you running tigerride locally?"
