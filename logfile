@@ -97,3 +97,9 @@ Run initdb or pg_basebackup to initialize a PostgreSQL data directory.
 2019-04-20 17:54:42.344 EDT [43001] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
 2019-04-20 17:54:42.357 EDT [43002] LOG:  database system was shut down at 2019-04-20 17:54:31 EDT
 2019-04-20 17:54:42.360 EDT [43001] LOG:  database system is ready to accept connections
+2019-04-20 17:56:45.882 EDT [43018] FATAL:  database "local_tr_db" does not exist
+2019-04-20 17:57:24.877 EDT [43023] FATAL:  database "postgres_local_db" does not exist
+2019-04-20 17:58:45.150 EDT [43031] FATAL:  database "/Users/nschmeller/Desktop/tr/postgres_local_db" does not exist
+2019-04-20 18:00:32.908 EDT [43062] FATAL:  database "./postgres_local_db" does not exist
+2019-04-20 18:00:38.318 EDT [43064] FATAL:  database "./postgres_local_db/" does not exist
+2019-04-20 18:00:55.291 EDT [43073] FATAL:  database "nschmeller" does not exist

@@ -87,7 +87,7 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'local_tr_db',
+        'NAME': os.path.join(BASE_DIR, 'postgres_local_db'),
         'USER': '',
         'PASSWORD': '',
         'HOST': 'localhost',
