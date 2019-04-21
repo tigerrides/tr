@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import dj_database_url
+import psycopg2
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -85,19 +85,21 @@ DATABASES = {
     #    'NAME': os.path.join(BASE_DIR, 'postgres_db'),
     #}
 
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.path.join(BASE_DIR, 'postgres_local_db'),
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    #'default': {
+    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #    'NAME': os.path.join(BASE_DIR, 'postgres_local_db'),
+    #    'USER': '',
+    #    'PASSWORD': '',
+    #    'HOST': 'localhost',
+    #    'PORT': '5432',
+    #}
 }
 
-# for dj_database_url
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
+# This will be overwritten when we import dj_database_url
+DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME' : os.path.join(BASE_DIR, 'db.sqlite3')
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -136,6 +138,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Parse default database config from $DATABASE_URL in heroku
+import dj_database_url
+
+DATABASE_URL = os.environ['DATABASE_URL']
+DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
+
+# enable HTTPS
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# allow all host headers
+ALLOWED_HOSTS = ['*']
+
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
