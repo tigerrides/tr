@@ -24,4 +24,6 @@ then
   echo "Running locally (if this isn't what you want, stop this script, run 'pg_ctl -D ./postgres_local_db stop', change your branch, and restart this script"
   echo "Starting local postgres server"
   pg_ctl -D ./postgres_local_db -l logfile start
+else
+  echo "It looks like you aren't"
 fi
