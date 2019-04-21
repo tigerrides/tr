@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['.herokuapp.com']
 
 INSTALLED_APPS = [
     'login.apps.LoginConfig',
-    'rides.apps.RidesConfig',
+    #'rides.apps.RidesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
