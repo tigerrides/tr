@@ -3,3 +3,6 @@
 
 # exclude the init file which is constantly changing
 */__pycache__/__init__.cpython-36.pyc
+
+# temporarily take out the virtualenv files
+django_env
