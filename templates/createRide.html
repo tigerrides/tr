@@ -58,30 +58,30 @@
     <form action="{% url 'submit_ride' %}" method="post">
         {% csrf_token %}
         {{ form }}
-        depart from:<br>
+        <p class="prompt">depart from:</p><br>
         <select name="depart_from" class="dropdown">
             <option value="EWR" selected>ewr</option>
             <option value="PHL">phl</option>
             <option value="JFK">jfk</option>
             <option value="campus">princeton</option>
         </select> <br>
-        destination: <br>
+        <p class="prompt">destination:</p><br>
         <select name="destination" class="dropdown">
             <option value="EWR" selected>ewr</option>
             <option value="PHL">phl</option>
             <option value="JFK">jfk</option>
             <option value="campus">princeton</option>
         </select> <br>
-        date: <br>
+        <p class="prompt">date:</p><br>
         <input type="date" id="travel-date" name="date"
                value="yyyy-mm-dd"><br>
-        time frame: <br>
+        <p class="prompt">time frame:</p><br>
         <input type="time" name="time_start"> to
         <input type="time" name="time_end"> <br>
-        notes:<br>
+        <p class="prompt">notes:</p><br>
         <textarea rows="5" cols="60" id="myTextarea" name="notes"
                   placeholder="i.e. you are traveling with a lot of lugagge, prefer to sit up front, etc."></textarea> <br>
-        i have an account with:<br><br>
+        <p class="prompt">i have an account with:</p><br><br>
         <label class="container">uber
             <input type="checkbox" name="uber">
             <span class="checkmark"></span>
