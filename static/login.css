@@ -1,102 +1,162 @@
-
-main {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+html {
+    cursor: url('my_app/shield-w.png'), auto; 
 }
 
-body, a, p, ul, input[type=text], .buttons, .footer {
+html, body, a, p, ul, input[type=text], .buttons, .footer {
     /*font-family: "Helvetica Neue";*/
-    font-family: "houschka-rounded", sans-serif;
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    background:  #F7B5B0;
+}
+
+.w3-myfont {
+    font-family: 'Roboto Mono', monospace;
     font-style: normal;
 }
 
-.bg {
-    background-color: #cbdaff;
-}
-
-/*ul {*/
-    /*!*display: block;*!*/
-    /*list-style-type: none;*/
-    /*    margin: 80px;*/
-    /*    padding: 80px;*/
-/*}*/
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 8px;
-}
-
-li a:hover {
-    text-decoration: underline;
-    opacity: .85;
-}
-
-header li a {
-    list-style-type: none;
-    float: left;
-    font-size: 16px;
+footer {
+    float: center;
+    font-size: 14px;
+    text-align: center;
     display: inline-block;
-    padding-left: 20px;
-    color: #748AB5;
-    /*color: #000;*/
+    color: #A55858;
     text-decoration: none;
 }
 
+.bar-item {
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.bar-item:hover {
+    color: blue;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.icon {
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    font-weight: 700;
+    color: white; 
+    text-decoration: none;
+    font-size: 20px;
+    margin: 10px;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.icon:hover {
+    color: white;
+    text-shadow: 2px 2px 2px #A55858;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.sidebar {
+    color: #A55858;
+}
+
+.hamburger {
+    margin: 10px;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+
+.w3-right {
+    color: #A55858;
+}
+
+.shortcut:hover {
+    color: #563B3B;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.fa {
+    color: #A55858;
+}
+
+.title {
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    color: white;
+    font-weight: 700;
+    /*text-align: left;*/
+    font-size: 20px;
+    text-align: center;
+    text-shadow: 3px 3px 8px #A55858;
+}
+
+.buttons {
+    height: 36px;
+    line-height: 27px;
+    background-color: rgba(165,88,88,.3);
+    border-radius: 10px;
+    border-color: transparent;
+    color: white;
+    font-size: 15px;
+    margin: 11px 4px;
+    min-width: 54px;
+    padding: 0 16px;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.buttons:hover {
+    background: #A55858;
+    border-radius: 10px;
+    background-color: rgba(165,88,88,.6);
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
 .tooltip .tooltiptext {
+  visibility: hidden;
+  width: 100%;
+  background-color: #A55858;
+  color: #fff;
+  text-align: center;
+  font-size: 10px;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 2;
+  top: -10%;
+  left: 120%;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #A55858 transparent transparent;
+}
+
+/*.tooltip .tooltiptext {
     visibility: hidden;
     width: 100px;
     background-color: #535353;
     color: #fff;
     text-align: center;
     border-radius: 3px;
-    /*padding: 0px 0;*/
 
-    /* Position the tooltip */
-    position: absolute;
-    /*z-index: 1;*/
-    /*top: -5px;*/
-    left: 80%;
-}
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}*/
 
 .tooltip:hover .tooltiptext {
     visibility: visible;
-}
-li a:hover {
-    text-decoration: underline;
-    opacity: .85;
-}
-
-.buttons {
-    outline: none;
-    height: 36px;
-    line-height: 27px;
-    -webkit-user-select: none;
-    background-color: #f2f2f2;
-    border: 1px solid #f2f2f2;
-    border-radius: 2px;
-    color: #757575;
-    cursor: default;
-    font-size: 13px;
-    font-weight: bold;
-    margin: 11px 4px;
-    min-width: 54px;
-    padding: 0 16px;
-    text-align: center;
-}
-
-.buttons:hover {
-    border: 1px solid #c6c6c6;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-    color: #222;
-}
-
-#special-text {
-    font-size: small;
-    text-decoration: none;
-    margin-bottom: 35px;
 }
 
 input[type=text] {
