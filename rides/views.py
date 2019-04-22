@@ -18,6 +18,9 @@ def submit_ride(request):
         notes = request.POST["notes"]
         uber = request.POST["uber"]
         lyft = request.POST["lyft"]
+
+    # phone_number = request.POST["phone_number"]
+        # img = request.POST["img"]
         input_ride_info = InputRideInfo(depart_from=depart_from,
                                         destination=destination,
                                         date=date,
