@@ -198,7 +198,7 @@ footer {
 }
 
 .dropdown {
-    width: 100%;
+    width: 80%;
     margin:auto;
     float: center;
 }
@@ -213,7 +213,7 @@ footer {
 }
 
 input[type=text] {
-    width: 100%;
+    width: 80%;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
@@ -224,7 +224,7 @@ input[type=text] {
 
 
 input[type=time] {
-    width: 100%;
+    width: 80%;
     float: center;
     margin:auto;
     /*box-sizing: border-box;*/
@@ -236,7 +236,7 @@ input[type=time] {
 }
 
 textarea {
-    width: 100%;
+    width: 80%;
     margin:auto;
     /*box-sizing: border-box;*/
     padding: 5px;
@@ -251,7 +251,7 @@ textarea:hover {
 }
 
 input[type=date] {
-    width: 100%;
+    width: 80%;
     float: center;
     margin:auto;
     /*box-sizing: border-box;*/
