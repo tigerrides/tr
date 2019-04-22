@@ -222,10 +222,7 @@ input[type=text] {
 input[type=time] {
     width: 100px;
     float: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    margin:20px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
