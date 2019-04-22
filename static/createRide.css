@@ -198,8 +198,8 @@ footer {
 }
 
 .dropdown {
-    margin-left: auto;
-    margin-right: auto;
+    margin:auto;
+    position: absolute;
     float: center;
 }
 
@@ -213,6 +213,7 @@ footer {
 }
 
 input[type=text] {
+    position: absolute;
     width: 25%;
     /*box-sizing: border-box;*/
     padding: 5px;
@@ -224,10 +225,10 @@ input[type=text] {
 
 
 input[type=time] {
+    position: absolute;
     width: 100px;
     float: center;
-    margin-left: auto;
-    margin-right: auto;
+    margin:auto;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
@@ -237,9 +238,10 @@ input[type=time] {
 }
 
 textarea {
+    position: absolute;
+
     width: 250px;
-    margin-left: auto;
-    margin-right: auto;
+    margin:auto;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
