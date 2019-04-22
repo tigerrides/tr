@@ -182,8 +182,10 @@ filter: alpha(opacity=0);
     height: 50px;
     display: inline-block;
     margin: 10px;
-    border: 2px solid #E59393;
+    border: none;
     border-radius: 50%;
+  box-shadow: 0 0 2px 2px #E59393;
+
 }
 
 .buttons {
