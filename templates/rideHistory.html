@@ -54,10 +54,14 @@
     <!-- page header -->
     <!--<h1 class="title w3-center w3-padding-16">log.</h1>-->
     <h1 class="title w3-center w3-padding-16">current rides.</h1>
-    <img class="car" src="my_app/car_large.png">
-    <img class="car" src="my_app/car_large.png">
-    <img class="car" src="my_app/car_large.png">
-    <img class="car" src="my_app/car_large.png">
+    {% load static %}
+    <img class="car" src="{% static "my_app/car_large.png" %}">
+    {% load static %}
+    <img class="car" src="{% static "my_app/car_large.png" %}">
+    {% load static %}
+    <img class="car" src="{% static "my_app/car_large.png" %}">
+    {% load static %}
+    <img class="car" src="{% static "my_app/car_large.png" %}">
     <!-- first result -->
     <section id="rides-list">
       <!--<h2 class="subtitle w3-center w3-padding-16">current rides</h2>-->
@@ -67,7 +71,8 @@
       <p class="w3-center">date</p>
       <p class="w3-center">time</p>
       <p class="w3-center">riders:</p>
-        <img class="pic" src="my_app/anabelle.jpg" alt="Anabelle" class="w3-round-xxlarge">
+        {% load static %}
+        <img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">
         <br/>
       <!--<button onclick="location.href='{% url 'groupInfo' %}'" class="buttons" type="button">see more</button>-->
     </div>
@@ -79,16 +84,23 @@
       <p class="w3-center">date</p>
       <p class="w3-center">time</p>
       <p class="w3-center">riders:</p>
-        <img class="pic" src="my_app/anabelle.jpg" alt="Anabelle" class="w3-round-xxlarge">
-        <img class="pic" src="my_app/christy.jpg" alt="Christy" class="w3-round-xxlarge">
+        {% load static %}
+        <img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">
+        {% load static %}
+        <img class="pic" src="{% static "my_app/christy.jpg" %}" alt="Christy" class="w3-round-xxlarge">
         <br/>
       </div></section><br><br><br><br>
       <h1 class="title w3-center w3-padding-16 w3-margin-top">past rides.</h1>
-      <img class="car" src="my_app/car_large.png">
-    <img class="car" src="my_app/car_large.png">
-    <img class="car" src="my_app/car_large.png">
-    <img class="car" src="my_app/car_large.png">
-    <img class="car" src="my_app/car_large.png">
+      {% load static %}
+      <img class="car" src="{% static "my_app/car_large.png" %}">
+      {% load static %}
+      <img class="car" src="{% static "my_app/car_large.png" %}">
+      {% load static %}
+      <img class="car" src="{% static "my_app/car_large.png" %}">
+      {% load static %}
+      <img class="car" src="{% static "my_app/car_large.png" %}">
+      {% load static %}
+      <img class="car" src="{% static "my_app/car_large.png" %}">
       <section id="rides-list">
         <!--<h2 class="subtitle w3-center w3-padding-16">past rides</h2>-->
       <!-- third result -->
@@ -98,9 +110,12 @@
       <p class="w3-center">date</p>
       <p class="w3-center">time</p>
       <p class="w3-center">riders:</p>
-        <img class="pic" src="my_app/anabelle.jpg" alt="Anabelle" class="w3-round-xxlarge">
-        <img class="pic" src="my_app/christy.jpg" alt="Christy" class="w3-round-xxlarge">
-        <img class="pic" src="my_app/christy.jpg" alt="Christy" class="w3-round-xxlarge">
+        {% load static %}
+        <img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">
+        {% load static %}
+        <img class="pic" src="{% static "my_app/christy.jpg" %}" alt="Christy" class="w3-round-xxlarge">
+        {% load static %}
+        <img class="pic" src="{% static "my_app/christy.jpg" %}" alt="Christy" class="w3-round-xxlarge">
         <br/>
       <!--<button onclick="location.href='{% url 'groupInfo' %}'" class="buttons" type="button">see more</button>-->
     </div><br>
@@ -111,10 +126,14 @@
       <p class="w3-center">date</p>
       <p class="w3-center">time</p>
       <p class="w3-center">riders:</p>
-        <img class="pic" src="my_app/anabelle.jpg" alt="Anabelle" class="w3-round-xxlarge">
-        <img class="pic" src="my_app/christy.jpg" alt="Christy" class="w3-round-xxlarge">
-        <img class="pic" src="my_app/christy.jpg" alt="Christy" class="w3-round-xxlarge">
-        <img class="pic" src="my_app/anabelle.jpg" alt="Anabelle" class="w3-round-xxlarge">
+        {% load static %}
+        <img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">
+        {% load static %}
+        <img class="pic" src="{% static "my_app/christy.jpg" %}" alt="Christy" class="w3-round-xxlarge">
+        {% load static %}
+        <img class="pic" src="{% static "my_app/christy.jpg" %}" alt="Christy" class="w3-round-xxlarge">
+        {% load static %}
+        <img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">
         <br/>
   </div></section>
 </div>
