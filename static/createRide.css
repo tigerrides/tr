@@ -198,9 +198,12 @@ footer {
 }
 
 .dropdown {
-    width: 80%;
+    margin: 0 auto;
+    margin-right: 5%;
+    width: 250px;
+    /*width: 80%;
     margin:auto;
-    float: center;
+    float: center;*/
 }
 
 .dropdown:hover {
@@ -225,7 +228,7 @@ input[type=text] {
 
 input[type=time] {
     margin: 0 auto;
-    margin-right: 10%;
+    margin-right: 5%;
     width: 250px;
     /*box-sizing: border-box;*/
     padding: 5px;
@@ -236,8 +239,11 @@ input[type=time] {
 }
 
 textarea {
-    width: 80%;
-    margin:auto;
+    margin: 0 auto;
+    margin-right: 5%;
+    width: 250px;
+    /*width: 80%;
+    margin:auto;*/
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
@@ -252,7 +258,7 @@ textarea:hover {
 
 input[type=date] {
     margin: 0 auto;
-    margin-right: 10%;
+    margin-right: 5%;
     width: 250px;
     /*box-sizing: border-box;*/
     padding: 5px;
