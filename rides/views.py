@@ -16,8 +16,8 @@ def submit_ride(request):
         time_start = request.POST["time_start"]
         time_end = request.POST["time_end"]
         notes = request.POST["notes"]
-        uber = request.POST["uber"]
-        lyft = request.POST["lyft"]
+        uber = request.POST.get('uber', False)
+        lyft = request.POST.get('lyft', False)
         input_ride_info = InputRideInfo(depart_from=depart_from,
                                         destination=destination,
                                         date=date,
