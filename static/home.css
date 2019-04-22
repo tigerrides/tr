@@ -19,7 +19,7 @@ footer {
     font-size: 14px;
     text-align: center;
     display: inline-block;
-    color: #A55858;
+    color: white;
     text-decoration: none;
 }
 
@@ -75,18 +75,22 @@ footer {
 }
 
 .title {
+    float: center;
+    width: 100%;
     font-family: 'Roboto Mono', monospace;
     font-style: normal;
     color: white;
     font-weight: 700;
     /*text-align: left;*/
-    font-size: 40px;
+    font-size: 20px;
     text-align: center;
     text-shadow: 3px 3px 8px #A55858;
+    margin-left: auto;
+    margin-left: auto;
 }
 
 .buttons {
-    height: 36px;
+    overflow-wrap: break-word;
     line-height: 27px;
     background-color: rgba(165,88,88,.3);
     border-radius: 10px;
@@ -95,7 +99,8 @@ footer {
     font-size: 15px;
     margin: 11px 4px;
     min-width: 54px;
-    padding: 0 16px;
+    white-space: normal;
+    padding: 3px 12px;
     cursor: url('my_app/shield.png'), auto; 
 }
 
