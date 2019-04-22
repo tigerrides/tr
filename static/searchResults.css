@@ -182,9 +182,9 @@ filter: alpha(opacity=0);
     height: 70px;
     display: inline-block;
     margin: 10px;
-    border: 2px solid #A55858;
+    border: 1px solid #A55858;
     border-radius: 50%;
-  box-shadow: 0 0 10px #A55858;
+  box-shadow: 0 0 10px 10px #A55858;
 
 }
 
