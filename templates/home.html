@@ -5,9 +5,9 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!--<link rel="shortcut icon" type="image/png" href="https://cdn.pixabay.com/photo/2015/10/31/12/56/google-1015752_1280.png"/>-->
-  <title>TigerRide login page</title>
+  <title>TigerRide Home</title>
   <link rel="stylesheet" href="https://use.typekit.net/adz8rjg.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" login="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet">
   {% load static %}
   <link rel="stylesheet" href="{% static 'home.css' %}">
   <!--<link rel="stylesheet" href="{% static 'home.css' %}">-->
@@ -24,9 +24,9 @@
     <!-- Right-sided navbar links -->
     <div class="w3-right w3-hide-small">
       <a href="{% url 'home' %}" class="shortcut bar-item w3-hover-none w3-button">home</a>
-      <a href="{% url 'about' %}" class="shortcut bar-item w3-hover-none w3-button"> about</a>
-      <a href="{% url 'contact' %}" class="shortcut bar-item w3-hover-none w3-button"> contact</a>
-      <a href="{% url 'currentprof' %}" class="shortcut bar-item w3-hover-none w3-button"> profile</a>
+      <a href="{% url 'about' %}" class="shortcut bar-item w3-hover-none w3-button">about</a>
+      <a href="{% url 'contact' %}" class="shortcut bar-item w3-hover-none w3-button">contact</a>
+      <a href="{% url 'currentprof' %}" class="shortcut bar-item w3-hover-none w3-button">profile</a>
     </div>
     <!-- Hide right-floated links on small screens and replace them with a menu icon -->
 
@@ -48,20 +48,15 @@
 <div class="w3-row w3-myfont">
 <div class="w3-container w3-center" style="margin-top: 5%">
   <div class="w3-display-center w3-text-white" style="padding:100px">
-    <h1 class="title w3-center">tell me about yourself.</h1>
+    <h1 class="title w3-center">welcome back.</h1>
     <div class="w3-padding-64 w3-center w3-myfont">
-      <button class="buttons tooltip" type="button">use tigerbook data
-        <span class="tooltiptext">automatically import name, netid, photo</span>
-      </button>
+      <button onclick="location.href='{% url 'createRide' %}'" class="buttons" type="button">plan a trip</button>
       <div><br/></div>
-      <button onclick="location.href='{% url 'createprof' %}'" class="buttons tooltip" type="button">create new profile
-        <span class="tooltiptext">enter your own data</span>
-      </button>
+      <button onclick="location.href='{% url 'rideHistory' %}'" class="buttons" type="button">see trip log</button>
     </div>
   </div> 
 </div>
 </div>
-
 
 <footer class="w3-container w3-padding-16">
   <p>copyright 2019 by a. chang, c. kwon, c. lee, n. schmeller</p>
@@ -87,4 +82,5 @@ function w3_close() {
     mySidebar.style.display = "none";
 }
 </script>
+
 </html>

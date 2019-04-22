@@ -1,44 +1,123 @@
-
-main {
-    position: relative;
-    top: 60px;
-    left: 85px;
-    /*transform: translate(-50%, -50%);*/
-    /*text-align: center;*/
-}
-
-body, a, p, ul, input[type=text],input[type=submit], input[type=date], input[type=time], .buttons, .footer {
-    /*font-family: "Comic Sans";*/
-    font-family: "houschka-rounded", sans-serif;
+/*html, body {
+    cursor: url('my_app/shield-w.png'), auto; 
+    font-family: 'Roboto Mono', monospace;
     font-style: normal;
+    background:  #F7B5B0;
+}*/
 
+html {
+    cursor: url('my_app/shield-w.png'), auto; 
 }
 
-.bg {
-    background-color: #cbdaff;
+html, body, a, p, ul, input[type=text], .buttons, .footer {
+    /*font-family: "Helvetica Neue";*/
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    background:  #F7B5B0;
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 8px;
+.w3-myfont {
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
 }
 
-li a:hover {
-    text-decoration: underline;
-    opacity: .85;
-}
-
-header li a {
-    list-style-type: none;
-    float: left;
-    font-size: 16px;
+footer {
+    width: 100%;
+    float: center;
+    font-size: 14px;
+    text-align: center;
     display: inline-block;
-    padding-left: 20px;
-    color: #748AB5;
-    /*color: #000;*/
+    color: white;
     text-decoration: none;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+.bar-item {
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.bar-item:hover {
+    color: blue;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.icon {
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    font-weight: 700;
+    color: white; 
+    text-decoration: none;
+    font-size: 20px;
+    margin: 10px;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.icon:hover {
+    color: white;
+    text-shadow: 1px 1px 2px #A55858;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.sidebar {
+    color: #A55858;
+}
+
+.hamburger {
+    margin: 10px;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+
+.w3-right {
+    color: #A55858;
+}
+
+.shortcut:hover {
+    color: #563B3B;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.fa {
+    color: #A55858;
+}
+
+.buttons {
+    height: 36px;
+    line-height: 27px;
+    background-color: rgba(165,88,88,.3);
+    border-radius: 10px;
+    border-color: transparent;
+    color: white;
+    font-size: 15px;
+    margin: 11px 4px;
+    min-width: 54px;
+    padding: 0 16px;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.buttons:hover {
+    background: #A55858;
+    border-radius: 10px;
+    background-color: rgba(165,88,88,.6);
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.title {
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    color: white;
+    font-weight: 700;
+    /*text-align: left;*/
+    font-size: 20px;
+    text-align: center;
+    text-shadow: 2px 2px 2px #A55858;
+    margin: 50px;
+}
+
+/* end global */
 
 /* The container */
 .container {
@@ -52,6 +131,10 @@ header li a {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    text-align: center;
+    width: 70px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Hide the browser's default checkbox */
@@ -67,7 +150,7 @@ header li a {
 .checkmark {
     border-radius: 2px;
     position: absolute;
-    top: 0px;
+    top: 4px;
     left: 0;
     height: 17px;
     width: 17px;
@@ -76,12 +159,12 @@ header li a {
 
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
-    background-color: #ccc;
+    background-color: #EFA09E;
 }
 
 /* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {
-    background-color: #9ec18a;
+    background-color: #A55858;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -96,18 +179,30 @@ header li a {
     display: block;
 }
 
+.container:hover {
+    cursor: url('my_app/shield.png'), auto; 
+}
+
 /* Style the checkmark/indicator */
 .container .checkmark:after {
-    left: 4px;
-    top: 0px;
+    left: 5px;
+    top: 2px;
     bottom: 0px;
-    width: 5px;
+    width: 6px;
     height: 10px;
     border: solid white;
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+.dropdown {
+    margin: 20px;
+}
+
+.dropdown:hover {
+    cursor: url('my_app/shield.png'), auto; 
 }
 
 .welcome {
@@ -117,7 +212,7 @@ header li a {
 
 input[type=text] {
     width: 25%;
-    margin-bottom: 20px;
+    margin: 20px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
@@ -128,7 +223,8 @@ input[type=text] {
 
 
 input[type=time] {
-    width: 5%;
+    width: 90px;
+    margin-top: 20px;
     margin-bottom: 20px;
     /*box-sizing: border-box;*/
     padding: 5px;
@@ -139,23 +235,35 @@ input[type=time] {
 }
 
 textarea {
-    margin-bottom: 20px;
+    width: 250px;
+    margin: 20px;
+    margin-left: auto;
+    margin-right: auto;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
-    border: 1px solid white;
+    border: 1px solid #E59393;
     border-radius: 2px;
+    font-size: 12px;
+}
+
+textarea:hover {
+    cursor: url('my_app/shield.png'), auto; 
 }
 
 input[type=date] {
-    width: 10%;
-    margin-bottom: 20px;
+    width: 140px;
+    margin: 20px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
     border: 1px solid white;
     border-radius: 2px;
     /*border-;*/
+}
+
+input:hover {
+    cursor: url('my_app/shield.png'), auto; 
 }
 
 input[type=submit] {
@@ -182,6 +290,12 @@ input[type=submit]:hover {
     color: #222;
 }
 
+.box {
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+}
 
 /*input[type=text] {*/
     /*border: none;*/

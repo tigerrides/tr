@@ -5,63 +5,94 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!--<link rel="shortcut icon" type="image/png" href="https://cdn.pixabay.com/photo/2015/10/31/12/56/google-1015752_1280.png"/>-->
-    <title>TigerRide</title>
-    <link rel="stylesheet" href="https://use.typekit.net/adz8rjg.css">
+    <title>TigerRid Create Ride</title>
+  <link rel="stylesheet" href="https://use.typekit.net/adz8rjg.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet">
+  <!--<link rel="stylesheet" href="{% static 'home.css' %}">-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {% load static %}
     <link rel="stylesheet" href="{% static 'createRide.css' %}">
     <script src="main.js"></script>
 </head>
-<body class="bg">
-<header>
-    <ul>
-        <li style="float:right"><a href="{% url 'currentprof' %}">profile</a></li>
-        <li style="float:right"><a href="{% url 'contact' %}">contact us</a></li>
-        <li style="float:right"><a href="{% url 'about' %}">about us</a></li>
-        <li style="float:right"><a href="{% url 'home' %}">home</a></li>
-    </ul>
-</header>
+<body class="w3-content w3-myfont" style="max-width:1300px">
 
-<main>
-    <div class="welcome">
-        PLAN YOUR NEXT TRIP
+<div class="w3-top">
+  <div class="w3-bar w3-text-white" id="myNavbar">
+    <a href="{% url 'home' %}" class="icon w3-hover-none w3-bar-item">tiger<br/>ride.</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="{% url 'home' %}" class="shortcut bar-item w3-hover-none w3-button">home</a>
+      <a href="{% url 'about' %}" class="shortcut bar-item w3-hover-none w3-button"> about</a>
+      <a href="{% url 'contact' %}" class="shortcut bar-item w3-hover-none w3-button"> contact</a>
+      <a href="{% url 'currentprof' %}" class="shortcut bar-item w3-hover-none w3-button"> profile</a>
     </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="hamburger w3-bar-item w3-button w3-hover-none w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="sidebar w3-sidebar w3-bar-block w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16 w3-hover-none">×</a>
+  <a href="{% url 'home' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-none">home</a>
+  <a href="{% url 'about' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-none">about</a>
+  <a href="{% url 'contact' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-none">contact</a>
+  <a href="{% url 'currentprof' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-none">profile</a>
+</nav>
+
+<!--<main>
+    <div class="welcome">
+        plan your next trip.
+    </div>-->
+
+<div class="w3-row w3-myfont">
+<div class="w3-container w3-center" style="margin:50px">
+  <div class="w3-display-center w3-margin w3-text-white" style="padding:5%">
+    <h1 class="title w3-center">plan your next trip.</h1>
+    <div class="box w3-padding-36 w3-center w3-myfont">
     <form>
-        Depart from:<br>
-        <select>
-            <option value="EWR" selected>EWR</option>
-            <option value="PHL">PHL</option>
-            <option value="JFK">JFK</option>
+        depart from:<br>
+        <select class="dropdown">
+            <option value="EWR" selected>ewr</option>
+            <option value="PHL">phl</option>
+            <option value="JFK">jfk</option>
             <option value="campus">Princeton</option>
         </select> <br>
-        Destination: <br>
-        <select>
-            <option value="EWR" selected>EWR</option>
-            <option value="PHL">PHL</option>
-            <option value="JFK">JFK</option>
-            <option value="campus">Princeton</option>
+        destination: <br>
+        <select class="dropdown">
+            <option value="EWR" selected>ewr</option>
+            <option value="PHL">phl</option>
+            <option value="JFK">jfk</option>
+            <option value="campus">princeton</option>
         </select> <br>
-        Date: <br>
+        date: <br>
         <input type="date" id="travel-date" name="trip-date"
                value="yyyy-mm-dd"><br>
-        Time frame: <br>
+        time frame: <br>
         <input type="time" name="usr_time"> to
         <input type="time" name="usr_time"> <br>
-        Notes: (i.e. you are traveling with a lot of lugagge, prefer to sit up front, etc.) <br>
-        <textarea rows="5" cols="60" id="myTextarea"></textarea> <br>
-        I have an account with:<br>
-        <label class="container">Uber
+        notes:<br>
+        <textarea rows="5" cols="60" id="myTextarea" placeholder="i.e. you are traveling with a lot of lugagge, prefer to sit up front, etc."></textarea> <br>
+        i have an account with:<br><br>
+        <label class="container">uber
             <input type="checkbox">
             <span class="checkmark"></span>
         </label>
-        <label class="container">Lyft
+        <label class="container">lyft
             <input type="checkbox">
             <span class="checkmark"></span>
         </label>
         <!--<input type="checkbox" name="vehicle1" value="Bike">Uber-->
         <!--<br>-->
         <!--<input type="checkbox" name="vehicle2" value="Car">Lyft-->
-        <br><br>
-        <input type="submit" value="Find your rideshare buddies!">
+        <br>
+        <!--<input class="buttons" type="submit" value="Find your rideshare buddies!">-->
+        <button class="buttons" type="submit">find me sum buds</button>
     </form>
     <!--<ul>-->
     <!--<li style="padding-bottom: 0px">-->
@@ -91,9 +122,10 @@
     <!--type="button">-->
     <!--CREATE NEW PROFILE-->
     <!--</button>-->
-
-    </div>
-</main>
+  </div> 
+</div>
+</div>
+</div>
 <!--<footer>-->
 <!--&lt;!&ndash; <div class="footer"> &ndash;&gt;-->
 <!--<ul>-->
@@ -106,5 +138,28 @@
 <!--&lt;!&ndash; </div> &ndash;&gt;-->
 <!--</footer>-->
 
+<footer class="w3-container w3-padding-16">
+  <p>copyright 2019 by a. chang, c. kwon, c. lee, n. schmeller</p>
+</footer>
+
 </body>
+
+<script>
+
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+  } else {
+    mySidebar.style.display = 'block';
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+}
+</script>
 </html>
