@@ -1,5 +1,82 @@
-/*global*/
 html {
+    cursor: url('my_app/shield-w.png'), auto; 
+}
+
+html, body {
+    /*font-family: "Helvetica Neue";*/
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    background:  #F7B5B0;
+}
+
+.w3-myfont {
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+}
+
+footer {
+    float: center;
+    font-size: 14px;
+    text-align: center;
+    display: inline-block;
+    color: #A55858;
+    text-decoration: none;
+}
+
+.bar-item {
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.bar-item:hover {
+    color: blue;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.icon {
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    font-weight: 700;
+    color: white; 
+    text-decoration: none;
+    font-size: 20px;
+    margin: 10px;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.icon:hover {
+    color: white;
+    text-shadow: 2px 2px 2px #A55858;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.sidebar {
+    color: #A55858;
+}
+
+.hamburger {
+    margin: 10px;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+
+.w3-right {
+    color: #A55858;
+}
+
+.shortcut:hover {
+    color: #563B3B;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.fa {
+    color: #A55858;
+}
+
+/*end of global*/
+
+/*html {
     box-sizing: border-box;
 }
 *, *:before, *:after {
@@ -14,7 +91,7 @@ cursor: url(cursor.png), auto;
 }
 
 ul {
-		display: block;
+    display: block;
     list-style-type: none;
     margin: 80px;
     padding: 80px;
@@ -32,7 +109,6 @@ header li a {
     display: inline-block;
     padding-left: 20px;
     color: #748AB5;
-    /*color: #000;*/
     text-decoration: none;
 }
 
@@ -41,40 +117,30 @@ header li a {
     margin: auto;
     padding: 50px;
     overflow: auto;
-	
-}
+  
+}*/
 
-/*header*/
 
-h1 {
+/*h1 {
     font-style: normal;
     font-weight: 300;
     font-size: 20px;
-	text-align: right;
-	padding-right: 5%;
-}
-
-/*footer*/
-footer {
-    text-align: center;
-    margin-bottom: 0;
-		font-size: 15px;
-}
-
-
-a {
-    color: #748ab5;
-	font-size: 15px;
-	padding-left: 10px;
-}
-
-a:hover {
-    text-decoration: none;
-cursor: url(cursor.png), auto;
-}
-
+  text-align: right;
+  padding-right: 5%;
+}*/
 
 /*body*/
+
+.title {
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    color: white;
+    font-weight: 700;
+    /*text-align: left;*/
+    font-size: 20px;
+    text-align: center;
+    text-shadow: 2px 2px 2px #A55858;
+}
 
 .options {
 display: block;
@@ -83,65 +149,66 @@ margin-left: auto;
 margin-right: auto;
 padding-left: auto;
 padding-right: auto;
-	align-content: center;
+  align-content: center;
 }
 
-
-main {
-	align-content: center;
-text-align: center;
-margin-left: 50px;
-margin-right: 50px;
-}
-
-
-.cover {
-margin-left: 40%;
-margin-right: 40%;
-padding: 20px 20px 20px 20px;
-background-color: #748ab5;
+.box {
+margin-right: auto;
+margin-left: auto;
+margin-top: 5%;
+width: 90%;
+border-radius: 30px;
+background-color: transparent;
 -webkit-transition: 300ms; 
     transition: 300ms;
-	align-content: left;
+align-content: center;
+  color: white;
 }
 
-.cover:hover {
-opacity: .8;
+.box:hover {
 filter: alpha(opacity=0);
 -webkit-transition: 300ms; 
     transition: 300ms;
-	box-shadow: 0 0 10px 10px floralwhite;
+  box-shadow: 0 0 8px 5px #E59393;
+  color: #E59393;
+  background: white;
+  cursor: url('my_app/shield.png'), auto; 
 }
 
-.button {
-  background-color: none;
-  border: 1px solid floralwhite;
-  color: floralwhite;
-	border-radius: 8px;
-  padding: 5px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 10px;
-  margin: 15px 4px 4px 2px;
-  cursor: pointer;
+.pic {
+/*  display: block;*/
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    margin: 10px;
+    border: 2px solid #E59393;
+    border-radius: 50%;
 }
 
-.button:hover {
-  background-color: floralwhite;
-  border: 1px solid floralwhite;
-  color: #748ab5;
-	border-radius: 8px;
-  padding: 5px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 10px;
-  cursor: pointer;
+.buttons {
+    height: 36px;
+    line-height:20px;
+    background-color: rgba(165,88,88,.3);
+    border-radius: 10px;
+    border-color: transparent;
+    color: white;
+    font-size: 15px;
+    margin: 11px 4px;
+    min-width: 54px;
+    padding: 0 16px;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.buttons:hover {
+    background: #A55858;
+    border-radius: 10px;
+    background-color: rgba(165,88,88,.6);
+    cursor: url('my_app/shield.png'), auto; 
 }
 
 .buddies {
-/*	display: block;*/
+/*  display: block;*/
     object-fit: cover;
     width: 40px;
     height: 40px;
@@ -152,12 +219,9 @@ border: 1px solid #FAEBD7;
 }
 
 .sub {
-text-transform: uppercase;
-    font-family: "houschka-rounded", sans-serif;
-    font-style: normal;
 text-align: left;
 letter-spacing: 3px;
 line-height: 2pt;
 font-size: 10pt;
-	align-content: center;
+  align-content: center;
 }
