@@ -19,7 +19,7 @@ class InputRideInfo(models.Model):
         (jfk, "jfk"),
         (campus, "princeton")
     )
-    drop down menu
+    # drop down menu
     # depart_from = Choices('ewr', 'phl', 'jfk', 'princeton')
     # destination = Choices('ewr', 'phl', 'jfk', 'princeton')
     date = models.DateField()
