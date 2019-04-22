@@ -20,7 +20,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    # path('rides/', include('rides.urls')),
+    path('createRide/', include('rides.urls'), name='rides'),
     path('login/', include('login.urls'), name='login'),
     # path('login/', views.login, name='login'),
     path('currentprof/', views.currentprof, name='currentprof'),
@@ -29,7 +29,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
-    path('createRide/', views.createRide, name='createRide'),
+    # path('createRide/', views.createRide, name='createRide'),
     path('groupInfo/', views.groupInfo, name='groupInfo'),
     path('joinGroup/', views.joinGroup, name='joinGroup'),
     path('rideHistory/', views.rideHistory, name='rideHistory'),
