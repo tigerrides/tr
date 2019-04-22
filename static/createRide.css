@@ -197,10 +197,12 @@ footer {
     transform: rotate(45deg);
 }
 
+
 .dropdown {
+    display: inline-block;
+
     margin: 0 auto;
-    margin-right: 3%;
-    width: 250px;
+    width: 100px;
     /*width: 80%;
     margin:auto;
     float: center;*/
@@ -216,7 +218,9 @@ footer {
 }
 
 input[type=text] {
-    width: 80%;
+    display: inline-block;
+
+    width: 100px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
@@ -228,8 +232,7 @@ input[type=text] {
 
 input[type=time] {
     margin: 0 auto;
-    margin-right: 3%;
-    width: 250px;
+    width: 100px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
@@ -239,9 +242,10 @@ input[type=time] {
 }
 
 textarea {
+    display: inline-block;
+
     margin: 0 auto;
-    margin-right: 3%;
-    width: 250px;
+    width: 100px;
     /*width: 80%;
     margin:auto;*/
     /*box-sizing: border-box;*/
@@ -257,9 +261,10 @@ textarea:hover {
 }
 
 input[type=date] {
+    display: inline-block;
+
     margin: 0 auto;
-    margin-right: 3%;
-    width: 250px;
+    width: 100px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
