@@ -225,7 +225,7 @@ input[type=text] {
 
 input[type=time] {
     margin: 0 auto;
-    margin-right: 20%;
+    margin-right: 10%;
     width: 250px;
     /*box-sizing: border-box;*/
     padding: 5px;
@@ -252,7 +252,7 @@ textarea:hover {
 
 input[type=date] {
     margin: 0 auto;
-    margin-right: 20%;
+    margin-right: 10%;
     width: 250px;
     /*box-sizing: border-box;*/
     padding: 5px;
