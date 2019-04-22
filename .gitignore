@@ -1,2 +1,5 @@
 # exclude vim swap files
 *.swp
+
+# exclude the init file which is constantly changing
+*/__pycache__/__init__.cpython-36.pyc
