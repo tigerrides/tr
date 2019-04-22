@@ -1,9 +1,3 @@
-/*html, body {
-    cursor: url('my_app/shield-w.png'), auto; 
-    font-family: 'Roboto Mono', monospace;
-    font-style: normal;
-    background:  #F7B5B0;
-}*/
 
 html {
     cursor: url('my_app/shield-w.png'), auto; 
@@ -223,7 +217,8 @@ input[type=text] {
 
 
 input[type=time] {
-    width: 90px;
+    width: 100px;
+    float: center;
     margin-top: 20px;
     margin-bottom: 20px;
     /*box-sizing: border-box;*/
@@ -252,8 +247,12 @@ textarea:hover {
 }
 
 input[type=date] {
-    width: 140px;
-    margin: 20px;
+    width: 250px;
+    float: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
@@ -297,24 +296,16 @@ input[type=submit]:hover {
     align-content: center;
 }
 
-/*input[type=text] {*/
-    /*border: none;*/
-    /*outline: none;*/
-    /*box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);*/
-    /*font-size: 13px;*/
-    /*width: 100%;*/
-    /*padding: 12px 12px;*/
-    /*margin: 0px;*/
-    /*box-sizing: border-box;*/
-    /*background-color: white;*/
-    /*background-image: url('//www.gstatic.com/images/branding/googlemic/2x/googlemic_color_24dp.png');*/
-    /*background-size: 25px 25px;*/
-    /*background-position: 444px;*/
-    /*background-repeat: no-repeat;*/
-    /*padding-right: 75px;*/
-    /*margin-bottom: 20px;*/
-  /*}*/
+.prompt {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+}
 
-/*input[type=text]:hover {*/
-  /*box-shadow: 2px 4px 8px 0px rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);*/
-/*}*/
+form {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+}
