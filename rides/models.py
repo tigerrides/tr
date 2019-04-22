@@ -1,27 +1,27 @@
 from django.db import models
-from models.utils import Choices
+# from models.utils import Choices
 
 # Create your models here.
 class InputRideInfo(models.Model):
-    # ewr = "EWR"
-    # phl = "PHL"
-    # jfk = "JFK"
-    # campus = "PRINCETON"
-    # depart_from = (
-    #     (ewr, "ewr"),
-    #     (phl, "phl"),
-    #     (jfk, "jfk"),
-    #     (campus, "princeton")
-    # )
-    # destination = (
-    #     (ewr, "ewr"),
-    #     (phl, "phl"),
-    #     (jfk, "jfk"),
-    #     (campus, "princeton")
-    # )
-    # drop down menu
-    depart_from = Choices('ewr', 'phl', 'jfk', 'princeton')
-    destination = Choices('ewr', 'phl', 'jfk', 'princeton')
+    ewr = "EWR"
+    phl = "PHL"
+    jfk = "JFK"
+    campus = "PRINCETON"
+    depart_from = (
+        (ewr, "ewr"),
+        (phl, "phl"),
+        (jfk, "jfk"),
+        (campus, "princeton")
+    )
+    destination = (
+        (ewr, "ewr"),
+        (phl, "phl"),
+        (jfk, "jfk"),
+        (campus, "princeton")
+    )
+    drop down menu
+    # depart_from = Choices('ewr', 'phl', 'jfk', 'princeton')
+    # destination = Choices('ewr', 'phl', 'jfk', 'princeton')
     date = models.DateField()
     # not sure what auto_now and auto_now_add means
     time_start = models.TimeField(auto_now=False, auto_now_add=False)
