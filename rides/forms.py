@@ -15,5 +15,4 @@ class CreateRide(ModelForm):
             'notes',
             'uber',
             'lyft',
-            # 'img'
         ]

@@ -17,11 +17,11 @@ def profile_create(request):
         # validate info against form
         first_name = request.POST["first_name"]
         last_name = request.POST["last_name"]
-        #phone_number = request.POST["phone_number"]
+        phone_number = request.POST["phone_number"]
         # img = request.POST["img"]
         profile_info = LogInInfo(first_name=first_name,
                                  last_name=last_name,
-                                 #phone_number=phone_number,
+                                 phone_number=phone_number,
                                  )
         profile_info.save()
         # form = forms.CreateProfile(request.POST, request.FILES)
