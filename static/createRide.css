@@ -42,6 +42,7 @@ footer {
     font-weight: 700;
     color: white; 
     text-decoration: none;
+    background: transparent;
     font-size: 20px;
     margin: 10px;
     cursor: url('my_app/shield.png'), auto; 
@@ -303,6 +304,7 @@ input[type=submit]:hover {
     margin-left: auto;
     margin-right: auto;
     align-content: center;
+    font-weight: 700;
     color: #A55858;
 }
 
