@@ -199,7 +199,7 @@ footer {
 
 .dropdown {
     margin:auto;
-    position: absolute;
+    position: relative;
     float: center;
 }
 
@@ -213,7 +213,7 @@ footer {
 }
 
 input[type=text] {
-    position: absolute;
+    position: relative;
     width: 25%;
     /*box-sizing: border-box;*/
     padding: 5px;
@@ -225,7 +225,7 @@ input[type=text] {
 
 
 input[type=time] {
-    position: absolute;
+    position: relative;
     width: 100px;
     float: center;
     margin:auto;
@@ -238,7 +238,7 @@ input[type=time] {
 }
 
 textarea {
-    position: absolute;
+    position: relative;
 
     width: 250px;
     margin:auto;
