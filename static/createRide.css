@@ -198,7 +198,6 @@ footer {
 }
 
 .dropdown {
-    margin: 20px;
     margin-left: auto;
     margin-right: auto;
     float: center;
@@ -215,7 +214,6 @@ footer {
 
 input[type=text] {
     width: 25%;
-    margin: 20px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
@@ -228,7 +226,6 @@ input[type=text] {
 input[type=time] {
     width: 100px;
     float: center;
-    margin:20px;
     margin-left: auto;
     margin-right: auto;
     /*box-sizing: border-box;*/
@@ -241,7 +238,6 @@ input[type=time] {
 
 textarea {
     width: 250px;
-    margin: 20px;
     margin-left: auto;
     margin-right: auto;
     /*box-sizing: border-box;*/
@@ -261,8 +257,6 @@ input[type=date] {
     float: center;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
