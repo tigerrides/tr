@@ -87,7 +87,10 @@ footer {
     border-color: transparent;
     color: white;
     font-size: 15px;
-    margin: 11px 4px;
+    /*margin: 11px 4px;*/
+    margin-left: auto;
+    margin-right: auto;
+    float: center;
     min-width: 54px;
     padding: 0 16px;
     cursor: url('my_app/shield.png'), auto; 
@@ -196,6 +199,9 @@ footer {
 
 .dropdown {
     margin: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    float: center;
 }
 
 .dropdown:hover {
@@ -223,6 +229,8 @@ input[type=time] {
     width: 100px;
     float: center;
     margin:20px;
+    margin-left: auto;
+    margin-right: auto;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
