@@ -224,9 +224,8 @@ input[type=text] {
 
 
 input[type=time] {
-    width: 80%;
-    float: center;
-    margin:auto;
+    margin: 0 auto;
+    width: 250px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
@@ -251,9 +250,8 @@ textarea:hover {
 }
 
 input[type=date] {
-    width: 80%;
-    float: center;
-    margin:auto;
+    margin: 0 auto;
+    width: 250px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
