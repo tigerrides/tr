@@ -1,5 +1,5 @@
 from django.db import models
-from model.utils import Choices
+from models.utils import Choices
 
 # Create your models here.
 class InputRideInfo(models.Model):
