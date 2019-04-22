@@ -1,9 +1,3 @@
-/*html, body {
-    cursor: url('my_app/shield-w.png'), auto; 
-    font-family: 'Roboto Mono', monospace;
-    font-style: normal;
-    background:  #F7B5B0;
-}*/
 
 html {
     cursor: url('my_app/shield-w.png'), auto; 
@@ -48,6 +42,7 @@ footer {
     font-weight: 700;
     color: white; 
     text-decoration: none;
+    background: transparent;
     font-size: 20px;
     margin: 10px;
     cursor: url('my_app/shield.png'), auto; 
@@ -92,7 +87,10 @@ footer {
     border-color: transparent;
     color: white;
     font-size: 15px;
-    margin: 11px 4px;
+    /*margin: 11px 4px;*/
+    margin-left: auto;
+    margin-right: auto;
+    float: center;
     min-width: 54px;
     padding: 0 16px;
     cursor: url('my_app/shield.png'), auto; 
@@ -135,6 +133,8 @@ footer {
     width: 70px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 /* Hide the browser's default checkbox */
@@ -197,8 +197,15 @@ footer {
     transform: rotate(45deg);
 }
 
+
 .dropdown {
-    margin: 20px;
+    display: inline-block;
+
+    margin: 0 auto;
+    width: 100px;
+    /*width: 80%;
+    margin:auto;
+    float: center;*/
 }
 
 .dropdown:hover {
@@ -211,8 +218,9 @@ footer {
 }
 
 input[type=text] {
-    width: 25%;
-    margin: 20px;
+    display: inline-block;
+
+    width: 100px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
@@ -223,9 +231,8 @@ input[type=text] {
 
 
 input[type=time] {
-    width: 90px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 0 auto;
+    width: 100px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
@@ -235,10 +242,12 @@ input[type=time] {
 }
 
 textarea {
-    width: 250px;
-    margin: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    display: inline-block;
+
+    margin: 0 auto;
+    width: 100px;
+    /*width: 80%;
+    margin:auto;*/
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
@@ -252,8 +261,10 @@ textarea:hover {
 }
 
 input[type=date] {
-    width: 140px;
-    margin: 20px;
+    display: inline-block;
+
+    margin: 0 auto;
+    width: 100px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
@@ -280,7 +291,7 @@ input[type=submit] {
     font-weight: bold;
     /*margin: 11px 4px;*/
     min-width: 54px;
-    padding: 0 10px;
+    padding: 0px;
     /*text-align: center;*/
 }
 
@@ -291,30 +302,24 @@ input[type=submit]:hover {
 }
 
 .box {
-    width: 350px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     align-content: center;
 }
 
-/*input[type=text] {*/
-    /*border: none;*/
-    /*outline: none;*/
-    /*box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);*/
-    /*font-size: 13px;*/
-    /*width: 100%;*/
-    /*padding: 12px 12px;*/
-    /*margin: 0px;*/
-    /*box-sizing: border-box;*/
-    /*background-color: white;*/
-    /*background-image: url('//www.gstatic.com/images/branding/googlemic/2x/googlemic_color_24dp.png');*/
-    /*background-size: 25px 25px;*/
-    /*background-position: 444px;*/
-    /*background-repeat: no-repeat;*/
-    /*padding-right: 75px;*/
-    /*margin-bottom: 20px;*/
-  /*}*/
+.prompt {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+    font-weight: 700;
+    color: #A55858;
+}
 
-/*input[type=text]:hover {*/
-  /*box-shadow: 2px 4px 8px 0px rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);*/
-/*}*/
+form {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+}

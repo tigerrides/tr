@@ -7,7 +7,7 @@
     <!--<link rel="shortcut icon" type="image/png" href="https://cdn.pixabay.com/photo/2015/10/31/12/56/google-1015752_1280.png"/>-->
     <title>TigerRide Create Ride</title>
   <link rel="stylesheet" href="https://use.typekit.net/adz8rjg.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700" rel="stylesheet">
   <!--<link rel="stylesheet" href="{% static 'home.css' %}">-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -51,37 +51,38 @@
     </div>-->
 
 <div class="w3-row w3-myfont">
-<div class="w3-container w3-center" style="margin:50px">
-  <div class="w3-display-center w3-margin w3-text-white" style="padding:5%">
+<div class="w3-container w3-center" style="margin:5%">
+  <div class="w3-display-center w3-margin w3-text-white" style="padding:0px">
     <h1 class="title w3-center">plan your next trip.</h1>
-    <div class="box w3-padding-36 w3-center w3-myfont">
+    <div class="box w3-center w3-myfont">
     <form action="{% url 'submit_ride' %}" method="post">
         {% csrf_token %}
         {{ form }}
-        depart from:<br>
+        <p class="prompt">depart from:</p><br>
         <select name="depart_from" class="dropdown">
             <option value="EWR" selected>ewr</option>
             <option value="PHL">phl</option>
             <option value="JFK">jfk</option>
             <option value="campus">princeton</option>
         </select> <br>
-        destination: <br>
+        <p class="prompt">destination:</p><br>
         <select name="destination" class="dropdown">
             <option value="EWR" selected>ewr</option>
             <option value="PHL">phl</option>
             <option value="JFK">jfk</option>
             <option value="campus">princeton</option>
         </select> <br>
-        date: <br>
+        <p class="prompt">date:</p><br>
         <input type="date" id="travel-date" name="date"
                value="yyyy-mm-dd"><br>
-        time frame: <br>
-        <input type="time" name="time_start"> to
+        <p class="prompt">time frame:</p><br>
+        <input type="time" name="time_start">
+        <br><br>~<br>
         <input type="time" name="time_end"> <br>
-        notes:<br>
+        <p class="prompt">notes:</p><br>
         <textarea rows="5" cols="60" id="myTextarea" name="notes"
                   placeholder="i.e. you are traveling with a lot of lugagge, prefer to sit up front, etc."></textarea> <br>
-        i have an account with:<br><br>
+        <p class="prompt">i have an account with:</p><br>
         <label class="container">uber
             <input type="checkbox" name="uber">
             <span class="checkmark"></span>
@@ -90,56 +91,12 @@
             <input type="checkbox" name="lyft">
             <span class="checkmark"></span>
         </label>
-        <!--<input type="checkbox" name="vehicle1" value="Bike">Uber-->
-        <!--<br>-->
-        <!--<input type="checkbox" name="vehicle2" value="Car">Lyft-->
-        <br>
-        <!--<input class="buttons" type="submit" value="Find your rideshare buddies!">-->
         <button class="buttons" type="submit">find me sum buds</button>
     </form>
-    <!--<ul>-->
-    <!--<li style="padding-bottom: 0px">-->
-    <!--<button class="buttons tooltip"-->
-    <!--type="button">-->
-    <!--USE TIGERBOOK DATA-->
-    <!--<span class="tooltiptext">Tooltip text</span>-->
-    <!--</button>-->
-    <!--</li>-->
-    <!--<li class="tooltip" style="padding-top: 0px;">-->
-    <!--<button class="buttons tooltip"-->
-    <!--type="button">-->
-    <!--CREATE NEW PROFILE-->
-    <!--<span class="tooltiptext">Tooltip text</span>-->
-    <!--</button>-->
-    <!--</li>-->
-
-    <!--</ul>-->
-    <!--<button class="buttons"-->
-    <!--type="button">-->
-    <!--USE TIGERBOOK DATA-->
-    <!--</button>-->
-    <!--<br>-->
-    <!--or-->
-    <!--<br>-->
-    <!--<button class="buttons"-->
-    <!--type="button">-->
-    <!--CREATE NEW PROFILE-->
-    <!--</button>-->
   </div> 
 </div>
 </div>
 </div>
-<!--<footer>-->
-<!--&lt;!&ndash; <div class="footer"> &ndash;&gt;-->
-<!--<ul>-->
-<!--<li><a href="#advertising">Advertising</a></li>-->
-<!--<li><a href="#business">Business</a></li>-->
-<!--<li style="float:right"><a href="#settings">Settings</a></li>-->
-<!--<li style="float:right"><a href="#terms">Terms</a></li>-->
-<!--<li style="float:right"><a href="#privacy">Privacy</a></li>-->
-<!--</ul>-->
-<!--&lt;!&ndash; </div> &ndash;&gt;-->
-<!--</footer>-->
 
 <footer class="w3-container w3-padding-16">
   <p>copyright 2019 by a. chang, c. kwon, c. lee, n. schmeller</p>
