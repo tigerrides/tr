@@ -7,8 +7,8 @@ class CreateRide(ModelForm):
     class Meta:
         models = models.InputRideInfo
         fields = [
-            'depart_from',
-            'destination',
+            # 'depart_from',
+            # 'destination',
             'date',
             'time_start',
             'time_end',

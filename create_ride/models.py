@@ -3,22 +3,22 @@ from django.db import models
 
 # Create your models here.
 class InputRideInfo(models.Model):
-    ewr = "EWR"
-    phl = "PHL"
-    jfk = "JFK"
-    campus = "PRINCETON"
-    depart_from = (
-        (ewr, "ewr"),
-        (phl, "phl"),
-        (jfk, "jfk"),
-        (campus, "princeton")
-    )
-    destination = (
-        (ewr, "ewr"),
-        (phl, "phl"),
-        (jfk, "jfk"),
-        (campus, "princeton")
-    )
+    # ewr = "EWR"
+    # phl = "PHL"
+    # jfk = "JFK"
+    # campus = "PRINCETON"
+    # depart_from = (
+    #     (ewr, "ewr"),
+    #     (phl, "phl"),
+    #     (jfk, "jfk"),
+    #     (campus, "princeton")
+    # )
+    # destination = (
+    #     (ewr, "ewr"),
+    #     (phl, "phl"),
+    #     (jfk, "jfk"),
+    #     (campus, "princeton")
+    # )
     # drop down menu
     # depart_from = Choices('ewr', 'phl', 'jfk', 'princeton')
     # destination = Choices('ewr', 'phl', 'jfk', 'princeton')
