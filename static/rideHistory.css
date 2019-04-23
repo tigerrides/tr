@@ -179,12 +179,13 @@ filter: alpha(opacity=0);
 .pic {
 /*  display: block;*/
     object-fit: cover;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     display: inline-block;
-    margin: 10px;
-    border: 2px solid #E59393;
+    margin: 20px;
+    border: 1px solid #E59393;
     border-radius: 50%;
+    box-shadow: 0 0 10px 5px #E59393;
 }
 
 .buttons {
