@@ -202,7 +202,7 @@ footer {
     display: inline-block;
 
     margin: 0 auto;
-    width: 100px;
+    width: 250px;
     /*width: 80%;
     margin:auto;
     float: center;*/
@@ -220,7 +220,7 @@ footer {
 input[type=text] {
     display: inline-block;
 
-    width: 100px;
+    width: 250px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
@@ -232,7 +232,7 @@ input[type=text] {
 
 input[type=time] {
     margin: 0 auto;
-    width: 100px;
+    width: 250px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
@@ -245,7 +245,7 @@ textarea {
     display: inline-block;
 
     margin: 0 auto;
-    width: 100px;
+    width: 250px;
     /*width: 80%;
     margin:auto;*/
     /*box-sizing: border-box;*/
@@ -264,7 +264,7 @@ input[type=date] {
     display: inline-block;
 
     margin: 0 auto;
-    width: 100px;
+    width: 250px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;

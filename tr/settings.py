@@ -149,12 +149,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 #PARSE database configuration from $DATABASE_URL
-import dj_database_url
-DATABASE_URL = os.getenv('DATABASE_URL')
-DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
+#import dj_database_url
+#DATABASE_URL = os.getenv('DATABASE_URL')
+#DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 
 # enable HTTPS
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # allow all host headers
 ALLOWED_HOSTS = ['*']
