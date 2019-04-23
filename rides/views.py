@@ -19,16 +19,12 @@ def submit_ride(request):
         uber = request.POST.get('uber', False)
         lyft = request.POST.get('lyft', False)
 
-        if uber == 'on':
+        if uber != False:
             uber = True
-        elif uber == 'off':
-            uber = False
 
-        if lyft == 'on':
+        if lyft != False:
             lyft = True
-        elif uber == 'off':
-            uber = False
-
+            
     # phone_number = request.POST["phone_number"]
         # img = request.POST["img"]
         input_ride_info = InputRideInfo(depart_from=depart_from,
