@@ -15,6 +15,9 @@ def createUser(request):
 		form = UserForm()
 	return render(request, 'createUser.html', {'form': form})
 
+def login(request):
+	return render(request, 'registration/login.html')
+
 # Create your views here.
 def index(request):
     # return HttpResponse("welcome.html")
