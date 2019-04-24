@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
     path('', views.rides, name='createRide'),
+    path('searchResults/', views.rides, name='searchResults'),
     path('rides/submit_ride/', views.submit_ride, name='submit_ride'),
     # path('createprof/profile_create/', views.profile_create, name='profile_create')
 ]

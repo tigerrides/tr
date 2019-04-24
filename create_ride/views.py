@@ -47,3 +47,6 @@ def submit_ride(request):
     else:
         form = forms.CreateRide()
     return render(request, 'createRide.html', {'form': form})
+
+def searchResults(request):
+    return render(request, 'searchResults.html')

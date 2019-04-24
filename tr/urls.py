@@ -33,5 +33,5 @@ urlpatterns = [
     path('groupInfo/', views.groupInfo, name='groupInfo'),
     path('joinGroup/', views.joinGroup, name='joinGroup'),
     path('rideHistory/', views.rideHistory, name='rideHistory'),
-    path('searchResults/', views.searchResults, name='searchResults'),
+    path('createRide/searchResults/', include('create_ride.urls'), name='searchResults'),
 ]
