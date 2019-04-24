@@ -50,13 +50,11 @@
   <div class="w3-display-center w3-text-white" style="padding:100px">
     <h1 class="title w3-center">tell me about yourself.</h1>
     <div class="w3-padding-64 w3-center w3-myfont">
-      <button  onclick="location.href='{% url 'login' %}'" class="buttons tooltip" type="button">log in
-      </button>
       <button class="buttons tooltip" type="button">use tigerbook data
         <span class="tooltiptext">automatically import name, netid, photo</span>
       </button>
       <div><br/></div>
-      <button onclick="location.href='{% url 'createprof' %}'" class="buttons tooltip" type="button">create new profile
+      <button onclick="location.href='{% url 'createUser' %}'" class="buttons tooltip" type="button">create new profile
         <span class="tooltiptext">enter your own data</span>
       </button>
     </div>

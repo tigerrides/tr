@@ -43,6 +43,6 @@ urlpatterns = [
     # path('searchResults/', views.searchResults, name='searchResults'),
     # path(r'^see_rides$', include('create_ride.urls'), name='see_rides'),
 #>>>>>>> 58e80ac679c4a1fe980f2eebabeabb66794c8712
-    path('chooseLogin/accounts/login', include ('login.urls'), name='login'),
+    path('accounts/login/', include ('login.urls'), name='login'),
     path('createUser/', views.createUser, name='createUser'),
 ]
