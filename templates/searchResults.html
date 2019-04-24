@@ -58,17 +58,19 @@
     {% if rides%}
     <ol>
       {% for ride in rides%}
-      <div class="box w3-container w3-padding-16 w3-center w3-myfont">
-        <p class="w3-center">from {{ride.depart_from}}</p>
-        <p class="w3-center">to {{ride.destination}}</p>
-        <p class="w3-center">{{ride.date}}</p>
-        <p class="w3-center">{{ride.time_start}} ~ {{ride.time_end}}</p>
-        <p class="w3-center">riders:</p>
-          {% load static %}
-          <img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">
-          <br/>
-        <!--<button onclick="location.href='{% url 'groupInfo' %}'" class="buttons" type="button">see more</button>-->
-      </div>
+      <li>
+        <div class="box w3-container w3-padding-16 w3-center w3-myfont">
+          <p class="w3-center">from {{ride.depart_from}}</p>
+          <p class="w3-center">to {{ride.destination}}</p>
+          <p class="w3-center">{{ride.date}}</p>
+          <p class="w3-center">{{ride.time_start}} ~ {{ride.time_end}}</p>
+          <p class="w3-center">riders:</p>
+            {% load static %}
+            <img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">
+            <br/>
+          <!--<button onclick="location.href='{% url 'groupInfo' %}'" class="buttons" type="button">see more</button>-->
+        </div>
+      </li>
       {% endfor %}
     </ol>
     {% endif %}
