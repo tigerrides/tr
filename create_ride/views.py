@@ -4,7 +4,7 @@ from . import forms
 
 # Create your views here.
 def rides(request):
-    print("hi")
+    # print("hi")
     return render(request, 'createRide.html')
     # return render(request, 'home.html')
 
@@ -50,5 +50,5 @@ def submit_ride(request):
         form = forms.CreateRide()
     return render(request, 'createRide.html', {'form': form})
 
-def searchResults(request):
-    return render(request, 'home.html')
+# def searchResults(request):
+#     return render(request, 'home.html')
