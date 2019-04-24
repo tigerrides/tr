@@ -10,8 +10,8 @@ def submit_ride(request):
     if request.method == 'POST':
         # print("it works!")
         # validate info against form
-        # depart_from = request.POST["depart_from"]
-        # destination = request.POST["destination"]
+        depart_from = request.POST["depart_from"]
+        destination = request.POST["destination"]
         date = request.POST["date"]
         time_start = request.POST["time_start"]
         time_end = request.POST["time_end"]
@@ -28,8 +28,8 @@ def submit_ride(request):
         # phone_number = request.POST["phone_number"]
         # img = request.POST["img"]
         input_ride_info = InputRideInfo(
-                                        # depart_from=depart_from,
-                                        # destination=destination,
+                                        depart_from=depart_from,
+                                        destination=destination,
                                         date=date,
                                         time_start=time_start,
                                         time_end=time_end,
