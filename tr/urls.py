@@ -34,4 +34,5 @@ urlpatterns = [
     path('joinGroup/', views.joinGroup, name='joinGroup'),
     path('rideHistory/', views.rideHistory, name='rideHistory'),
     path('searchResults/', views.searchResults, name='searchResults'),
+    url(r'^see_rides$', create_ride.views.see_rides, name='see_rides'),
 ]
