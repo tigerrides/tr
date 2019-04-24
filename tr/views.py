@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from forms import UserForm
+from .forms import UserForm
 from django.contrib.auth import login
 
 def adduser(request):
