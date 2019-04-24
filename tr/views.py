@@ -40,3 +40,6 @@ def rideHistory(request):
 
 def searchResults(request):
 	return render(request, 'searchResults.html')
+
+def newRide(request):
+	return render(request, 'newride.html')
