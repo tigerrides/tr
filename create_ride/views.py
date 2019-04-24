@@ -3,7 +3,7 @@ from .models import InputRideInfo
 from . import forms
 
 # Create your views here.
-def index(request):
+def rides(request):
     return render(request, 'createRide.html')
 
 def submit_ride(request):
@@ -43,7 +43,7 @@ def submit_ride(request):
         # if form.is_valid():
         #     form.save()
         #     # save prof to db
-        return redirect('home')
+        return redirect('searchResults')
     else:
         form = forms.CreateRide()
     return render(request, 'createRide.html', {'form': form})
