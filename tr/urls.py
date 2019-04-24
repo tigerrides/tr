@@ -21,7 +21,7 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('createRide/', include('create_ride.urls'), name='createRide'),
-    path('login/', include('login.urls'), name='login'),
+    path('chooseLogin/', include('login.urls'), name='login'),
     # path('login/', views.login, name='login'),
     path('currentprof/', views.currentprof, name='currentprof'),
     path('home/', views.home, name='home'),
