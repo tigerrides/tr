@@ -10,7 +10,7 @@ def createUser(request):
 		if form.is_valid():
 			new_user = User.objects.create_user(**form.cleaned_data)
 			login(new_user)
-			return render(request, 'home.html')
+			return render(request, 'createprof.html')
 	else:
 		form = UserForm()
 	return render(request, 'createUser.html', {'form': form})
