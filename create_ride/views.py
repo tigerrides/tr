@@ -4,6 +4,7 @@ from . import forms
 
 # Create your views here.
 def rides(request):
+    print("hi")
     return render(request, 'createRide.html')
 
 def submit_ride(request):
