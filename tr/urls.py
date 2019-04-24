@@ -45,4 +45,5 @@ urlpatterns = [
 #>>>>>>> 58e80ac679c4a1fe980f2eebabeabb66794c8712
     path('accounts/login/', include ('login.urls'), name='login'),
     path('createUser/', views.createUser, name='createUser'),
+    path('accounts/logout/', include('login.urls'), name='logout'),
 ]
