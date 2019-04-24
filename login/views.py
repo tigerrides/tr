@@ -5,7 +5,7 @@ from . import forms
 # Create your views here.
 
 def index(request):
-    return render(request, 'login.html')
+    return render(request, 'chooseLogin.html')
 
 def createprof(request):
     return render(request, 'createprof.html')
