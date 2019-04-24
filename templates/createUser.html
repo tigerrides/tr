@@ -63,9 +63,14 @@
   </p>
     <div class="w3-padding-24 w3-center w3-myfont">
 
-<form method="post" action="">
+<form method="post" action="{% url 'createUser' %}" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form }}
+        <p class="sections">username:</p>
+        {{ form.username }}<br>
+        <p class="sections">e-mail:</p>
+        {{ form.email }}<br>
+        <p class="sections">password:</p>
+        {{ form.password }}<br>
     <input type="submit" value="Create new user account" />
 </form>
     </div>
