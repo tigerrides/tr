@@ -14,7 +14,7 @@ def home(request):
 def welcome(request):
     return render(request, 'welcome.html')
 
-def login(request):
+def chooselogin(request):
     return render(request, 'chooseLogin.html')
 
 def currentprof(request):
