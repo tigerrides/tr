@@ -9,7 +9,7 @@ def createUser(request):
 		form = UserForm(request.POST)
 		if form.is_valid():
 			new_user = User.objects.create_user(**form.cleaned_data)
-			login(new_user)
+			#login(request)
 			return render(request, 'createprof.html')
 	else:
 		form = UserForm()
