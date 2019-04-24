@@ -185,4 +185,5 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #django_heroku.settings(locals())
 
+# for now it redirects to homepage after login, will change
 LOGIN_REDIRECT_URL = '/'

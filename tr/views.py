@@ -1,6 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from forms import UserForm
+from django.contrib.auth import login
 
+def adduser(request):
+	if request.method == "POST":
+		form = UserForm(request.POST)
+		if form.is_valid():
+			new_user = User.objects.create_user(**form.cleaned_data)
+			login(new_user)
+			return render(request, 'home.html')
+	else:
+		form = UserForm()
+	return render(request, 'createUser.html', {'form': form})
 
 # Create your views here.
 def index(request):
