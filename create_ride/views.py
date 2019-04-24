@@ -3,7 +3,7 @@ from .models import InputRideInfo
 from . import forms
 
 # Create your views here.
-def index(request):
+def rides(request):
     # print("hi")
     return render(request, 'createRide.html')
     # return render(request, 'home.html')
@@ -36,7 +36,8 @@ def submit_ride(request):
 
         # phone_number = request.POST["phone_number"]
         # img = request.POST["img"]
-        input_ride_info = InputRideInfo(depart_from=depart_from,
+        input_ride_info = InputRideInfo(
+                                        depart_from=depart_from,
                                         destination=destination,
                                         date=date,
                                         time_start=time_start,
