@@ -1,4 +1,4 @@
-<form action="{% url 'home' %}" method = "post" enctype="multipart/form-data">
+<!--<form action="{% url 'home' %}" method = "post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form }}
     <p class="sections">username:</p>
@@ -8,4 +8,10 @@
     <p class="sections">password:</p>
     <input type="text" name="password" value="{{ password }}" required><br>
     <input class="buttons" type="submit" value="Create new user account">
+</form>-->
+
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Create new user account" />
 </form>
