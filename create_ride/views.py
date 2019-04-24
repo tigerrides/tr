@@ -45,7 +45,6 @@ def submit_ride(request):
                                         notes=notes,
                                         uber=uber,
                                         lyft=lyft,
-                                        #phone_number=phone_number,
                                         )
         input_ride_info.save()
         # form = forms.CreateProfile(request.POST, request.FILES)
