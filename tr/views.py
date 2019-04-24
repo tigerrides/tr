@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .forms import UserForm
 from django.contrib.auth import login
 
-def adduser(request):
+def createUser(request):
 	if request.method == "POST":
 		form = UserForm(request.POST)
 		if form.is_valid():
