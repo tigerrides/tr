@@ -1,0 +1,242 @@
+html {
+    cursor: url('my_app/shield-w.png'), auto; 
+}
+
+html, body, a, p, ul, input[type=text], .buttons, .footer {
+    /*font-family: "Helvetica Neue";*/
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    background:  #F7B5B0;
+}
+
+.w3-myfont {
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+}
+
+footer {
+    float: center;
+    font-size: 14px;
+    text-align: center;
+    display: inline-block;
+    color: #A55858;
+    text-decoration: none;
+}
+
+.bar-item {
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.bar-item:hover {
+    color: blue;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.icon {
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    font-weight: 700;
+    color: white; 
+    text-decoration: none;
+    font-size: 20px;
+    margin: 10px;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.icon:hover {
+    color: white;
+    text-shadow: 2px 2px 2px #A55858;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.sidebar {
+    color: #A55858;
+}
+
+.hamburger {
+    margin: 10px;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+
+.w3-right {
+    color: #A55858;
+}
+
+.shortcut:hover {
+    color: #563B3B;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+.fa {
+    color: #A55858;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.sub {
+text-transform: uppercase;
+    font-family: "houschka-rounded", sans-serif;
+    font-style: normal;
+text-align: left;
+letter-spacing: 3px;
+line-height: 2pt;
+font-size: 10pt;
+  align-content: center;
+}
+
+.title {
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    text-shadow: 2px 2px 2px #A55858;
+    margin: 50px;
+}
+
+.pic {
+/*  display: block;*/
+    object-fit: cover;
+    width: 130px;
+    height: 130px;
+    display: inline-block;
+    border-radius: 50%;
+  box-shadow: 0 0 10px 5px white;
+}
+
+.pic:hover {
+/*  display: block;*/
+    object-fit: cover;
+    width: 130px;
+    height: 130px;
+    display: inline-block;
+    border-radius: 50%;
+  box-shadow: none;
+  cursor: url('my_app/shield.png'), auto;
+}
+
+p {
+  color: white;
+}
+
+.box {
+margin-left: 40%;
+margin-right: 40%;
+padding: 20px 20px 20px 20px;
+border-radius: 20px;
+background-color: transparent;
+-webkit-transition: 300ms; 
+    transition: 300ms;
+  align-content: left;
+  color: #A55858;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.sub {
+text-transform: uppercase;
+    font-family: "houschka-rounded", sans-serif;
+    font-style: normal;
+text-align: left;
+letter-spacing: 3px;
+line-height: 2pt;
+font-size: 10pt;
+  align-content: center;
+}
+
+
+.buddy {
+  display: inline-block;
+  margin: 5%;
+}
+
+/*.columnleft {
+  float: center;
+  width: 50%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.columnright {
+  float: center;
+  width: 50%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}*/
+
+.row {
+  float: center;
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.site {
+width: 130px;
+height: 130px;
+background-size: cover;
+color: white !important;
+vertical-align: center;
+border-radius: 50%;
+    display: inline-block;
+  box-shadow: 0 0 10px 5px white;
+}
+
+.cover {
+opacity: 0;
+filter: alpha(opacity=0);
+width: 100%;
+height: 100%;
+border-radius: 50%;
+background-color: white;
+vertical-align: center;
+border: 1px solid white;
+-webkit-transition: 300ms; 
+    transition: 300ms;
+  box-shadow: 0 0 2px 0px white;
+}
+
+.cover:hover {
+opacity: .9;
+filter: alpha(opacity=90);
+cursor: url('my_app/shield.png'), auto; 
+}
+
+.cover-text {
+border-radius: 50%;
+width: 130px;
+height: 130px;
+margin-top: 30px;
+text-align: center;
+color: #A55858;
+line-height: 30px;
+text-align: center;
+margin-left: auto;
+margin-right: auto;
+
+-webkit-transition: 300ms; 
+    transition: 300ms;
+
+}
+
