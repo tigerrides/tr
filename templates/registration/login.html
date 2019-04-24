@@ -68,7 +68,6 @@
 
       <form action="{% url 'profile_create' %}" method = "post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form }}
         <p class="sections">username:</p>
         {{ form.username }}<br>
         <p class="sections">password:</p>
