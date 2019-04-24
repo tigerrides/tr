@@ -33,7 +33,14 @@ urlpatterns = [
     path('groupInfo/', views.groupInfo, name='groupInfo'),
     path('joinGroup/', views.joinGroup, name='joinGroup'),
     path('rideHistory/', views.rideHistory, name='rideHistory'),
+<<<<<<< HEAD
     path('searchResults/', views.searchResults, name='searchResults'),
     path(r'^see_rides$', include('create_ride.urls'), name='see_rides'),
     path('newride/', views.newRide, name='newRide')
+=======
+    path('searchResults/', include('create_ride.urls'), name='searchResults'),
+
+    # path('searchResults/', views.searchResults, name='searchResults'),
+    # path(r'^see_rides$', include('create_ride.urls'), name='see_rides'),
+>>>>>>> 58e80ac679c4a1fe980f2eebabeabb66794c8712
 ]
