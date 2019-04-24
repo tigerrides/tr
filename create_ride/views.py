@@ -8,6 +8,13 @@ def rides(request):
     return render(request, 'createRide.html')
     # return render(request, 'home.html')
 
+def see_Rides(request):
+    data = InputRideInfo.objects.all()
+    rides_list = {
+        "ride_number": data
+    }
+    return render(request, 'searchResults.html', rides_list)
+
 def submit_ride(request):
     if request.method == 'POST':
         # print("it works!")
