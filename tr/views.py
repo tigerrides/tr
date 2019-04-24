@@ -16,7 +16,7 @@ def createUser(request):
 	return render(request, 'createUser.html', {'form': form})
 
 def login(request):
-	return render(request, 'login.html')
+	return render(request, 'registration/login.html')
 
 # Create your views here.
 def index(request):
