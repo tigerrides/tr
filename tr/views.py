@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import UserForm
 from django.contrib.auth import login
+from django.contrib.auth.models import User
 
 def createUser(request):
 	if request.method == "POST":
