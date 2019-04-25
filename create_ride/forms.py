@@ -5,7 +5,7 @@ from . import models
 # Create your models here.
 class CreateRide(ModelForm):
     class Meta:
-        models = models.InputRideInfo
+        model = models.InputRideInfo
         fields = [
             'depart_from',
             'destination',

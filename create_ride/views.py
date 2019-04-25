@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse, Http404
+
 from .models import InputRideInfo
 from . import forms
 
@@ -19,6 +21,8 @@ def submit_ride(request):
     if request.method == 'POST':
         # print("it works!")
         # validate info against form
+        if not request.user.is_authenticated:
+            raise Http404
         depart_from = request.POST["depart_from"]
         destination = request.POST["destination"]
         date = request.POST["date"]
@@ -46,7 +50,9 @@ def submit_ride(request):
                                         uber=uber,
                                         lyft=lyft,
                                         )
-        input_ride_info.save()
+        instance = input_ride_info.save()
+        instance.user = request.user
+        instance.save()
         # form = forms.CreateProfile(request.POST, request.FILES)
         # if form.is_valid():
         #     form.save()

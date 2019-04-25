@@ -1,8 +1,15 @@
 from django.db import models
+from django.conf import settings
+
 # from models.utils import Choices
 
 # Create your models here.
 class InputRideInfo(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        default=1
+    )
     ewr = "EWR"
     phl = "PHL"
     jfk = "JFK"
