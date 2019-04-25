@@ -54,6 +54,12 @@
         <img src="{% static "my_app/christine.jpg" %}" alt="Christine" class="pic">
       </div>
       <div class="right w3-half w3-padding-16 w3-center w3-myfont">
+        {% if user.is_authenticated %}
+        Hi {{ user.username }}!
+        {% else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'login' %}">login</a>
+        {% endif %}
         <h2 class="name">moi</h2>
         <p class="description">&#9733;&#9733;&#9733;&#9733;&#9733;<br/><br/></p>
         <p class="description">name@princeton.edu</p>
