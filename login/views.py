@@ -14,15 +14,23 @@ def profile_create(request):
 
     if request.method == 'POST':
         print("it works!")
+
+        user = None
+        if request.user.is_authenticated():
+            user = request.user.username
+            # user = request.user.get_username()
         # validate info against form
+        # user = request.user
         first_name = request.POST["first_name"]
         last_name = request.POST["last_name"]
         phone_number = request.POST["phone_number"]
         # img = request.POST["img"]
-        profile_info = LogInInfo(first_name=first_name,
+        profile_info = LogInInfo(user=user,
+                                 first_name=first_name,
                                  last_name=last_name,
                                  phone_number=phone_number,
                                  )
+
         profile_info.save()
         # form = forms.CreateProfile(request.POST, request.FILES)
         # if form.is_valid():

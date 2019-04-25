@@ -7,6 +7,7 @@ class CreateProfile(ModelForm):
     class Meta:
         models = models.LogInInfo
         fields = [
+            'user',
             'first_name',
             'last_name',
             'phone_number',
