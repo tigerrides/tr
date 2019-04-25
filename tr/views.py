@@ -10,6 +10,7 @@ def createUser(request):
 		if form.is_valid():
 			new_user = User.objects.create_user(**form.cleaned_data)
 			#login(request)
+			new_user.save()
 			return render(request, 'createprof.html')
 	else:
 		form = UserForm()
@@ -22,7 +23,6 @@ def login(request):
 def index(request):
     # return HttpResponse("welcome.html")
 	return render(request, 'welcome.html')
-
 
 def home(request):
     return render(request, 'home.html')
