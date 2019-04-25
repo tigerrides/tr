@@ -57,7 +57,7 @@
     <div class="box w3-center w3-myfont">
     <form action="{% url 'submit_ride' %}" method="post">
         {% csrf_token %}
-<!--        {{ form }}-->
+        {{ form }}
         <p class="prompt">depart from:</p><br>
         <select name="depart_from" class="dropdown">
             <option value="EWR" selected>ewr</option>
