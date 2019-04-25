@@ -17,7 +17,7 @@ def profile_create(request):
         print("it works!")
 
         # user = None
-        if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
             raise Http404
             # user = request.user.username
             # user = request.user.get_username()
