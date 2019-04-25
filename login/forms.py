@@ -5,7 +5,7 @@ from . import models
 # Create your models here.
 class CreateProfile(ModelForm):
     class Meta:
-        models = models.LogInInfo
+        model = models.LogInInfo
         fields = [
             # 'user',
             'first_name',
