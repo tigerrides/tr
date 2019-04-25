@@ -23,36 +23,38 @@ def submit_ride(request):
         # validate info against form
         if not request.user.is_authenticated:
             raise Http404
-        depart_from = request.POST["depart_from"]
-        destination = request.POST["destination"]
-        date = request.POST["date"]
-        time_start = request.POST["time_start"]
-        time_end = request.POST["time_end"]
-        notes = request.POST["notes"]
-        uber = request.POST.get('uber', False)
-        lyft = request.POST.get('lyft', False)
-
-        if uber != False:
-            uber = True
-
-        if lyft != False:
-            lyft = True
-
-        # phone_number = request.POST["phone_number"]
-        # img = request.POST["img"]
-        input_ride_info = InputRideInfo(
-                                        depart_from=depart_from,
-                                        destination=destination,
-                                        date=date,
-                                        time_start=time_start,
-                                        time_end=time_end,
-                                        notes=notes,
-                                        uber=uber,
-                                        lyft=lyft,
-                                        )
-        instance = input_ride_info.save()
-        instance.user = request.user
-        instance.save()
+        # depart_from = request.POST["depart_from"]
+        # destination = request.POST["destination"]
+        # date = request.POST["date"]
+        # time_start = request.POST["time_start"]
+        # time_end = request.POST["time_end"]
+        # notes = request.POST["notes"]
+        # uber = request.POST.get('uber', False)
+        # lyft = request.POST.get('lyft', False)
+        #
+        # if uber != False:
+        #     uber = True
+        #
+        # if lyft != False:
+        #     lyft = True
+        #
+        # # phone_number = request.POST["phone_number"]
+        # # img = request.POST["img"]
+        # input_ride_info = InputRideInfo(
+        #                                 depart_from=depart_from,
+        #                                 destination=destination,
+        #                                 date=date,
+        #                                 time_start=time_start,
+        #                                 time_end=time_end,
+        #                                 notes=notes,
+        #                                 uber=uber,
+        #                                 lyft=lyft,
+        #                                 )
+        form = forms.CreateRide(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
         # form = forms.CreateProfile(request.POST, request.FILES)
         # if form.is_valid():
         #     form.save()
