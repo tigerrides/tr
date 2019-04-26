@@ -50,23 +50,22 @@
     <p class="w3-center">remember:<br>others can view this info!<br>
     </p>
     <!-- {% if user.is_authenticated %} -->
-      {% for login_info in login_infos%}
       <div class="w3-padding-24 w3-center w3-myfont">
         <form action="{% url 'profile_create' %}" method = "post" enctype="multipart/form-data">
           {% csrf_token %}
           {{ form }}
           <p class="sections">preferred first name:</p>
-          <input type="text" name="first_name" value="{{ first_name }}" placeholder="{{ login_info.first_name }}" required><br>
+          <input type="text" name="first_name" value="{{ first_name }}" required
+              {% for login_info in login_infos%} placeholder="{{ login_info.first_name }}" {% endfor %} required><br>
           <p class="sections">preferred last name:</p>
-          <input type="text" name="last_name" value="{{ last_name }}" placeholder="{{ login_info.last_name }}" required><br>
+          <input type="text" name="last_name" value="{{ last_name }}"  required><br>
           <p class="sections">phone number:</p>
-          <input type="text" name="phone_number" value="{{ phone_number }}" placeholder="{{ login_info.phone_number }}" required><br>
+          <input type="text" name="phone_number" value="{{ phone_number }}"  required><br>
           <p class="sections">upload a profile photo:</p>
           <input type="file" name="img" accept="image/*" value="{{ img }}" required><br><br>
           <input class="buttons" type="submit" value="Submit">
         </form>
       </div>
-      {% endfor %}
     <!-- {% else %}
       <div class="w3-padding-24 w3-center w3-myfont">
         <form action="{% url 'profile_create' %}" method = "post" enctype="multipart/form-data">
