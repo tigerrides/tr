@@ -14,8 +14,7 @@ def createprof(request):
 def profile_create(request):
 
     if request.method == 'POST':
-        print("it works!")
-
+        # print("it works!")
         # user = None
         if not request.user.is_authenticated:
             raise Http404
@@ -38,6 +37,8 @@ def profile_create(request):
         if form.is_valid():
             instance = form.save(commit=False)
             instance.user = request.user
+            # check if it's in the database. if so, update the info else, create a new entry
+            # login_infos = LogInInfo.objects.filter(user=request.user)
             instance.save()
         #     # save prof to db
         return redirect('home')
