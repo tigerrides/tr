@@ -49,24 +49,6 @@
     <h1 class="title w3-center">edit profile info.</h1><br>
     <p class="w3-center">remember:<br>others can view this info!<br>
     </p>
-    <!-- {% if user.is_authenticated %} -->
-      <div class="w3-padding-24 w3-center w3-myfont">
-        <form action="{% url 'profile_create' %}" method = "post" enctype="multipart/form-data">
-          {% csrf_token %}
-          {{ form }}
-          <p class="sections">preferred first name:</p>
-          <input type="text" name="first_name" value="{{ first_name }}" required
-              placeholder="{% for login_info in login_infos%}{{ login_info.first_name }} {% endfor %}" required><br>
-          <p class="sections">preferred last name:</p>
-          <input type="text" name="last_name" value="{{ last_name }}"  required><br>
-          <p class="sections">phone number:</p>
-          <input type="text" name="phone_number" value="{{ phone_number }}"  required><br>
-          <p class="sections">upload a profile photo:</p>
-          <input type="file" name="img" accept="image/*" value="{{ img }}" required><br><br>
-          <input class="buttons" type="submit" value="Submit">
-        </form>
-      </div>
-    <!-- {% else %}
       <div class="w3-padding-24 w3-center w3-myfont">
         <form action="{% url 'profile_create' %}" method = "post" enctype="multipart/form-data">
           {% csrf_token %}
@@ -83,7 +65,6 @@
           <input class="buttons" type="submit" value="Submit">
         </form>
       </div>
-      {% endif %} -->
   </div> 
 
 <footer class="w3-container w3-padding-16">
