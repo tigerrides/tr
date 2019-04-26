@@ -75,8 +75,9 @@
             <p class="description">{{ user.email }}</p>
             <p class="description">{{ login_info.phone_number }}</p>
             <p class="description">trips taken: 0</p>
-            <a href='{% url 'createprof' %}' class="buttons">edit</a>
         {% endfor %}
+          <a href='{% url 'createprof' %}' class="buttons">edit</a>
+
         {% else %}
           <p>You are not logged in</p>
           <a href="{% url 'login' %}">login</a>
