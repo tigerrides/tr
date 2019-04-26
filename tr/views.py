@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from login.models import LogInInfo
 from django.http import HttpResponse
 from .forms import UserForm
 from django.contrib.auth import login
@@ -33,8 +35,11 @@ def welcome(request):
 def chooselogin(request):
     return render(request, 'chooseLogin.html')
 
+@login_required
 def currentprof(request):
-    return render(request, 'currentprof.html')
+	login_infos = LogInInfo.objects.filter(user=request.user)
+	return render(request, 'currentprof.html', {'login_infos': login_infos})
+	# login_infos = LogInInfo.objects.filter(user=request.user)
 
 def about(request):
 	return render(request, 'about.html')

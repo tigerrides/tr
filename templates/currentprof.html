@@ -55,18 +55,30 @@
       </div>
       <div class="right w3-half w3-padding-16 w3-center w3-myfont">
 
+
+        {% if user.is_authenticated %}
+        {% for login_info in login_infos %}
         <h2 class="name">
-          {% if user.is_authenticated %}
-          {{ user.username }}
-          {% else %}
-          <p>You are not logged in</p>
-          <!--<a href="{% url 'login' %}">login</a>-->
-          {% endif %}
+          {{ login_infos.first_name }} {{ login_infos.last_name}}
+          <!--{{ user.username }}-->
         </h2>
+          <!--<a href="{% url 'login' %}">login</a>-->
         <p class="description">&#9733;&#9733;&#9733;&#9733;&#9733;<br/><br/></p>
-        <p class="description">name@princeton.edu</p>
-        <p class="description">(000) 000 - 0000</p>
-        <p class="description">trips taken: 0</p>
+        <p class="description">
+          {{ user.email }}
+          <!--name@princeton.edu-->
+        </p>
+        <p class="description">
+          {{ login_infos.phone_number }}
+          <!--(000) 000 - 0000-->
+        </p>
+        <p class="description">
+          trips taken: 0
+        </p>
+          {% endfor %}
+        {% else %}
+        <p>You are not logged in. Please log in or create an account.</p>
+        {% endif %}
       </div><br>
       <a href='{% url 'createprof' %}' class="buttons">edit</a>
     </div>
