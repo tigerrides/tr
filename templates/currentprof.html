@@ -75,10 +75,11 @@
             <p class="description">{{ user.email }}</p>
             <p class="description">{{ login_info.phone_number }}</p>
             <p class="description">trips taken: 0</p>
-          {% endfor %}
+            <a href='{% url 'createprof' %}' class="buttons">edit</a>
+        {% endfor %}
         {% else %}
           <p>You are not logged in</p>
-        <!--<a href="{% url 'login' %}">login</a>-->
+          <a href="{% url 'login' %}">login</a>
         {% endif %}
         <!--{% for login_info in login_infos %}-->
           <!--<p class="description">&#9733;&#9733;&#9733;&#9733;&#9733;<br/><br/></p>-->
@@ -94,7 +95,6 @@
           <!--</p>-->
         <!--{% endfor %}-->
       </div><br>
-      <a href='{% url 'createprof' %}' class="buttons">edit</a>
     </div>
   </div> 
 </div>
