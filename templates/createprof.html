@@ -56,7 +56,7 @@
           {{ form }}
           <p class="sections">preferred first name:</p>
           <input type="text" name="first_name" value="{{ first_name }}" required
-              {% for login_info in login_infos%} placeholder="{{ login_info.first_name }}" {% endfor %} required><br>
+              placeholder="{% for login_info in login_infos%}{{ login_info.first_name }} {% endfor %}" required><br>
           <p class="sections">preferred last name:</p>
           <input type="text" name="last_name" value="{{ last_name }}"  required><br>
           <p class="sections">phone number:</p>
