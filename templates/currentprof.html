@@ -61,7 +61,7 @@
         {% for login_info in login_infos %}
         <h2 class="name">
           {{ user.username }}
-          {{ login_infos.first_name }} {{ login_infos.last_name}}
+          {{ login_info.first_name }} {{ login_infos.last_name}}
           <!--{{ user.username }}-->
         </h2>
           <!--<a href="{% url 'login' %}">login</a>-->
@@ -71,7 +71,7 @@
           <!--name@princeton.edu-->
         </p>
         <p class="description">
-          {{ login_infos.phone_number }}
+          {{ login_info.phone_number }}
           <!--(000) 000 - 0000-->
         </p>
         <p class="description">
