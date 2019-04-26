@@ -57,8 +57,10 @@
 
 
         {% if user.is_authenticated %}
+
         {% for login_info in login_infos %}
         <h2 class="name">
+          {{ user.username }}
           {{ login_infos.first_name }} {{ login_infos.last_name}}
           <!--{{ user.username }}-->
         </h2>
