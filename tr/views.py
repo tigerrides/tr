@@ -26,6 +26,7 @@ def index(request):
     # return HttpResponse("welcome.html")
 	return render(request, 'welcome.html')
 
+@login_required
 def home(request):
     return render(request, 'home.html')
 
