@@ -71,7 +71,7 @@ def searchResults(request):
     ride_dict['time_start'] = 'start-time'
     ride_dict['time_end'] = 'end-time'
 
-    return render(request, 'searchResults.html', context={'ride': ride_dict})
+    return render(request, 'searchResults.html', context={"ride": {'depart_from': 'ewr', 'destination': 'princeton', 'date': 'this_date', 'time_start': 'start-time', 'time_end': 'end-time'}})
 
 def newRide(request):
 	return render(request, 'newride.html')
