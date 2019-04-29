@@ -6,6 +6,7 @@ from .forms import UserForm
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from create_ride.models import InputRideInfo
+from django.template import Context
 
 def createUser(request):
 	if request.method == "POST":
@@ -68,6 +69,7 @@ def searchResults(request):
     ride_dict['date'] = 'this_date'
     ride_dict['time_start'] = 'start-time'
     ride_dict['time_end'] = 'end-time'
+
     ride = Context(ride_dict)
     return render(request, 'searchResults.html', context=ride)
 
