@@ -67,7 +67,7 @@ def searchResults(request):
         ride['destination'] = 'princeton'
         ride['date'] = 'this_date'
         ride['time_start'] = 'start-time'
-        ride['time_end'] ] 'end-time'
+        ride['time_end'] = 'end-time'
 
 	return render(request, 'searchResults.html', context=ride)
 
