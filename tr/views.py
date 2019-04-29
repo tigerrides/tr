@@ -63,15 +63,7 @@ def rideHistory(request):
 	return render(request, 'rideHistory.html')
 
 def searchResults(request):
-    ride_dict = {}
-
-    ride_dict['depart_from'] = 'ewr'
-    ride_dict['destination'] = 'princeton'
-    ride_dict['date'] = 'this_date'
-    ride_dict['time_start'] = 'start-time'
-    ride_dict['time_end'] = 'end-time'
-
-    return render(request, 'searchResults.html', context={"ride": {'depart_from': 'ewr', 'destination': 'princeton', 'date': 'this_date', 'time_start': 'start-time', 'time_end': 'end-time'}})
+    return render(request, 'searchResults.html', {"ride": {'depart_from': 'ewr', 'destination': 'princeton', 'date': 'this_date', 'time_start': 'start-time', 'time_end': 'end-time'}})
 
 def newRide(request):
 	return render(request, 'newride.html')
