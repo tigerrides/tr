@@ -3,6 +3,7 @@ from django.http import HttpResponse, Http404
 
 from .models import InputRideInfo
 from . import forms
+from django.views import generic
 
 # Create your views here.
 def rides(request):
@@ -66,3 +67,6 @@ def submit_ride(request):
 
 # def searchResults(request):
 #     return render(request, 'home.html')
+
+class RideListView(generic.ListView):
+    model = InputRideInfo
