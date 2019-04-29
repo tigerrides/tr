@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from .forms import UserForm
 from django.contrib.auth import login
 from django.contrib.auth.models import User
+from create_ride.models import InputRideInfo
 
 def createUser(request):
 	if request.method == "POST":
@@ -61,10 +62,14 @@ def rideHistory(request):
 	return render(request, 'rideHistory.html')
 
 def searchResults(request):
-        import datetime
-        html_test = "<html><body>It is now %s.</body></html>" % datetime.datetime.now()
-        return HttpResponse(html_test)
-	#return render(request, 'searchResults.html')
+        ride = {}
+        ride['depart_from'] = 'ewr'
+        ride['destination'] = 'princeton'
+        ride['date'] = 'this_date'
+        ride['time_start'] = 'start-time'
+        ride['time_end'] ] 'end-time'
+
+	return render(request, 'searchResults.html', context=ride)
 
 def newRide(request):
 	return render(request, 'newride.html')
