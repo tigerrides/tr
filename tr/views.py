@@ -63,7 +63,7 @@ def rideHistory(request):
 def searchResults(request):
         import datetime
         html_test = "<html><body>It is now %s.</body></html>" % datetime.datetime.now()
-        return HttpResponse(html)
+        return HttpResponse(html_test)
 	#return render(request, 'searchResults.html')
 
 def newRide(request):
