@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 
-from .models import InputRideInfo
+from create_ride.models import InputRideInfo
 from . import forms
 
 # Create your views here.
@@ -10,12 +10,15 @@ def rides(request):
     return render(request, 'createRide.html')
     # return render(request, 'home.html')
 
-def see_Rides(request):
-    data = InputRideInfo.objects.all()
-    rides_list = {
-        "ride_number": data
-    }
-    return render(request, 'searchResults.html', rides_list)
+#def see_Rides(request):
+    #data = InputRideInfo.objects.all()
+    #rides_list = {
+    #    "ride_number": data
+    #}
+    #return render(request, 'searchResults.html', rides_list)
+
+def searchResults(request):
+    return render(request, 'searchResults.html')
 
 def submit_ride(request):
     if request.method == 'POST':

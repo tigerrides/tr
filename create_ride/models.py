@@ -1,7 +1,10 @@
 from django.db import models
 from django.conf import settings
 
+from django.views import generic
+
 # from models.utils import Choices
+
 
 # Create your models here.
 class InputRideInfo(models.Model):
@@ -43,3 +46,13 @@ class InputRideInfo(models.Model):
 
     # def __str__(self):
         # return '%s %s %s' % (self.first_name, self.last_name, self.phone_number)
+
+# for rendering a list pulled from the database
+class RideListView(generic.ListView):
+    model = InputRideInfo
+    template_name = 'searchResults.html'
+    queryset = InputRideInfo.objects.all()
+    context_object_name = 'rides_list'
+    paginate_by = 10
+
+
