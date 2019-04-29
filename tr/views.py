@@ -63,14 +63,13 @@ def rideHistory(request):
 	return render(request, 'rideHistory.html')
 
 def searchResults(request):
-    ride_dict = {}
-    ride_dict['depart_from'] = 'ewr'
-    ride_dict['destination'] = 'princeton'
-    ride_dict['date'] = 'this_date'
-    ride_dict['time_start'] = 'start-time'
-    ride_dict['time_end'] = 'end-time'
+    ride = {}
+    ride['depart_from'] = 'ewr'
+    ride['destination'] = 'princeton'
+    ride['date'] = 'this_date'
+    ride['time_start'] = 'start-time'
+    ride['time_end'] = 'end-time'
 
-    ride = Context(ride_dict)
     return render(request, 'searchResults.html', context=ride)
 
 def newRide(request):
