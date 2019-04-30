@@ -63,7 +63,8 @@ def rideHistory(request):
 	return render(request, 'rideHistory.html')
 
 def searchResults(request):
-    submitted_ride = list(InputRideInfo.objects.latest('created').values())[0]
+    from django.forms.models import model_to_dict
+    submitted_ride = model_to_dict(InputRideInfo.objects.latest('created'))
 
     import datetime as dt
     from datetime import timedelta
