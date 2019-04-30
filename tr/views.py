@@ -66,6 +66,12 @@ def searchResults(request):
     from django.forms.models import model_to_dict
     submitted_ride = model_to_dict(InputRideInfo.objects.latest('created'))
 
+    print("submitted_ride")
+    print(submitted_ride)
+
+    print("all rides")
+    print(list(InputRideInfo.objects.values()))
+
     import datetime as dt
     from datetime import timedelta
     # maybe have these ranges be customizable? but for now, add one hour pad
