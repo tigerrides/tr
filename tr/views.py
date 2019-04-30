@@ -65,8 +65,8 @@ def rideHistory(request):
 def searchResults(request):
     return render(request, 'searchResults.html', {"rides": {
         "ride1": {'depart_from': 'ewr', 'destination': 'princeton', 'date': 'this_date', 'time_start': 'start-time', 'time_end': 'end-time'},
-        "ride2": {'depart_from': 'ewr', 'destination': 'princeton', 'date': 'this_date', 'time_start': 'start-time', 'time_end': 'end-time'}
-        "ride3": {'depart_from': 'ewr', 'destination': 'princeton', 'date': 'this_date', 'time_start': 'start-time', 'time_end': 'end-time'}
+        "ride2": {'depart_from': 'ewr', 'destination': 'princeton', 'date': 'this_date', 'time_start': 'start-time', 'time_end': 'end-time'},
+        "ride3": {'depart_from': 'ewr', 'destination': 'princeton', 'date': 'this_date', 'time_start': 'start-time', 'time_end': 'end-time'},
         }})
 
 def newRide(request):
