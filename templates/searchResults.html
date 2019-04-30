@@ -58,11 +58,11 @@
     <!-- {% if rides %} -->
     <p>flag</p>
     <ol>
-      {% for ride in rides %}
+      {% for k,v in rides.items %}
       <li>
         <div class="box w3-container w3-padding-16 w3-center w3-myfont">
-          <p class="w3-center">{{ride}}</p>
-          {% for key,value in {{ride}}.items %}
+          <p class="w3-center">{{k}}</p>
+          {% for key,value in v.items %}
             <p class="w3-center">{{key}} delim {{value}}</p>
           {% endfor %}
           <p class="w3-center">from {{ride}}</p>
