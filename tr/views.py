@@ -66,6 +66,14 @@ def searchResults(request):
     values = list(InputRideInfo.objects.values())
     print(values)
 
+    values_dict = {}
+    for ride in values:
+        values_dict[values[ride]['id']] = ride
+
+    print(values_dict)
+
+    return render(request, 'searchResults.html', {"rides": values_dict})
+
     return render(request, 'searchResults.html', {"rides": {
         "ride1": {'depart_from': 'ewr', 'destination': 'princeton', 'date': 'dean\'s date', 'time_start': '6am,', 'time_end': '7am'},
         "ride2": {'depart_from': 'princeton', 'destination': 'jfk', 'date': 'princetoween', 'time_start': '8am', 'time_end': '9am'},
