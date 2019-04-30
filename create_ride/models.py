@@ -4,7 +4,10 @@ from django.conf import settings
 # from models.utils import Choices
 
 # Create your models here.
-class InputRideInfo(models.Model):
+class InputRideInfo(models.Model): 
+    #import datetime
+    #time_submitted = datetime.time.now()
+    created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -39,6 +42,7 @@ class InputRideInfo(models.Model):
     #check boxes
     uber = models.BooleanField(default=False)
     lyft = models.BooleanField(default=False)
+
     # img = models.ImageField(default='default.png', blank=True)
 
     # def __str__(self):
