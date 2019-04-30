@@ -63,6 +63,9 @@ def rideHistory(request):
 	return render(request, 'rideHistory.html')
 
 def searchResults(request):
+    values_dict = dict(InputRideInfo.objects.values())
+    print(values_dict)
+
     return render(request, 'searchResults.html', {"rides": {
         "ride1": {'depart_from': 'ewr', 'destination': 'princeton', 'date': 'dean\'s date', 'time_start': '6am,', 'time_end': '7am'},
         "ride2": {'depart_from': 'princeton', 'destination': 'jfk', 'date': 'princetoween', 'time_start': '8am', 'time_end': '9am'},
