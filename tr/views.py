@@ -63,7 +63,7 @@ def rideHistory(request):
 	return render(request, 'rideHistory.html')
 
 def searchResults(request):
-    values_dict = dict(InputRideInfo.objects.values())
+    values = list(InputRideInfo.objects.values())
     print(values_dict)
 
     return render(request, 'searchResults.html', {"rides": {
