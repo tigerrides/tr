@@ -66,9 +66,16 @@ def searchResults(request):
     values = list(InputRideInfo.objects.values())
     print(values)
 
+    # values() returns a QuerySet, so turn it into a list, and 
+    # turn the list into a dict by iterating over the list and assigning
+    # integers as keys (these corresond with 'id' field in each RideInfo
+    # model but haven't figured out how to get them in yet, python doesn't
+    # like having a dict in the index spot
     values_dict = {}
+    ride_count = 1
     for ride in values:
-        values_dict[values[ride]['id']] = ride
+        values_dict[ride_count] = ride
+        ride_count += 1
 
     print(values_dict)
 
