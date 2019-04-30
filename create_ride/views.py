@@ -3,6 +3,7 @@ from django.http import HttpResponse, Http404
 
 from .models import InputRideInfo
 from . import forms
+from django.views import generic
 
 # Create your views here.
 def rides(request):
@@ -11,11 +12,14 @@ def rides(request):
     # return render(request, 'home.html')
 
 def see_Rides(request):
-    data = InputRideInfo.objects.all()
-    rides_list = {
-        "ride_number": data
-    }
-    return render(request, 'searchResults.html', rides_list)
+    #data = InputRideInfo.objects.all()
+    #rides_list = {
+    #    "ride_number": data
+    #}
+    #return render(request, 'searchResults.html', rides_list)
+    import datetime
+    html = "<html><body>It is now %s.</body></html>" % datetime.datetime.now()
+    return HttpResponse(html)
 
 def submit_ride(request):
     if request.method == 'POST':
@@ -66,3 +70,6 @@ def submit_ride(request):
 
 # def searchResults(request):
 #     return render(request, 'home.html')
+
+class RideListView(generic.ListView):
+    model = InputRideInfo
