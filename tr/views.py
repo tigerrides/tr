@@ -66,6 +66,9 @@ def searchResults(request):
     from django.forms.models import model_to_dict
     submitted_ride = model_to_dict(InputRideInfo.objects.all().latest('created'))
 
+    print("request print")
+    print(request)
+
     print("submitted_ride")
     print(submitted_ride)
 
