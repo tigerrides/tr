@@ -63,7 +63,7 @@ def rideHistory(request):
 	return render(request, 'rideHistory.html')
 
 def searchResults(request):
-    submitted_ride = list(InputRideInfo.objects.values())[-1]
+    submitted_ride = list(InputRideInfo.objects.latest('time_submitted').values())[0]
 
     import datetime as dt
     from datetime import timedelta
