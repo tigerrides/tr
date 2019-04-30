@@ -67,19 +67,16 @@ def searchResults(request):
 
     from datetime import datetime, timedelta
     # maybe have these ranges be customizable? but for now, add one hour pad
-    earliest = submitted_ride['time_start'] - timedelta(hours=1, minutes=0)
-    latest = time_end['time_end'] + timedelta(hours=1, minutes=0)
-
     values = list(InputRideInfo.objects.filter(
-        time_start__range=(submitted_ride['time_start']
-            - timedelta(hours=1, minutes=0), submitted_ride['time_start']
-            + timedelta(hours=1, minutes=0))
-        ).filter(time_end__range=(submitted_ride['time_end']
-            - timedelta(hours=1, minutes=0), submitted_ride['time_end']
-            + timedelta(hours=1, minutes=0))
+        time_start__time__range=(submitted_ride['time_start']
+            - timedelta(hours=1), submitted_ride['time_start']
+            + timedelta(hours=1))
+        ).filter(time_end__time__range=(submitted_ride['time_end']
+            - timedelta(hours=1), submitted_ride['time_end']
+            + timedelta(hours=1))
             ).filter(depart_from__contains=submitted_ride['depart_from']
                 ).filter(destination__contains=submitted_ride['destination']
-                    ).values())
+                    ).filter(date__date=submitted_ride['date']).values())
     print(values)
 
     # values() returns a QuerySet, so turn it into a list, and 
