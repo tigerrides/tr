@@ -67,7 +67,7 @@ def searchResults(request):
     submitted_ride = model_to_dict(InputRideInfo.objects.all().latest('created'))
 
     print("request print")
-    print(request)
+    print(request.POST)
 
     print("submitted_ride")
     print(submitted_ride)
