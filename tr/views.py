@@ -65,15 +65,18 @@ def rideHistory(request):
 def searchResults(request):
     submitted_ride = list(InputRideInfo.objects.values())[-1]
 
-    from datetime import datetime, timedelta
+    import datetime as dt
+    from datetime import timedelta
     # maybe have these ranges be customizable? but for now, add one hour pad
+
+    delta = timedelta(hours=1)
     values = list(InputRideInfo.objects.filter(
-        time_start__time__range=(submitted_ride['time_start']
-            - timedelta(hours=1), submitted_ride['time_start']
-            + timedelta(hours=1))
-        ).filter(time_end__time__range=(submitted_ride['time_end']
-            - timedelta(hours=1), submitted_ride['time_end']
-            + timedelta(hours=1))
+        time_start__time__range=((dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_start'])
+            - timedelta(hours=1)).time(), (dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_start'])
+            + timedelta(hours=1)).time())
+        ).filter(time_end__time__range=((dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_end'])
+            - timedelta(hours=1)).time(), (dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_end'])
+            + timedelta(hours=1)).time())
             ).filter(depart_from__contains=submitted_ride['depart_from']
                 ).filter(destination__contains=submitted_ride['destination']
                     ).filter(date__date=submitted_ride['date']).values())
