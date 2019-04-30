@@ -35,11 +35,18 @@ def profile_create(request):
         # profile_info.save()
         form = forms.CreateProfile(request.POST, request.FILES)
         if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = request.user
+            if LogInInfo.objects.filter(user=request.user).exists():
+                LogInInfo.objects.filter(user=request.user).update(
+                    first_name=request.POST["first_name"],
+                    last_name=request.POST["last_name"],
+                    phone_number=request.POST["phone_number"]
+                )
+            else:
+                instance = form.save(commit=False)
+                instance.user = request.user
             # check if it's in the database. if so, update the info else, create a new entry
             # login_infos = LogInInfo.objects.filter(user=request.user)
-            instance.save()
+                instance.save()
         #     # save prof to db
         return redirect('home')
     else:
