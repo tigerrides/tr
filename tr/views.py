@@ -63,7 +63,23 @@ def rideHistory(request):
 	return render(request, 'rideHistory.html')
 
 def searchResults(request):
-    values = list(InputRideInfo.objects.values())
+    submitted_ride = list(InputRideInfo.objects.values())[-1]
+
+    from datetime import datetime, timedelta
+    # maybe have these ranges be customizable? but for now, add one hour pad
+    earliest = submitted_ride['time_start'] - timedelta(hours=1, minutes=0)
+    latest = time_end['time_end'] + timedelta(hours=1, minutes=0)
+
+    values = list(InputRideInfo.objects.filter(
+        time_start__range=(submitted_ride['time_start']
+            - timedelta(hours=1, minutes=0), submitted_ride['time_start']
+            + timedelta(hours=1, minutes=0))
+        ).filter(time_end__range=(submitted_ride['time_end']
+            - timedelta(hours=1, minutes=0), submitted_ride['time_end']
+            + timedelta(hours=1, minutes=0))
+            ).filter(depart_from__contains=submitted_ride['depart_from']
+                ).filter(destination__contains=submitted_ride['destination']
+                    ).values())
     print(values)
 
     # values() returns a QuerySet, so turn it into a list, and 
@@ -81,11 +97,11 @@ def searchResults(request):
 
     return render(request, 'searchResults.html', {"rides": values_dict})
 
-    return render(request, 'searchResults.html', {"rides": {
-        "ride1": {'depart_from': 'ewr', 'destination': 'princeton', 'date': 'dean\'s date', 'time_start': '6am,', 'time_end': '7am'},
-        "ride2": {'depart_from': 'princeton', 'destination': 'jfk', 'date': 'princetoween', 'time_start': '8am', 'time_end': '9am'},
-        "ride3": {'depart_from': 'princeton', 'destination': 'phl', 'date': 'dranksgiving', 'time_start': '6pm', 'time_end': '8pm'},
-        }})
+    #return render(request, 'searchResults.html', {"rides": {
+    #    "ride1": {'depart_from': 'ewr', 'destination': 'princeton', 'date': 'dean\'s date', 'time_start': '6am,', 'time_end': '7am'},
+    #    "ride2": {'depart_from': 'princeton', 'destination': 'jfk', 'date': 'princetoween', 'time_start': '8am', 'time_end': '9am'},
+    #    "ride3": {'depart_from': 'princeton', 'destination': 'phl', 'date': 'dranksgiving', 'time_start': '6pm', 'time_end': '8pm'},
+    #    }})
 
 def newRide(request):
 	return render(request, 'newride.html')
