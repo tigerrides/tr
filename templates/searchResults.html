@@ -61,6 +61,9 @@
       {% for ride in rides %}
       <li>
         <div class="box w3-container w3-padding-16 w3-center w3-myfont">
+          {% for key,value in ride.items %}
+            <p class="w3-center">{{key}} delim {{value}}</p>
+          {% endfor %}
           <p class="w3-center">from {{ride}}</p>
           <p class="w3-center">to {{ride.destination}}</p>
           <p class="w3-center">{{ride.date}}</p>
