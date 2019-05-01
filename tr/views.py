@@ -65,7 +65,8 @@ def joinGroup(request):
 	return render(request, 'joinGroup.html')
 
 def rideHistory(request):
-	return render(request, 'rideHistory.html')
+	all_my_rides = InputRideInfo.objects.filter(user=request.user).values()
+	return render(request, 'rideHistory.html', {'rides': all_my_rides})
 
 @login_required
 def searchResults(request):
