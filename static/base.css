@@ -102,6 +102,7 @@ word-wrap: break-word;
     min-width: 54px;
     padding: 10px 10px 10px 10px;
     cursor: url('my_app/shield.png'), auto; 
+    text-decoration: none;
 }
 
 .buttons:hover {
