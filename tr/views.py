@@ -7,7 +7,7 @@ from django.contrib.auth import login
 from django.contrib.auth.models import User
 from create_ride.models import InputRideInfo
 from django.forms.models import model_to_dict
-import datetime as dt
+from datetime import datetime as dt
 from datetime import timedelta
 
 def createUser(request):
