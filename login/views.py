@@ -12,7 +12,6 @@ def createprof(request):
     return render(request, 'createprof.html')
 
 def profile_create(request):
-
     if request.method == 'POST':
         # print("it works!")
         # user = None
