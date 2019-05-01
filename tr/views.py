@@ -69,6 +69,7 @@ def searchResults(request):
         submitted_ride = model_to_dict(InputRideInfo.objects.all().latest('created'))
     except InputRideInfo.DoesNotExist:
         submitted_ride = {'depart_from': 'ewr', 'destination': 'princeton', 'date': dt.today(), 'time_start': dt.now().time(), 'time_end': dt.now().time(), 'notes': 'there was nothing in the database so there\'s a bug'}
+        return render(request, 'searchResults.html', {"rides": {"ride1": submitted_ride}})
     print("request print")
     print(request.POST)
 
