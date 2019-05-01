@@ -17,6 +17,35 @@
     {% endblock %}
 </head>
 
+<body class="w3-content w3-myfont" style="max-width:1300px">
+
+<div class="w3-top">
+  <div class="w3-bar w3-text-white" id="myNavbar">
+    <a href="{% url 'home' %}" class="icon w3-hover-none w3-bar-item">tiger<br/>ride.</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="{% url 'home' %}" class="shortcut bar-item w3-hover-none w3-button">home</a>
+      <a href="{% url 'about' %}" class="shortcut bar-item w3-hover-none w3-button">about</a>
+      <a href="{% url 'contact' %}" class="shortcut bar-item w3-hover-none w3-button">contact</a>
+      <a href="{% url 'currentprof' %}" class="shortcut bar-item w3-hover-none w3-button">profile</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="hamburger w3-bar-item w3-button w3-hover-none w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="sidebar w3-sidebar w3-bar-block w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16 w3-hover-none">×</a>
+  <a href="{% url 'home' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-none">home</a>
+  <a href="{% url 'about' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-none">about</a>
+  <a href="{% url 'contact' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-none">contact</a>
+  <a href="{% url 'currentprof' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-none">profile</a>
+</nav>
+
 {% block content %}
 {% endblock %}
 
