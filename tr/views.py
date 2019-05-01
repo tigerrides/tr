@@ -98,9 +98,10 @@ def searchResults(request):
     values_dict = {}
     ride_count = 1
     for ride in values:
+        if ride["user_id"] == request.user:
+            continue
         values_dict[ride_count] = ride
         ride_count += 1
-
     print(values_dict)
 
     return render(request, 'searchResults.html', {"rides": values_dict})
