@@ -89,6 +89,8 @@ footer {
 }
 
 .buttons {
+white-space: normal;
+word-wrap: break-word;
     height: 36px;
     line-height: 27px;
     background-color: rgba(165,88,88,.3);
