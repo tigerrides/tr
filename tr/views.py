@@ -19,7 +19,7 @@ def createUser(request):
 			# login_auto_last=request.POST['password']
 			# user=authenticate(request, username=login_auto_first, password=login_auto_last)
 			# login(request, user)
-			return render(request, 'createprof.html')
+			return render(request, 'registration/login.html')
 	else:
 		form = UserForm()
 	return render(request, 'createUser.html', {'form': form})
