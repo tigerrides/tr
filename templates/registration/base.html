@@ -25,6 +25,7 @@
       <a href="{% url 'about' %}" class="shortcut bar-item w3-hover-none w3-button">about</a>
       <a href="{% url 'contact' %}" class="shortcut bar-item w3-hover-none w3-button">contact</a>
       <a href="{% url 'currentprof' %}" class="shortcut bar-item w3-hover-none w3-button">profile</a>
+      <a href="{% url 'logout' %}" class="shortcut bar-item w3-hover-none w3-button">logout</a>
     </div>
     <!-- Hide right-floated links on small screens and replace them with a menu icon -->
 
@@ -41,6 +42,7 @@
   <a href="{% url 'about' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-none">about</a>
   <a href="{% url 'contact' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-none">contact</a>
   <a href="{% url 'currentprof' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-none">profile</a>
+  <a href="{% url 'logout' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-none">logout</a>
 </nav>
 
 <div class="w3-row w3-myfont">
