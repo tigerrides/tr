@@ -24,17 +24,23 @@
   {% endif %}
 {% endif %}
 
-      <form action="{% url 'home' %}" method = "post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <p class="sections">username:</p>
-        {{ form.username }}<br>
-        <p class="sections">password:</p>
-        {{ form.password }}<br>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
 
-          <button class="buttons" type="submit">login</button>
+      <!--<form action="{% url 'login' %}" method = "post" enctype="multipart/form-data">-->
+        <!--{% csrf_token %}-->
+        <!--<p class="sections">username:</p>-->
+        <!--{{ form.username }}<br>-->
+        <!--<p class="sections">password:</p>-->
+        <!--{{ form.password }}<br>-->
+
+          <!--<button class="buttons" type="submit">login</button>-->
         <!--<input class="buttons" type="submit" value="login">-->
         <!--<input type="hidden" name="next" value="{{ next }}" />-->
-      </form>
+      <!--</form>-->
       {# Assumes you setup the password_reset view in your URLconf #}
       <p><a href="{% url 'password_reset' %}">lost password?</a></p>
         <p><a href="{% url 'chooselogin' %}">click here to create an account</a></p>
