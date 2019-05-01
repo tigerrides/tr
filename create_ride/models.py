@@ -13,6 +13,8 @@ class InputRideInfo(models.Model):
         on_delete=models.CASCADE,
         default=1
     )
+    # user_first_name = models.CharField(max_length=20)
+    # user_last_name = models.CharField(max_length=20)
     ewr = "EWR"
     phl = "PHL"
     jfk = "JFK"
@@ -29,6 +31,8 @@ class InputRideInfo(models.Model):
         (jfk, "jfk"),
         (campus, "princeton")
     )
+    user_first_name = models.CharField(max_length=200, default="first")
+    user_last_name = models.CharField(max_length=200, default="last")
     depart_from = models.CharField(max_length=20, choices=ORIGIN_CHOICES, default=ewr)
     destination = models.CharField(max_length=20, choices=DESTINATION_CHOICES, default=ewr)
     # drop down menu
