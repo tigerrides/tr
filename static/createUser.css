@@ -1,9 +1,3 @@
-input[type=text],input[type=submit], .buttons, .footer {
-    /*font-family: "Helvetica Neue";*/
-    font-family: "houschka-rounded", sans-serif;
-    font-style: normal;
-}
-
 input[type=text] {
     width: 250px;
     margin-top: 20px;
