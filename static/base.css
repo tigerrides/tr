@@ -89,7 +89,9 @@ footer {
 }
 
 .buttons {
-    height: 36px;
+white-space: normal;
+word-wrap: break-word;
+    height: 100%;
     line-height: 27px;
     background-color: rgba(165,88,88,.3);
     border-radius: 10px;
@@ -98,8 +100,9 @@ footer {
     font-size: 15px;
     margin: 11px 4px;
     min-width: 54px;
-    padding: 0 16px;
+    padding: 10px 10px 10px 10px;
     cursor: url('my_app/shield.png'), auto; 
+    text-decoration: none;
 }
 
 .buttons:hover {
