@@ -13,6 +13,8 @@ class InputRideInfo(models.Model):
         on_delete=models.CASCADE,
         default=1
     )
+    user_first_name = models.CharField(max_length=20)
+    user_last_name = models.CharField(max_length=20)
     ewr = "EWR"
     phl = "PHL"
     jfk = "JFK"
