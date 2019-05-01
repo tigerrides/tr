@@ -6,7 +6,9 @@ from .forms import UserForm
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from create_ride.models import InputRideInfo
-from django.template import Context
+from django.forms.models import model_to_dict
+import datetime as dt
+from datetime import timedelta
 
 def createUser(request):
 	if request.method == "POST":
@@ -63,9 +65,10 @@ def rideHistory(request):
 	return render(request, 'rideHistory.html')
 
 def searchResults(request):
-    from django.forms.models import model_to_dict
-    submitted_ride = model_to_dict(InputRideInfo.objects.all().latest('created'))
-
+   try:
+        submitted_ride = model_to_dict(InputRideInfo.objects.all().latest('created'))
+    except InputRideInfo.DoesNotExist:
+        submitted_ride = {'depart_from': 'ewr', 'destination': 'princeton', 'date': dt.today(), 'time_start': dt.now().time(), 'time_end': dt.now().time(), 'notes': 'there was nothing in the database so there\'s a bug'}
     print("request print")
     print(request.POST)
 
@@ -75,8 +78,6 @@ def searchResults(request):
     print("all rides")
     print(list(InputRideInfo.objects.values()))
 
-    import datetime as dt
-    from datetime import timedelta
     # maybe have these ranges be customizable? but for now, add one hour pad
 
     delta = timedelta(hours=1)
