@@ -15,9 +15,9 @@ def createUser(request):
 		if form.is_valid():
 			new_user = User.objects.create_user(**form.cleaned_data)
 			new_user.save()
-            new_user = authenticate(username=form.cleaned_data['username'],
+			new_user = authenticate(username=form.cleaned_data['username'],
                                     password=form.cleaned_data['password'])
-            login(request, new_user)
+			login(request, new_user)
 			return render(request, 'createprof.html')
 	else:
 		form = UserForm()
