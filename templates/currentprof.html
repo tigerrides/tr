@@ -30,7 +30,6 @@
           <!--{% endif %}-->
         <!--</h2>-->
 
-        {% if user.is_authenticated %}
           {% for login_info in login_infos%}
             <h2 class="name">
               {{ login_info.first_name }} {{ login_info.last_name }}
