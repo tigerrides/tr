@@ -24,14 +24,16 @@
   {% endif %}
 {% endif %}
 
-      <form action="{% url 'login' %}" method = "post" enctype="multipart/form-data">
+      <form action="{% url 'home' %}" method = "post" enctype="multipart/form-data">
         {% csrf_token %}
         <p class="sections">username:</p>
         {{ form.username }}<br>
         <p class="sections">password:</p>
         {{ form.password }}<br>
-        <input class="buttons" type="submit" value="login">
-        <input type="hidden" name="next" value="{{ next }}" />
+
+          <button class="buttons" type="submit">login</button>
+        <!--<input class="buttons" type="submit" value="login">-->
+        <!--<input type="hidden" name="next" value="{{ next }}" />-->
       </form>
       {# Assumes you setup the password_reset view in your URLconf #}
       <p><a href="{% url 'password_reset' %}">lost password?</a></p>
