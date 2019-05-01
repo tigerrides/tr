@@ -65,9 +65,9 @@ def rideHistory(request):
 	return render(request, 'rideHistory.html')
 
 def searchResults(request):
-   try:
+    try:
         submitted_ride = model_to_dict(InputRideInfo.objects.all().latest('created'))
-   except InputRideInfo.DoesNotExist:
+    except InputRideInfo.DoesNotExist:
         submitted_ride = {'depart_from': 'ewr', 'destination': 'princeton', 'date': dt.today(), 'time_start': dt.now().time(), 'time_end': dt.now().time(), 'notes': 'there was nothing in the database so there\'s a bug'}
     print("request print")
     print(request.POST)
