@@ -15,8 +15,8 @@ def createUser(request):
 		if form.is_valid():
 			new_user = User.objects.create_user(**form.cleaned_data)
 			new_user.save()
-			login_auto_first=request.post['username']
-			login_auto_last=request.post['password']
+			login_auto_first=request.POST['username']
+			login_auto_last=request.POST['password']
 			user=authenticate(request, username=login_auto_first, password=login_auto_last)
 			login(request, user)
 			return render(request, 'createprof.html')
