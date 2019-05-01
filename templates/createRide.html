@@ -1,55 +1,11 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!--<link rel="shortcut icon" type="image/png" href="https://cdn.pixabay.com/photo/2015/10/31/12/56/google-1015752_1280.png"/>-->
-    <title>TigerRide New Ride</title>
-  <link rel="stylesheet" href="https://use.typekit.net/adz8rjg.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700" rel="stylesheet">
-  <!--<link rel="stylesheet" href="{% static 'home.css' %}">-->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'createRide.css' %}">
-    <script src="main.js"></script>
-</head>
-<body class="w3-content w3-myfont" style="max-width:1300px">
+{% extends 'base.html' %}
 
-<div class="w3-top">
-  <div class="w3-bar w3-text-white" id="myNavbar">
-    <a href="{% url 'home' %}" class="icon w3-hover-none w3-bar-item">tiger<br/>ride.</a>
-    <!-- Right-sided navbar links -->
-    <div class="w3-right w3-hide-small">
-      <a href="{% url 'home' %}" class="shortcut bar-item w3-hover-none w3-button">home</a>
-      <a href="{% url 'about' %}" class="shortcut bar-item w3-hover-none w3-button"> about</a>
-      <a href="{% url 'contact' %}" class="shortcut bar-item w3-hover-none w3-button"> contact</a>
-      <a href="{% url 'currentprof' %}" class="shortcut bar-item w3-hover-none w3-button"> profile</a>
-    </div>
-    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+{% block stylesheet %}
+{% load static %}">
+<link rel="stylesheet" href="{% static 'createRide.css' %}">
+{% endblock %}
 
-    <a href="javascript:void(0)" class="hamburger w3-bar-item w3-button w3-hover-none w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
-      <i class="fa fa-bars"></i>
-    </a>
-  </div>
-</div>
-
-<!-- Sidebar on small screens when clicking the menu icon -->
-<nav class="sidebar w3-sidebar w3-bar-block w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16 w3-hover-none">×</a>
-  <a href="{% url 'home' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-none">home</a>
-  <a href="{% url 'about' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-none">about</a>
-  <a href="{% url 'contact' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-none">contact</a>
-  <a href="{% url 'currentprof' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-none">profile</a>
-</nav>
-
-<!--<main>
-    <div class="welcome">
-        plan your next trip.
-    </div>-->
-
+{% block content %}
 <div class="w3-row w3-myfont">
 <div class="w3-container w3-center" style="margin:5%">
   <div class="w3-display-center w3-margin w3-text-white" style="padding:0px">
@@ -97,29 +53,4 @@
 </div>
 </div>
 </div>
-
-<footer class="w3-container w3-padding-16">
-  <p>copyright 2019 by a. chang, c. kwon, c. lee, n. schmeller</p>
-</footer>
-
-</body>
-
-<script>
-
-// Toggle between showing and hiding the sidebar when clicking the menu icon
-var mySidebar = document.getElementById("mySidebar");
-
-function w3_open() {
-  if (mySidebar.style.display === 'block') {
-    mySidebar.style.display = 'none';
-  } else {
-    mySidebar.style.display = 'block';
-  }
-}
-
-// Close the sidebar with the close button
-function w3_close() {
-    mySidebar.style.display = "none";
-}
-</script>
-</html>
+{% endblock %}
