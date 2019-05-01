@@ -20,6 +20,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('createRide/', include('create_ride.urls'), name='createRide'),
     path('chooseLogin/', include('login.urls'), name='chooselogin'),
     # path('login/', views.login, name='login'),
@@ -43,7 +44,7 @@ urlpatterns = [
     # path('searchResults/', views.searchResults, name='searchResults'),
     # path(r'^see_rides$', include('create_ride.urls'), name='see_rides'),
 #>>>>>>> 58e80ac679c4a1fe980f2eebabeabb66794c8712
-    path('accounts/login/', include ('login.urls'), name='login'),
+    # path('accounts/login/', include('login.urls'), name='login'),
     path('createUser/', views.createUser, name='createUser'),
-    path('accounts/logout/', include('login.urls'), name='logout'),
+    # path('accounts/logout/', include('login.urls'), name='logout'),
 ]
