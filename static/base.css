@@ -2,7 +2,7 @@ html {
     cursor: url('my_app/shield-w.png'), auto; 
 }
 
-html, body, a, p, ul, input[type=text], .buttons, .footer {
+html {
     /*font-family: "Helvetica Neue";*/
     font-family: 'Roboto Mono', monospace;
     font-style: normal;
