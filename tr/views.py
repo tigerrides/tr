@@ -63,7 +63,6 @@ def rideHistory(request):
 	return render(request, 'rideHistory.html')
 
 def searchResults(request):
-    return render(request, 'searchResults.html')
     from django.forms.models import model_to_dict
     submitted_ride = model_to_dict(InputRideInfo.objects.all().latest('created'))
 
