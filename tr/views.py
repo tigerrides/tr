@@ -65,12 +65,12 @@ def rideHistory(request):
 def searchResults(request):
     from django.forms.models import model_to_dict
     # submitted_ride = model_to_dict(InputRideInfo.objects.latest('created'))
-    submitted_ride = model_to_dict(InputRideInfo.objects.order_by('created').last())
-    print("submitted_ride")
+    submitted_ride = model_to_dict(InputRideInfo.objects.filter(user=request.user).order_by('created').last())
+    print("my most recent submitted_ride")
     print(submitted_ride)
 
-    print("all rides")
-    print(list(InputRideInfo.objects.values()))
+    # print("all rides")
+    # print(list(InputRideInfo.objects.values()))
 
     import datetime as dt
     from datetime import timedelta
@@ -87,6 +87,7 @@ def searchResults(request):
             ).filter(depart_from__contains=submitted_ride['depart_from']
                 ).filter(destination__contains=submitted_ride['destination']
                     ).filter(date=submitted_ride['date']).values())
+    print("matchings")
     print(values)
 
     # values() returns a QuerySet, so turn it into a list, and 
