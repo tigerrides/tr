@@ -4,12 +4,17 @@ from django.conf import settings
 # from models.utils import Choices
 
 # Create your models here.
-class InputRideInfo(models.Model):
+class InputRideInfo(models.Model): 
+    #import datetime
+    #time_submitted = datetime.time.now()
+    created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         default=1
     )
+    # user_first_name = models.CharField(max_length=20)
+    # user_last_name = models.CharField(max_length=20)
     ewr = "EWR"
     phl = "PHL"
     jfk = "JFK"
@@ -26,6 +31,8 @@ class InputRideInfo(models.Model):
         (jfk, "jfk"),
         (campus, "princeton")
     )
+    user_first_name = models.CharField(max_length=200, default="first")
+    user_last_name = models.CharField(max_length=200, default="last")
     depart_from = models.CharField(max_length=20, choices=ORIGIN_CHOICES, default=ewr)
     destination = models.CharField(max_length=20, choices=DESTINATION_CHOICES, default=ewr)
     # drop down menu
@@ -39,6 +46,7 @@ class InputRideInfo(models.Model):
     #check boxes
     uber = models.BooleanField(default=False)
     lyft = models.BooleanField(default=False)
+
     # img = models.ImageField(default='default.png', blank=True)
 
     # def __str__(self):
