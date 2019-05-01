@@ -18,8 +18,8 @@ def createUser(request):
 			new_user.save()
 			return render(request, 'createprof.html')
 	else:
-        print("failed")
-		form = UserForm()
+        form = UserForm()
+        print("failed lol")
 	return render(request, 'createUser.html', {'form': form})
 
 
