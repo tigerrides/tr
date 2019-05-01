@@ -30,7 +30,7 @@ def index(request):
     # return HttpResponse("welcome.html")
 	return render(request, 'welcome.html')
 
-@login_required(login_url='accounts/login/')
+@login_required
 def home(request):
     return render(request, 'home.html')
 
@@ -40,7 +40,7 @@ def welcome(request):
 def chooselogin(request):
     return render(request, 'chooseLogin.html')
 
-@login_required(login_url='accounts/login/')
+@login_required
 def currentprof(request):
 	login_infos = LogInInfo.objects.filter(user=request.user)
 	return render(request, 'currentprof.html', {'login_infos': login_infos})
@@ -64,7 +64,7 @@ def joinGroup(request):
 def rideHistory(request):
 	return render(request, 'rideHistory.html')
 
-@login_required(login_url='accounts/login/')
+@login_required
 def searchResults(request):
     from django.forms.models import model_to_dict
     # submitted_ride = model_to_dict(InputRideInfo.objects.latest('created'))
