@@ -41,7 +41,7 @@ def profile_create(request):
                     last_name=request.POST["last_name"],
                     phone_number=request.POST["phone_number"]
                 )
-                var = LogInInfo.objects.filter(user=request.user)
+                var = LogInInfo.objects.filter(user=request.user).get(pk=pk)
                 var.image = form.cleaned_data['image']
                 var.save()
             else:
