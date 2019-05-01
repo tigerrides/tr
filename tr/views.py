@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from login.models import LogInInfo
+from django.db.models import Q
 from django.http import HttpResponse
 from .forms import UserForm
 from django.contrib.auth import login
@@ -86,7 +87,8 @@ def searchResults(request):
             + timedelta(hours=1)).time())
             ).filter(depart_from__contains=submitted_ride['depart_from']
                 ).filter(destination__contains=submitted_ride['destination']
-                    ).filter(date=submitted_ride['date']).values())
+                    ).filter(date=submitted_ride['date']).filter(~Q(user=request.user)).values())
+
     print("matchings")
     print(values)
 
@@ -98,8 +100,6 @@ def searchResults(request):
     values_dict = {}
     ride_count = 1
     for ride in values:
-        if ride["user_id"] == request.user:
-            continue
         values_dict[ride_count] = ride
         ride_count += 1
     print(values_dict)
