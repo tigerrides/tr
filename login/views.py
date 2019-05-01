@@ -41,9 +41,9 @@ def profile_create(request):
                     last_name=request.POST["last_name"],
                     phone_number=request.POST["phone_number"]
                 )
-                m = LogInInfo.objects.filter(user=request.user)
-                m.image = form.cleaned_data['image']
-                m.save()
+                var = LogInInfo.filter(user=request.user).objects()
+                var.image = form.cleaned_data['image']
+                var.save()
             else:
                 instance = form.save(commit=False)
                 instance.user = request.user
