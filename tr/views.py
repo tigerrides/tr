@@ -4,7 +4,7 @@ from login.models import LogInInfo
 from django.db.models import Q
 from django.http import HttpResponse
 from .forms import UserForm
-from django.contrib.auth import login
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from create_ride.models import InputRideInfo
 from django.template import Context
@@ -14,8 +14,10 @@ def createUser(request):
 		form = UserForm(request.POST)
 		if form.is_valid():
 			new_user = User.objects.create_user(**form.cleaned_data)
-			# login(request)
 			new_user.save()
+            new_user = authenticate(username=form.cleaned_data['username'],
+                                    password=form.cleaned_data['password'])
+            login(request, new_user)
 			return render(request, 'createprof.html')
 	else:
 		form = UserForm()
