@@ -20,13 +20,13 @@
           <p class="w3-center">
           </p>
             <p class="w3-center">
-              {{ ride.user.username }} <br>
               depart from: {{ride.depart_from}} <br>
               destination: {{ride.destination}} <br>
               date: {{ride.date}} <br>
               notes: {{ride.notes}} <br>
             </p>
             <p class="w3-center">riders:</p>
+              {{ ride.user_first_name }} {{ ride.user_last_name }}
               {% load static %}
               <img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">
               <br/>
