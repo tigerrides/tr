@@ -49,5 +49,12 @@ class InputRideInfo(models.Model):
 
     # img = models.ImageField(default='default.png', blank=True)
 
-    # def __str__(self):
-        # return '%s %s %s' % (self.first_name, self.last_name, self.phone_number)
+    def __str__(self):
+        return '%s %s' % (self.user_first_name, self.user_last_name)
+
+class Ride(models.Model):
+    joined_rider = models.ForeignKey(InputRideInfo)
+    ride_status_open = models.BooleanField(default=True)
+
+    def __str__(self):
+        return '%s' % (self.joined_rider.user_first_name)
