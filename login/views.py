@@ -50,7 +50,7 @@ def profile_create(request):
             # login_infos = LogInInfo.objects.filter(user=request.user)
                 instance.save()
         #     # save prof to db
-        return redirect('home')
+        return redirect('currentprof')
     else:
         form = forms.CreateProfile()
     return render(request, 'createprof.html', {'form': form})
