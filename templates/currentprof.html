@@ -14,7 +14,6 @@
       <h1 class="title w3-center">my profile.</h1>
       {% if user.is_authenticated %}
       {% for login_info in login_infos%}
-      {% ratings user %}
       <div class="left w3-half w3-padding-16 w3-center w3-myfont">
         <img src="{{ MEDIA_URL }}{{ login_info.image }}" class="pic">
       </div>
@@ -23,6 +22,7 @@
         <h2 class="name">
           {{ login_info.first_name }} {{ login_info.last_name }}
         </h2>
+        {% ratings user %}
         <p class="description">&#9733;&#9733;&#9733;&#9733;&#9733;<br/></p>
         <p class="description">{{ user.email }}</p>
         <p class="description">{{ login_info.phone_number }}</p>
