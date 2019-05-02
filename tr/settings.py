@@ -68,16 +68,16 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media',
+                #'django.template.context_processors.media',
                 #'django.core.context_processors.request',
             ],
         },
     },
 ]
 
-TEMPLATE_CONTEXT_PROCESSORs = [
-    'django.core.context_processors.request',
-]
+#TEMPLATE_CONTEXT_PROCESSORs = [
+#    'django.core.context_processors.request',
+#]
 
 WSGI_APPLICATION = 'tr.wsgi.application'
 
