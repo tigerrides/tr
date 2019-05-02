@@ -19,7 +19,7 @@ def createUser(request):
 			# login_auto_last=request.POST['password']
 			# user=authenticate(request, username=login_auto_first, password=login_auto_last)
 			# login(request, user)
-			return render(request, 'registration/login.html')
+			return render(request, 'welcome.html')
 	else:
 		form = UserForm()
 	return render(request, 'createUser.html', {'form': form})
@@ -65,7 +65,8 @@ def joinGroup(request):
 	return render(request, 'joinGroup.html')
 
 def rideHistory(request):
-	return render(request, 'rideHistory.html')
+	all_my_rides = InputRideInfo.objects.filter(user=request.user).values()
+	return render(request, 'rideHistory.html', {'rides': all_my_rides})
 
 @login_required
 def searchResults(request):
@@ -93,17 +94,23 @@ def searchResults(request):
     #         ).filter(depart_from__contains=submitted_ride['depart_from']
     #             ).filter(destination__contains=submitted_ride['destination']
     #                 ).filter(date=submitted_ride['date']).filter(~Q(user=request.user)).values())
-
     values = InputRideInfo.objects.filter(
-            time_start__range=((dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_start'])
-                - timedelta(hours=1)).time(), (dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_start'])
-                + timedelta(hours=1)).time())
-            ).filter(time_end__range=((dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_end'])
-                - timedelta(hours=1)).time(), (dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_end'])
-                + timedelta(hours=1)).time())
-                ).filter(depart_from__contains=submitted_ride['depart_from']
-                    ).filter(destination__contains=submitted_ride['destination']
-                        ).filter(date=submitted_ride['date']).filter(~Q(user=request.user)).values()
+        time_start__lte=submitted_ride['time_end']
+    ).filter(
+        time_end__gte=submitted_ride['time_start']
+    ).filter(depart_from__contains=submitted_ride['depart_from']
+             ).filter(destination__contains=submitted_ride['destination']
+                      ).filter(date=submitted_ride['date']).filter(~Q(user=request.user)).values()
+    # values = InputRideInfo.objects.filter(
+    #         time_start__range=((dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_start'])
+    #             - timedelta(hours=1)).time(), (dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_start'])
+    #             + timedelta(hours=1)).time())
+    #         ).filter(time_end__range=((dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_end'])
+    #             - timedelta(hours=1)).time(), (dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_end'])
+    #             + timedelta(hours=1)).time())
+    #             ).filter(depart_from__contains=submitted_ride['depart_from']
+    #                 ).filter(destination__contains=submitted_ride['destination']
+    #                     ).filter(date=submitted_ride['date']).filter(~Q(user=request.user)).values()
 
 
     # print("matchings")
