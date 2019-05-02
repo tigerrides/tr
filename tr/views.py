@@ -95,9 +95,9 @@ def searchResults(request):
     #             ).filter(destination__contains=submitted_ride['destination']
     #                 ).filter(date=submitted_ride['date']).filter(~Q(user=request.user)).values())
     values = InputRideInfo.objects.filter(
-        time_start__gte=submitted_ride['time_start']
+        time_start__lte=submitted_ride['time_end']
     ).filter(
-        time_end__lte=submitted_ride['time_end']
+        time_end__gte=submitted_ride['time_start']
     ).filter(depart_from__contains=submitted_ride['depart_from']
              ).filter(destination__contains=submitted_ride['destination']
                       ).filter(date=submitted_ride['date']).filter(~Q(user=request.user)).values()
