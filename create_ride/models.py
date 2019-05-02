@@ -53,8 +53,8 @@ class InputRideInfo(models.Model):
         return '%s %s' % (self.user_first_name, self.user_last_name)
 
 class Ride(models.Model):
-    joined_rider = models.ForeignKey(InputRideInfo)
-    ride_status_open = models.BooleanField(default=True, on_delete=models.CASCADE)
+    joined_rider = models.ForeignKey(InputRideInfo, on_delete=models.CASCADE)
+    ride_status_open = models.BooleanField(default=True)
 
     def __str__(self):
         return '%s' % (self.joined_rider.user_first_name)
