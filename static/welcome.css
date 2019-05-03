@@ -9,6 +9,14 @@
     text-shadow: 3px 3px 8px #A55858;
 }
 
+body {
+     background-image: url("my_app/princeton.png");
+     background-repeat: no-repeat;
+     background-position: center;
+     background-attachment: fixed;
+     background-size: 67%;
+}
+
 /*.buttons {
     height: 36px;
     line-height: 27px;

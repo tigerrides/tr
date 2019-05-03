@@ -48,6 +48,7 @@ urlpatterns = [
 #>>>>>>> 58e80ac679c4a1fe980f2eebabeabb66794c8712
     # path('accounts/login/', include('login.urls'), name='login'),
     path('createUser/', views.createUser, name='createUser'),
+    #path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
     # path('accounts/logout/', include('login.urls'), name='logout'),
 ] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
 

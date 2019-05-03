@@ -1,17 +1,18 @@
 html {
-    cursor: url('my_app/shield-w.png'), auto; 
-}
-
-html {
     /*font-family: "Helvetica Neue";*/
     font-family: 'Roboto Mono', monospace;
     font-style: normal;
     background:  #F7B5B0;
+    color: #A55858;
 }
 
 .w3-myfont {
     font-family: 'Roboto Mono', monospace;
     font-style: normal;
+}
+
+p {
+    color: #A55858;
 }
 
 footer {
@@ -20,7 +21,7 @@ footer {
     font-size: 14px;
     text-align: center;
     display: inline-block;
-    color: white;
+    color: #A55858;
     text-decoration: none;
     margin-left: auto;
     margin-right: auto;
@@ -48,7 +49,7 @@ footer {
 
 .icon:hover {
     color: white;
-    text-shadow: 1px 1px 2px #A55858;
+    text-shadow: 2px 2px 2px #A55858;
     cursor: url('my_app/shield.png'), auto; 
 }
 
@@ -93,21 +94,20 @@ white-space: normal;
 word-wrap: break-word;
     height: 100%;
     line-height: 27px;
-    background-color: rgba(165,88,88,.3);
+    background-color: #EFA09E;
     border-radius: 10px;
     border-color: transparent;
     color: white;
     font-size: 15px;
     margin: 11px 4px;
     min-width: 54px;
-    padding: 10px 10px 10px 10px;
+    padding: 10px 20px 10px 20px;
     cursor: url('my_app/shield.png'), auto; 
     text-decoration: none;
 }
 
 .buttons:hover {
-    background: #A55858;
     border-radius: 10px;
-    background-color: rgba(165,88,88,.6);
+    background-color: #C66B6B;
     cursor: url('my_app/shield.png'), auto; 
 }
