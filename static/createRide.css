@@ -172,7 +172,7 @@ input:hover {
     cursor: url('my_app/shield.png'), auto; 
 }
 
-input[type=submit] {
+/*input[type=submit] {
     outline: none;
     height: 36px;
     line-height: 27px;
@@ -184,16 +184,35 @@ input[type=submit] {
     cursor: default;
     font-size: 13px;
     font-weight: bold;
-    /*margin: 11px 4px;*/
     min-width: 54px;
     padding: 0px;
-    /*text-align: center;*/
 }
 
 input[type=submit]:hover {
     border: 1px solid #c6c6c6;
     box-shadow: 0 1px 1px rgba(0,0,0,0.1);
     color: #222;
+}*/
+
+input[type=submit] {
+    height: 36px;
+    line-height: 27px;
+    background-color: rgba(165,88,88,.3);
+    border-radius: 10px;
+    border-color: transparent;
+    color: white;
+    font-size: 15px;
+    margin: 11px 4px;
+    min-width: 54px;
+    padding: 0 16px;
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+input[type=submit]:hover {
+    background: #A55858;
+    border-radius: 10px;
+    background-color: rgba(165,88,88,.6);
+    cursor: url('my_app/shield.png'), auto; 
 }
 
 .box {
