@@ -132,6 +132,7 @@ a {
   border: 1px solid #A55858;
     line-height: 80px;
     z-index:1;
+    top:-80px;
 }
 
 .buttons:before, .buttons:after {
