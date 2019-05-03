@@ -10,7 +10,11 @@
 }
 
 body {
-     background-image: url("my_app/princeton.png")
+     background-image: url("my_app/princeton.png");
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-position: center;
+     background-size: 1000px;
 }
 
 /*.buttons {
