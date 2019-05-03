@@ -13,13 +13,13 @@ img {
   width: 50%; 
 }
 
-/*body {
+body {
      background-image: url("my_app/princeton.png");
      background-repeat: no-repeat;
-     background-position: center;
+     background-position: center top;
      background-attachment: fixed;
      background-size: 67%;
-}*/
+}
 
 /*.buttons {
     height: 36px;
