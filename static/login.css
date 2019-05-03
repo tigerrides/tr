@@ -54,7 +54,7 @@ input[type=file] {
 input[type=file]:hover {
     cursor: url('my_app/shield.png'), auto; 
 }
-/*
+
 input[type=submit] {
     height: 36px;
     line-height: 27px;
@@ -74,84 +74,6 @@ input[type=submit]:hover {
     border-radius: 10px;
     background-color: rgba(165,88,88,.6);
     cursor: url('my_app/shield.png'), auto; 
-}
-*/
-
-html *,
-html *:before,
-html *:after {
-  box-sizing: border-box;
-  transition: 0.5s ease-in-out;
-}
-
-*:before,
-*:after {
-  z-index: -1;
-}
-
-a {
-  text-decoration: none;
-  line-height: 80px;
-  color: #563B3B;
-}
-
-.centerer {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-@media (min-width: 600px) {
-  .wrap {
-    width: 50%;
-    float: left;
-  }
-}
-
-
-input[type=submit] {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  width: 100%;
-  height: 80px;
-  max-width: 250px;
-  margin: 1rem auto;
-  /*text-transform: uppercase;*/
-  border: 1px solid #A55858;
-}
-
-input[type=submit]:before, input[type=submit]:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-top: 40px solid #A55858;
-  border-bottom: 40px solid #A55858;
-}
-input[type=submit]:before {
-  border-right: 40px solid transparent;
-  -webkit-transform: translateX(-100%);
-          transform: translateX(-100%);
-}
-input[type=submit]:after {
-  border-left: 40px solid transparent;
-  -webkit-transform: translateX(100%);
-          transform: translateX(100%);
-}
-input[type=submit]:hover {
-  color: white;
-}
-input[type=submit]:hover:before {
-  -webkit-transform: translateX(-30%);
-          transform: translateX(-30%);
-}
-input[type=submit]:hover:after {
-  -webkit-transform: translateX(30%);
-          transform: translateX(30%);
 }
 
 .sections {
