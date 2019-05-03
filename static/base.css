@@ -90,12 +90,40 @@ footer {
 }
 
 .buttons {
+  $btn-color: random-color($max:200);
+  $btn-color-dark: shade($btn-color, 40%);
+    color: tint($btn-color);
+  
+  span {
+    @include absolute();
+    display: block;
+    @include size(0);
+    border-radius: 50%;
+    background-color: $btn-color-dark;
+    transition: width 0.4s ease-in-out, height 0.4s ease-in-out;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+  
+  &:hover {
+    color: tint($btn-color, 75%);
+    
+    span {
+      @include size(225%, $btn-width*2.25);
+    }
+  }
+  
+  &:active {
+    background-color: $btn-color;
+  }
+}
+
+/*.buttons {
 white-space: normal;
 word-wrap: break-word;
     height: 100%;
     line-height: 27px;
     background-color: #EFA09E;
-    /*background-color: rgba(165,88,88,.3);*/
     border-radius: 10px;
     border-color: transparent;
     color: white;
@@ -108,9 +136,7 @@ word-wrap: break-word;
 }
 
 .buttons:hover {
-    /*background: #A55858;*/
     border-radius: 10px;
     background-color: #C66B6B;
-    /*background-color: rgba(165,88,88,.6);*/
     cursor: url('my_app/shield.png'), auto; 
-}
+}*/
