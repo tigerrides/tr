@@ -9,6 +9,10 @@
     text-shadow: 3px 3px 8px #A55858;
 }
 
+body {
+     background-image: url("my_app/princeton.png")
+}
+
 /*.buttons {
     height: 36px;
     line-height: 27px;
