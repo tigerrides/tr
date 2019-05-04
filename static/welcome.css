@@ -5,6 +5,7 @@
     font-weight: 700;
     /*text-align: left;*/
     font-size: 80px;
+    max-width: 20%;
     text-align: center;
     text-shadow: 3px 3px 8px #A55858;
 }
