@@ -23,13 +23,23 @@
   <div class="w3-bar w3-text-white" id="myNavbar">
     <a href="{% url 'home' %}" class="icon w3-hover-none w3-bar-item">tiger<br/>ride.</a>
     <!-- Right-sided navbar links -->
-    <div class="w3-right w3-hide-small">
+    <div class="bar w3-right w3-hide-small">
+      <div class="stuff">
       <a href="{% url 'home' %}" class="shortcut bar-item">home</a>
-      <a href="{% url 'about' %}" class="shortcut bar-item">about</a>
-      <a href="{% url 'contact' %}" class="shortcut bar-item">contact</a>
-      <a href="{% url 'currentprof' %}" class="shortcut bar-item">profile</a>
+      </div>
+      <div class="stuff">
+      <a href="{% url 'about' %}" class="shortcut bar-item bar-button">about</a>
+      </div>
+      <div class="stuff">
+      <a href="{% url 'contact' %}" class="shortcut bar-item bar-button">contact</a>
+      </div>
+      <div class="stuff">
+      <a href="{% url 'currentprof' %}" class="shortcut bar-item bar-button">profile</a>
+      </div>
       {% if user.is_authenticated %}
-      <a href="{% url 'logout' %}" class="shortcut bar-item">logout</a>
+      <div class="stuff">
+      <a href="{% url 'logout' %}" class="shortcut bar-item bar-button">logout</a>
+      </div>
       {% endif %}
     </div>
     <!-- Hide right-floated links on small screens and replace them with a menu icon -->
