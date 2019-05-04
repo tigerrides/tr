@@ -4,18 +4,26 @@
     color: white;
     font-weight: 700;
     /*text-align: left;*/
-    font-size: 80px;
+    font-size: 7vw;
     text-align: center;
     text-shadow: 3px 3px 8px #A55858;
 }
 
-body {
+img { 
+    display: block;
+  width: 40%;
+  min-width: 250px;
+  margin: 16px auto;
+}
+
+/*body {
      background-image: url("my_app/princeton.png");
      background-repeat: no-repeat;
      background-position: center;
      background-attachment: fixed;
-     background-size: 67%;
-}
+     background-size: 70%;
+     min-width: 
+}*/
 
 /*.buttons {
     height: 36px;
