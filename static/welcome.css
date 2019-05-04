@@ -10,16 +10,17 @@
 }
 
 img { 
-  width: 50%; 
+  width: 50%;
+  min-width: 500px;
 }
 
-body {
+/*body {
      background-image: url("my_app/princeton.png");
      background-repeat: no-repeat;
      background-position: center;
      background-attachment: fixed;
      background-size: 70%;
-}
+}*/
 
 /*.buttons {
     height: 36px;
