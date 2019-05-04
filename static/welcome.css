@@ -4,7 +4,8 @@
     color: white;
     font-weight: 700;
     /*text-align: left;*/
-    font-size: 8vw;
+    font-size: 10vw;
+    max-width: 100px;
     text-align: center;
     text-shadow: 3px 3px 8px #A55858;
 }
