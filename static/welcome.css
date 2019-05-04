@@ -13,8 +13,7 @@ img {
     display: block;
   width: 40%;
   min-width: 250px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 16px auto;
 }
 
 /*body {
