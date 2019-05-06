@@ -72,7 +72,7 @@ def rideHistory(request):
 def searchResults(request):
     from django.forms.models import model_to_dict
     # submitted_ride = model_to_dict(InputRideInfo.objects.latest('created'))
-    submitted_ride = model_to_dict(InputRideInfo.objects.all().order_by('created').last())
+    submitted_ride = model_to_dict(InputRideInfo.objects.order_by('created').last())
     print("my most recent submitted_ride")
     print(submitted_ride)
 
