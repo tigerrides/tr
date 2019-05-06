@@ -66,8 +66,16 @@ def joinGroup(request):
 	return render(request, 'joinGroup.html')
 
 def rideHistory(request):
-	all_my_rides = InputRideInfo.objects.filter(user=request.user).values()
-	return render(request, 'rideHistory.html', {'rides': all_my_rides})
+	open_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=True).values()
+	closed_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).values()
+	open_rides_dict = {}
+	closed_rides_dict = {}
+	for ride in open_rides:
+		open_rides_dict[ride.id] = InputRideInfo.objects.filter(id=ride.id).values()
+	for ride in closed_rides:
+		closed_rides_dict[ride.id] = InputRideInfo.objects.filter(id=ride.id).values()
+		all_my_rides = InputRideInfo.objects.filter(user=request.user).values()
+		return render(request, 'rideHistory.html', {'rides': all_my_rides})
 
 @login_required
 def searchResults(request):
@@ -80,16 +88,15 @@ def searchResults(request):
 		time_end__gte=submitted_ride['time_start']
 	).filter(depart_from__contains=submitted_ride['depart_from']
 			 ).filter(destination__contains=submitted_ride['destination']
-					  ).filter(date=submitted_ride['date']).values()
-	return render(request, 'searchResults.html', {'rides' : values})
-    # return render(request, 'searchResults.html', {"rides": values_dict})
-    # return render(request, 'searchResults.html', {"rides": values})
+					  ).filter(date=submitted_ride['date']
+							   ).filter(~Q(user=request.user)).values()
+	values_dict = {}
+	for ride in values:
+		values_dict[ride.id] = InputRideInfo.objects.filter(id=ride.id).values()
 
-    #return render(request, 'searchResults.html', {"rides": {
-    #    "ride1": {'depart_from': 'ewr', 'destination': 'princeton', 'date': 'dean\'s date', 'time_start': '6am,', 'time_end': '7am'},
-    #    "ride2": {'depart_from': 'princeton', 'destination': 'jfk', 'date': 'princetoween', 'time_start': '8am', 'time_end': '9am'},
-    #    "ride3": {'depart_from': 'princeton', 'destination': 'phl', 'date': 'dranksgiving', 'time_start': '6pm', 'time_end': '8pm'},
-    #    }})
+	return render(request, 'searchResults.html', {'rides': values})
 
 def newRide(request):
 	return render(request, 'newride.html')
+
+
