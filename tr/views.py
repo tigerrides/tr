@@ -90,13 +90,12 @@ def searchResults(request):
 			 ).filter(destination__contains=submitted_ride['destination']
 					  ).filter(date=submitted_ride['date']
 							   ).filter(~Q(user=request.user)).values()
-	values_dict = {}
+	# values_dict = {}
 	for ride in values:
-		values_dict[ride.id] = InputRideInfo.objects.filter(id=ride.id).values()
+		print(ride.id)
+	# 	values_dict[ride.id] = InputRideInfo.objects.filter(id=ride.id).values()
 
 	return render(request, 'searchResults.html', {'rides': values})
 
 def newRide(request):
 	return render(request, 'newride.html')
-
-
