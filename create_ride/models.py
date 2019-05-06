@@ -46,7 +46,8 @@ class InputRideInfo(models.Model):
     #check boxes
     uber = models.BooleanField(default=False)
     lyft = models.BooleanField(default=False)
-
+    ride_status_open = models.BooleanField(default=True)
+ 
     # img = models.ImageField(default='default.png', blank=True)
 
     def __str__(self):
