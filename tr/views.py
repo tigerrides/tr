@@ -71,9 +71,13 @@ def rideHistory(request):
 	open_rides_dict = {}
 	closed_rides_dict = {}
 	for ride in open_rides:
-		open_rides_dict[ride.id] = InputRideInfo.objects.filter(id=ride.id).values()
+		group_id = ride['id']
+		open_rides_dict[group_id] = InputRideInfo.objects.filter(id=group_id).values()
+		# open_rides_dict[ride.id] = InputRideInfo.objects.filter(id=ride.id).values()
 	for ride in closed_rides:
-		closed_rides_dict[ride.id] = InputRideInfo.objects.filter(id=ride.id).values()
+		group_id = ride['id']
+		open_rides_dict[group_id] = InputRideInfo.objects.filter(id=group_id).values()
+		# closed_rides_dict[ride.id] = InputRideInfo.objects.filter(id=ride.id).values()
 		all_my_rides = InputRideInfo.objects.filter(user=request.user).values()
 		return render(request, 'rideHistory.html', {'rides': all_my_rides})
 
@@ -90,10 +94,13 @@ def searchResults(request):
 			 ).filter(destination__contains=submitted_ride['destination']
 					  ).filter(date=submitted_ride['date']
 							   ).filter(~Q(user=request.user)).values()
-	# values_dict = {}
+	values_dict = {}
 	for ride in values:
-		print(ride['id'])
-	# 	values_dict[ride.id] = InputRideInfo.objects.filter(id=ride.id).values()
+		# print(ride['id'])
+		group_id = ride['id']
+		values_dict[group_id] = InputRideInfo.objects.filter(id=group_id).values()
+
+	print(values_dict)
 
 	return render(request, 'searchResults.html', {'rides': values})
 
