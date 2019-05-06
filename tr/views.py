@@ -70,30 +70,14 @@ def rideHistory(request):
 
 @login_required
 def searchResults(request):
-    from django.forms.models import model_to_dict
-    # submitted_ride = model_to_dict(InputRideInfo.objects.latest('created'))
-    submitted_ride = model_to_dict(InputRideInfo.objects.all().order_by('created').last())
+    submitted_ride = InputRideInfo.objects.order_by('-created')[0]
     print("my most recent submitted_ride")
     print(submitted_ride)
-
-    # print("all rides")
-    # print(list(InputRideInfo.objects.values()))
 
     import datetime as dt
     from datetime import timedelta
     # maybe have these ranges be customizable? but for now, add one hour pad
-
-    delta = timedelta(hours=1)
-    # values = list(InputRideInfo.objects.filter(
-    #     time_start__range=((dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_start'])
-    #         - timedelta(hours=1)).time(), (dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_start'])
-    #         + timedelta(hours=1)).time())
-    #     ).filter(time_end__range=((dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_end'])
-    #         - timedelta(hours=1)).time(), (dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_end'])
-    #         + timedelta(hours=1)).time())
-    #         ).filter(depart_from__contains=submitted_ride['depart_from']
-    #             ).filter(destination__contains=submitted_ride['destination']
-    #                 ).filter(date=submitted_ride['date']).filter(~Q(user=request.user)).values())
+    delta = timedelta(hours=1) 
     values = InputRideInfo.objects.filter(
         time_start__lte=submitted_ride['time_end']
     ).filter(
@@ -101,33 +85,6 @@ def searchResults(request):
     ).filter(depart_from__contains=submitted_ride['depart_from']
              ).filter(destination__contains=submitted_ride['destination']
                       ).filter(date=submitted_ride['date']).values()
-    # values = InputRideInfo.objects.filter(
-    #         time_start__range=((dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_start'])
-    #             - timedelta(hours=1)).time(), (dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_start'])
-    #             + timedelta(hours=1)).time())
-    #         ).filter(time_end__range=((dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_end'])
-    #             - timedelta(hours=1)).time(), (dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_end'])
-    #             + timedelta(hours=1)).time())
-    #             ).filter(depart_from__contains=submitted_ride['depart_from']
-    #                 ).filter(destination__contains=submitted_ride['destination']
-    #                     ).filter(date=submitted_ride['date']).filter(~Q(user=request.user)).values()
-
-
-    # print("matchings")
-    # print(values)
-
-    # values() returns a QuerySet, so turn it into a list, and 
-    # turn the list into a dict by iterating over the list and assigning
-    # integers as keys (these corresond with 'id' field in each RideInfo
-    # model but haven't figured out how to get them in yet, python doesn't
-    # like having a dict in the index spot
-    # values_dict = {}
-    ride_count = 1
-    for ride in values:
-        # values_dict[ride_count] = ride
-        ride_count += 1
-    # print(values_dict)
-
     # return render(request, 'searchResults.html', {"rides": values_dict})
     return render(request, 'searchResults.html', {"rides": values})
 
