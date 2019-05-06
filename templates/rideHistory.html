@@ -57,23 +57,9 @@
             <!--</p>-->
           <!--</div>-->
         <!--</li>-->
-        <!--{% endfor %}-->
+        {% endfor %}
         <br>
       </ul>
-
-      <!--<h2 class="subtitle w3-center w3-padding-16">current rides</h2>-->
-    <!--<div class="box w3-container w3-center w3-padding-16 w3-myfont">-->
-      <!--<p class="w3-center">from origin</p>-->
-      <!--<p class="w3-center">to destination</p>-->
-      <!--<p class="w3-center">date</p>-->
-      <!--<p class="w3-center">time</p>-->
-      <!--<p class="w3-center">riders:</p>-->
-        <!--{% load static %}-->
-        <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
-        <!--<br/>-->
-      <!--&lt;!&ndash;<button onclick="location.href='{% url 'groupInfo' %}'" class="buttons" type="button">see more</button>&ndash;&gt;-->
-    <!--</div>-->
-    <!--<br>-->
     <!--&lt;!&ndash; second result &ndash;&gt;-->
       <!--<div class="box w3-container w3-center w3-padding-16 w3-myfont">-->
       <!--<p class="w3-center">from origin</p>-->
@@ -122,6 +108,7 @@
             </div>
           </li>
           <br>
+          {% endfor %}
         </ul>
 
       <!--&lt;!&ndash; third result &ndash;&gt;-->
