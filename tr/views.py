@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.forms.models import model_to_dict
 from django.contrib.auth.decorators import login_required
 from login.models import LogInInfo
 from django.db.models import Q
@@ -70,24 +71,19 @@ def rideHistory(request):
 
 @login_required
 def searchResults(request):
-	# submitted_ride = InputRideInfo.objects.order_by('-created')[0]
-	from django.forms.models import model_to_dict
 	submitted_ride = model_to_dict(InputRideInfo.objects.all().order_by('created').last())
 	print("my most recent submitted_ride")
 	print(submitted_ride)
-    import datetime as dt
-    from datetime import timedelta
-    # maybe have these ranges be customizable? but for now, add one hour pad
-    delta = timedelta(hours=1) 
-    values = InputRideInfo.objects.filter(
-        time_start__lte=submitted_ride['time_end']
-    ).filter(
-        time_end__gte=submitted_ride['time_start']
-    ).filter(depart_from__contains=submitted_ride['depart_from']
-             ).filter(destination__contains=submitted_ride['destination']
-                      ).filter(date=submitted_ride['date']).values()
+	values = InputRideInfo.objects.filter(
+		time_start__lte=submitted_ride['time_end']
+	).filter(
+		time_end__gte=submitted_ride['time_start']
+	).filter(depart_from__contains=submitted_ride['depart_from']
+			 ).filter(destination__contains=submitted_ride['destination']
+					  ).filter(date=submitted_ride['date']).values()
+	return render(request, 'searchResults.html', {'rides' : values})
     # return render(request, 'searchResults.html', {"rides": values_dict})
-    return render(request, 'searchResults.html', {"rides": values})
+    # return render(request, 'searchResults.html', {"rides": values})
 
     #return render(request, 'searchResults.html', {"rides": {
     #    "ride1": {'depart_from': 'ewr', 'destination': 'princeton', 'date': 'dean\'s date', 'time_start': '6am,', 'time_end': '7am'},
