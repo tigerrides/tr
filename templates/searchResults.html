@@ -14,26 +14,48 @@
     <!-- first result -->
     <p></p>
     <ol>
-      {% for ride in rides %}
+      {% for key, values in rides.items %}
       <li>
         <div class="box w3-container w3-padding-16 w3-center w3-myfont">
           <p class="w3-center">
           </p>
-            <p class="w3-center">
-              depart from: {{ride.depart_from}} <br>
-              destination: {{ride.destination}} <br>
-              date: {{ride.date}} <br>
-              notes: {{ride.notes}} <br>
-            </p>
-            <p class="w3-center">riders:</p>
-              {{ ride.user_first_name }} {{ ride.user_last_name }}
-              {% load static %}
-              <img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">
-              <br/>
+          {% for val in values %}
+          <p class="w3-center">
+            depart from: {{val.depart_from}} <br>
+            destination: {{val.destination}} <br>
+            date: {{val.date}} <br>
+            notes: {{val.notes}} <br>
+          </p>
+          <p class="w3-center">riders:</p>
+          {{ val.user_first_name }} {{ val.user_last_name }}
+          {% endfor %}
+          {% load static %}
+          <img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">
+          <br/>
           <button onclick="location.href='{% url 'groupInfo' %}'" class="buttons" type="button">see more</button>
         </div>
       </li>
       {% endfor %}
+      <!--{% for ride in rides %}-->
+      <!--<li>-->
+        <!--<div class="box w3-container w3-padding-16 w3-center w3-myfont">-->
+          <!--<p class="w3-center">-->
+          <!--</p>-->
+            <!--<p class="w3-center">-->
+              <!--depart from: {{ride.depart_from}} <br>-->
+              <!--destination: {{ride.destination}} <br>-->
+              <!--date: {{ride.date}} <br>-->
+              <!--notes: {{ride.notes}} <br>-->
+            <!--</p>-->
+            <!--<p class="w3-center">riders:</p>-->
+              <!--{{ ride.user_first_name }} {{ ride.user_last_name }}-->
+              <!--{% load static %}-->
+              <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
+              <!--<br/>-->
+          <!--<button onclick="location.href='{% url 'groupInfo' %}'" class="buttons" type="button">see more</button>-->
+        <!--</div>-->
+      <!--</li>-->
+      <!--{% endfor %}-->
     </ol>
     <br/>
 </div>
