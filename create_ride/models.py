@@ -31,6 +31,9 @@ class InputRideInfo(models.Model):
         (jfk, "jfk"),
         (campus, "princeton")
     )
+
+    group_identifier = models.IntegerField(default=1)
+
     user_first_name = models.CharField(max_length=200, default="first")
     user_last_name = models.CharField(max_length=200, default="last")
     depart_from = models.CharField(max_length=20, choices=ORIGIN_CHOICES, default=ewr)
