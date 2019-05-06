@@ -94,6 +94,8 @@ def searchResults(request):
 			 ).filter(destination__contains=submitted_ride['destination']
 					  ).filter(date=submitted_ride['date']
 							   ).filter(~Q(user=request.user)).values()
+
+	print(values)
 	values_dict = {}
 	for ride in values:
 		# print(ride['id'])

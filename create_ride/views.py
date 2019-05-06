@@ -44,8 +44,6 @@ def submit_ride(request):
         if lyft != False:
             lyft = True
 
-        # phone_number = request.POST["phone_number"]
-        # img = request.POST["img"]
         input_ride_info = InputRideInfo(user=request.user,
                                         depart_from=depart_from,
                                         destination=destination,
