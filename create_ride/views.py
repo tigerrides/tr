@@ -44,15 +44,9 @@ def submit_ride(request):
         if lyft != False:
             lyft = True
 
-        get_info = LogInInfo.objects.get(user=request.user)
-        if LogInInfo.objects.filter(user=request.user).exists():
-            get_info = LogInInfo.objects.get(user=request.user)
-
         # phone_number = request.POST["phone_number"]
         # img = request.POST["img"]
         input_ride_info = InputRideInfo(user=request.user,
-                                        user_first_name=get_info.first_name,
-                                        user_last_name=get_info.last_name,
                                         depart_from=depart_from,
                                         destination=destination,
                                         date=date,
@@ -62,6 +56,13 @@ def submit_ride(request):
                                         uber=uber,
                                         lyft=lyft,
                                         )
+        input_ride_info.save()
+
+        if LogInInfo.objects.filter(user=request.user).exists():
+            get_info = LogInInfo.objects.get(user=request.user)
+            input_ride_info.user_first_name=get_info.first_name,
+            input_ride_info.user_last_name=get_info.last_name,
+
         input_ride_info.save()
 
         # form = forms.CreateRide(request.POST, request.FILES)
