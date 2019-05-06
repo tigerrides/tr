@@ -72,7 +72,7 @@ def rideHistory(request):
 def searchResults(request):
     from django.forms.models import model_to_dict
     # submitted_ride = model_to_dict(InputRideInfo.objects.latest('created'))
-    submitted_ride = model_to_dict(InputRideInfo.objects.filter(user=request.user).order_by('created').last())
+    submitted_ride = model_to_dict(InputRideInfo.objects.all().order_by('created').last())
     print("my most recent submitted_ride")
     print(submitted_ride)
 
@@ -100,7 +100,7 @@ def searchResults(request):
         time_end__gte=submitted_ride['time_start']
     ).filter(depart_from__contains=submitted_ride['depart_from']
              ).filter(destination__contains=submitted_ride['destination']
-                      ).filter(date=submitted_ride['date']).filter(~Q(user=request.user)).values()
+                      ).filter(date=submitted_ride['date']).values()
     # values = InputRideInfo.objects.filter(
     #         time_start__range=((dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_start'])
     #             - timedelta(hours=1)).time(), (dt.datetime.combine(dt.date(1,1,1), submitted_ride['time_start'])
