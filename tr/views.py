@@ -92,7 +92,7 @@ def searchResults(request):
 							   ).filter(~Q(user=request.user)).values()
 	# values_dict = {}
 	for ride in values:
-		print(ride.id)
+		print(ride['id'])
 	# 	values_dict[ride.id] = InputRideInfo.objects.filter(id=ride.id).values()
 
 	return render(request, 'searchResults.html', {'rides': values})
