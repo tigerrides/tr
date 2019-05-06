@@ -31,6 +31,8 @@ def login(request):
 
 # Create your views here.
 def index(request):
+	if request.user.is_authenticated:
+		return render(request, 'home.html')
     # return HttpResponse("welcome.html")
 	return render(request, 'welcome.html')
 
@@ -72,15 +74,16 @@ def rideHistory(request):
 	open_rides_dict = {}
 	closed_rides_dict = {}
 	for ride in open_rides:
-		group_id = ride['id']
-		open_rides_dict[group_id] = InputRideInfo.objects.filter(id=group_id).values()
+		group_id = ride['group_identifier']
+		open_rides_dict[group_id] = InputRideInfo.objects.filter(group_identifier=group_id).values()
 		# open_rides_dict[ride.id] = InputRideInfo.objects.filter(id=ride.id).values()
 	for ride in closed_rides:
-		group_id = ride['id']
-		closed_rides_dict[group_id] = InputRideInfo.objects.filter(id=group_id).values()
+		group_id = ride['group_identifier']
+		closed_rides_dict[group_id] = InputRideInfo.objects.filter(group_identifier=group_id).values()
 		# closed_rides_dict[ride.id] = InputRideInfo.objects.filter(id=ride.id).values()
 	all_my_rides = InputRideInfo.objects.filter(user=request.user).values()
-	return render(request, 'rideHistory.html', {'rides': all_my_rides})
+	return render(request, 'rideHistory.html', {'open_rides': open_rides_dict,
+												'closed_rides': closed_rides_dict})
 
 @login_required
 def searchResults(request):
@@ -94,18 +97,20 @@ def searchResults(request):
 	).filter(depart_from__contains=submitted_ride['depart_from']
 			 ).filter(destination__contains=submitted_ride['destination']
 					  ).filter(date=submitted_ride['date']
-							   ).filter(~Q(user=request.user)).values()
+							   ).filter(~Q(user=request.user)
+										).filter(ride_status_open=True).values()
 
 	print(values)
 	values_dict = {}
 	for ride in values:
 		# print(ride['id'])
-		group_id = ride['id']
-		values_dict[group_id] = InputRideInfo.objects.filter(id=group_id).values()
+		group_id = ride['group_identifier']
+		values_dict[group_id] = InputRideInfo.objects.filter(group_identifier=group_id).values()
 
 	print(values_dict)
+	return render(request, 'searchResults.html', {'rides': values_dict})
 
-	return render(request, 'searchResults.html', {'rides': values})
+	# return render(request, 'searchResults.html', {'rides': values})
 
 def newRide(request):
 	return render(request, 'newride.html')
