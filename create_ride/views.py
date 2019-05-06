@@ -29,6 +29,13 @@ def submit_ride(request):
         if not request.user.is_authenticated:
             raise Http404
 
+        no = InputRideInfo.objects.count()
+        val = 0
+        if no == None:
+            val = 1
+        else:
+            val = no + 1
+
         depart_from = request.POST["depart_from"]
         destination = request.POST["destination"]
         date = request.POST["date"]
@@ -48,6 +55,7 @@ def submit_ride(request):
                                         depart_from=depart_from,
                                         destination=destination,
                                         date=date,
+                                        group_identifier=val,
                                         time_start=time_start,
                                         time_end=time_end,
                                         notes=notes,
