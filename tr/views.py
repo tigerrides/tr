@@ -59,8 +59,9 @@ def contact(request):
 def createRide(request):
 	return render(request, 'createRide.html')
 
-def groupInfo(request):
-	return render(request, 'groupInfo.html')
+def groupInfo(request, id):
+	ride_objects = InputRideInfo.objects.filter(group_identifier=id).filter(ride_Status_open=True).values()
+	return render(request, 'groupInfo.html', {'ride': ride_objects})
 
 def joinGroup(request):
 	return render(request, 'joinGroup.html')
