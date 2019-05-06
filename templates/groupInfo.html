@@ -10,14 +10,14 @@
 <div class="w3-container w3-center" style="margin:50px">
   <div class="w3-display-center w3-text-white" style="padding:5%">
     <h1 class="title w3-center">information.</h1>
-    {% for result in ride %}
+    {% for ride in rides %}
     <div class="w3-padding-36 w3-center w3-myfont">
-      <p class="w3-center">{{ result.depart_from }} --> {{ result.destination }}</p>
-      <p class="w3-center">Date: {{ result. date }}</p>
-      <p class="w3-center">Time Frame: {{ result.time_start }} --> {{ result.time_end }}</p>
-      <p class="w3-center">Notes: {{ result.notes }}</p>
-      <p class="w3-center">Has Uber: {{ result.uber }}, Has Lift: {{ result.lyft }}</p>
-      <p class="w3-center">rider: {{result.first_name}} {{result.last_name}}</p>
+      <p class="w3-center">{{ ride.depart_from }} --> {{ ride.destination }}</p>
+      <p class="w3-center">Date: {{ ride.date }}</p>
+      <p class="w3-center">Time Frame: {{ ride.time_start }} --> {{ ride.time_end }}</p>
+      <p class="w3-center">Notes: {{ ride.notes }}</p>
+      <p class="w3-center">Has Uber: {{ ride.uber }}, Has Lift: {{ ride.lyft }}</p>
+      <p class="w3-center">rider: {{ride.user_first_name}} {{ride.user_last_name}}</p>
     <!--   <div class="buddy w3-container w3-center">
         {% load static %}
         <div class="site w3-center" style="background-image: url({% static "my_app/anabelle.jpg" %})">
@@ -27,7 +27,6 @@
       </div> -->
       {% endfor %}
         <!--<img class="pic" src="my_app/anabelle.jpg" alt="Anabelle" class="w3-round-xxlarge">-->
-      }
       <p>notes</p><br/>
       <button class="buttons" type="button">join this ride</button>
       </div>
