@@ -70,10 +70,11 @@ def rideHistory(request):
 
 @login_required
 def searchResults(request):
-    submitted_ride = InputRideInfo.objects.order_by('-created')[0]
-    print("my most recent submitted_ride")
-    print(submitted_ride)
-
+	# submitted_ride = InputRideInfo.objects.order_by('-created')[0]
+	from django.forms.models import model_to_dict
+	submitted_ride = model_to_dict(InputRideInfo.objects.all().order_by('created').last())
+	print("my most recent submitted_ride")
+	print(submitted_ride)
     import datetime as dt
     from datetime import timedelta
     # maybe have these ranges be customizable? but for now, add one hour pad
