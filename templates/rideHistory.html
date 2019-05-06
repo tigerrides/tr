@@ -12,7 +12,6 @@
     <!-- page header -->
     <!--<h1 class="title w3-center w3-padding-16">log.</h1>-->
     <h1 class="title w3-center w3-padding-16">current rides.</h1>
-
     {% load static %}
     <img class="car" src="{% static "my_app/car_large.png" %}">
     {% load static %}
@@ -24,7 +23,6 @@
     <!-- first result -->
     <section id="rides-list">
       <ul>
-
         {% for key, values in open_rides.items %}
         <li>
           <div class="box w3-container w3-padding-16 w3-center w3-myfont">
@@ -44,6 +42,7 @@
             <button onclick="location.href='{% url 'groupInfo' %}'" class="buttons" type="button">see more</button>
           </div>
         </li>
+        {% endfor %}
 
         <!--{% for ride in rides %}-->
         <!--<li>-->
@@ -57,22 +56,11 @@
             <!--</p>-->
           <!--</div>-->
         <!--</li>-->
-        {% endfor %}
-        <br>
+        <!--{% endfor %}-->
       </ul>
-    <!--&lt;!&ndash; second result &ndash;&gt;-->
-      <!--<div class="box w3-container w3-center w3-padding-16 w3-myfont">-->
-      <!--<p class="w3-center">from origin</p>-->
-      <!--<p class="w3-center">to destination</p>-->
-      <!--<p class="w3-center">date</p>-->
-      <!--<p class="w3-center">time</p>-->
-      <!--<p class="w3-center">riders:</p>-->
-        <!--{% load static %}-->
-        <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
-        <!--{% load static %}-->
-        <!--<img class="pic" src="{% static "my_app/christy.jpg" %}" alt="Christy" class="w3-round-xxlarge">-->
-        <!--<br/>-->
-      </div></section><br><br><br><br>
+    <br>
+    </section>
+    <br><br><br><br>
       <h1 class="title w3-center w3-padding-16 w3-margin-top">past rides.</h1>
       {% load static %}
       <img class="car" src="{% static "my_app/car_large.png" %}">
@@ -85,9 +73,7 @@
       {% load static %}
       <img class="car" src="{% static "my_app/car_large.png" %}">
       <section id="rides-list">
-        <!--<h2 class="subtitle w3-center w3-padding-16">past rides</h2>-->
         <ul>
-
           {% for key, values in closed_rides.items %}
           <li>
             <div class="box w3-container w3-padding-16 w3-center w3-myfont">
@@ -107,43 +93,26 @@
               <button onclick="location.href='{% url 'groupInfo' %}'" class="buttons" type="button">see more</button>
             </div>
           </li>
-          <br>
           {% endfor %}
-        </ul>
 
-      <!--&lt;!&ndash; third result &ndash;&gt;-->
-      <!--<div class="box w3-container w3-padding-16 w3-center w3-myfont">-->
-      <!--<p class="w3-center">from origin</p>-->
-      <!--<p class="w3-center">to destination</p>-->
-      <!--<p class="w3-center">date</p>-->
-      <!--<p class="w3-center">time</p>-->
-      <!--<p class="w3-center">riders:</p>-->
-        <!--{% load static %}-->
-        <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
-        <!--{% load static %}-->
-        <!--<img class="pic" src="{% static "my_app/christy.jpg" %}" alt="Christy" class="w3-round-xxlarge">-->
-        <!--{% load static %}-->
-        <!--<img class="pic" src="{% static "my_app/christy.jpg" %}" alt="Christy" class="w3-round-xxlarge">-->
-        <!--<br/>-->
-      <!--&lt;!&ndash;<button onclick="location.href='{% url 'groupInfo' %}'" class="buttons" type="button">see more</button>&ndash;&gt;-->
-    <!--</div><br>-->
-    <!--&lt;!&ndash; fourth result &ndash;&gt;-->
-      <!--<div class="box w3-container w3-padding-16 w3-center w3-myfont">-->
-      <!--<p class="w3-center">from origin</p>-->
-      <!--<p class="w3-center">to destination</p>-->
-      <!--<p class="w3-center">date</p>-->
-      <!--<p class="w3-center">time</p>-->
-      <!--<p class="w3-center">riders:</p>-->
-        <!--{% load static %}-->
-        <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
-        <!--{% load static %}-->
-        <!--<img class="pic" src="{% static "my_app/christy.jpg" %}" alt="Christy" class="w3-round-xxlarge">-->
-        <!--{% load static %}-->
-        <!--<img class="pic" src="{% static "my_app/christy.jpg" %}" alt="Christy" class="w3-round-xxlarge">-->
-        <!--{% load static %}-->
-        <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
-        <!--<br/>-->
-  <!--</div>-->
+          <!--{% for ride in rides %}-->
+          <!--<li>-->
+          <!--<div class="box w3-container w3-padding-16 w3-center w3-myfont">-->
+          <!--<p class="w3-center">-->
+          <!--</p>-->
+          <!--<p class="w3-center">-->
+          <!--depart from: {{ride.depart_from}} <br>-->
+          <!--destination: {{ride.destination}} <br>-->
+          <!--date: {{ride.date}} <br>-->
+          <!--</p>-->
+          <!--</div>-->
+          <!--</li>-->
+          <!--{% endfor %}-->
+        </ul>
+        <!--<h2 class="subtitle w3-center w3-padding-16">past rides</h2>-->
+      <!-- third result -->
+        <br>
+    <!-- fourth result -->
       </section>
 </div>
 </div>
