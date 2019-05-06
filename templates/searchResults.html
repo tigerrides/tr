@@ -33,7 +33,11 @@
           {% load static %}
           <img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">
           <br/>
-          <button onclick="location.href='{% url 'groupInfo' %}'" class="buttons" type="button">see more</button>
+          <form action="{% url 'groupInfo' %}" method="post" id="toGroupButton">
+            {% csrf_token %}
+            {{ form }}
+            <button class="buttons" name="rideId" value="{{ride.group_identifier}}" form="toGroupButton" type="submit">see more</button>
+          </form>
         </div>
       </li>
       {% endfor %}
