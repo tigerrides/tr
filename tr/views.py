@@ -81,7 +81,8 @@ def rideHistory(request):
 		closed_rides_dict[group_id] = InputRideInfo.objects.filter(group_identifier=group_id).values()
 		# closed_rides_dict[ride.id] = InputRideInfo.objects.filter(id=ride.id).values()
 	all_my_rides = InputRideInfo.objects.filter(user=request.user).values()
-	return render(request, 'rideHistory.html', {'rides': all_my_rides})
+	return render(request, 'rideHistory.html', {'open_rides': open_rides_dict,
+												'closed_rides': closed_rides_dict})
 
 @login_required
 def searchResults(request):
