@@ -37,6 +37,7 @@ def submit_ride(request):
                 instance.user_last_name = get_info.last_name
             instance.user = request.user
             instance.save()
+            print("saved")
         # form = forms.CreateProfile(request.POST, request.FILES)
         # if form.is_valid():
         #     form.save()
