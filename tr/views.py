@@ -55,6 +55,7 @@ def chooselogin(request):
 @login_required
 def currentprof(request):
 	login_infos = LogInInfo.objects.filter(user=request.user)
+	number_of_rides_completed
 	return render(request, 'currentprof.html', {'login_infos': login_infos})
 	# login_infos = LogInInfo.objects.filter(user=request.user)
 
@@ -74,15 +75,38 @@ def groupInfo(request):
 	# print(ride_id)
 	rideId = request.POST.get('rideId', None)
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
-	return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId})
+	for ride in ridesFiltered:
+		origin = ride['depart_from']
+		destination = ride['destination']
+		date = ride['date']
+		break
+	return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId,
+											  'origin': origin, 'destination' : destination,
+											  'date': date})
 
 @login_required
 def joinGroup(request):
 	# print("join group")
 	# print(my_ride_id)
+	all_my_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=True).values()
+	my_last_ride = all_my_rides.order_by('created').last()
+	my_last_ride_id = my_last_ride['group_identifier']
 	rideId = request.POST.get('rideId', None)
+	save_details = model_to_dict(InputRideInfo.objects.get(group_identifier=my_last_ride_id))
+	print("save_details")
+	print(save_details)
+	origin = save_details['depart_from']
+	destination = save_details['destination']
+	date = save_details['date']
+	update_ride = InputRideInfo.objects.filter(group_identifier=my_last_ride_id).update(group_identifier=rideId)
+	print("adding myself to the group")
+	print(update_ride)
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
-	return render(request, 'joinGroup.html')
+	print(ridesFiltered)
+
+	return render(request, 'joinGroup.html', {'rides_filt': ridesFiltered, 'single_ride': save_details,
+											  'origin': origin, 'destination' : destination,
+											  'date': date})
 
 @login_required
 def rideHistory(request):
@@ -122,16 +146,50 @@ def searchResults(request, ride_id):
 
 	print(values)
 	values_dict = {}
+	ride_info_per_ride = {}
 	for ride in values:
 		# print(ride['id'])
 		group_id = ride['group_identifier']
-		values_dict[group_id] = InputRideInfo.objects.filter(group_identifier=group_id).values()
+		# if a group with your user already exists
+		if InputRideInfo.objects.filter(group_identifier=group_id).filter(user=request.user).exists():
+			continue
+
+		# check to make sure all the riders in that group match with you
+		count = InputRideInfo.objects.filter(group_identifier=group_id).count()
+		count_with_time = InputRideInfo.objects.filter(group_identifier=group_id).filter(
+			time_start__lte=submitted_ride['time_end']
+		).filter(
+			time_end__gte=submitted_ride['time_start']
+		).count()
+		if count != count_with_time:
+			continue
+		# groups
+		info_dict = {}
+		all_matchings = InputRideInfo.objects.filter(group_identifier=group_id).values()
+		values_dict[group_id] = all_matchings
+		for save_ride in all_matchings:
+			print("origin")
+			print(save_ride['depart_from'])
+			print("dest")
+			print(save_ride['destination'])
+			print("date")
+			print(save_ride['date'])
+			info_dict['origin'] = save_ride['depart_from']
+			info_dict['destination'] = save_ride['destination']
+			info_dict['date'] = save_ride['date']
+			break
+		ride_info_per_ride[group_id] = info_dict
+
 
 	print(values_dict)
-	return render(request, 'searchResults.html', {'rides': values_dict, 'my_ride_id': ride_id})
+	return render(request, 'searchResults.html', {'rides': values_dict, 'my_ride_id': ride_id,
+												  'ride_infos': ride_info_per_ride})
 
 	# return render(request, 'searchResults.html', {'rides': values})
 
 @login_required
 def newRide(request):
 	return render(request, 'newride.html')
+
+def completeRide(request):
+	return render(request, 'completeRide.html')
