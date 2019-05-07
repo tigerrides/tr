@@ -11,6 +11,8 @@ from uniauth.decorators import login_required
 #?? these two 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from . import settings
 
 @login_required
 def createUser(request):
@@ -113,6 +115,12 @@ def joinGroup(request):
 	print(update_ride)
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
 	print(ridesFiltered)
+
+	subject = 'test'
+	message = 'testing123'
+	email_from = settings.EMAIL_HOST_SERVER
+	recipients = ['anabelle@princeton.edu',]
+	send_mail(subject, message, email_from, recipients)
 
 	return render(request, 'joinGroup.html', {'rides_filt': ridesFiltered, 'single_ride': save_details,
 											  'origin': origin, 'destination' : destination,
