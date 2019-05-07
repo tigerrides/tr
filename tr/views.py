@@ -75,7 +75,6 @@ def joinGroup(request):
 	my_last_ride = all_my_rides.order_by('created').last()
 	rideId = request.POST.get('rideId', None)
 	my_last_ride.update(group_identifier=rideId)
-	my_last_ride.save()
 	print("adding myself to the group")
 	print(my_last_ride)
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
