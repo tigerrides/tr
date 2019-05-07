@@ -223,7 +223,7 @@ def completeRide(request):
 
 def reloadRideHistory(request):
 	rideId = request.POST.get('rideId', None)
-	mark_as_complete = InputRideInfo.objects.filter(group_identifier=rideId).filter(request=request.user
+	InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user
 																					).update(ride_status_open=False)
 	return redirect('rideHistory')
 
