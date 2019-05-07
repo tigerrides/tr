@@ -100,6 +100,7 @@ def cas_profile_create(request):
     # }
 
     # create user
+    
     profile = LogInInfo(
         first_name="first",
         last_name="last",
@@ -107,6 +108,7 @@ def cas_profile_create(request):
         netid=netid
         )
         # get photos from url 
+    profile.save()
     image_url = 'https://www.princeton.edu/sites/default/files/styles/full_2x/public/images/2019/05/20190502_GoggleAI_DJA_044_2.jpg?itok=gsOp52yp'
     img_temp = NamedTemporaryFile(delete=True)
     img_temp.write(urlopen(image_url).read())
