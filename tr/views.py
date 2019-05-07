@@ -70,7 +70,14 @@ def groupInfo(request):
 	# print(ride_id)
 	rideId = request.POST.get('rideId', None)
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
-	return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId, 'val': 0, "check" : "yes"})
+	for ride in ridesFiltered:
+		origin = ride['depart_from']
+		destination = ride['destination']
+		date = ride['date']
+		break
+	return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId,
+											  'origin': origin, 'destination' : destination,
+											  'date': date})
 
 def joinGroup(request):
 	# print("join group")
@@ -135,8 +142,21 @@ def searchResults(request, ride_id):
 	for ride in values:
 		# print(ride['id'])
 		group_id = ride['group_identifier']
+		# if a group with your user already exists
 		if InputRideInfo.objects.filter(group_identifier=group_id).filter(user=request.user).exists():
 			continue
+
+		# check to make sure all the riders in that group match with you
+		count = InputRideInfo.objects.filter(group_identifier=group_id).count()
+		count_with_time = InputRideInfo.objects.filter(group_identifier=group_id).filter(
+			time_start__lte=submitted_ride['time_end']
+		).filter(
+			time_end__gte=submitted_ride['time_start']
+		).count()
+		if count != count_with_time:
+			continue
+
+		# groups
 		values_dict[group_id] = InputRideInfo.objects.filter(group_identifier=group_id).values()
 
 	print(values_dict)
