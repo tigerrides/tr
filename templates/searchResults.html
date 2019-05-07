@@ -35,14 +35,13 @@
           {% load static %}
           <img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">
           <br/>
-          <!--<form action="{% url 'groupInfo' %}" method="post" id="toGroupButton">-->
-            <!--{% csrf_token %}-->
-<!--            {{ form }}-->
-            <!--<button class="buttons" name="rideId" value="{{key}}"-->
-                    <!--form="toGroupButton" type="submit">see more</button>-->
-          <!--</form>-->
+          <form action="{% url 'groupInfo' %}" method="post" id="toGroupButton">
+            {% csrf_token %}
+            {{ form }}
+            <button class="buttons" name="rideId" value="{{key}}"
+                    form="toGroupButton" type="submit">see more</button>
+          </form>
           <a href="{% url 'searchResults' ride_id=key %}" class="shortcut bar-item w3-hover-none w3-button">home</a>
-          <!--<a href="{% url 'groupInfo' id=key %}" class="shortcut bar-item w3-hover-none w3-button">home</a>-->
         </div>
       </li>
       {% endfor %}
