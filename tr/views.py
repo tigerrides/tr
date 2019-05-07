@@ -81,6 +81,7 @@ def joinGroup(request):
 	rideId = request.POST.get('rideId', None)
 	save_details = InputRideInfo.objects.filter(group_identifier=my_last_ride_id)
 	print("save_details")
+	print(save_details)
 	update_ride = InputRideInfo.objects.filter(group_identifier=my_last_ride_id).update(group_identifier=rideId)
 	print("adding myself to the group")
 	print(update_ride)
