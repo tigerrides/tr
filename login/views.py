@@ -113,3 +113,5 @@ def cas_profile_create(request):
     img_temp.flush()
     profile.image.save(f"image_{netid}", File(img_temp))
     profile.save()
+
+    return redirect('currentprof')
