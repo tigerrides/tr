@@ -33,8 +33,6 @@ class InputRideInfo(models.Model):
     )
     netid = models.CharField(max_length=200, default="princeton")
 
-    netid = models.CharField(max_length=200, default="princeton")
-
     group_identifier = models.IntegerField(default=1)
 
     approved = models.BooleanField(default=False)
