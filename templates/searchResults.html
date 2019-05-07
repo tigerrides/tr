@@ -14,7 +14,6 @@
     <!-- first result -->
     <p></p>
     <!--<ol>-->
-     <p class="name">ride details:</p>
       {% for key, values in rides.items %}
       <!--<li>-->
         <div class="box w3-container w3-padding-16 w3-center w3-myfont">
@@ -27,7 +26,7 @@
             {% endfor %}
 
           {% for val in values %}
-            <p class="name">{{ val.user_first_name }} {{ val.user_last_name }} :</p>
+            {{ val.user_first_name }} {{ val.user_last_name }}:
             <p>{{ val.time_start }} --> {{ val.time_end }}</p>
             notes: <p>{{ val.notes}}</p>
 
