@@ -53,6 +53,7 @@ def chooselogin(request):
 @login_required
 def currentprof(request):
 	login_infos = LogInInfo.objects.filter(user=request.user)
+	number_of_rides_completed
 	return render(request, 'currentprof.html', {'login_infos': login_infos})
 	# login_infos = LogInInfo.objects.filter(user=request.user)
 
