@@ -110,17 +110,37 @@ def rideHistory(request):
 	closed_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).values()
 	open_rides_dict = {}
 	closed_rides_dict = {}
+	open_info_singular = {}
+	close_info_singular = {}
 	for ride in open_rides:
 		group_id = ride['group_identifier']
-		open_rides_dict[group_id] = InputRideInfo.objects.filter(group_identifier=group_id).values()
+		info_dict = {}
+		all_matchings = InputRideInfo.objects.filter(group_identifier=group_id).values()
+		open_rides_dict[group_id] = all_matchings
+		for save_ride in all_matchings:
+			info_dict['origin'] = save_ride['depart_from']
+			info_dict['destination'] = save_ride['destination']
+			info_dict['date'] = save_ride['date']
+			break
+		open_info_singular[group_id] = info_dict
 		# open_rides_dict[ride.id] = InputRideInfo.objects.filter(id=ride.id).values()
 	for ride in closed_rides:
 		group_id = ride['group_identifier']
-		closed_rides_dict[group_id] = InputRideInfo.objects.filter(group_identifier=group_id).values()
+		info_dict = {}
+		all_matchings = InputRideInfo.objects.filter(group_identifier=group_id).values()
+		closed_rides_dict[group_id] = all_matchings
+		for save_ride in all_matchings:
+			info_dict['origin'] = save_ride['depart_from']
+			info_dict['destination'] = save_ride['destination']
+			info_dict['date'] = save_ride['date']
+			break
+		close_info_singular[group_id] = info_dict
+		# closed_rides_dict[group_id] = InputRideInfo.objects.filter(group_identifier=group_id).values()
 		# closed_rides_dict[ride.id] = InputRideInfo.objects.filter(id=ride.id).values()
 	all_my_rides = InputRideInfo.objects.filter(user=request.user).values()
 	return render(request, 'rideHistory.html', {'open_rides': open_rides_dict,
-												'closed_rides': closed_rides_dict})
+												'closed_rides': closed_rides_dict, 'open_sing': open_info_singular,
+												'closed_sing': close_info_singular})
 
 @login_required
 def searchResults(request, ride_id):
@@ -190,6 +210,7 @@ def completeRide(request):
 	# print("group info")
 	# print(ride_id)
 	rideId = request.POST.get('rideId', None)
+	print("rideId")
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
 	for ride in ridesFiltered:
 		origin = ride['depart_from']
