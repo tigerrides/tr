@@ -254,6 +254,8 @@ def reloadRideHistory(request, which_one):
 		InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).update(ride_status_open=False)
 	elif which_one == 2:
 		my_ride = InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).values()
+		print("my ride")
+		print(my_ride)
 		id = my_ride['id']
 		InputRideInfo.objects.filter(id=id).update(group_identifier=val)
 	return redirect('rideHistory')
