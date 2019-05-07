@@ -17,9 +17,6 @@
       {% for key, values in rides.items %}
       <li>
         <div class="box w3-container w3-padding-16 w3-center w3-myfont">
-          <p class="w3-center">
-            {{ key }} {{value}}
-          </p>
           {% for val in values %}
           <p class="w3-center">
             depart from: {{val.depart_from}} <br>
@@ -32,6 +29,14 @@
           my ride id:
           {{ my_ride_id }}
           {% endfor %}
+
+            {% for k, v in ride_infos.items %}}
+            {% if k == key %}
+            test origin: {{ v.0 }}
+            test dest: {{ v.1 }}
+            test notes: {{ v.2 }}
+            {% endif %}
+            {% endfor %}
           {% load static %}
           <img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">
           <br/>
