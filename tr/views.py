@@ -135,3 +135,6 @@ def searchResults(request, ride_id):
 
 def newRide(request):
 	return render(request, 'newride.html')
+
+def completeRide(request):
+	return render(request, 'completeRide.html')
