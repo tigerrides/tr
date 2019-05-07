@@ -7,6 +7,7 @@ from django.conf import settings
 
 # Create your models here.
 class LogInInfo(models.Model):
+    netid = models.CharField(max_length=200, default="princeton")
     # user = models.ForeignKey(User)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -17,7 +18,7 @@ class LogInInfo(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     phone_number = models.CharField(max_length=20)
-    image = models.ImageField(upload_to='images/', null=True, verbose_name="")
+    image = models.ImageField(upload_to='images/', default="")
 
     # phone_number = models.BigIntegerField()
     # img = models.ImageField(default='default.png', blank=True)
