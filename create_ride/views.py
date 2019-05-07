@@ -31,10 +31,11 @@ def submit_ride(request):
 
         no = InputRideInfo.objects.count()
         val = 0
-        if no == None:
+        if no == 0:
             val = 1
         else:
-            val = no + 1
+            get_highest = InputRideInfo.objects.all().order_by('group_identifier').last()
+            val = get_highest.group_identifier + 1
 
         depart_from = request.POST["depart_from"]
         destination = request.POST["destination"]
@@ -61,6 +62,7 @@ def submit_ride(request):
                                         notes=notes,
                                         uber=uber,
                                         lyft=lyft,
+                                        netid="princeton",
                                         )
         input_ride_info.save()
 
