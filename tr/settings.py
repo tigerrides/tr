@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'uniauth',
     #'star_ratings',
 ]
 
@@ -171,6 +172,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 #PARSE database configuration from $DATABASE_URL
+#COMMENT THIS BACK 
 import dj_database_url
 DATABASE_URL = os.getenv('DATABASE_URL')
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
@@ -195,7 +197,15 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # for now it redirects to homepage after login, will change
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/home/'
+# UNIAUTH_LOGIN_DISPLAY_STANDARD = False
+# UNIAUTH_LOGOUT_CAS_COMPLETELY = True
 
 # specify path to media directory for user uploaded static data
-MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
-MEDIA_URL= "/media/"
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
+MEDIA_URL = '/media/'
+
+# # added for CAS authentication
+# AUTHENTICATION_BACKENDS = [
+#     'django.contrib.auth.backends.ModelBackend',
+#     'uniauth.backends.CASBackend',
+# ]
