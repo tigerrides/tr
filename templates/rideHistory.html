@@ -22,10 +22,10 @@
     {% load static %}
     <img class="car" src="{% static "my_app/car_large.png" %}">
     <section id="rides-list">
-      <ul>
+      <!--<ul>-->
 
         {% for key, values in open_rides.items %}
-        <li>
+        <!--<li>-->
         <div class="box w3-container w3-padding-16 w3-center w3-myfont">
           {% for k, v in open_sing.items %}
           {% if k == key %}
@@ -54,7 +54,7 @@
           </form>
           <!--<a href="{% url 'searchResults' ride_id=key %}" class="shortcut bar-item w3-hover-none w3-button">home</a>-->
         </div>
-        </li>
+        <!--</li>-->
         {% endfor %}
 
         <!--{% for key, values in open_rides.items %}-->
@@ -84,7 +84,7 @@
         <!--</li>-->
         <!--{% endfor %}-->
         <br>
-      </ul>
+      <!--</ul>-->
     </section>
 
   <h1 class="title w3-center w3-padding-16">past rides.</h1>
@@ -98,10 +98,10 @@
   {% load static %}
   <img class="car" src="{% static "my_app/car_large.png" %}">
   <section id="rides-list">
-    <ul>
+    <!--<ul>-->
 
       {% for key, values in closed_rides.items %}
-      <li>
+      <!--<li>-->
         <div class="box w3-container w3-padding-16 w3-center w3-myfont">
           {% for k, v in closed_sing.items %}
           {% if k == key %}
@@ -128,9 +128,16 @@
               see more or complete ride
             </button>
           </form>
+          <form action="{% url 'leaveRide' %}" method="post" id="toGroupButton">
+            {% csrf_token %}
+            {{ form }}
+            <button class="buttons" name="rideId" value="{{ key }}" form="toGroupButton" type="submit">
+              leave ride
+            </button>
+          </form>
           <!--<a href="{% url 'searchResults' ride_id=key %}" class="shortcut bar-item w3-hover-none w3-button">home</a>-->
         </div>
-      </li>
+      <!--</li>-->
       {% endfor %}
 
       <!--{% for key, values in closed_rides.items %}-->
@@ -159,7 +166,7 @@
       <!--</li>-->
       <!--{% endfor %}-->
       <br>
-    </ul>
+    <!--</ul>-->
   </section>
 </div>
 </div>

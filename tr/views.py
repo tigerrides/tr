@@ -54,6 +54,8 @@ def chooselogin(request):
 def currentprof(request):
 	login_infos = LogInInfo.objects.filter(user=request.user)
 	# number_of_rides_completed = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count()
+	print("rides comp")
+	print(InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count())
 	return render(request, 'currentprof.html', {'login_infos': login_infos,
 												# 'number_of_rides': number_of_rides_completed
 												})
@@ -221,11 +223,35 @@ def completeRide(request):
 											  'origin': origin, 'destination' : destination,
 											  'date': date})
 
-def reloadRideHistory(request):
+def reloadRideHistory(request, which_one):
+    no = InputRideInfo.objects.count()
+    val = 0
+    if no == 0:
+        val = 1
+    else:
+        get_highest = InputRideInfo.objects.all().order_by('group_identifier').last()
+        val = get_highest.group_identifier + 1
 	rideId = request.POST.get('rideId', None)
-	InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user
-																					).update(ride_status_open=False)
+    if which_one == 1:
+	    InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).update(ride_status_open=False)
+    elif which_one == 2:
+        my_ride = InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).values()
+        id = my_ride.id
+        InputRideInfo.objects.filter(id=id).update(group_identifier=val)
 	return redirect('rideHistory')
+
+def leaveRide(request):
+    rideId = request.POST.get('rideId', None)
+    print("rideId")
+    ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
+    for ride in ridesFiltered:
+        origin = ride['depart_from']
+        destination = ride['destination']
+        date = ride['date']
+        break
+    return render(request, 'completeRide.html', {'rides': ridesFiltered, 'rideId': rideId,
+                                                 'origin': origin, 'destination' : destination,
+                                                 'date': date})
 
 # def completeRide(request):
 # 	return render(request, 'completeRide.html')
