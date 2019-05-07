@@ -11,7 +11,7 @@ from datetime import datetime
 from django.core.files import File
 import os
 # for getting image from url 
-from urllib import urlretrieve
+from urllib.request import urlretrieve
 
 # Create your views here.
 
