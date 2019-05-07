@@ -9,8 +9,8 @@ from base64 import b64encode
 from datetime import datetime
 # imports needed to get photo from url 
 from django.core.files import File
-from urllib import request
-import os
+from urllib.request import urlopen
+from tempfile import NamedTemporaryFile
 
 # Create your views here.
 
@@ -80,6 +80,7 @@ def cas_profile_create(request):
     # get netid from user 
     userName = request.user.username
     arr = userName.split('-')
+    netid = arr[2]
     print("netid hopefully is: " + arr[2])
 
     # get password key
@@ -87,7 +88,7 @@ def cas_profile_create(request):
     key = "8f1ca00610987bcd533f1d067f333b2c"
 
     # set up headers for tigerbook api 
-    url = 'https://tigerbook.herokuapp.com/api/v1/undergraduates/' + arr[2]
+    url = 'https://tigerbook.herokuapp.com/api/v1/undergraduates/' + netid
     # created = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
     # nonce = ''.join([random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/=') for i in range(32)])
     # username = 'christyl'
@@ -103,13 +104,12 @@ def cas_profile_create(request):
         first_name="first",
         last_name="last",
         phone_number=phone,
-        netid=arr[2]
+        netid=netid
         )
         # get photos from url 
     image_url = 'https://www.princeton.edu/sites/default/files/styles/full_2x/public/images/2019/05/20190502_GoggleAI_DJA_044_2.jpg?itok=gsOp52yp'
-    result = request.urlretrieve(image_url)
-    profile.image.save(
-        os.path.basename(image_url),
-        File(open(result[0], 'rb'))
-        )
+    img_temp = NamedTemporaryFile(delete=True)
+    img_temp.write(urlopen(image_url).read())
+    img_temp.flush()
+    profile.image_file.save(f"image_{netid}", File(img_temp))
     profile.save()
