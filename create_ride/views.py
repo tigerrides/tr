@@ -31,7 +31,7 @@ def submit_ride(request):
 
         no = InputRideInfo.objects.count()
         val = 0
-        if no == None:
+        if no == 0:
             val = 1
         else:
             get_highest = InputRideInfo.objects.all().order_by('group_identifier').last()
