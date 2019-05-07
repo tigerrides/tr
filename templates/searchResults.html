@@ -32,9 +32,8 @@
 
             {% for k, v in ride_infos.items %}}
             {% if k == key %}
-            test origin: {{ v.0 }}
-            test dest: {{ v.1 }}
-            test notes: {{ v.2 }}
+            {% for k1, v1 in v.items %}
+            test: {{k1}} {{v1}}
             {% endif %}
             {% endfor %}
           {% load static %}
