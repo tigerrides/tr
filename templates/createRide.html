@@ -14,15 +14,17 @@
     <form action="{% url 'submit_ride' %}" method="post">
         {% csrf_token %}
         {{ form }}
-        <p class="prompt">depart from:</p><br>
-        <select name="depart_from" class="dropdown">
+        <p class="prompt">origin:</p><br>
+<div class="styled-select pink rounded">
+  <select name="depart_from">
+        <!--<select name="depart_from" class="dropdown">-->
             <option value="EWR" selected>ewr</option>
             <option value="PHL">phl</option>
             <option value="JFK">jfk</option>
             <option value="campus">princeton</option>
-        </select> <br>
+        </select> </div><br>
         <p class="prompt">destination:</p><br>
-<div class="styled-select black rounded">
+<div class="styled-select pink rounded">
   <select name="destination">
         <!--<select name="destination" class="dropdown">-->
             <option value="EWR" selected>ewr</option>
