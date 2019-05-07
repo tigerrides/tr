@@ -159,7 +159,11 @@ def rideHistory(request):
 @login_required
 def searchResults(request, ride_id):
 	# submitted_ride = model_to_dict(InputRideInfo.objects.all().order_by('created').last())
-	submitted_ride = model_to_dict(InputRideInfo.objects.get(group_identifier=ride_id))
+        try:
+            submitted_ride = model_to_dict(InputRideInfo.objects.get(group_identifier=ride_id))
+        except MultipleObjectsReturned:
+            return render(request, 'joinGroup2.html')
+
 	print("is this the right ride_id")
 	print(ride_id)
 	print("my most recent submitted_ride")
