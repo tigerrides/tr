@@ -52,6 +52,13 @@
               see more or complete ride
             </button>
           </form>
+          <form action="{% url 'leaveRide' %}" method="post" id="toGroupButton">
+            {% csrf_token %}
+            {{ form }}
+            <button class="buttons" name="rideId" value="{{ key }}" form="toGroupButton" type="submit">
+              leave ride
+            </button>
+          </form>
           <!--<a href="{% url 'searchResults' ride_id=key %}" class="shortcut bar-item w3-hover-none w3-button">home</a>-->
         </div>
         <!--</li>-->
@@ -128,13 +135,7 @@
               see more or complete ride
             </button>
           </form>
-          <form action="{% url 'leaveRide' %}" method="post" id="toGroupButton">
-            {% csrf_token %}
-            {{ form }}
-            <button class="buttons" name="rideId" value="{{ key }}" form="toGroupButton" type="submit">
-              leave ride
-            </button>
-          </form>
+
           <!--<a href="{% url 'searchResults' ride_id=key %}" class="shortcut bar-item w3-hover-none w3-button">home</a>-->
         </div>
       <!--</li>-->
