@@ -13,14 +13,14 @@
     <h1 class="title w3-center w3-padding-16">here r sum potential ride buddies 4 u !</h1>
     <!-- first result -->
     <p></p>
-    <ol>
+    <!--<ol>-->
       {% for key, values in rides.items %}
-      <li>
+      <!--<li>-->
         <div class="box w3-container w3-padding-16 w3-center w3-myfont">
-            {% for k, v in ride_infos.items %}}
+            {% for k, v in ride_infos.items %}
             {% if k == key %}
             {% for k1, v1 in v.items %}
-            {{k1}}: <p>{{v1}}</p> <br>
+            {{k1}}: <p>{{v1}}</p>
             {% endfor %}
             {% endif %}
             {% endfor %}
@@ -28,10 +28,8 @@
           {% for val in values %}
           <p class="w3-center">riders:</p>
           {{ val.user_first_name }} {{ val.user_last_name }}
-            <p class="w3-center">
-                notes: {{val.notes}} <br>
-            </p>
-          {% endfor %}
+            <p class="w3-center">notes:</p> {{val.notes}}
+            {% endfor %}
 
 
           {% load static %}
@@ -45,7 +43,7 @@
           </form>
           <!--<a href="{% url 'searchResults' ride_id=key %}" class="shortcut bar-item w3-hover-none w3-button">home</a>-->
         </div>
-      </li>
+      <!--</li>-->
       {% endfor %}
       <!--{% for ride in rides %}-->
       <!--<li>-->
@@ -67,7 +65,7 @@
         <!--</div>-->
       <!--</li>-->
       <!--{% endfor %}-->
-    </ol>
+    <!--</ol>-->
     <br/>
 </div>
 </div>
