@@ -5,10 +5,13 @@ from login.models import LogInInfo
 from django.db.models import Q
 from django.http import HttpResponse
 from .forms import UserForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate
+# , login
 from django.contrib.auth.models import User
 from create_ride.models import InputRideInfo
 from django.template import Context
+from uniauth.decorators import login_required
+
 
 def createUser(request):
 	if request.method == "POST":
@@ -40,6 +43,7 @@ def index(request):
 def home(request):
     return render(request, 'home.html')
 
+@login_required
 def welcome(request):
     return render(request, 'welcome.html')
 
