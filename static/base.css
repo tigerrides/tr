@@ -120,6 +120,7 @@ html *:after {
   position: relative;
   display: inline-block;
   overflow: hidden;
+  overflow-wrap: break-word;
   width: 100%;
   height: 60px;
   max-width: 200px;
