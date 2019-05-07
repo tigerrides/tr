@@ -39,18 +39,18 @@ def login(request):
 def index(request):
 	if request.user.is_authenticated:
 		return render(request, 'home.html')
-    # return HttpResponse("welcome.html")
+	# return HttpResponse("welcome.html")
 	return render(request, 'welcome.html')
 
 @login_required
 def home(request):
-    return render(request, 'home.html')
+	return render(request, 'home.html')
 
 def welcome(request):
 	return render(request, 'welcome.html')
 
 def chooselogin(request):
-    return render(request, 'chooseLogin.html')
+	return render(request, 'chooseLogin.html')
 
 @login_required
 def currentprof(request):
@@ -98,13 +98,11 @@ def joinGroup(request):
 	my_last_ride = all_my_rides.order_by('created').last()
 	my_last_ride_id = my_last_ride['group_identifier']
 	rideId = request.POST.get('rideId', None)
-	
-        try:
-            save_details = model_to_dict(InputRideInfo.objects.get(group_identifier=my_last_ride_id))
-        except MultipleObjectsReturned:
-            return render(request, 'joinGroup2.html')
-
-        print("save_details")
+	try:
+		save_details = model_to_dict(InputRideInfo.objects.get(group_identifier=my_last_ride_id))
+	except MultipleObjectsReturned:
+		return render(request, 'joinGroup2.html')
+	print("save_details")
 	print(save_details)
 	origin = save_details['depart_from']
 	destination = save_details['destination']
@@ -160,7 +158,11 @@ def rideHistory(request):
 @login_required
 def searchResults(request, ride_id):
 	# submitted_ride = model_to_dict(InputRideInfo.objects.all().order_by('created').last())
-	submitted_ride = model_to_dict(InputRideInfo.objects.get(group_identifier=ride_id))
+	try:
+		submitted_ride = model_to_dict(InputRideInfo.objects.get(group_identifier=ride_id))
+	except MultipleObjectsReturned:
+		return render(request, 'joinGroup2.html')
+
 	print("is this the right ride_id")
 	print(ride_id)
 	print("my most recent submitted_ride")
@@ -252,7 +254,7 @@ def reloadRideHistory(request, which_one):
 		InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).update(ride_status_open=False)
 	elif which_one == 2:
 		my_ride = InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).values()
-		id = my_ride.id
+		id = my_ride['id']
 		InputRideInfo.objects.filter(id=id).update(group_identifier=val)
 	return redirect('rideHistory')
 
