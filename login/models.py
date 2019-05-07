@@ -7,6 +7,7 @@ from django.conf import settings
 
 # Create your models here.
 class LogInInfo(models.Model):
+    netid = models.CharField(max_length=200, default="princeton")
     # user = models.ForeignKey(User)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,

@@ -32,7 +32,13 @@ class InputRideInfo(models.Model):
         (campus, "princeton")
     )
 
+    netid = models.CharField(max_length=200, default="princeton")
+
     group_identifier = models.IntegerField(default=1)
+
+    approved = models.BooleanField(default=False)
+    completed = models.BooleanField(default=False)
+
 
     user_first_name = models.CharField(max_length=200, default="first")
     user_last_name = models.CharField(max_length=200, default="last")

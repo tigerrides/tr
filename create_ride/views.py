@@ -34,7 +34,8 @@ def submit_ride(request):
         if no == None:
             val = 1
         else:
-            val = no + 1
+            get_highest = InputRideInfo.objects.all().order_by('group_identifier').last()
+            val = get_highest.group_identifier + 1
 
         depart_from = request.POST["depart_from"]
         destination = request.POST["destination"]
