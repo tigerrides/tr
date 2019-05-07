@@ -194,6 +194,7 @@ word-wrap: break-word;
 .stuff {
   position: relative;
   display: inline-block;
+  transition: 0s ease-in-out;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }

@@ -22,7 +22,7 @@
 <body class="w3-content w3-myfont" style="max-width:1300px">
 
 <div class="w3-top">
-  <div class="w3-bar w3-text-white" id="myNavbar">
+  <div class="w3-bar w3-text-white bar" id="myNavbar">
     <a href="{% url 'home' %}" class="icon w3-hover-none w3-bar-item">tiger<br/>ride.</a>
     <!-- Right-sided navbar links -->
     <div class="w3-right w3-hide-small">
@@ -39,7 +39,9 @@
        <a href="{% url 'currentprof' %}" class="shortcut bar-item w3-hover-none w3-button">profile</a>
      </div>
       {% if user.is_authenticated %}
+      <div class="stuff">
       <a href="{% url 'logout' %}" class="shortcut bar-item w3-hover-none w3-button">logout</a>
+    </div>
       {% endif %}
     </div>
     <!-- Hide right-floated links on small screens and replace them with a menu icon -->
