@@ -61,7 +61,7 @@ def contact(request):
 def createRide(request):
 	return render(request, 'createRide.html')
 
-def groupInfo(request, ride_id=1):
+def groupInfo(request):
 	# print("group info")
 	# print(ride_id)
 	rideId = request.POST.get('rideId', None)
