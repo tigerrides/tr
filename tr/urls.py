@@ -34,14 +34,14 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     # path('createRide/', views.createRide, name='createRide'),
     # path('groupInfo/', views.groupInfo, name='groupInfo'),
-    path('groupInfo/<ride_id>/', views.groupInfo, name='groupInfo'),
+    path('groupInfo/<int:ride_id>/', views.groupInfo, name='groupInfo'),
     path('joinGroup/', views.joinGroup, name='joinGroup'),
     path('rideHistory/', views.rideHistory, name='rideHistory'),
 #<<<<<<< HEAD
     #path('searchResults/', views.searchResults, name='searchResults'),
     path(r'^see_rides$', include('create_ride.urls'), name='see_rides'),
     path('newride/', views.newRide, name='newRide'),
-    path(r'^searchResults/(?P<ride_id>[-\w]+)/$', views.searchResults, name='searchResults'),
+    path(r'^searchResults/(?P<int:ride_id>[-\w]+)/$', views.searchResults, name='searchResults'),
 
          # 'searchResults/', views.searchResults, name='searchResults'),
 
