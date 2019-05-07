@@ -102,10 +102,11 @@ def cas_profile_create(request):
     # create user
     
     profile = LogInInfo(
+        user=request.user,
         first_name="first",
         last_name="last",
         phone_number=phone,
-        netid=netid
+        netid=netid,
         )
         # get photos from url 
     profile.save()
