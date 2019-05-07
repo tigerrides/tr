@@ -232,6 +232,8 @@ def reloadRideHistory(request, which_one):
 		get_highest = InputRideInfo.objects.all().order_by('group_identifier').last()
 		val = get_highest.group_identifier + 1
 	rideId = request.POST.get('rideId', None)
+	print("which one")
+	print(which_one)
 	if which_one == 1:
 		InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).update(ride_status_open=False)
 	elif which_one == 2:
@@ -249,7 +251,7 @@ def leaveRide(request):
 		destination = ride['destination']
 		date = ride['date']
 		break
-	return render(request, 'completeRide.html', {'rides': ridesFiltered, 'rideId': rideId,
+	return render(request, 'leaveRide.html', {'rides': ridesFiltered, 'rideId': rideId,
                                                  'origin': origin, 'destination' : destination,
                                                  'date': date})
 
