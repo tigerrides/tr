@@ -41,7 +41,7 @@ urlpatterns = [
     # path('groupInfo/', views.groupInfo, name='groupInfo'),
     path('joinGroup/', views.joinGroup, name='joinGroup'),
     path('rideHistory/', views.rideHistory, name='rideHistory'),
-    path('leaveride/', views.leaveRide, name='leaveRide'),
+    path('leaveRide/', views.leaveRide, name='leaveRide'),
 #<<<<<<< HEAD
     #path('searchResults/', views.searchResults, name='searchResults'),
     path(r'^see_rides$', include('create_ride.urls'), name='see_rides'),
