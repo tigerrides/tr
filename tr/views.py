@@ -264,8 +264,6 @@ def reloadRideHistory(request, which_one):
 		get_highest = InputRideInfo.objects.all().order_by('group_identifier').last()
 		val = get_highest.group_identifier + 1
 	rideId = request.POST.get('rideId', None)
-	print("which one")
-	print(which_one)
 	if which_one == 1:
 		InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).update(ride_status_open=False)
 	elif which_one == 2:
@@ -274,7 +272,26 @@ def reloadRideHistory(request, which_one):
 		print(my_ride)
 		for ride in my_ride:
 			id = ride['id']
+			me_fn = ride['user_first_name']
+			me_ln = ride['user_last_name']
 		InputRideInfo.objects.filter(id=id).update(group_identifier=val)
+		other_riders = InputRideInfo.objects.filter(group_identifier=rideId)
+		subject = 'TigerRide Trip Update'
+		email_from = settings.EMAIL_HOST_USER
+		recipient_list = []
+		for rides in other_riders:
+			netid = rides['netid']
+			email = netid + '@princeton.edu'
+			recipient_list.append(email)
+			origin = rides['depart_from']
+			destination = rides['destination']
+			date = rides['date']
+		message = 'Dear TigerRider, \n\n' \
+				  '%s %s has left your group for your trip scheduled from %s to %s on %s. \n\n' \
+				  'Safe travels! \n\n' \
+				  'TigerRide' % (me_fn, me_ln, origin, destination, date)
+		send_mail(subject, message, email_from, recipient_list)
+
 	return redirect('rideHistory')
 
 def leaveRide(request):
