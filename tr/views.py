@@ -99,6 +99,11 @@ def joinGroup(request):
 	my_last_ride_id = my_last_ride['group_identifier']
 	rideId = request.POST.get('rideId', None)
 	save_details = model_to_dict(InputRideInfo.objects.filter(group_identifier=my_last_ride_id).order_by('id').first())
+	try:
+		InputRideInfo.objects.get(group_identifier=my_last_ride_id)
+	except InputRideInfo.MultipleObjectsReturned:
+		return render(request, 'joinGroup2.html')
+	save_details = model_to_dict(InputRideInfo.objects.get(group_identifier=my_last_ride_id))
 	print("save_details")
 	print(save_details)
 	origin = save_details['depart_from']
@@ -157,6 +162,11 @@ def searchResults(request, ride_id):
 	# submitted_ride = model_to_dict(InputRideInfo.objects.all().order_by('created').last())
 	submitted_ride = model_to_dict(InputRideInfo.objects.filter(group_identifier=ride_id).order_by('id').first())
 
+	try:
+		InputRideInfo.objects.get(group_identifier=ride_id)
+	except InputRideInfo.MultipleObjectsReturned:
+		return render(request, 'joinGroup2.html')
+	submitted_ride = model_to_dict(InputRideInfo.objects.get(group_identifier=ride_id))
 	print("is this the right ride_id")
 	print(ride_id)
 	print("my most recent submitted_ride")
@@ -248,7 +258,10 @@ def reloadRideHistory(request, which_one):
 		InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).update(ride_status_open=False)
 	elif which_one == 2:
 		my_ride = InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).values()
-		id = my_ride['id']
+		print("my ride")
+		print(my_ride)
+		for ride in my_ride:
+			id = ride['id']
 		InputRideInfo.objects.filter(id=id).update(group_identifier=val)
 	return redirect('rideHistory')
 

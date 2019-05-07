@@ -11,18 +11,20 @@
   <div class="w3-display-center w3-text-white" style="padding:5%">
     <h1 class="title w3-center">are you sure you would like to leave this ride?</h1>
 
-    ride details:
+    <p class="name">ride details:</p>
     <p>origin: {{ origin }}</p>
     <p>destination: {{ destination }}</p>
     <p>date: {{ date }}</p>
 
     {% for ride in rides %}
     <div class="w3-padding-36 w3-center w3-myfont">
-      <!--{% with val="no" %} {% endwith %}}-->
-      <p class="w3-center">Rider: {{ride.user_first_name}} {{ride.user_last_name}}</p>
-      <p class="w3-center">Time Frame: {{ ride.time_start }} --> {{ ride.time_end }}</p>
-      <p class="w3-center">Notes: {{ ride.notes }}</p>
-      <p class="w3-center">Has Uber: {{ ride.uber }}, Has Lift: {{ ride.lyft }}</p>
+      <p class="name">{{ ride.user_first_name }} {{ ride.user_last_name }}:</p>
+      <p>{{ ride.time_start }} --> {{ ride.time_end }}</p>
+      notes: <p>{{ ride.notes}}</p>
+      <!--<p class="w3-center">Rider: {{ride.user_first_name}} {{ride.user_last_name}}</p>-->
+      <!--<p class="w3-center">Time Frame: {{ ride.time_start }} &ndash;&gt; {{ ride.time_end }}</p>-->
+      <!--<p class="w3-center">Notes: {{ ride.notes }}</p>-->
+      <!--<p class="w3-center">Has Uber: {{ ride.uber }}, Has Lyft: {{ ride.lyft }}</p>-->
 
       <!--   <div class="buddy w3-container w3-center">
           {% load static %}
@@ -35,7 +37,7 @@
       <form action="{% url 'reloadRideHistory' 2 %}" method="post" id="toGroupButton">
         {% csrf_token %}
         {{ form }}
-        <button class="buttons" name="rideId" value="{{rideId}}" form="toGroupButton" type="submit">left!</button>
+        <button class="buttons" name="rideId" value="{{rideId}}" form="toGroupButton" type="submit">leave!</button>
       </form>
       </div>
       <!--<div class="buddy w3-container w3-center">

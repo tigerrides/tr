@@ -36,9 +36,9 @@
           {% endfor %}
 
           {% for val in values %}
-          <p class="w3-center">riders:</p>
-          {{ val.user_first_name }} {{ val.user_last_name }}
-          <p class="w3-center">notes:</p> {{val.notes}}
+          {{ val.user_first_name }} {{ val.user_last_name }}:
+          <p>{{ val.time_start }} --> {{ val.time_end }}</p>
+          notes: <p>{{ val.notes}}</p>
           {% endfor %}
 
 
@@ -120,9 +120,9 @@
           {% endfor %}
 
           {% for val in values %}
-          <p class="w3-center">riders:</p>
-          {{ val.user_first_name }} {{ val.user_last_name }}
-          <p class="w3-center">notes:</p> {{val.notes}}
+          {{ val.user_first_name }} {{ val.user_last_name }}:
+          <p>{{ val.time_start }} --> {{ val.time_end }}</p>
+          notes: <p>{{ val.notes}}</p>
           {% endfor %}
 
 

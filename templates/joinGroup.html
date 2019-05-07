@@ -17,7 +17,7 @@
       <p>date: {{ date }}</p>
       
       {% for ride in rides_filt %}
-      <h2>{ ride.user_first_name}} :</h2> 
+      <p class="name">{{ ride.user_first_name }} {{ ride.user_last_name }}:</p>
       <p>{{ ride.time_start }} --> {{ ride.time_end }}</p>
       notes: <p>{{ ride.notes}}</p>
       {% endfor %}
