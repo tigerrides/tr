@@ -164,9 +164,9 @@ def searchResults(request, ride_id):
 			print(save_ride['depart_from'])
 			print(save_ride['destination'])
 			print(save_ride['date'])
-			info_dict['origin'] = save_ride['depart_from']
-			info_dict['destination'] = save_ride['destination']
-			info_dict['date'] = save_ride['date']
+			# info_dict['origin'] = save_ride['depart_from']
+			# info_dict['destination'] = save_ride['destination']
+			# info_dict['date'] = save_ride['date']
 			break
 		ride_info_per_ride[group_id] = info_dict
 
