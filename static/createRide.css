@@ -114,26 +114,29 @@
 
 input[type=text] {
     display: inline-block;
-
-    width: 250px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
     border: 1px solid white;
     border-radius: 2px;
     /*border-;*/
+    height: 29px;
+   overflow: hidden;
+   width: 240px;
 }
 
 
 input[type=time] {
     margin: 0 auto;
-    width: 250px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
     border: 1px solid white;
     border-radius: 2px;
     /*border-;*/
+    height: 29px;
+   overflow: hidden;
+   width: 240px;
 }
 
 textarea {
@@ -159,13 +162,15 @@ input[type=date] {
     display: inline-block;
 
     margin: 0 auto;
-    width: 250px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
     border: 1px solid white;
     border-radius: 2px;
     /*border-;*/
+   height: 29px;
+   overflow: hidden;
+   width: 240px;
 }
 
 input:hover {
@@ -245,7 +250,6 @@ form {
    width: 240px;
     display: inline-block;
     margin: 0 auto;
-    width: 250px;
 }
 
 .styled-select select {
@@ -264,7 +268,7 @@ form {
 }
 
 .styled-select.slate select {
-   border: 1px solid #ccc;
+   border: 1px solid white;
    font-size: 16px;
    height: 34px;
    width: 268px;
