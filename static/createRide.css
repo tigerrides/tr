@@ -141,7 +141,7 @@ input[type=time] {
 textarea {
 
     margin: 0 auto;
-    width: 250px;
+    width: 240px;
     /*width: 80%;
     margin:auto;*/
     /*box-sizing: border-box;*/
@@ -150,6 +150,7 @@ textarea {
     border: 1px solid #E59393;
     border-radius: 2px;
     font-size: 12px;
+    overflow: hidden;
 }
 
 textarea:hover {
