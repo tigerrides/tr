@@ -26,24 +26,24 @@
       <ul>
 
         {% for key, values in open_rides.items %}
-        <li>
-          <div class="box w3-container w3-padding-16 w3-center w3-myfont">
-            {% for val in values %}
-            <p class="w3-center">
-              depart from: {{val.depart_from}} <br>
-              destination: {{val.destination}} <br>
-              date: {{val.date}} <br>
-              notes: {{val.notes}} <br>
-            </p>
-            <p class="w3-center">riders:</p>
-            {{ val.user_first_name }} {{ val.user_last_name }}
-            {% endfor %}
-            {% load static %}
-            <img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">
-            <br/>
-            <button onclick="location.href='{% url 'groupInfo' %}'" class="buttons" type="button">see more</button>
-          </div>
-        </li>
+        <!--<li>-->
+          <!--<div class="box w3-container w3-padding-16 w3-center w3-myfont">-->
+            <!--{% for val in values %}-->
+            <!--<p class="w3-center">-->
+              <!--depart from: {{val.depart_from}} <br>-->
+              <!--destination: {{val.destination}} <br>-->
+              <!--date: {{val.date}} <br>-->
+              <!--notes: {{val.notes}} <br>-->
+            <!--</p>-->
+            <!--<p class="w3-center">riders:</p>-->
+            <!--{{ val.user_first_name }} {{ val.user_last_name }}-->
+            <!--{% endfor %}-->
+            <!--{% load static %}-->
+            <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
+            <!--<br/>-->
+            <!--<button onclick="location.href='{% url 'groupInfo' %}'" class="buttons" type="button">see more</button>-->
+          <!--</div>-->
+        <!--</li>-->
         {% endfor %}
         <br>
       </ul>
