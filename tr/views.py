@@ -117,12 +117,9 @@ def joinGroup(request):
 	print(ridesFiltered)
 
 	subject = 'TigerRide Group for %s' % date
-	message = 'Dear TigerRider, ' \
-			  '' \
-			  'Your trip is scheduled from %s to %s on %s.' \
-			  '' \
-			  'Safe travels!' \
-			  '' \
+	message = 'Dear TigerRider, \n\n' \
+			  'Your trip is scheduled from %s to %s on %s. \n\n' \
+			  'Safe travels! \n\n' \
 			  'TigerRide' % (origin, destination, date)
 	email_from = settings.EMAIL_HOST_USER
 	recipient_list = []
@@ -130,8 +127,6 @@ def joinGroup(request):
 		netid = rides['netid']
 		email = netid + '@princeton.edu'
 		recipient_list.append(email)
-
-	recipients = ['anabelle@princeton.edu', 'christyl@princeton.edu',]
 	send_mail(subject, message, email_from, recipient_list)
 
 	return render(request, 'joinGroup.html', {'rides_filt': ridesFiltered, 'single_ride': save_details,
