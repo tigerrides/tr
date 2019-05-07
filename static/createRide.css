@@ -285,9 +285,14 @@ form {
 .pink select   { color: white; }
 
 .styled-field {
-   height: 29px;
-   overflow: hidden;
-   width: 240px;
     display: inline-block;
-    margin: 0 auto;
+    /*box-sizing: border-box;*/
+    padding: 5px;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 2px;
+    /*border-;*/
+    height: 29px;
+    overflow: hidden;
+     width: 240px;
 }
