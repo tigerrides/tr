@@ -83,3 +83,10 @@ line-height: 2pt;
 font-size: 10pt;
   align-content: center;
 }
+
+.name {
+    color: #A55858;
+    font-weight: 700;
+    text-decoration: underline;
+    font-size: 20px;
+}

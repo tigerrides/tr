@@ -17,10 +17,11 @@
     {% for ride in rides %}
     <div class="w3-padding-36 w3-center w3-myfont">
       <!--{% with val="no" %} {% endwith %}}-->
-      <h2>{{ ride.user_first_name}} :</h2>
+      <p class="name">{{ ride.user_first_name }} {{ ride.user_last_name }}:</p>
       <p>{{ ride.time_start }} --> {{ ride.time_end }}</p>
       notes: <p>{{ ride.notes}}</p>
-      has uber: <p class="w3-center">{{ ride.uber }}</p>, has lyft: <p> {{ ride.lyft }}</p>
+      has uber: <p class="w3-center">{{ ride.uber }}</p>
+      has lyft: <p> {{ ride.lyft }}</p>
 
       <!--<p class="w3-center">Rider: {{ride.user_first_name}} {{ride.user_last_name}}</p>-->
       <!--<p class="w3-center">Time Frame: {{ ride.time_start }} &ndash;&gt; {{ ride.time_end }}</p>-->
