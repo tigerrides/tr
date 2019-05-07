@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.forms.models import model_to_dict
 from django.contrib.auth.decorators import login_required
 from login.models import LogInInfo
@@ -53,8 +53,10 @@ def chooselogin(request):
 @login_required
 def currentprof(request):
 	login_infos = LogInInfo.objects.filter(user=request.user)
-	number_of_rides_completed = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count()
-	return render(request, 'currentprof.html', {'login_infos': login_infos})
+	# number_of_rides_completed = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count()
+	return render(request, 'currentprof.html', {'login_infos': login_infos,
+												# 'number_of_rides': number_of_rides_completed
+												})
 	# login_infos = LogInInfo.objects.filter(user=request.user)
 
 def about(request):
@@ -185,4 +187,24 @@ def newRide(request):
 	return render(request, 'newride.html')
 
 def completeRide(request):
-	return render(request, 'completeRide.html')
+	# print("group info")
+	# print(ride_id)
+	rideId = request.POST.get('rideId', None)
+	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
+	for ride in ridesFiltered:
+		origin = ride['depart_from']
+		destination = ride['destination']
+		date = ride['date']
+		break
+	return render(request, 'completeRide.html', {'rides': ridesFiltered, 'rideId': rideId,
+											  'origin': origin, 'destination' : destination,
+											  'date': date})
+
+def reloadRideHistory(request):
+	rideId = request.POST.get('rideId', None)
+	mark_as_complete = InputRideInfo.objects.filter(group_identifier=rideId).filter(request=request.user
+																					).update(ride_status_open=False)
+	return redirect('rideHistory')
+
+# def completeRide(request):
+# 	return render(request, 'completeRide.html')
