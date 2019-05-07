@@ -15,6 +15,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet">
     {% load static %}
     <link rel="shortcut icon" type="image/png" href="{% static "my_app/favicon.png" %}"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/typed.js/1.1.4/typed.min.js"></script>
     {% block stylesheet %}
     {% endblock %}
 </head>
@@ -89,5 +91,25 @@ function w3_close() {
     mySidebar.style.display = "none";
 }
 </script>
+<script type="text/javascript">
+  $(function(){
+        $(".write1").typed({
+            strings: ["new york", "princeton", "newark"],
+            typeSpeed: 100,
+            loop: false
+            //loopCount: 5,
+    // show cursor
+    //showCursor: false
+        });
+        $(".write2").typed({
+            strings: ["newark", "new york", "philly", "princeton junction"],
+            typeSpeed: 100,
+            loop: true,
+            loopCount: 10,
+    // show cursor
+      showCursor: false
+        });
 
+    });
+</script>
 </html>
