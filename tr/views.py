@@ -70,7 +70,7 @@ def groupInfo(request):
 	# print(ride_id)
 	rideId = request.POST.get('rideId', None)
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
-	return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId})
+	return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId, 'val': 0})
 
 def joinGroup(request):
 	# print("join group")
@@ -79,7 +79,7 @@ def joinGroup(request):
 	my_last_ride = all_my_rides.order_by('created').last()
 	my_last_ride_id = my_last_ride['group_identifier']
 	rideId = request.POST.get('rideId', None)
-	save_details = InputRideInfo.objects.filter(group_identifier=my_last_ride_id)
+	save_details = InputRideInfo.objects.filter(group_identifier=my_last_ride_id).values()
 	print("save_details")
 	print(save_details)
 	update_ride = InputRideInfo.objects.filter(group_identifier=my_last_ride_id).update(group_identifier=rideId)
