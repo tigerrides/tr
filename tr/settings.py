@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'uniauth',
-    #'star_ratings',
+    'star_ratings',
 ]
 
 MIDDLEWARE = [
@@ -76,9 +76,9 @@ TEMPLATES = [
     },
 ]
 
-#TEMPLATE_CONTEXT_PROCESSORs = [
-#    'django.core.context_processors.request',
-#]
+TEMPLATE_CONTEXT_PROCESSORS = [
+   'django.core.context_processors.request',
+]
 
 WSGI_APPLICATION = 'tr.wsgi.application'
 

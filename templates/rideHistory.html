@@ -22,35 +22,77 @@
     {% load static %}
     <img class="car" src="{% static "my_app/car_large.png" %}">
     <section id="rides-list">
-      <ul>
+      <!--<ul>-->
+
         {% for key, values in open_rides.items %}
-        <li>
-          <div class="box w3-container w3-padding-16 w3-center w3-myfont">
-            {% for val in values %}
-            <p class="w3-center">
-              depart from: {{val.depart_from}} <br>
-              destination: {{val.destination}} <br>
-              date: {{val.date}} <br>
-              notes: {{val.notes}} <br>
-            </p>
-            <p class="w3-center">riders:</p>
-            {{ val.user_first_name }} {{ val.user_last_name }}
-            {% endfor %}
-            <!--{% load static %}-->
-            <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
-            <br/>
-            <form action="{% url 'completeRide' %}" method="post" id="toGroupButton">
-              {% csrf_token %}
-              {{ form }}
-              <button class="buttons" name="rideId" value="{{rideId}}" form="toGroupButton" type="submit">see more or complete ride</button>
-            </form>
-            <!--<button onclick="location.href='{% url 'groupInfo' %}'" class="buttons" type="button">see more</button>-->
-            <!--<button onclick="location.href='{% url 'completeRide' %}'" class="buttons" type="button">complete ride</button>-->
-          </div>
-        </li>
+        <!--<li>-->
+        <div class="box w3-container w3-padding-16 w3-center w3-myfont">
+          {% for k, v in open_sing.items %}
+          {% if k == key %}
+          {% for k1, v1 in v.items %}
+          {{k1}}: <p>{{v1}}</p>
+          {% endfor %}
+          {% endif %}
+          {% endfor %}
+
+          {% for val in values %}
+          <p class="w3-center">riders:</p>
+          {{ val.user_first_name }} {{ val.user_last_name }}
+          <p class="w3-center">notes:</p> {{val.notes}}
+          {% endfor %}
+
+
+          <!--{% load static %}-->
+          <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
+          <br/>
+          <form action="{% url 'completeRide' %}" method="post" id="toGroupButton">
+            {% csrf_token %}
+            {{ form }}
+            <button class="buttons" name="rideId" value="{{ key }}" form="toGroupButton" type="submit">
+              see more or complete ride
+            </button>
+          </form>
+
+          <form action="{% url 'leaveRide' %}" method="post" id="toGroupButton">
+            {% csrf_token %}
+            {{ form }}
+            <button class="buttons" name="rideId" value="{{ key }}" form="toGroupButton" type="submit">
+              leave ride
+            </button>
+          </form>
+          <!--<a href="{% url 'searchResults' ride_id=key %}" class="shortcut bar-item w3-hover-none w3-button">home</a>-->
+        </div>
+        <!--</li>-->
         {% endfor %}
+
+        <!--{% for key, values in open_rides.items %}-->
+        <!--<li>-->
+          <!--<div class="box w3-container w3-padding-16 w3-center w3-myfont">-->
+            <!--{% for val in values %}-->
+            <!--<p class="w3-center">-->
+              <!--depart from: {{val.depart_from}} <br>-->
+              <!--destination: {{val.destination}} <br>-->
+              <!--date: {{val.date}} <br>-->
+              <!--notes: {{val.notes}} <br>-->
+            <!--</p>-->
+            <!--<p class="w3-center">riders:</p>-->
+            <!--{{ val.user_first_name }} {{ val.user_last_name }}-->
+            <!--{% endfor %}-->
+            <!--&lt;!&ndash;{% load static %}&ndash;&gt;-->
+            <!--&lt;!&ndash;<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">&ndash;&gt;-->
+            <!--<br/>-->
+            <!--<form action="{% url 'completeRide' %}" method="post" id="toGroupButton">-->
+              <!--{% csrf_token %}-->
+              <!--{{ form }}-->
+              <!--<button class="buttons" name="rideId" value="{{ key }}" form="toGroupButton" type="submit">see more or complete ride</button>-->
+            <!--</form>-->
+            <!--&lt;!&ndash;<button onclick="location.href='{% url 'groupInfo' %}'" class="buttons" type="button">see more</button>&ndash;&gt;-->
+            <!--&lt;!&ndash;<button onclick="location.href='{% url 'completeRide' %}'" class="buttons" type="button">complete ride</button>&ndash;&gt;-->
+          <!--</div>-->
+        <!--</li>-->
+        <!--{% endfor %}-->
         <br>
-      </ul>
+      <!--</ul>-->
     </section>
 
   <h1 class="title w3-center w3-padding-16">past rides.</h1>
@@ -64,34 +106,69 @@
   {% load static %}
   <img class="car" src="{% static "my_app/car_large.png" %}">
   <section id="rides-list">
-    <ul>
+    <!--<ul>-->
+
       {% for key, values in closed_rides.items %}
-      <li>
+      <!--<li>-->
         <div class="box w3-container w3-padding-16 w3-center w3-myfont">
+          {% for k, v in closed_sing.items %}
+          {% if k == key %}
+          {% for k1, v1 in v.items %}
+          {{k1}}: <p>{{v1}}</p>
+          {% endfor %}
+          {% endif %}
+          {% endfor %}
+
           {% for val in values %}
-          <p class="w3-center">
-            depart from: {{val.depart_from}} <br>
-            destination: {{val.destination}} <br>
-            date: {{val.date}} <br>
-            notes: {{val.notes}} <br>
-          </p>
           <p class="w3-center">riders:</p>
           {{ val.user_first_name }} {{ val.user_last_name }}
+          <p class="w3-center">notes:</p> {{val.notes}}
           {% endfor %}
-          <!--{% load static %}-->
-          <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
+
+
+          {% load static %}
+          <img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">
           <br/>
-          <form action="{% url 'completeRide' %}" method="post" id="toGroupButton">
-            {% csrf_token %}
-                        {{ form }}
-            <button class="buttons" name="rideId" value="{{key}}"
-                    form="toGroupButton" type="submit">see more</button>
-          </form>
+          <!--<form action="{% url 'completeRide' %}" method="post" id="toGroupButton">-->
+            <!--{% csrf_token %}-->
+            <!--{{ form }}-->
+            <!--<button class="buttons" name="rideId" value="{{ key }}" form="toGroupButton" type="submit">-->
+              <!--see more or complete ride-->
+            <!--</button>-->
+          <!--</form>-->
+
+          <!--<a href="{% url 'searchResults' ride_id=key %}" class="shortcut bar-item w3-hover-none w3-button">home</a>-->
         </div>
-      </li>
+      <!--</li>-->
       {% endfor %}
+
+      <!--{% for key, values in closed_rides.items %}-->
+      <!--<li>-->
+        <!--<div class="box w3-container w3-padding-16 w3-center w3-myfont">-->
+          <!--{% for val in values %}-->
+          <!--<p class="w3-center">-->
+            <!--depart from: {{val.depart_from}} <br>-->
+            <!--destination: {{val.destination}} <br>-->
+            <!--date: {{val.date}} <br>-->
+            <!--notes: {{val.notes}} <br>-->
+          <!--</p>-->
+          <!--<p class="w3-center">riders:</p>-->
+          <!--{{ val.user_first_name }} {{ val.user_last_name }}-->
+          <!--{% endfor %}-->
+          <!--&lt;!&ndash;{% load static %}&ndash;&gt;-->
+          <!--&lt;!&ndash;<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">&ndash;&gt;-->
+          <!--<br/>-->
+          <!--<form action="{% url 'completeRide' %}" method="post" id="toGroupButton">-->
+            <!--{% csrf_token %}-->
+            <!--            {{ form }}-->
+            <!--<button class="buttons" name="rideId" value="{{key}}"-->
+                    <!--form="toGroupButton" type="submit">see more</button>-->
+          <!--</form>-->
+        <!--</div>-->
+      <!--</li>-->
+      <!--{% endfor %}-->
       <br>
-    </ul>
+    <!--</ul>-->
   </section>
 </div>
 </div>
