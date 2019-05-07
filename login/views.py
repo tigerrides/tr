@@ -103,7 +103,7 @@ def cas_profile_create(request):
         netid=arr[2]
         )
         # get photos from url 
-    image_url = https://www.princeton.edu/sites/default/files/styles/full_2x/public/images/2019/05/20190502_GoggleAI_DJA_044_2.jpg?itok=gsOp52yp
+    image_url = 'https://www.princeton.edu/sites/default/files/styles/full_2x/public/images/2019/05/20190502_GoggleAI_DJA_044_2.jpg?itok=gsOp52yp'
     result = urllib.urlretrieve(image_url)
     profile.image.save(
         os.path.basename(image_url),
