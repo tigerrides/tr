@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-# import psycopg2
+import psycopg2
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -173,9 +173,9 @@ STATIC_URL = '/static/'
 
 #PARSE database configuration from $DATABASE_URL
 #COMMENT THIS BACK 
-# import dj_database_url
-# DATABASE_URL = os.getenv('DATABASE_URL')
-# DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
+import dj_database_url
+DATABASE_URL = os.getenv('DATABASE_URL')
+DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 
 # enable HTTPS
 #SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -209,3 +209,5 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'uniauth.backends.CASBackend',
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
