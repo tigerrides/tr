@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block stylesheet %}
+{% load static %}
+  <link rel="stylesheet" href="{% static "joinGroup.css" %}">
+{% endblock %}
+
+{% block content %}
+<div class="w3-row w3-myfont">
+<div class="w3-container w3-center" style="margin:50px">
+  <div class="w3-display-center w3-text-white" style="padding:5%">
+    <h1 class="title w3-center">success.</h1>
+    <div class="w3-padding-36 w3-center w3-myfont">
+       <p><br/>This rider beat you to it and has already joined your ride request.<br/>
+
+      <!--Once your request has been approved, you will receive an e-mail confirming the details of your upcoming trip.</p>-->
+      </div>
+      <!--<div class="buddy w3-container w3-center">
+        <img class="pic" src="my_app/christy.jpg" alt="Christy" class="w3-round-xxlarge">
+        <p class="w3-center">name</p>
+      </div>-->
+  </div> 
+</div>
+
+</div>
+{% endblock %}
