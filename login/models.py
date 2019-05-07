@@ -10,6 +10,7 @@ class LogInInfo(models.Model):
         on_delete=models.CASCADE,
         default=1
     )
+    netid = models.CharField(max_length=200, default="princeton")
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     phone_number = models.CharField(max_length=20)
