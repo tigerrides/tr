@@ -39,18 +39,18 @@ def login(request):
 def index(request):
 	if request.user.is_authenticated:
 		return render(request, 'home.html')
-    # return HttpResponse("welcome.html")
+	# return HttpResponse("welcome.html")
 	return render(request, 'welcome.html')
 
 @login_required
 def home(request):
-    return render(request, 'home.html')
+	return render(request, 'home.html')
 
 def welcome(request):
 	return render(request, 'welcome.html')
 
 def chooselogin(request):
-    return render(request, 'chooseLogin.html')
+	return render(request, 'chooseLogin.html')
 
 @login_required
 def currentprof(request):
@@ -99,12 +99,11 @@ def joinGroup(request):
 	my_last_ride_id = my_last_ride['group_identifier']
 	rideId = request.POST.get('rideId', None)
 	
-        try:
-            save_details = model_to_dict(InputRideInfo.objects.get(group_identifier=my_last_ride_id))
-        except MultipleObjectsReturned:
-            return render(request, 'joinGroup2.html')
-
-        print("save_details")
+	try:
+		save_details = model_to_dict(InputRideInfo.objects.get(group_identifier=my_last_ride_id))
+	except MultipleObjectsReturned:
+		return render(request, 'joinGroup2.html')
+	print("save_details")
 	print(save_details)
 	origin = save_details['depart_from']
 	destination = save_details['destination']
