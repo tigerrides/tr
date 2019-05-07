@@ -75,16 +75,12 @@ def cas_profile_create(request):
     netid = arr[2]
     print("netid hopefully is: " + arr[2])
 
-    # get password key
-    # key = api/v1/getkey/
-    key = "8f1ca00610987bcd533f1d067f333b2c"
-
     # set up headers for tigerbook api 
     url = 'https://tigerbook.herokuapp.com/api/v1/undergraduates'
     created = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
     nonce = ''.join([random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/=') for i in range(32)])
     username = 'nbs'
-    password = '9194a9a482af7e5bc117c255a7a4d82a'    # use your own from /getkey
+    password = '9194a9a482af7e5bc117c255a7a4d82a'
     generated_digest = b64encode(hashlib.sha256(nonce.encode('utf-8') + created.encode('utf-8') + password.encode('utf-8')).digest()).decode()
     headers = {
         'Authorization': 'WSSE profile="UsernameToken"',
@@ -95,7 +91,6 @@ def cas_profile_create(request):
     student = json.loads(r.text)
 
     # create user
-    
     profile = LogInInfo(
         user=request.user,
         first_name=student['first_name'],
@@ -103,7 +98,8 @@ def cas_profile_create(request):
         phone_number=phone,
         netid=netid
         )
-        # get photos from url 
+    
+    # get photos from url 
     profile.save()
     image_url = student['photo_link']
     img_temp = NamedTemporaryFile(delete=True)

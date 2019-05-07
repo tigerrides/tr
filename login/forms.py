@@ -10,7 +10,6 @@ class CreateProfile(ModelForm):
             # 'user',
             'first_name',
             'last_name',
-            'netid',
             'phone_number',
             'image',
         ]
