@@ -85,15 +85,15 @@ def cas_profile_create(request):
 
     # set up headers for tigerbook api 
     url = 'https://tigerbook.herokuapp.com/api/v1/undergraduates/' + arr[2]
-    created = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
-    nonce = ''.join([random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/=') for i in range(32)])
-    username = 'christyl'
-    password = key
-    generated_digest = b64encode(hashlib.sha256(str(nonce) + str(created) + str(password)).digest())
-    headers = {
-    'Authorization': 'WSSE profile="UsernameToken"',
-    'X-WSSE': 'UsernameToken Username="%s", PasswordDigest="%s", Nonce="%s", Created="%s"' % (username, generated_digest, b64encode(nonce), created)
-    }
+    # created = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
+    # nonce = ''.join([random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/=') for i in range(32)])
+    # username = 'christyl'
+    # password = key
+    # generated_digest = b64encode(hashlib.sha256(str(nonce) + str(created) + str(password)).digest())
+    # headers = {
+    # 'Authorization': 'WSSE profile="UsernameToken"',
+    # 'X-WSSE': 'UsernameToken Username="%s", PasswordDigest="%s", Nonce="%s", Created="%s"' % (username, generated_digest, b64encode(nonce), created)
+    # }
 
     # create user
     profile = LogInInfo(
