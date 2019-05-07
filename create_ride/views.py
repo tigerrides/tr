@@ -62,6 +62,7 @@ def submit_ride(request):
                                         notes=notes,
                                         uber=uber,
                                         lyft=lyft,
+                                        netid="princeton",
                                         )
         input_ride_info.save()
 
