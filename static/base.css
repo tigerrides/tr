@@ -102,6 +102,11 @@ html *:after {
   z-index: -1;
 }
 
+a {
+  text-decoration: none;
+  line-height: 60px;
+  color: #A55858;
+}
 
 .centerer {
   width: 100%;
