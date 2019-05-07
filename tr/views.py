@@ -275,7 +275,7 @@ def reloadRideHistory(request, which_one):
 			me_fn = ride['user_first_name']
 			me_ln = ride['user_last_name']
 		InputRideInfo.objects.filter(id=id).update(group_identifier=val)
-		other_riders = InputRideInfo.objects.filter(group_identifier=rideId)
+		other_riders = InputRideInfo.objects.filter(group_identifier=rideId).values()
 		subject = 'TigerRide Trip Update'
 		email_from = settings.EMAIL_HOST_USER
 		recipient_list = []
