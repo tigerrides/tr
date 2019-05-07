@@ -24,6 +24,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('createRide/', include('create_ride.urls'), name='createRide'),
+    path('groupInfo/', include('org_rides.urls'), name='groupInfo'),
     path('chooseLogin/', include('login.urls'), name='chooselogin'),
     # path('login/', views.login, name='login'),
     path('currentprof/', views.currentprof, name='currentprof'),
@@ -33,7 +34,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     # path('createRide/', views.createRide, name='createRide'),
-    path('groupInfo/', views.groupInfo, name='groupInfo'),
+    # path('groupInfo/', views.groupInfo, name='groupInfo'),
     path('joinGroup/', views.joinGroup, name='joinGroup'),
     path('rideHistory/', views.rideHistory, name='rideHistory'),
 #<<<<<<< HEAD
