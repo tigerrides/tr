@@ -111,5 +111,5 @@ def cas_profile_create(request):
     img_temp = NamedTemporaryFile(delete=True)
     img_temp.write(urlopen(image_url).read())
     img_temp.flush()
-    profile.image_file.save(f"image_{netid}", File(img_temp))
+    profile.image.save(f"image_{netid}", File(img_temp))
     profile.save()
