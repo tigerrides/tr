@@ -33,14 +33,14 @@
         <a href="{% url 'about' %}" class="shortcut bar-item bar-button">about</a>
       </div>
       <div class="stuff">
-        <a href="{% url 'contact' %}" class="shortcut bar-item w3-hover-none w3-button">contact</a>
+        <a href="{% url 'contact' %}" class="shortcut bar-item bar-button">contact</a>
       </div>
       <div class="stuff">
-       <a href="{% url 'currentprof' %}" class="shortcut bar-item w3-hover-none w3-button">profile</a>
+       <a href="{% url 'currentprof' %}" class="shortcut bar-item bar-button">profile</a>
      </div>
       {% if user.is_authenticated %}
       <div class="stuff">
-      <a href="{% url 'logout' %}" class="shortcut bar-item w3-hover-none w3-button">logout</a>
+      <a href="{% url 'logout' %}" class="shortcut bar-item bar-button">logout</a>
     </div>
       {% endif %}
     </div>
