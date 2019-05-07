@@ -33,7 +33,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     # path('createRide/', views.createRide, name='createRide'),
-    path('groupInfo/', views.groupInfo, name='groupInfo'),
+    path('groupInfo/<int:ride_id>', views.groupInfo, name='groupInfo'),
     path('joinGroup/', views.joinGroup, name='joinGroup'),
     path('rideHistory/', views.rideHistory, name='rideHistory'),
 #<<<<<<< HEAD
