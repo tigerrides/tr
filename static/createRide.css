@@ -75,7 +75,6 @@
 }
 
 .container:hover {
-    cursor: url('my_app/shield.png'), auto; 
 }
 
 /* Style the checkmark/indicator */
@@ -104,7 +103,6 @@
 }
 
 .dropdown:hover {
-    cursor: url('my_app/shield.png'), auto; 
 }
 
 .welcome {
@@ -154,7 +152,6 @@ textarea {
 }
 
 textarea:hover {
-    cursor: url('my_app/shield.png'), auto; 
 }
 
 input[type=date] {
@@ -171,7 +168,6 @@ input[type=date] {
 }
 
 input:hover {
-    cursor: url('my_app/shield.png'), auto; 
 }
 
 /*input[type=submit] {
@@ -207,14 +203,12 @@ input[type=submit] {
     margin: 11px 4px;
     min-width: 54px;
     padding: 0 16px;
-    cursor: url('my_app/shield.png'), auto; 
 }
 
 input[type=submit]:hover {
     background: #A55858;
     border-radius: 10px;
     background-color: rgba(165,88,88,.6);
-    cursor: url('my_app/shield.png'), auto; 
 }
 
 .box {

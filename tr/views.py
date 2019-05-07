@@ -100,6 +100,7 @@ def joinGroup(request):
 	my_last_ride = all_my_rides.order_by('created').last()
 	my_last_ride_id = my_last_ride['group_identifier']
 	rideId = request.POST.get('rideId', None)
+	save_details = model_to_dict(InputRideInfo.objects.filter(group_identifier=my_last_ride_id).order_by('id').first())
 	try:
 		InputRideInfo.objects.get(group_identifier=my_last_ride_id)
 	except InputRideInfo.MultipleObjectsReturned:
@@ -174,6 +175,8 @@ def rideHistory(request):
 @login_required
 def searchResults(request, ride_id):
 	# submitted_ride = model_to_dict(InputRideInfo.objects.all().order_by('created').last())
+	submitted_ride = model_to_dict(InputRideInfo.objects.filter(group_identifier=ride_id).order_by('id').first())
+
 	try:
 		InputRideInfo.objects.get(group_identifier=ride_id)
 	except InputRideInfo.MultipleObjectsReturned:
