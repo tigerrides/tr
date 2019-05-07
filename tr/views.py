@@ -99,9 +99,10 @@ def joinGroup(request):
 	my_last_ride_id = my_last_ride['group_identifier']
 	rideId = request.POST.get('rideId', None)
 	try:
-		save_details = model_to_dict(InputRideInfo.objects.get(group_identifier=my_last_ride_id))
+		InputRideInfo.objects.get(group_identifier=my_last_ride_id)
 	except MultipleObjectsReturned:
 		return render(request, 'joinGroup2.html')
+	save_details = model_to_dict(InputRideInfo.objects.get(group_identifier=my_last_ride_id))
 	print("save_details")
 	print(save_details)
 	origin = save_details['depart_from']
@@ -159,10 +160,10 @@ def rideHistory(request):
 def searchResults(request, ride_id):
 	# submitted_ride = model_to_dict(InputRideInfo.objects.all().order_by('created').last())
 	try:
-		submitted_ride = model_to_dict(InputRideInfo.objects.get(group_identifier=ride_id))
-	except MultipleObjectsReturned:
+		InputRideInfo.objects.get(group_identifier=ride_id)
+	except InputRideInfo.MultipleObjectsReturned:
 		return render(request, 'joinGroup2.html')
-
+	submitted_ride = model_to_dict(InputRideInfo.objects.get(group_identifier=ride_id))
 	print("is this the right ride_id")
 	print(ride_id)
 	print("my most recent submitted_ride")
