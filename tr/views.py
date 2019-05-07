@@ -61,16 +61,16 @@ def contact(request):
 def createRide(request):
 	return render(request, 'createRide.html')
 
-def groupInfo(request, my_ride_id):
-	print("group info")
-	print(my_ride_id)
+def groupInfo(request):
+	# print("group info")
+	# print(my_ride_id)
 	rideId = request.POST.get('rideId', None)
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
-	return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId, 'my_ride_id': my_ride_id})
+	return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId})
 
-def joinGroup(request, my_ride_id):
-	print("join group")
-	print(my_ride_id)
+def joinGroup(request):
+	# print("join group")
+	# print(my_ride_id)
 	rideId = request.POST.get('rideId', None)
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
 	return render(request, 'joinGroup.html')
