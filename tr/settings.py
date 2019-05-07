@@ -209,3 +209,5 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'uniauth.backends.CASBackend',
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

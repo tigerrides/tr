@@ -14,30 +14,39 @@
     <form action="{% url 'submit_ride' %}" method="post">
         {% csrf_token %}
         {{ form }}
-        <p class="prompt">depart from:</p><br>
-        <select name="depart_from" class="dropdown">
+        <p class="prompt">origin:</p><br>
+<div class="styled-select pink rounded">
+  <select name="depart_from">
+        <!--<select name="depart_from" class="dropdown">-->
             <option value="EWR" selected>ewr</option>
             <option value="PHL">phl</option>
             <option value="JFK">jfk</option>
             <option value="campus">princeton</option>
-        </select> <br>
+        </select> </div><br>
         <p class="prompt">destination:</p><br>
-        <select name="destination" class="dropdown">
+<div class="styled-select pink rounded">
+  <select name="destination">
+        <!--<select name="destination" class="dropdown">-->
             <option value="EWR" selected>ewr</option>
             <option value="PHL">phl</option>
             <option value="JFK">jfk</option>
             <option value="campus">princeton</option>
-        </select> <br>
+        </select> </div><br>
         <p class="prompt">date:</p><br>
+	<div class="styled-field">
         <input type="date" id="travel-date" name="date"
-               value="yyyy-mm-dd" required><br>
+               value="yyyy-mm-dd" required>
+</div><br>
         <p class="prompt">time frame:</p><br>
-        <input type="time" name="time_start" value="{{ time_start }}"  required>
+<div class="styled-field">
+        <input type="time" name="time_start" value="{{ time_start }}"  required></div>
         <br><br>~<br><br>
-        <input type="time" name="time_end" value="{{ time_end }}" required> <br>
+        <div class="styled-field">
+        <input type="time" name="time_end" value="{{ time_end }}" required> </div><br>
         <p class="prompt">notes:</p><br>
+<div class="styled-field">
         <textarea rows="5" cols="60" id="myTextarea" name="notes"
-                  placeholder="i.e. you are traveling with a lot of lugagge, prefer to sit up front, etc."></textarea> <br>
+                  placeholder="i.e. you are traveling with a lot of lugagge, prefer to sit up front, etc."></textarea> </div><br>
         <p class="prompt">i have an account with:</p><br>
         <label class="container">uber
             <input type="checkbox" name="uber">

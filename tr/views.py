@@ -5,14 +5,14 @@ from login.models import LogInInfo
 from django.db.models import Q
 from django.http import HttpResponse
 from .forms import UserForm
-from django.contrib.auth import authenticate
-# , login
-from django.contrib.auth.models import User
 from create_ride.models import InputRideInfo
 from django.template import Context
 from uniauth.decorators import login_required
+#?? these two 
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 
-
+@login_required
 def createUser(request):
 	if request.method == "POST":
 		form = UserForm(request.POST)
@@ -28,9 +28,12 @@ def createUser(request):
 		form = UserForm()
 	return render(request, 'createUser.html', {'form': form})
 
-
+@login_required
 def login(request):
-	return render(request, 'registration/login.html')
+	if LogInInfo.objects.filter(user=request.user).exists():
+		return render(request, 'home.html')
+	else:
+		return render(request, 'chooseLogin.html')
 
 # Create your views here.
 def index(request):
@@ -43,9 +46,8 @@ def index(request):
 def home(request):
     return render(request, 'home.html')
 
-@login_required
 def welcome(request):
-    return render(request, 'welcome.html')
+	return render(request, 'welcome.html')
 
 def chooselogin(request):
     return render(request, 'chooseLogin.html')
@@ -53,6 +55,8 @@ def chooselogin(request):
 @login_required
 def currentprof(request):
 	login_infos = LogInInfo.objects.filter(user=request.user)
+	print("number of rides")
+	print(InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count())
 	# number_of_rides_completed = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count()
 	print("rides comp")
 	print(InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count())
@@ -67,9 +71,11 @@ def about(request):
 def contact(request):
 	return render(request, 'contact.html')
 
+@login_required
 def createRide(request):
 	return render(request, 'createRide.html')
 
+@login_required
 def groupInfo(request):
 	# print("group info")
 	# print(ride_id)
@@ -84,6 +90,7 @@ def groupInfo(request):
 											  'origin': origin, 'destination' : destination,
 											  'date': date})
 
+@login_required
 def joinGroup(request):
 	# print("join group")
 	# print(my_ride_id)
@@ -91,8 +98,13 @@ def joinGroup(request):
 	my_last_ride = all_my_rides.order_by('created').last()
 	my_last_ride_id = my_last_ride['group_identifier']
 	rideId = request.POST.get('rideId', None)
-	save_details = model_to_dict(InputRideInfo.objects.get(group_identifier=my_last_ride_id))
-	print("save_details")
+	
+        try:
+            save_details = model_to_dict(InputRideInfo.objects.get(group_identifier=my_last_ride_id))
+        except MultipleObjectsReturned:
+            return render(request, 'joinGroup2.html')
+
+        print("save_details")
 	print(save_details)
 	origin = save_details['depart_from']
 	destination = save_details['destination']
@@ -107,6 +119,7 @@ def joinGroup(request):
 											  'origin': origin, 'destination' : destination,
 											  'date': date})
 
+@login_required
 def rideHistory(request):
 	open_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=True).values()
 	closed_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).values()
@@ -205,6 +218,7 @@ def searchResults(request, ride_id):
 
 	# return render(request, 'searchResults.html', {'rides': values})
 
+@login_required
 def newRide(request):
 	return render(request, 'newride.html')
 

@@ -113,31 +113,32 @@
 }
 
 input[type=text] {
-    display: inline-block;
-
-    width: 250px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
     border: 1px solid white;
     border-radius: 2px;
     /*border-;*/
+    height: 29px;
+   overflow: hidden;
+   width: 240px;
 }
 
 
 input[type=time] {
     margin: 0 auto;
-    width: 250px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
     border: 1px solid white;
     border-radius: 2px;
     /*border-;*/
+    height: 29px;
+   overflow: hidden;
+   width: 240px;
 }
 
 textarea {
-    display: inline-block;
 
     margin: 0 auto;
     width: 250px;
@@ -156,16 +157,16 @@ textarea:hover {
 }
 
 input[type=date] {
-    display: inline-block;
-
     margin: 0 auto;
-    width: 250px;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
     border: 1px solid white;
     border-radius: 2px;
     /*border-;*/
+   height: 29px;
+   overflow: hidden;
+   width: 240px;
 }
 
 input:hover {
@@ -236,4 +237,63 @@ form {
     margin-left: auto;
     margin-right: auto;
     align-content: center;
+}
+
+.styled-select {
+   background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+   height: 29px;
+   overflow: hidden;
+   width: 240px;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.styled-select select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px; /* If you add too much padding here, the options won't show in IE */
+   width: 268px;
+}
+
+.styled-select.slate {
+   background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
+   height: 34px;
+   width: 240px;
+}
+
+.styled-select.slate select {
+   border: 1px solid white;
+   font-size: 16px;
+   height: 34px;
+   width: 268px;
+}
+
+.rounded {
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+}
+
+.pink   { background-color: #EFA09E; }
+
+.pink select   { color: white; }
+
+.styled-field {
+    display: inline-block;
+    /*box-sizing: border-box;*/
+    border-radius: 2px;
+    /*border-;*/
+    overflow: hidden;
+     width: 240px;
+}
+
+.styled-text {
+    display: inline-block;
+    /*box-sizing: border-box;*/
+    border-radius: 2px;
+    /*border-;*/
+    overflow: hidden;
+     width: 240px;
 }
