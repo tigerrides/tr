@@ -102,10 +102,6 @@ html *:after {
   z-index: -1;
 }
 
-a {
-  text-decoration: none;
-  color: white;
-}
 
 .centerer {
   width: 100%;
