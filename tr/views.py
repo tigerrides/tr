@@ -96,8 +96,7 @@ def joinGroup(request):
 	my_last_ride = all_my_rides.order_by('created').last()
 	my_last_ride_id = my_last_ride['group_identifier']
 	rideId = request.POST.get('rideId', None)
-	
-        try:
+	try:
             save_details = model_to_dict(InputRideInfo.objects.get(group_identifier=my_last_ride_id))
         except MultipleObjectsReturned:
             return render(request, 'joinGroup2.html')
