@@ -283,8 +283,6 @@ form {
 .styled-field {
     display: inline-block;
     /*box-sizing: border-box;*/
-    padding: 5px;
-    border: 1px solid white;
     border-radius: 2px;
     /*border-;*/
     overflow: hidden;
@@ -294,8 +292,6 @@ form {
 .styled-text {
     display: inline-block;
     /*box-sizing: border-box;*/
-    background-color: white;
-    border: 1px solid white;
     border-radius: 2px;
     /*border-;*/
     overflow: hidden;
