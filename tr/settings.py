@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'uniauth',
+    # 'uniauth',
     #'star_ratings',
 ]
 
@@ -197,15 +197,15 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # for now it redirects to homepage after login, will change
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/home/'
-UNIAUTH_LOGIN_DISPLAY_STANDARD = False
-UNIAUTH_LOGOUT_CAS_COMPLETELY = True
+# UNIAUTH_LOGIN_DISPLAY_STANDARD = False
+# UNIAUTH_LOGOUT_CAS_COMPLETELY = True
 
 # specify path to media directory for user uploaded static data
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/'
 
-# added for CAS authentication
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'uniauth.backends.CASBackend',
-]
+# # added for CAS authentication
+# AUTHENTICATION_BACKENDS = [
+#     'django.contrib.auth.backends.ModelBackend',
+#     'uniauth.backends.CASBackend',
+# ]
