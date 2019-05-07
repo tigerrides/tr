@@ -61,12 +61,16 @@ def contact(request):
 def createRide(request):
 	return render(request, 'createRide.html')
 
-def groupInfo(request):
+def groupInfo(request, my_ride_id):
+	print("group info")
+	print(my_ride_id)
 	rideId = request.POST.get('rideId', None)
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
-	return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId})
+	return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId, 'my_ride_id': my_ride_id})
 
-def joinGroup(request):
+def joinGroup(request, my_ride_id):
+	print("join group")
+	print(my_ride_id)
 	rideId = request.POST.get('rideId', None)
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
 	return render(request, 'joinGroup.html')
@@ -90,7 +94,7 @@ def rideHistory(request):
 
 @login_required
 def searchResults(request, ride_id):
-	submitted_ride = model_to_dict(InputRideInfo.objects.all().order_by('created').last())
+	# submitted_ride = model_to_dict(InputRideInfo.objects.all().order_by('created').last())
 	submitted_ride = model_to_dict(InputRideInfo.objects.get(group_identifier=ride_id))
 	print("is this the right ride_id")
 	print(ride_id)
@@ -114,7 +118,7 @@ def searchResults(request, ride_id):
 		values_dict[group_id] = InputRideInfo.objects.filter(group_identifier=group_id).values()
 
 	print(values_dict)
-	return render(request, 'searchResults.html', {'rides': values_dict})
+	return render(request, 'searchResults.html', {'rides': values_dict, 'my_ride_id': ride_id})
 
 	# return render(request, 'searchResults.html', {'rides': values})
 
