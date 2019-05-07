@@ -118,8 +118,14 @@ def joinGroup(request):
 
 	subject = 'test'
 	message = 'testing123'
-	email_from = settings.EMAIL_HOST_SERVER
-	recipients = ['anabelle@princeton.edu',]
+	email_from = settings.EMAIL_HOST_USER
+	recipient_list = []
+	for rides in ridesFiltered:
+		netid = rides['netid']
+		email = netid + '@princeton.edu'
+		recipient_list.append(email)
+
+	recipients = ['anabelle@princeton.edu', 'christyl@princeton.edu',]
 	send_mail(subject, message, email_from, recipients)
 
 	return render(request, 'joinGroup.html', {'rides_filt': ridesFiltered, 'single_ride': save_details,
