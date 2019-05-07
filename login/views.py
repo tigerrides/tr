@@ -9,9 +9,8 @@ from base64 import b64encode
 from datetime import datetime
 # imports needed to get photo from url 
 from django.core.files import File
+from urllib import request
 import os
-# for getting image from url 
-from urllib.request import urlretrieve
 
 # Create your views here.
 
@@ -108,8 +107,9 @@ def cas_profile_create(request):
         )
         # get photos from url 
     image_url = 'https://www.princeton.edu/sites/default/files/styles/full_2x/public/images/2019/05/20190502_GoggleAI_DJA_044_2.jpg?itok=gsOp52yp'
-    result = urllib.request.urlretrieve(image_url)
+    result = request.urlretrieve(image_url)
     profile.image.save(
         os.path.basename(image_url),
-        File(open(result[0])))
-    profile.save();
+        File(open(result[0], 'rb'))
+        )
+    profile.save()
