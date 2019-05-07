@@ -76,7 +76,7 @@ def cas_profile_create(request):
         phone = request.POST["phone_number"]
 
     # get netid from user 
-    userName = request.user
+    userName = request.user.username
     arr = userName.split('-')
 
     # get password key
