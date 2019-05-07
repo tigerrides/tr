@@ -87,7 +87,7 @@ def joinGroup(request):
 	print(update_ride)
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
 	print(ridesFiltered)
-	return render(request, 'joinGroup.html', {'rides_filt': ridesFiltered, 'my_ride': save_details})
+	return render(request, 'joinGroup.html', {'rides_filt': ridesFiltered, 'single_ride': save_details})
 
 def rideHistory(request):
 	open_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=True).values()
