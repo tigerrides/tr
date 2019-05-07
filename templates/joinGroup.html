@@ -11,16 +11,16 @@
   <div class="w3-display-center w3-text-white" style="padding:5%">
     <h1 class="title w3-center">success.</h1>
     <div class="w3-padding-36 w3-center w3-myfont">
-      <p>ride details:</p>
+      <h1 class="title">ride details:</h1>
       {% for ride in my_ride %}
-      <p>origin: {{ my_ride.depart_from}}</p>
-      <p>destination: {{ my_ride.destination}}</p>
-      <p>date: {{ my_ride.date}}</p>
+      <p>origin: {{ ride.depart_from}}</p>
+      <p>destination: {{ ride.destination}}</p>
+      <p>date: {{ ride.date}}</p>
       {% endfor %}
-      <p>riders, corresponding time frames and notes:</p>
+      <h1 class="title">riders, corresponding time frames and notes:</h1>
       {% for ride in rides_filt %}
       <p>{{ ride.user_first_name}} : {{ ride.time_start }} --> {{ ride.time_end }}</p>
-      <br><p>{{ ride.notes}}</p>
+      <p>{{ ride.notes}}</p>
       {% endfor %}
 
       <!--<div class="row">-->
