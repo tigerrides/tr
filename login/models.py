@@ -2,9 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 
-
-# from phonenumber_field.modelfields import PhoneNumberField
-
 # Create your models here.
 class LogInInfo(models.Model):
     # user = models.ForeignKey(User)
@@ -13,7 +10,6 @@ class LogInInfo(models.Model):
         on_delete=models.CASCADE,
         default=1
     )
-    netid = models.CharField(max_length=200, default="princeton")
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     phone_number = models.CharField(max_length=20)

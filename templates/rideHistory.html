@@ -39,7 +39,13 @@
             <!--{% load static %}-->
             <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
             <br/>
-            <button onclick="location.href='{% url 'groupInfo' %}'" class="buttons" type="button">see more</button>
+            <form action="{% url 'completeRide' %}" method="post" id="toGroupButton">
+              {% csrf_token %}
+              {{ form }}
+              <button class="buttons" name="rideId" value="{{rideId}}" form="toGroupButton" type="submit">see more or complete ride</button>
+            </form>
+            <!--<button onclick="location.href='{% url 'groupInfo' %}'" class="buttons" type="button">see more</button>-->
+            <!--<button onclick="location.href='{% url 'completeRide' %}'" class="buttons" type="button">complete ride</button>-->
           </div>
         </li>
         {% endfor %}
@@ -75,7 +81,12 @@
           <!--{% load static %}-->
           <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
           <br/>
-          <button onclick="location.href='{% url 'groupInfo' %}'" class="buttons" type="button">see more</button>
+          <form action="{% url 'completeRide' %}" method="post" id="toGroupButton">
+            {% csrf_token %}
+                        {{ form }}
+            <button class="buttons" name="rideId" value="{{key}}"
+                    form="toGroupButton" type="submit">see more</button>
+          </form>
         </div>
       </li>
       {% endfor %}

@@ -36,6 +36,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
+    path('reloadRideHistory', views.reloadRideHistory, name="reloadRideHistory"),
     # path('createRide/', views.createRide, name='createRide'),
     # path('groupInfo/', views.groupInfo, name='groupInfo'),
     path('joinGroup/', views.joinGroup, name='joinGroup'),
