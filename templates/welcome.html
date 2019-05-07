@@ -13,8 +13,21 @@
     <div class="w3-center w3-myfont">
     	<!--{% load static %}
     	<img src="{% static "my_app/princeton.png" %}" alt="princeton" class="graphic w3-center">-->
-    	<span> princeton to </span>
-		<span class="write2"></span><br>
+    <span>share a ride from<br><br></span>
+    <span class="origin"></span>
+    <span><br><br>to<br><br></span>
+	  <span class="destination"></span>
+	  <br><br>
+	  <span>at</span>
+	  <span class="time"></span>
+	  <!--<span class="hour"></span>
+	  <span>:</span>
+	  <span class="minute"></span>-->
+	    <br><br>
+	  <span>on</span>
+	  <span class="date"></span>
+	  <!--<span class="month"></span>
+	  <span class="day"></span>-->
       <!--<button onclick="location.href='{% url 'login' %}'" class="buttons" type="button">log in</button>
       <button onclick="location.href='{% url 'chooselogin' %}'" class="buttons" type="button">create an account</button>-->
       <a onclick="location.href='{% url 'login' %}'" class="buttons">log in</a>
