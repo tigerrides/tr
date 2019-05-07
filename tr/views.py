@@ -156,7 +156,6 @@ def searchResults(request, ride_id):
 		).count()
 		if count != count_with_time:
 			continue
-
 		# groups
 		info_dict = {}
 		all_matchings = InputRideInfo.objects.filter(group_identifier=group_id).values()
