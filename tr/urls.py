@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, url
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.index, name='index'),
     # path('accounts/', include('django.contrib.auth.urls')),
-    re_path('accounts/', include('uniauth.urls.cas_only', namespace='uniauth')),
+    url('accounts/', include('uniauth.urls.cas_only', namespace='uniauth')),
     path('createRide/', include('create_ride.urls'), name='createRide'),
     path('chooseLogin/', include('login.urls'), name='chooselogin'),
     # path('login/', views.login, name='login'),
