@@ -150,6 +150,7 @@ textarea {
     border: 1px solid #E59393;
     border-radius: 2px;
     font-size: 12px;
+    overflow: hidden;
 }
 
 textarea:hover {
