@@ -113,7 +113,6 @@
 }
 
 input[type=text] {
-    display: inline-block;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
@@ -140,7 +139,6 @@ input[type=time] {
 }
 
 textarea {
-    display: inline-block;
 
     margin: 0 auto;
     width: 250px;
@@ -159,8 +157,6 @@ textarea:hover {
 }
 
 input[type=date] {
-    display: inline-block;
-
     margin: 0 auto;
     /*box-sizing: border-box;*/
     padding: 5px;
@@ -284,3 +280,20 @@ form {
 
 .pink select   { color: white; }
 
+.styled-field {
+    display: inline-block;
+    /*box-sizing: border-box;*/
+    border-radius: 2px;
+    /*border-;*/
+    overflow: hidden;
+     width: 240px;
+}
+
+.styled-text {
+    display: inline-block;
+    /*box-sizing: border-box;*/
+    border-radius: 2px;
+    /*border-;*/
+    overflow: hidden;
+     width: 240px;
+}
