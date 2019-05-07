@@ -16,7 +16,7 @@ class LogInInfo(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     phone_number = models.CharField(max_length=20)
-    image = models.ImageField(upload_to='images/', null=True, verbose_name="")
+    image = models.ImageField(upload_to='images/')
 
     # phone_number = models.BigIntegerField()
     # img = models.ImageField(default='default.png', blank=True)

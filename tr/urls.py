@@ -50,6 +50,10 @@ urlpatterns = [
     path('createUser/', views.createUser, name='createUser'),
     #path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
     # path('accounts/logout/', include('login.urls'), name='logout'),
-] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
+] 
+
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)
 
 
