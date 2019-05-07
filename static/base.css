@@ -3,7 +3,7 @@ html {
     font-family: 'Roboto Mono', monospace;
     font-style: normal;
     background:  black;
-    color: #A55858;
+    color: white;
     text-align: center;
 }
 
@@ -104,7 +104,7 @@ html *:after {
 
 a {
   text-decoration: none;
-  color: #A55858;
+  color: white;
 }
 
 .centerer {
@@ -142,8 +142,8 @@ a {
   right: 0;
   bottom: 0;
   left: 0;
-  border-top: 30px solid #A55858;
-  border-bottom: 30px solid #A55858;
+  border-top: 30px solid white;
+  border-bottom: 30px solid white;
 }
 .buttons:before {
   border-right: 30px solid transparent;
