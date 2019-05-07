@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.index, name='index'),
     # path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/', include('uniauth.urls.cas_only', namespace='uniauth')),
+    re_path('accounts/', include('uniauth.urls.cas_only', namespace='uniauth')),
     path('createRide/', include('create_ride.urls'), name='createRide'),
     path('chooseLogin/', include('login.urls'), name='chooselogin'),
     # path('login/', views.login, name='login'),
