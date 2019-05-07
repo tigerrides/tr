@@ -113,7 +113,6 @@
 }
 
 input[type=text] {
-    display: inline-block;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
@@ -159,8 +158,6 @@ textarea:hover {
 }
 
 input[type=date] {
-    display: inline-block;
-
     margin: 0 auto;
     /*box-sizing: border-box;*/
     padding: 5px;
