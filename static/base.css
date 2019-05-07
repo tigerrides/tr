@@ -50,7 +50,7 @@ footer {
 
 .icon:hover {
     color: white;
-    text-shadow: 2px 2px 2px #563B3B;
+    text-shadow: 2px 2px 2px #A55858;
     cursor: url('my_app/shield.png'), auto; 
 }
 
@@ -87,7 +87,7 @@ footer {
     /*text-align: left;*/
     font-size: 20px;
     text-align: center;
-    text-shadow: 2px 2px 2px #563B3B;
+    text-shadow: 2px 2px 2px #A55858;
 }
 
 html *,
