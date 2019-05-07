@@ -38,7 +38,8 @@
           <form action="{% url 'groupInfo' %}" method="post" id="toGroupButton">
             {% csrf_token %}
             {{ form }}
-            <button class="buttons" name="rideId" value="{{key}}"
+            <button onclick="location.href='{% url 'groupInfo' id=1 %}'"
+                    class="buttons" name="rideId" value="{{key}}"
                     form="toGroupButton" type="submit">see more</button>
           </form>
         </div>
