@@ -9,18 +9,15 @@
 <div class="w3-row w3-myfont">
 <div class="w3-container w3-center" style="margin:50px">
   <div class="w3-display-center w3-text-white" style="padding:5%">
-    <h1 class="title w3-center">information.</h1>
+    <h1 class="title w3-center">would you like to complete this ride?</h1>
     {% for ride in rides %}
     <div class="w3-padding-36 w3-center w3-myfont">
-      {% if val == 0 %}
-      <p class="w3-center">{{ ride.depart_from }} --> {{ ride.destination }}</p>
+      <p class="w3-center">{{ ride.depart_from }} to {{ ride.destination }}</p>
       <p class="w3-center">Date: {{ ride.date }}</p>
-      {% endif %}
-      {% with val="1" %}
       <p class="w3-center">Time Frame: {{ ride.time_start }} --> {{ ride.time_end }}</p>
       <p class="w3-center">Notes: {{ ride.notes }}</p>
       <p class="w3-center">Has Uber: {{ ride.uber }}, Has Lift: {{ ride.lyft }}</p>
-      <p class="w3-center">Rider: {{ride.user_first_name}} {{ride.user_last_name}}</p>
+      <p class="w3-center">rider: {{ride.user_first_name}} {{ride.user_last_name}}</p>
     <!--   <div class="buddy w3-container w3-center">
         {% load static %}
         <div class="site w3-center" style="background-image: url({% static "my_app/anabelle.jpg" %})">
@@ -32,10 +29,10 @@
         <!--<img class="pic" src="my_app/anabelle.jpg" alt="Anabelle" class="w3-round-xxlarge">-->
       <p>notes</p><br/>
 
-      <form action="{% url 'joinGroup' %}" method="post" id="toGroupButton">
+      <form action="{% url 'rideHistory' %}" method="post" id="toGroupButton">
         {% csrf_token %}
         {{ form }}
-        <button class="buttons" name="rideId" value="{{rideId}}" form="toGroupButton" type="submit">join this ride</button>
+        <button class="buttons" name="rideId" value="{{rideId}}" form="toGroupButton" type="submit">complete!</button>
       </form>
       </div>
       <!--<div class="buddy w3-container w3-center">

@@ -11,56 +11,71 @@
   <div class="w3-display-center w3-text-white" style="padding:5%">
     <h1 class="title w3-center">success.</h1>
     <div class="w3-padding-36 w3-center w3-myfont">
-      <div class="row">
-      <div class="buddy w3-container w3-center">
-        {% load static %}
-        <div class="site w3-center" style="background-image: url({% static "my_app/anabelle.jpg" %});">
-          <div class="cover w3-center">
-            <div class="cover-text w3-container w3-container">
-              <span>view<br/>profile</span>
-              </div>
-            </div>
-          </div>
-        <p class="w3-center">name</p>
-      </div>
-      </div>
-      <div class="row"> 
-      <div class="buddy w3-container w3-center">
-        {% load static %}
-        <div class="site w3-center" style="background-image: url({% static "my_app/anabelle.jpg" %});">
-          <div class="cover w3-center">
-            <div class="cover-text w3-container w3-container">
-              <span>view<br/>profile</span>
-              </div>
-            </div>
-          </div>
-        <p class="w3-center">name</p>
-      </div>
-      <div class="buddy w3-container w3-center">
-        {% load static %}
-        <div class="site w3-center" style="background-image: url({% static "my_app/anabelle.jpg" %});">
-          <div class="cover w3-center">
-            <div class="cover-text w3-container w3-container">
-              <span>view<br/>profile</span>
-              </div>
-            </div>
-          </div>
-        <p class="w3-center">name</p>
-      </div>
-            <div class="buddy w3-container w3-center">
-              {% load static %}
-        <div class="site w3-center" style="background-image: url({% static "my_app/anabelle.jpg" %});">
-          <div class="cover w3-center">
-            <div class="cover-text w3-container w3-container">
-              <span>view<br/>profile</span>
-              </div>
-            </div>
-          </div>
-        <p class="w3-center">name</p>
-      </div>
-          </div>
+      <p>ride details:</p>
+      <!--{% for ride in my_ride %}-->
+      <p>{{ my_ride.depart_from}}</p>
+      <p>{{ my_ride.destination}}</p>
+      <p>{{ my_ride.date}}</p>
+      <!--{% endfor %}-->
+      <p>riders, corresponding time frames and notes:</p>
+      {% for ride in rides_filt %}
+      <p>{{ ride.user_first_name}} : {{ ride.time_start }} --> {{ ride.time_end }}</p>
+      <br><p>{{ ride.notes}}</p>
+      {% endfor %}
 
-      <p><br/>Your potential buddies have been notified of your request to join their group. <br/>Once your request has been approved, you will receive an e-mail confirming the details of your upcoming trip.</p>
+      <!--<div class="row">-->
+      <!--<div class="buddy w3-container w3-center">-->
+        <!--{% load static %}-->
+        <!--<div class="site w3-center" style="background-image: url({% static "my_app/anabelle.jpg" %});">-->
+          <!--<div class="cover w3-center">-->
+            <!--<div class="cover-text w3-container w3-container">-->
+              <!--<span>view<br/>profile</span>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--<p class="w3-center">name</p>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--<div class="row"> -->
+      <!--<div class="buddy w3-container w3-center">-->
+        <!--{% load static %}-->
+        <!--<div class="site w3-center" style="background-image: url({% static "my_app/anabelle.jpg" %});">-->
+          <!--<div class="cover w3-center">-->
+            <!--<div class="cover-text w3-container w3-container">-->
+              <!--<span>view<br/>profile</span>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--<p class="w3-center">name</p>-->
+      <!--</div>-->
+      <!--<div class="buddy w3-container w3-center">-->
+        <!--{% load static %}-->
+        <!--<div class="site w3-center" style="background-image: url({% static "my_app/anabelle.jpg" %});">-->
+          <!--<div class="cover w3-center">-->
+            <!--<div class="cover-text w3-container w3-container">-->
+              <!--<span>view<br/>profile</span>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--<p class="w3-center">name</p>-->
+      <!--</div>-->
+            <!--<div class="buddy w3-container w3-center">-->
+              <!--{% load static %}-->
+        <!--<div class="site w3-center" style="background-image: url({% static "my_app/anabelle.jpg" %});">-->
+          <!--<div class="cover w3-center">-->
+            <!--<div class="cover-text w3-container w3-container">-->
+              <!--<span>view<br/>profile</span>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--<p class="w3-center">name</p>-->
+      <!--</div>-->
+          <!--</div>-->
+
+      <!--<p><br/>Your potential buddies have been notified of your request to join their group. <br/>-->
+      <p><br/>Your buddies have been notified that you have joined the group. You will receive an email confirming the details of your upcoming trip<br/>
+
+      <!--Once your request has been approved, you will receive an e-mail confirming the details of your upcoming trip.</p>-->
       </div>
       <!--<div class="buddy w3-container w3-center">
         <img class="pic" src="my_app/christy.jpg" alt="Christy" class="w3-round-xxlarge">

@@ -39,7 +39,7 @@ def profile_create(request):
                     first_name=request.POST["first_name"],
                     last_name=request.POST["last_name"],
                     phone_number=request.POST["phone_number"],
-                    net_id=request.POST["netid"]
+                    netid=request.POST["netid"]
                 )
                 var = LogInInfo.objects.filter(user=request.user).get()
                 var.image = form.cleaned_data['image']
