@@ -58,6 +58,8 @@ def currentprof(request):
 	print("number of rides")
 	print(InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count())
 	# number_of_rides_completed = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count()
+	print("rides comp")
+	print(InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count())
 	return render(request, 'currentprof.html', {'login_infos': login_infos,
 												# 'number_of_rides': number_of_rides_completed
 												})
@@ -122,17 +124,37 @@ def rideHistory(request):
 	closed_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).values()
 	open_rides_dict = {}
 	closed_rides_dict = {}
+	open_info_singular = {}
+	close_info_singular = {}
 	for ride in open_rides:
 		group_id = ride['group_identifier']
-		open_rides_dict[group_id] = InputRideInfo.objects.filter(group_identifier=group_id).values()
+		info_dict = {}
+		all_matchings = InputRideInfo.objects.filter(group_identifier=group_id).values()
+		open_rides_dict[group_id] = all_matchings
+		for save_ride in all_matchings:
+			info_dict['origin'] = save_ride['depart_from']
+			info_dict['destination'] = save_ride['destination']
+			info_dict['date'] = save_ride['date']
+			break
+		open_info_singular[group_id] = info_dict
 		# open_rides_dict[ride.id] = InputRideInfo.objects.filter(id=ride.id).values()
 	for ride in closed_rides:
 		group_id = ride['group_identifier']
-		closed_rides_dict[group_id] = InputRideInfo.objects.filter(group_identifier=group_id).values()
+		info_dict = {}
+		all_matchings = InputRideInfo.objects.filter(group_identifier=group_id).values()
+		closed_rides_dict[group_id] = all_matchings
+		for save_ride in all_matchings:
+			info_dict['origin'] = save_ride['depart_from']
+			info_dict['destination'] = save_ride['destination']
+			info_dict['date'] = save_ride['date']
+			break
+		close_info_singular[group_id] = info_dict
+		# closed_rides_dict[group_id] = InputRideInfo.objects.filter(group_identifier=group_id).values()
 		# closed_rides_dict[ride.id] = InputRideInfo.objects.filter(id=ride.id).values()
 	all_my_rides = InputRideInfo.objects.filter(user=request.user).values()
 	return render(request, 'rideHistory.html', {'open_rides': open_rides_dict,
-												'closed_rides': closed_rides_dict})
+												'closed_rides': closed_rides_dict, 'open_sing': open_info_singular,
+												'closed_sing': close_info_singular})
 
 @login_required
 def searchResults(request, ride_id):
@@ -203,6 +225,7 @@ def completeRide(request):
 	# print("group info")
 	# print(ride_id)
 	rideId = request.POST.get('rideId', None)
+	print("rideId")
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
 	for ride in ridesFiltered:
 		origin = ride['depart_from']
@@ -213,11 +236,37 @@ def completeRide(request):
 											  'origin': origin, 'destination' : destination,
 											  'date': date})
 
-def reloadRideHistory(request):
+def reloadRideHistory(request, which_one):
+	no = InputRideInfo.objects.count()
+	val = 0
+	if no == 0:
+		val = 1
+	else:
+		get_highest = InputRideInfo.objects.all().order_by('group_identifier').last()
+		val = get_highest.group_identifier + 1
 	rideId = request.POST.get('rideId', None)
-	mark_as_complete = InputRideInfo.objects.filter(group_identifier=rideId).filter(request=request.user
-																					).update(ride_status_open=False)
+	print("which one")
+	print(which_one)
+	if which_one == 1:
+		InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).update(ride_status_open=False)
+	elif which_one == 2:
+		my_ride = InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).values()
+		id = my_ride.id
+		InputRideInfo.objects.filter(id=id).update(group_identifier=val)
 	return redirect('rideHistory')
+
+def leaveRide(request):
+	rideId = request.POST.get('rideId', None)
+	print("rideId")
+	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
+	for ride in ridesFiltered:
+		origin = ride['depart_from']
+		destination = ride['destination']
+		date = ride['date']
+		break
+	return render(request, 'leaveRide.html', {'rides': ridesFiltered, 'rideId': rideId,
+                                                 'origin': origin, 'destination' : destination,
+                                                 'date': date})
 
 # def completeRide(request):
 # 	return render(request, 'completeRide.html')
