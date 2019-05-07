@@ -10,6 +10,8 @@ from datetime import datetime
 # imports needed to get photo from url 
 from django.core.files import File
 import os
+# for getting image from url 
+from urllib import urlretrieve
 
 # Create your views here.
 
