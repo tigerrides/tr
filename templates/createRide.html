@@ -24,7 +24,7 @@
             <option value="campus">princeton</option>
         </select> </div><br>
         <p class="prompt">destination:</p><br>
-<div class="styled-select pink rounded">
+<div class="styled-field">
   <select name="destination">
         <!--<select name="destination" class="dropdown">-->
             <option value="EWR" selected>ewr</option>
@@ -33,12 +33,16 @@
             <option value="campus">princeton</option>
         </select> </div><br>
         <p class="prompt">date:</p><br>
+	<div class="styled-field">
         <input type="date" id="travel-date" name="date"
                value="yyyy-mm-dd" required><br>
+</div>
         <p class="prompt">time frame:</p><br>
-        <input type="time" name="time_start" value="{{ time_start }}"  required>
+<div class="styled-select pink rounded">
+        <input type="time" name="time_start" value="{{ time_start }}"  required></div>
         <br><br>~<br><br>
-        <input type="time" name="time_end" value="{{ time_end }}" required> <br>
+        <div class="styled-field">
+        <input type="time" name="time_end" value="{{ time_end }}" required> <br></div>
         <p class="prompt">notes:</p><br>
         <textarea rows="5" cols="60" id="myTextarea" name="notes"
                   placeholder="i.e. you are traveling with a lot of lugagge, prefer to sit up front, etc."></textarea> <br>
