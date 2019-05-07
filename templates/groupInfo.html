@@ -10,15 +10,22 @@
 <div class="w3-container w3-center" style="margin:50px">
   <div class="w3-display-center w3-text-white" style="padding:5%">
     <h1 class="title w3-center">information.</h1>
-    {% with val="yes" %}
+    {% with yes="yes" %} {% endwith %}}
     {% for ride in rides %}
     <div class="w3-padding-36 w3-center w3-myfont">
       {% if val == 0 %}
-      {% if val == "yes" %}
+      <!--{% if val == "yes" %}-->
       <p class="w3-center">{{ ride.depart_from }} --> {{ ride.destination }}</p>
       <p class="w3-center">Date: {{ ride.date }}</p>
       {% endif %}
-      {% with val="no" %}
+      {% with val="no" %} {% endwith %}}
+      {% if yes == check %}
+      <!--{% if val == "yes" %}-->
+      <p class="w3-center">{{ ride.depart_from }} --> {{ ride.destination }}</p>
+      <p class="w3-center">Date: {{ ride.date }}</p>
+      {% endif %}
+      {% with yes="no" %} {% endwith %}}
+
       <p class="w3-center">Time Frame: {{ ride.time_start }} --> {{ ride.time_end }}</p>
       <p class="w3-center">Notes: {{ ride.notes }}</p>
       <p class="w3-center">Has Uber: {{ ride.uber }}, Has Lift: {{ ride.lyft }}</p>

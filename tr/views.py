@@ -70,7 +70,7 @@ def groupInfo(request):
 	# print(ride_id)
 	rideId = request.POST.get('rideId', None)
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
-	return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId, 'val': 0})
+	return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId, 'val': 0, "check" : "yes"})
 
 def joinGroup(request):
 	# print("join group")
