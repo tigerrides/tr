@@ -102,6 +102,7 @@ def cas_profile_create(request):
     # get photos from url 
     profile.save()
     image_url = student['photo_link']
+    print(image_url)
     img_temp = NamedTemporaryFile(delete=True)
     img_temp.write(urlopen(image_url).read())
     img_temp.flush()
