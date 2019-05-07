@@ -32,8 +32,7 @@ def createUser(request):
 def login(request):
 	if LogInInfo.objects.filter(user=request.user).exists():
     	return render(request, 'home.html')
-    else:
-    	return render(request, 'chooseLogin.html')
+    return render(request, 'chooseLogin.html')
 
 # Create your views here.
 def index(request):
