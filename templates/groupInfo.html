@@ -28,7 +28,12 @@
       {% endfor %}
         <!--<img class="pic" src="my_app/anabelle.jpg" alt="Anabelle" class="w3-round-xxlarge">-->
       <p>notes</p><br/>
-      <button class="buttons" type="button">join this ride</button>
+
+      <form action="{% url 'joinGroup' %}" method="post" id="toGroupButton">
+        {% csrf_token %}
+        {{ form }}
+        <button class="buttons" name="rideId" value="{{rideId}}" form="toGroupButton" type="submit">join this ride</button>
+      </form>
       </div>
       <!--<div class="buddy w3-container w3-center">
         <img class="pic" src="my_app/christy.jpg" alt="Christy" class="w3-round-xxlarge">

@@ -82,7 +82,7 @@ def submit_ride(request):
         #     instance.save()
         #     print("saved")
 
-        return redirect('searchResults')
+        return redirect('searchResults', ride_id=input_ride_info.group_identifier)
     else:
         form = forms.CreateRide()
     return render(request, 'createRide.html', {'form': form})

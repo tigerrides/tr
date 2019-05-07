@@ -64,9 +64,11 @@ def createRide(request):
 def groupInfo(request):
 	rideId = request.POST.get('rideId', None)
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
-	return render(request, 'groupInfo.html', {'rides': ridesFiltered})
+	return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId})
 
 def joinGroup(request):
+	rideId = request.POST.get('rideId', None)
+	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
 	return render(request, 'joinGroup.html')
 
 def rideHistory(request):
@@ -87,8 +89,9 @@ def rideHistory(request):
 												'closed_rides': closed_rides_dict})
 
 @login_required
-def searchResults(request):
+def searchResults(request, ride_id):
 	submitted_ride = model_to_dict(InputRideInfo.objects.all().order_by('created').last())
+	submitted_ride = model_to_dict(InputRideInfo.objects.get(group_identifier=ride_id))
 	print("my most recent submitted_ride")
 	print(submitted_ride)
 	values = InputRideInfo.objects.filter(
