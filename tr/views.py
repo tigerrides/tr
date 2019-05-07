@@ -160,13 +160,13 @@ def searchResults(request, ride_id):
 		# groups
 		info_dict = {}
 		values_dict[group_id] = InputRideInfo.objects.filter(group_identifier=group_id).values()
-		for ride in values[group_id]:
-			print(ride['depart_from'])
-			print(ride['destination'])
-			print(ride['date'])
-			# info_dict['origin'] = ride['depart_from']
-			# info_dict['destination'] = ride['destination']
-			# info_dict['date'] = ride['date']
+		for save_ride in values[group_id]:
+			print(save_ride['depart_from'])
+			print(save_ride['destination'])
+			print(save_ride['date'])
+			info_dict['origin'] = save_ride['depart_from']
+			info_dict['destination'] = save_ride['destination']
+			info_dict['date'] = save_ride['date']
 			break
 		ride_info_per_ride[group_id] = info_dict
 
