@@ -29,7 +29,7 @@
         <!--<img class="pic" src="my_app/anabelle.jpg" alt="Anabelle" class="w3-round-xxlarge">-->
       <p>notes</p><br/>
 
-      <form action="{% url 'joinGroup' my_ride_id=my_ride_id %}" method="post" id="toGroupButton">
+      <form action="{% url 'joinGroup' %}" method="post" id="toGroupButton">
         {% csrf_token %}
         {{ form }}
         <button class="buttons" name="rideId" value="{{rideId}}" form="toGroupButton" type="submit">join this ride</button>
