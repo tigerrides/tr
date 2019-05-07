@@ -116,8 +116,14 @@ def joinGroup(request):
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
 	print(ridesFiltered)
 
-	subject = 'test'
-	message = 'testing123'
+	subject = 'TigerRide Group for %s' % date
+	message = 'Dear TigerRider, ' \
+			  '' \
+			  'Your trip is scheduled from %s to %s on %s.' \
+			  '' \
+			  'Safe travels!' \
+			  '' \
+			  'TigerRide' % (origin, destination, date)
 	email_from = settings.EMAIL_HOST_USER
 	recipient_list = []
 	for rides in ridesFiltered:
@@ -126,7 +132,7 @@ def joinGroup(request):
 		recipient_list.append(email)
 
 	recipients = ['anabelle@princeton.edu', 'christyl@princeton.edu',]
-	send_mail(subject, message, email_from, recipients)
+	send_mail(subject, message, email_from, recipient_list)
 
 	return render(request, 'joinGroup.html', {'rides_filt': ridesFiltered, 'single_ride': save_details,
 											  'origin': origin, 'destination' : destination,
