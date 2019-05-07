@@ -11,19 +11,21 @@
   <div class="w3-display-center w3-text-white" style="padding:5%">
     <h1 class="title w3-center">are you sure you would like to complete this ride?</h1>
 
-    ride details:
+    <p class="name">ride details:</p>
     <p>origin: {{ origin }}</p>
     <p>destination: {{ destination }}</p>
     <p>date: {{ date }}</p>
 
     {% for ride in rides %}
     <div class="w3-padding-36 w3-center w3-myfont">
-      <!--{% with val="no" %} {% endwith %}}-->
-      {% for ride in rides %}
-      <div class="w3-padding-36 w3-center w3-myfont">
-        <p class="name">{{ ride.user_first_name }} {{ ride.user_last_name }}:</p>
-        <p>{{ ride.time_start }} --> {{ ride.time_end }}</p>
-        notes: <p>{{ ride.notes}}</p>
+      <p class="name">{{ ride.user_first_name }} {{ ride.user_last_name }}:</p>
+      <p>{{ ride.time_start }} --> {{ ride.time_end }}</p>
+      notes: <p>{{ ride.notes}}</p>
+      <!--<p class="w3-center">Rider: {{ride.user_first_name}} {{ride.user_last_name}}</p>-->
+      <!--<p class="w3-center">Time Frame: {{ ride.time_start }} &ndash;&gt; {{ ride.time_end }}</p>-->
+      <!--<p class="w3-center">Notes: {{ ride.notes }}</p>-->
+      <!--<p class="w3-center">Has Uber: {{ ride.uber }}, Has Lyft: {{ ride.lyft }}</p>-->
+
       <!--   <div class="buddy w3-container w3-center">
           {% load static %}
           <div class="site w3-center" style="background-image: url({% static "my_app/anabelle.jpg" %})">
@@ -35,9 +37,9 @@
       <form action="{% url 'reloadRideHistory' 1 %}" method="post" id="toGroupButton">
         {% csrf_token %}
         {{ form }}
-        <button class="buttons" name="rideId" value="{{rideId}}" form="toGroupButton" type="submit">complete!</button>
+        <button class="buttons" name="rideId" value="{{rideId}}" form="toGroupButton" type="submit">leave!</button>
       </form>
-      </div>
+    </div>
       <!--<div class="buddy w3-container w3-center">
         <img class="pic" src="my_app/christy.jpg" alt="Christy" class="w3-round-xxlarge">
         <p class="w3-center">name</p>
