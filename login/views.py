@@ -7,6 +7,8 @@ import hashlib
 import random
 from base64 import b64encode
 from datetime import datetime
+import requests
+import json
 # imports needed to get photo from url 
 from django.core.files import File
 from urllib.request import urlopen
@@ -26,21 +28,11 @@ def profile_create(request):
         # user = None
         if not request.user.is_authenticated:
             raise Http404
-            # user = request.user.username
-            # user = request.user.get_username()
-        # validate info against form
-        # user = request.user
-        # first_name = request.POST["first_name"]
-        # last_name = request.POST["last_name"]
-        # phone_number = request.POST["phone_number"]
-        # # img = request.POST["img"]
-        # profile_info = LogInInfo(user=user,
-        #                          first_name=first_name,
-        #                          last_name=last_name,
-        #                          phone_number=phone_number,
-        #                          )
-        #
-        # profile_info.save()
+        
+        userName = request.user.username
+        arr = userName.split('-')
+        netid = arr[2]
+
         form = forms.CreateProfile(request.POST, request.FILES)
         if form.is_valid():
             if LogInInfo.objects.filter(user=request.user).exists():
@@ -48,7 +40,7 @@ def profile_create(request):
                     first_name=request.POST["first_name"],
                     last_name=request.POST["last_name"],
                     phone_number=request.POST["phone_number"],
-                    netid=request.POST["netid"]
+                    netid=netid
                 )
                 var = LogInInfo.objects.filter(user=request.user).get()
                 var.image = form.cleaned_data['image']
@@ -88,29 +80,32 @@ def cas_profile_create(request):
     key = "8f1ca00610987bcd533f1d067f333b2c"
 
     # set up headers for tigerbook api 
-    url = 'https://tigerbook.herokuapp.com/api/v1/undergraduates/' + netid
-    # created = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
-    # nonce = ''.join([random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/=') for i in range(32)])
-    # username = 'christyl'
-    # password = key
-    # generated_digest = b64encode(hashlib.sha256(str(nonce) + str(created) + str(password)).digest())
-    # headers = {
-    # 'Authorization': 'WSSE profile="UsernameToken"',
-    # 'X-WSSE': 'UsernameToken Username="%s", PasswordDigest="%s", Nonce="%s", Created="%s"' % (username, generated_digest, b64encode(nonce), created)
-    # }
+    url = 'https://tigerbook.herokuapp.com/api/v1/undergraduates'
+    created = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
+    nonce = ''.join([random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/=') for i in range(32)])
+    username = 'nbs'
+    password = '9194a9a482af7e5bc117c255a7a4d82a'    # use your own from /getkey
+    generated_digest = b64encode(hashlib.sha256(nonce.encode('utf-8') + created.encode('utf-8') + password.encode('utf-8')).digest()).decode()
+    headers = {
+        'Authorization': 'WSSE profile="UsernameToken"',
+        'X-WSSE': 'UsernameToken Username="%s", PasswordDigest="%s", Nonce="%s", Created="%s"' % (username, generated_digest, b64encode(nonce.encode()).decode(), created)
+    }
+    # NEEDS NETID
+    r = requests.get(url + '/' + netid, headers=headers)
+    student = json.loads(r.text)
 
     # create user
     
     profile = LogInInfo(
         user=request.user,
-        first_name="first",
-        last_name="last",
+        first_name=student['first_name'],
+        last_name=student['last_name'],
         phone_number=phone,
-        netid=netid,
+        netid=netid
         )
         # get photos from url 
     profile.save()
-    image_url = 'https://www.princeton.edu/sites/default/files/styles/full_2x/public/images/2019/05/20190502_GoggleAI_DJA_044_2.jpg?itok=gsOp52yp'
+    image_url = student['photo_link']
     img_temp = NamedTemporaryFile(delete=True)
     img_temp.write(urlopen(image_url).read())
     img_temp.flush()
