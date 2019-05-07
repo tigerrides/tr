@@ -243,6 +243,9 @@ form {
    height: 29px;
    overflow: hidden;
    width: 240px;
+    display: inline-block;
+    margin: 0 auto;
+    width: 250px;
 }
 
 .styled-select select {
@@ -273,7 +276,7 @@ form {
    border-radius: 20px;
 }
 
-.black   { background-color: #EFA09E; }
+.pink   { background-color: #EFA09E; }
 
-.black select   { color: white; }
+.pink select   { color: white; }
 
