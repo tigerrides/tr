@@ -209,17 +209,23 @@ def searchResults(request, ride_id):
 	for ride in values:
 		group_id = ride['group_identifier']
 		if InputRideInfo.objects.filter(group_identifier=group_id).filter(user=request.user).exists():
+			print("continued here")
 			continue
-
+		print("group id")
+		print(group_id)
 		# check to make sure all the riders in that group match with you
 		count = InputRideInfo.objects.filter(group_identifier=group_id).count()
+		print("count")
+		print(count)
 		count_with_time = InputRideInfo.objects.filter(group_identifier=group_id).filter(
             time_start__lte=submitted_ride['time_end']
 		).filter(
 			time_end__gte=submitted_ride['time_start']
 		).count()
-
+		print("count w time")
+		print(count_with_time)
 		if count != count_with_time:
+			print("counts not same")
 			continue
 		# groups
 		info_dict = {}
