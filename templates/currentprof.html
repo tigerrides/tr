@@ -23,7 +23,6 @@
         <p class="description">&#9733;&#9733;&#9733;&#9733;&#9733;<br/></p>
         <p class="description">{{ user.email }}</p>
         <p class="description">{{ login_info.phone_number }}</p>
-        <p class="description">trips taken: 0</p>
         <p class="description">trips taken: {{ rides_comp }}</p>
       {% endfor %}
       <a href='{% url 'createprof' %}' class="buttons">edit</a>
