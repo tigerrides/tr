@@ -210,7 +210,6 @@ def searchResults(request, ride_id):
 		group_id = ride['group_identifier']
 		if InputRideInfo.objects.filter(group_identifier=group_id).filter(user=request.user).exists():
 			continue
-
 		# check to make sure all the riders in that group match with you
 		count = InputRideInfo.objects.filter(group_identifier=group_id).count()
 		count_with_time = InputRideInfo.objects.filter(group_identifier=group_id).filter(
