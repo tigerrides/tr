@@ -16,14 +16,16 @@ img {
   margin: 16px auto;
 }
 
-/*body {
+body {
      background-image: url("my_app/princeton.png");
      background-repeat: no-repeat;
      background-position: center;
      background-attachment: fixed;
      background-size: 70%;
      min-width: 
-}*/
+     z-index: -2;
+opacity: 0.4;
+}
 
 /*.buttons {
     height: 36px;
