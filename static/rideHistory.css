@@ -71,7 +71,13 @@ filter: alpha(opacity=0);
     cursor: url('my_app/shield.png'), auto;
 }
 
-.buttons:hover .buttons-special:hover {
+.buttons-special:hover {
+    background: #A55858;
+    background-color: rgba(165,88,88,.6);
+    cursor: url('my_app/shield.png'), auto;
+}
+
+.buttons:hover {
     background: #A55858;
     border-radius: 10px;
     background-color: rgba(165,88,88,.6);
