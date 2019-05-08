@@ -57,6 +57,20 @@ filter: alpha(opacity=0);
     cursor: url('my_app/shield.png'), auto; 
 }
 
+.buttons-special {
+    height: 45px;
+    line-height:20px;
+    background-color: rgba(165,88,88,.3);
+    border-radius: 10px;
+    border-color: transparent;
+    color: white;
+    font-size: 15px;
+    margin: 11px 4px;
+    min-width: 54px;
+    padding: 0 16px;
+    cursor: url('my_app/shield.png'), auto;
+}
+
 .buttons:hover {
     background: #A55858;
     border-radius: 10px;
