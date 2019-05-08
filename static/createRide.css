@@ -173,6 +173,8 @@ input:hover {
 }
 
 input[type=submit] {
+        display: inline-block;
+
     height: 36px;
     line-height: 27px;
     background-color: rgba(165,88,88,.3);
