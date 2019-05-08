@@ -50,6 +50,8 @@ input[type=submit]:hover {
     border-radius: 10px;
     background-color: rgba(165,88,88,.6);
     cursor: url('my_app/shield.png'), auto; 
+      box-shadow: 0 0 10px 5px white;
+
 }
 
 .sections {

@@ -205,12 +205,15 @@ input[type=submit] {
     margin: 11px 4px;
     min-width: 54px;
     padding: 0 16px;
+
 }
 
 input[type=submit]:hover {
     background: #A55858;
     border-radius: 5px;
     background-color: rgba(165,88,88,.6);
+        box-shadow: 0 0 10px 5px white;
+
 }
 
 .box {
