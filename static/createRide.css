@@ -30,6 +30,8 @@
     margin-right: auto;
     margin-top: 0px;
     margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 /* Hide the browser's default checkbox */
@@ -170,45 +172,26 @@ input[type=date] {
 input:hover {
 }
 
-/*input[type=submit] {
-    outline: none;
-    height: 36px;
-    line-height: 27px;
-    -webkit-user-select: none;
-    background-color: #f2f2f2;
-    border: 1px solid #f2f2f2;
-    border-radius: 2px;
-    color: #757575;
-    cursor: default;
-    font-size: 13px;
-    font-weight: bold;
-    min-width: 54px;
-    padding: 0px;
-}
-
-input[type=submit]:hover {
-    border: 1px solid #c6c6c6;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-    color: #222;
-}*/
-
 input[type=submit] {
     height: 36px;
     line-height: 27px;
     background-color: rgba(165,88,88,.3);
-    border-radius: 5px;
+    border-radius: 2px;
     border-color: transparent;
     color: white;
     font-size: 15px;
-    margin: 11px 4px;
+    margin: 0 auto;
     min-width: 54px;
     padding: 0 16px;
+
 }
 
 input[type=submit]:hover {
     background: #A55858;
     border-radius: 5px;
     background-color: rgba(165,88,88,.6);
+        box-shadow: 0 0 10px 5px white;
+
 }
 
 .box {

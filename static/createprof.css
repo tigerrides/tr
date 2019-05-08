@@ -1,6 +1,6 @@
 input[type=text],input[type=submit], .buttons, .footer {
     /*font-family: "Helvetica Neue";*/
-    font-family: "houschka-rounded", sans-serif;
+    font-family: 'Roboto Mono', monospace;
     font-style: normal;
 }
 
@@ -17,7 +17,6 @@ input[type=text] {
 }
 
 input[type=text]:hover {
-    cursor: url('my_app/shield.png'), auto; 
 }
 
 input[type=file] {
@@ -31,21 +30,19 @@ input[type=file] {
 }
 
 input[type=file]:hover {
-    cursor: url('my_app/shield.png'), auto; 
 }
 
 input[type=submit] {
     height: 36px;
     line-height: 27px;
     background-color: rgba(165,88,88,.3);
-    border-radius: 10px;
+    border-radius: 2px;
     border-color: transparent;
     color: white;
     font-size: 15px;
     margin: 11px 4px;
     min-width: 54px;
     padding: 0 16px;
-    cursor: url('my_app/shield.png'), auto; 
 }
 
 input[type=submit]:hover {
@@ -53,6 +50,8 @@ input[type=submit]:hover {
     border-radius: 10px;
     background-color: rgba(165,88,88,.6);
     cursor: url('my_app/shield.png'), auto; 
+      box-shadow: 0 0 10px 5px white;
+
 }
 
 .sections {

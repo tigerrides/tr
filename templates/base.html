@@ -16,8 +16,6 @@
     <link rel="shortcut icon" type="image/png" href="{% static "my_app/favicon.png" %}"/>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/typed.js/1.1.4/typed.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
     {% block stylesheet %}
     {% endblock %}
 </head>
@@ -165,19 +163,5 @@ function w3_close() {
             showCursor: true
         });
     });
-$(function() {
-    var img = $("#plane"),
-        width = img.get(0).width,
-        screenWidth = $(window).width(),
-        duration = 5000;
-
-    function animatePlane() {
-        img.css("left", -width).animate({
-            "left": screenWidth
-        }, duration, animatePlane);
-    }
-
-    animatePlane();
-});
 </script>
 </html>
