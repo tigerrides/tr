@@ -14,7 +14,7 @@
 
 /* The container */
 .container {
-    display: inline-block;
+    display: block;
     position: relative;
     padding-left: 27px;
     /*margin-bottom: 12px;*/
@@ -25,7 +25,7 @@
     -ms-user-select: none;
     user-select: none;
     text-align: center;
-    width: 100%;
+    width: 70px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 0px;
