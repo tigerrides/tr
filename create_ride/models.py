@@ -40,8 +40,8 @@ class InputRideInfo(models.Model):
 
     user_first_name = models.CharField(max_length=200, default="first")
     user_last_name = models.CharField(max_length=200, default="last")
-    depart_from = models.CharField(max_length=20, choices=ORIGIN_CHOICES, default=ewr)
-    destination = models.CharField(max_length=20, choices=DESTINATION_CHOICES, default=ewr)
+    depart_from = models.CharField(max_length=20, choices=ORIGIN_CHOICES, default=campus)
+    destination = models.CharField(max_length=20, choices=DESTINATION_CHOICES, default=campus)
     # drop down menu
     # depart_from = Choices('ewr', 'phl', 'jfk', 'princeton')
     # destination = Choices('ewr', 'phl', 'jfk', 'princeton')

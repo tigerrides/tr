@@ -69,6 +69,7 @@ def submit_ride(request):
             get_info = LogInInfo.objects.get(user=request.user)
             input_ride_info.user_first_name = get_info.first_name
             input_ride_info.user_last_name = get_info.last_name
+            input_ride_info.netid=get_info.netid
 
         input_ride_info.save()
 

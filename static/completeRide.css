@@ -128,3 +128,10 @@ margin-right: auto;
 
 }
 
+.name {
+    color: #A55858;
+    font-weight: 700;
+    text-decoration: underline;
+    font-size: 18px;
+}
+

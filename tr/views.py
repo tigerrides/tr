@@ -11,6 +11,8 @@ from uniauth.decorators import login_required
 #?? these two 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from . import settings
 
 @login_required
 def createUser(request):
@@ -98,6 +100,7 @@ def joinGroup(request):
 	my_last_ride = all_my_rides.order_by('created').last()
 	my_last_ride_id = my_last_ride['group_identifier']
 	rideId = request.POST.get('rideId', None)
+	save_details = model_to_dict(InputRideInfo.objects.filter(group_identifier=my_last_ride_id).order_by('id').first())
 	try:
 		InputRideInfo.objects.get(group_identifier=my_last_ride_id)
 	except InputRideInfo.MultipleObjectsReturned:
@@ -113,6 +116,19 @@ def joinGroup(request):
 	print(update_ride)
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
 	print(ridesFiltered)
+
+	subject = 'TigerRide Group for %s' % date
+	message = 'Dear TigerRider, \n\n' \
+			  'Your trip is scheduled from %s to %s on %s. \n\n' \
+			  'Safe travels! \n\n' \
+			  'TigerRide' % (origin, destination, date)
+	email_from = settings.EMAIL_HOST_USER
+	recipient_list = []
+	for rides in ridesFiltered:
+		netid = rides['netid']
+		email = netid + '@princeton.edu'
+		recipient_list.append(email)
+	send_mail(subject, message, email_from, recipient_list)
 
 	return render(request, 'joinGroup.html', {'rides_filt': ridesFiltered, 'single_ride': save_details,
 											  'origin': origin, 'destination' : destination,
@@ -251,8 +267,6 @@ def reloadRideHistory(request, which_one):
 		get_highest = InputRideInfo.objects.all().order_by('group_identifier').last()
 		val = get_highest.group_identifier + 1
 	rideId = request.POST.get('rideId', None)
-	print("which one")
-	print(which_one)
 	if which_one == 1:
 		InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).update(ride_status_open=False)
 	elif which_one == 2:
@@ -261,7 +275,26 @@ def reloadRideHistory(request, which_one):
 		print(my_ride)
 		for ride in my_ride:
 			id = ride['id']
+			me_fn = ride['user_first_name']
+			me_ln = ride['user_last_name']
 		InputRideInfo.objects.filter(id=id).update(group_identifier=val)
+		other_riders = InputRideInfo.objects.filter(group_identifier=rideId).values()
+		subject = 'TigerRide Trip Update'
+		email_from = settings.EMAIL_HOST_USER
+		recipient_list = []
+		for rides in other_riders:
+			netid = rides['netid']
+			email = netid + '@princeton.edu'
+			recipient_list.append(email)
+			origin = rides['depart_from']
+			destination = rides['destination']
+			date = rides['date']
+		message = 'Dear TigerRider, \n\n' \
+				  '%s %s has left your group for your trip scheduled from %s to %s on %s. \n\n' \
+				  'Safe travels! \n\n' \
+				  'TigerRide' % (me_fn, me_ln, origin, destination, date)
+		send_mail(subject, message, email_from, recipient_list)
+
 	return redirect('rideHistory')
 
 def leaveRide(request):
