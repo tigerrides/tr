@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response, RequestContext
 from django.forms.models import model_to_dict
 from django.contrib.auth.decorators import login_required
 from login.models import LogInInfo
@@ -13,6 +13,13 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from . import settings
+
+
+def handler404(request):
+	response = render_to_response('404.html', {},
+								  context_instance=RequestContext(request))
+	response.status_code = 404
+	return response
 
 @login_required
 def createUser(request):
