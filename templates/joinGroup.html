@@ -12,9 +12,9 @@
     <h1 class="title w3-center">success.</h1>
     <div class="w3-padding-36 w3-center w3-myfont">
       <p class="name">ride details:</p>
-      <p>origin: {{ origin }}</p>
-      <p>destination: {{ destination }}</p>
-      <p>date: {{ date }}</p>
+      origin: {{ origin }}<br>
+      destination: {{ destination }}<br>
+      date: {{ date }}<br>
       
       {% for ride in rides_filt %}
       <p class="name">{{ ride.user_first_name }} {{ ride.user_last_name }}:</p>

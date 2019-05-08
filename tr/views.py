@@ -292,6 +292,8 @@ def reloadRideHistory(request, which_one):
 				  'Safe travels! \n\n' \
 				  'TigerRide' % (me_fn, me_ln, origin, destination, date)
 		send_mail(subject, message, email_from, recipient_list)
+	elif which_one == 3:
+		InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).delete()
 
 	return redirect('rideHistory')
 
@@ -307,6 +309,19 @@ def leaveRide(request):
 	return render(request, 'leaveRide.html', {'rides': ridesFiltered, 'rideId': rideId,
                                                  'origin': origin, 'destination' : destination,
                                                  'date': date})
+
+def deleteRide(request):
+	rideId = request.POST.get('rideId', None)
+	print("rideId")
+	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
+	for ride in ridesFiltered:
+		origin = ride['depart_from']
+		destination = ride['destination']
+		date = ride['date']
+		break
+	return render(request, 'deleteRide.html', {'rides': ridesFiltered, 'rideId': rideId,
+											  'origin': origin, 'destination' : destination,
+											  'date': date})
 
 # def completeRide(request):
 # 	return render(request, 'completeRide.html')
