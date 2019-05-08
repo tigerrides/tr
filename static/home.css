@@ -24,8 +24,9 @@
 
 img {
 /*  display: block;*/
-    width: 130px;
-    height: 130px;
+position: relative; 
+    width: 36px;
+    height: 36px;
     display: inline-block;
     /*border-radius: 50%;*/
   box-shadow: 0 0 10px 5px white;
