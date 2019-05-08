@@ -281,6 +281,7 @@ def reloadRideHistory(request, which_one):
 	rideId = request.POST.get('rideId', None)
 	if which_one == 1:
 		InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).update(ride_status_open=False)
+	# leave ride
 	elif which_one == 2:
 		my_ride = InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).values()
 		print("my ride")
@@ -306,6 +307,7 @@ def reloadRideHistory(request, which_one):
 				  'Safe travels! \n\n' \
 				  'TigerRide' % (me_fn, me_ln, origin, destination, date)
 		send_mail(subject, message, email_from, recipient_list)
+	# delete ride
 	elif which_one == 3:
 		InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).delete()
 
