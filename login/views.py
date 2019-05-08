@@ -77,7 +77,7 @@ def cas_profile_create(request):
 
     # set up headers for tigerbook api 
     #url = 'https://tigerbook.herokuapp.com/api/v1/undergraduates'
-    url = 'https://tigerbook.herokuapp.com/api/APnwzuMmFu2UTWVMtil7'
+    url = 'https://tigerbook.herokuapp.com/api/aPNwzUMmFu2UtWVMtil8'
     created = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
     nonce = ''.join([random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/=') for i in range(32)])
     username = 'nbs'
