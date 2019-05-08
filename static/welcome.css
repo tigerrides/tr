@@ -25,6 +25,10 @@ body {
      min-width: 
 }
 
+.typed {
+    text-shadow: 0 0 3px #EFA09E;
+}
+
 /*.buttons {
     height: 36px;
     line-height: 27px;
