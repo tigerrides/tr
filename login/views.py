@@ -12,6 +12,7 @@ import json
 # imports needed to get photo from url 
 from django.core.files import File
 from tempfile import NamedTemporaryFile
+import urllib.request
 
 # Create your views here.
 
@@ -107,10 +108,10 @@ def cas_profile_create(request):
     image_url = student['photo_link']
     print(image_url)
     name = image_url.split('/')
+    image_name = "image_" + name[4]
     print(name)
-    # name = "image_" + urlparse(image_url).path.split('/')[-1]
-    # content=ContentFile(urllib2.urlopen(image_url).read())
-    # profile.image.save(name, content, save=True)
+    content = File(urllib.request.urlopen(image_url).read())
+    profile.image.save(image_name, content, save=True)
     # img_temp = NamedTemporaryFile(delete=True)
     # img_temp.write(urlopen(image_url).read())
     # img_temp.flush()
