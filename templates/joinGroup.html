@@ -19,7 +19,7 @@
       {% for ride in rides_filt %}
       <p class="name">{{ ride.user_first_name }} {{ ride.user_last_name }}:</p>
       <p>{{ ride.time_start }} --> {{ ride.time_end }}</p>
-      notes: <p>{{ ride.notes}}</p>
+      <div style="text-decoration: underline;">notes:</div> {{ ride.notes}}
       {% endfor %}
 
       <!--<div class="row">-->

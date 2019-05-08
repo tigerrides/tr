@@ -19,9 +19,9 @@
       <!--{% with val="no" %} {% endwith %}}-->
       <p class="name">{{ ride.user_first_name }} {{ ride.user_last_name }}:</p>
       <p>{{ ride.time_start }} --> {{ ride.time_end }}</p>
-      notes: <p>{{ ride.notes}}</p>
-      has uber: <p class="w3-center">{{ ride.uber }}</p>
-      has lyft: <p> {{ ride.lyft }}</p>
+      <div style="text-decoration: underline;">notes:</div> {{ ride.notes}}
+      <!--notes:{{ ride.notes}}-->
+      has uber: {{ ride.uber }}, has lyft: {{ ride.lyft }}
 
       <!--<p class="w3-center">Rider: {{ride.user_first_name}} {{ride.user_last_name}}</p>-->
       <!--<p class="w3-center">Time Frame: {{ ride.time_start }} &ndash;&gt; {{ ride.time_end }}</p>-->
