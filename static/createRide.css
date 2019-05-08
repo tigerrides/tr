@@ -275,12 +275,3 @@ form {
     overflow: hidden;
      width: 250px;
 }
-
-.styled-button {
-    display: inline-block;
-    /*box-sizing: border-box;*/
-    border-radius: 2px;
-    /*border-;*/
-    overflow: hidden;
-     width: 250px;
-}
