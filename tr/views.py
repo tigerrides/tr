@@ -179,6 +179,8 @@ def searchResults(request, ride_id):
         submitted_ride = model_to_dict(InputRideInfo.objects.get(group_identifier=ride_id))
     except InputRideInfo.MultipleObjectsReturned:
         return render(request, 'joinGroup2.html')
+    except InputRideInfo.DoesNotExist:
+        return render(request, 'joinGroup2.html')
     print("is this the right ride_id")
     print(ride_id)
     print("my most recent submitted_ride")
