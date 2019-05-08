@@ -37,10 +37,14 @@
       <div class="stuff">
         <a href="{% url 'contact' %}" class="shortcut bar-item bar-button">contact</a>
       </div>
-      <div class="stuff">
-       <a href="{% url 'currentprof' %}" class="shortcut bar-item bar-button">profile</a>
-     </div>
+
       {% if user.is_authenticated %}
+      <div class="stuff">
+        <a href="{% url 'currentprof' %}" class="shortcut bar-item bar-button">user.get_username</a>
+      </div>
+      <div class="stuff">
+        <a href="{% url 'currentprof' %}" class="shortcut bar-item bar-button">user.get_short_name</a>
+      </div>
       <div class="stuff">
       <a href="{% url 'logout' %}" class="shortcut bar-item bar-button">logout</a>
     </div>

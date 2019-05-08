@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from .models import LogInInfo
 from . import forms
+from django.contrib.auth.models import User
 # imports for tigerbook api headers
 import hashlib
 import random
@@ -34,6 +35,7 @@ def profile_create(request):
         netid = arr[2]
         print("netid")
         print(netid)
+        User.objects.get(username=userName).update(first_name=netid)
 
         form = forms.CreateProfile(request.POST, request.FILES)
         if form.is_valid():
