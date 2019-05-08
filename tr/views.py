@@ -16,7 +16,7 @@ from django.template import RequestContext
 from . import settings
 
 
-def handler404(request):
+def error404(request):
 	response = render_to_response('404.html', {},
 								  context_instance=RequestContext(request))
 	response.status_code = 404

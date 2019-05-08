@@ -60,7 +60,9 @@ urlpatterns = [
     #path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
     # path('accounts/logout/', include('login.urls'), name='logout'),
     path('completeRide/', views.completeRide, name='completeRide'),
-] 
+]
+
+handler404 = views.error404
 
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,
