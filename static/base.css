@@ -127,7 +127,8 @@ html *:after {
   max-width: 200px;
   margin: 1rem 1rem;
   /*text-transform: uppercase;*/
-  border: 1px solid currentColor;
+  border: 3px solid currentColor;
+  font-weight: 700;
     line-height: 60px;
     border-radius: 10px;
       text-decoration: none;
