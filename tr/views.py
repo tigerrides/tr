@@ -180,13 +180,13 @@ def rideHistory(request):
 
 @login_required
 def searchResults(request, ride_id):
-	# submitted_ride = model_to_dict(InputRideInfo.objects.all().order_by('created').last())
-    try:
+	try:
 		submitted_ride = model_to_dict(InputRideInfo.objects.get(group_identifier=ride_id))
 	except InputRideInfo.MultipleObjectsReturned:
 		return render(request, 'joinGroup2.html')
 	except InputRideInfo.DoesNotExist:
 		return render(request, 'joinGroup2.html')
+	# submitted_ride = model_to_dict(InputRideInfo.objects.all().order_by('created').last())
 	print("is this the right ride_id")
 	print(ride_id)
 	print("my most recent submitted_ride")
@@ -210,6 +210,7 @@ def searchResults(request, ride_id):
 		group_id = ride['group_identifier']
 		if InputRideInfo.objects.filter(group_identifier=group_id).filter(user=request.user).exists():
 			continue
+
 		# check to make sure all the riders in that group match with you
 		count = InputRideInfo.objects.filter(group_identifier=group_id).count()
 		count_with_time = InputRideInfo.objects.filter(group_identifier=group_id).filter(
@@ -217,10 +218,11 @@ def searchResults(request, ride_id):
 		).filter(
 			time_end__gte=submitted_ride['time_start']
 		).count()
+
 		if count != count_with_time:
 			continue
 		# groups
-        info_dict = {}
+		info_dict = {}
 		all_matchings = InputRideInfo.objects.filter(group_identifier=group_id).values()
 		values_dict[group_id] = all_matchings
 		for save_ride in all_matchings:
