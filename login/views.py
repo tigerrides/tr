@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from urlparse import urlparse
 from django.http import HttpResponse, Http404
 from .models import LogInInfo
 import urllib2
@@ -109,9 +108,11 @@ def cas_profile_create(request):
     profile.save()
     image_url = student['photo_link']
     print(image_url)
-    name = "image_" + urlparse(image_url).path.split('/')[-1]
-    content=ContentFile(urllib2.urlopen(image_url).read())
-    profile.image.save(name, content, save=True)
+    name = image_url.split('/')
+    print(name)
+    # name = "image_" + urlparse(image_url).path.split('/')[-1]
+    # content=ContentFile(urllib2.urlopen(image_url).read())
+    # profile.image.save(name, content, save=True)
     # img_temp = NamedTemporaryFile(delete=True)
     # img_temp.write(urlopen(image_url).read())
     # img_temp.flush()
