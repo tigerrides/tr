@@ -14,7 +14,7 @@
 
 /* The container */
 .container {
-    display: block;
+    display: inline-block;
     position: relative;
     padding-left: 27px;
     /*margin-bottom: 12px;*/
@@ -30,6 +30,8 @@
     margin-right: auto;
     margin-top: 0px;
     margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 /* Hide the browser's default checkbox */
