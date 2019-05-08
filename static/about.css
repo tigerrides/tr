@@ -1,6 +1,10 @@
 img { 
     display: block;
-  width: 40%;
+  width: 70%;
   min-width: 250px;
   margin: 16px auto;
+}
+
+p {
+	color: white;
 }
