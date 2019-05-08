@@ -8,7 +8,7 @@
 {% block content %}
 <div class="w3-row w3-myfont">
 <div class="w3-container w3-center" style="margin:50px">
-<div class="w3-display-center w3-text-white" style="padding:5%">
+< class="w3-display-center w3-text-white" style="padding:5%">
     <!-- page header -->
     <!--<h1 class="title w3-center w3-padding-16">log.</h1>-->
     <h1 class="title w3-center w3-padding-16">current rides.</h1>
@@ -32,14 +32,14 @@
           {% if k == key %}
           <p class="name">ride details:</p>
           {% for k1, v1 in v.items %}
-          {{k1}}: {{v1}}
+          {{k1}}: {{v1}} <br>
           {% endfor %}
           {% endif %}
           {% endfor %}
           {% for val in values %}
           <p class="name">{{ val.user_first_name }} {{ val.user_last_name }}:</p>
           <p>{{ val.time_start }} --> {{ val.time_end }}</p>
-          <p><div style="text-decoration: underline;">notes:</div>{{ val.notes}}</p>
+          <p>notes:{{ val.notes}}</p>
           {% endfor %}
 
 
