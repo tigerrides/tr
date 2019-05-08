@@ -19,6 +19,7 @@
     background-color: rgba(165,88,88,.6);
     cursor: url('my_app/shield.png'), auto; 
 }*/
+body { overflow: hidden }
 
 img {
 /*  display: block;*/
@@ -27,6 +28,5 @@ position: relative;
     height: 36px;
     display: inline-block;
     /*border-radius: 50%;*/
-  box-shadow: 0 0 10px 5px white;
   margin: 20px;
 }
