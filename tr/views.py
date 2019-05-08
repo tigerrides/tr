@@ -52,7 +52,11 @@ def index(request):
 
 @login_required
 def home(request):
-	return render(request, 'home.html')
+	if LogInInfo.objects.filter(user=request.user).exists():
+		return render(request, 'home.html')
+	else:
+		return render(request, 'chooseLogin.html')
+	# return render(request, 'home.html')
 
 def welcome(request):
 	return render(request, 'welcome.html')
@@ -62,13 +66,13 @@ def chooselogin(request):
 
 @login_required
 def currentprof(request):
-	login_infos = LogInInfo.objects.filter(user=request.user)
-	print("number of rides")
-	print(InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count())
-	number_of_rides_completed = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count()
-	print("rides comp")
-	print(InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count())
-	return render(request, 'currentprof.html', {'login_infos': login_infos, 'rides_comp': number_of_rides_completed})
+	if LogInInfo.objects.filter(user=request.user).exists():
+		login_infos = LogInInfo.objects.filter(user=request.user)
+		number_of_rides_completed = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count()
+		return render(request, 'currentprof.html', {'login_infos': login_infos,
+													'rides_comp': number_of_rides_completed})
+	else:
+		return render(request, 'chooseLogin.html')
 	# login_infos = LogInInfo.objects.filter(user=request.user)
 
 def about(request):
