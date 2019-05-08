@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'uniauth',
-    #'star_ratings',
+    'star_ratings',
 ]
 
 MIDDLEWARE = [
@@ -76,9 +76,9 @@ TEMPLATES = [
     },
 ]
 
-#TEMPLATE_CONTEXT_PROCESSORs = [
-#    'django.core.context_processors.request',
-#]
+TEMPLATE_CONTEXT_PROCESSORS = [
+   'django.core.context_processors.request',
+]
 
 WSGI_APPLICATION = 'tr.wsgi.application'
 
@@ -210,4 +210,11 @@ AUTHENTICATION_BACKENDS = [
     'uniauth.backends.CASBackend',
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'princetontigerrides@gmail.com'
+EMAIL_HOST_PASSWORD = 'bcjbzdidbihjnzks'

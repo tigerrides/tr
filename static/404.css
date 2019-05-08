@@ -1,0 +1,28 @@
+.four {
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    color: white;
+    font-weight: 700;
+    /*text-align: left;*/
+    font-size: 4vw;
+    text-align: center;
+    text-shadow: 3px 3px 8px #A55858;
+}
+
+.not-found {
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    color: white;
+    font-weight: 700;
+    /*text-align: left;*/
+    font-size: 10vw;
+    text-align: center;
+    text-shadow: 3px 3px 8px #A55858;
+}
+
+img { 
+    display: block;
+  width: 40%;
+  min-width: 250px;
+  margin: 16px auto;
+}
