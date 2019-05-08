@@ -104,7 +104,7 @@ def cas_profile_create(request):
     # get photos from url 
     profile.save()
     # image_url = student['photo_link']
-    image_url = 'https://ibb.co/7RtMSHv'
+    image_url = 'https://tigerbook.herokuapp.com/images/christyl'
     print(image_url)
     img_temp = NamedTemporaryFile()
     img_temp.write(urlopen(image_url).read())
