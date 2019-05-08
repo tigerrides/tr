@@ -42,6 +42,7 @@ urlpatterns = [
     path('joinGroup/', views.joinGroup, name='joinGroup'),
     path('rideHistory/', views.rideHistory, name='rideHistory'),
     path('leaveRide/', views.leaveRide, name='leaveRide'),
+    path('deleteRide/', views.deleteRide, name='deleteRide'),
 #<<<<<<< HEAD
     #path('searchResults/', views.searchResults, name='searchResults'),
     path(r'^see_rides$', include('create_ride.urls'), name='see_rides'),
@@ -59,7 +60,9 @@ urlpatterns = [
     #path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
     # path('accounts/logout/', include('login.urls'), name='logout'),
     path('completeRide/', views.completeRide, name='completeRide'),
-] 
+]
+
+handler404 = views.handler404
 
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,

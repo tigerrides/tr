@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django.forms.models import model_to_dict
 from django.contrib.auth.decorators import login_required
 from login.models import LogInInfo
@@ -12,7 +12,13 @@ from uniauth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
+from django.template import RequestContext
 from . import settings
+
+
+def handler404(request):
+	return render(request, '404.html', status=404)
+
 
 @login_required
 def createUser(request):
@@ -59,12 +65,10 @@ def currentprof(request):
 	login_infos = LogInInfo.objects.filter(user=request.user)
 	print("number of rides")
 	print(InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count())
-	# number_of_rides_completed = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count()
+	number_of_rides_completed = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count()
 	print("rides comp")
 	print(InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count())
-	return render(request, 'currentprof.html', {'login_infos': login_infos,
-												# 'number_of_rides': number_of_rides_completed
-												})
+	return render(request, 'currentprof.html', {'login_infos': login_infos, 'rides_comp': number_of_rides_completed})
 	# login_infos = LogInInfo.objects.filter(user=request.user)
 
 def about(request):
@@ -82,6 +86,8 @@ def groupInfo(request):
 	# print("group info")
 	# print(ride_id)
 	rideId = request.POST.get('rideId', None)
+	if InputRideInfo.objects.filter(group_identifier=rideId).count() == 0:
+		return render(request, 'joinGroup2.html')
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
 	for ride in ridesFiltered:
 		origin = ride['depart_from']
@@ -291,6 +297,8 @@ def reloadRideHistory(request, which_one):
 				  'Safe travels! \n\n' \
 				  'TigerRide' % (me_fn, me_ln, origin, destination, date)
 		send_mail(subject, message, email_from, recipient_list)
+	elif which_one == 3:
+		InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).delete()
 
 	return redirect('rideHistory')
 
@@ -306,6 +314,19 @@ def leaveRide(request):
 	return render(request, 'leaveRide.html', {'rides': ridesFiltered, 'rideId': rideId,
                                                  'origin': origin, 'destination' : destination,
                                                  'date': date})
+
+def deleteRide(request):
+	rideId = request.POST.get('rideId', None)
+	print("rideId")
+	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
+	for ride in ridesFiltered:
+		origin = ride['depart_from']
+		destination = ride['destination']
+		date = ride['date']
+		break
+	return render(request, 'deleteRide.html', {'rides': ridesFiltered, 'rideId': rideId,
+											  'origin': origin, 'destination' : destination,
+											  'date': date})
 
 # def completeRide(request):
 # 	return render(request, 'completeRide.html')
