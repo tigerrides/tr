@@ -1,0 +1,138 @@
+.pic {
+/*  display: block;*/
+    object-fit: cover;
+    width: 130px;
+    height: 130px;
+    display: inline-block;
+    border-radius: 50%;
+  box-shadow: 0 0 10px 5px white;
+}
+
+.pic:hover {
+/*  display: block;*/
+    object-fit: cover;
+    width: 130px;
+    height: 130px;
+    display: inline-block;
+    border-radius: 50%;
+  box-shadow: none;
+  cursor: url('my_app/shield.png'), auto;
+}
+
+
+.buddy {
+  display: inline-block;
+  margin: 5%;
+}
+
+p {
+  color: white;
+}
+
+.box {
+margin-left: 40%;
+margin-right: 40%;
+padding: 20px 20px 20px 20px;
+border-radius: 20px;
+background-color: transparent;
+-webkit-transition: 300ms; 
+    transition: 300ms;
+  align-content: left;
+  color: #A55858;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.sub {
+text-transform: uppercase;
+    font-family: "houschka-rounded", sans-serif;
+    font-style: normal;
+text-align: left;
+letter-spacing: 3px;
+line-height: 2pt;
+font-size: 10pt;
+  align-content: center;
+}
+
+.buttons {
+    height: 36px;
+    line-height:20px;
+    background-color: rgba(165,88,88,.3);
+    border-radius: 10px;
+    border-color: transparent;
+    color: white;
+    font-size: 15px;
+    margin: 11px 4px;
+    min-width: 54px;
+    padding: 0 16px;
+    cursor: url('my_app/shield.png'), auto;
+}
+
+.buttons:hover {
+    background: #A55858;
+    border-radius: 10px;
+    background-color: rgba(165,88,88,.6);
+    cursor: url('my_app/shield.png'), auto;
+}
+
+.site {
+width: 130px;
+height: 130px;
+background-size: cover;
+color: white !important;
+vertical-align: center;
+border-radius: 50%;
+    display: inline-block;
+  box-shadow: 0 0 10px 5px white;
+}
+
+.cover {
+opacity: 0;
+filter: alpha(opacity=0);
+width: 100%;
+height: 100%;
+border-radius: 50%;
+background-color: white;
+vertical-align: center;
+border: 1px solid white;
+-webkit-transition: 300ms; 
+    transition: 300ms;
+  box-shadow: 0 0 2px 0px white;
+}
+
+.cover:hover {
+opacity: .9;
+filter: alpha(opacity=90);
+cursor: url('my_app/shield.png'), auto; 
+}
+
+.cover-text {
+border-radius: 50%;
+width: 130px;
+height: 130px;
+margin-top: 30px;
+text-align: center;
+color: #A55858;
+line-height: 30px;
+text-align: center;
+margin-left: auto;
+margin-right: auto;
+
+-webkit-transition: 300ms; 
+    transition: 300ms;
+
+}
+
+.name {
+    color: #A55858;
+    font-weight: 700;
+    text-decoration: underline;
+    font-size: 18px;
+}
+
+
