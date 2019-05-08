@@ -175,67 +175,64 @@ def rideHistory(request):
 @login_required
 def searchResults(request, ride_id):
 	# submitted_ride = model_to_dict(InputRideInfo.objects.all().order_by('created').last())
-	submitted_ride = model_to_dict(InputRideInfo.objects.filter(group_identifier=ride_id).order_by('id').first())
+    try:
+        submitted_ride = model_to_dict(InputRideInfo.objects.get(group_identifier=ride_id))
+    except InputRideInfo.MultipleObjectsReturned:
+        return render(request, 'joinGroup2.html')
+    except InputRideInfo.DoesNotExist:
+        return render(request, 'joinGroup2.html')
+    print("is this the right ride_id")
+    print(ride_id)
+    print("my most recent submitted_ride")
+    print(submitted_ride)
+    values = InputRideInfo.objects.filter(
+            time_start__lte=submitted_ride['time_end']
+    ).filter(
+            time_end__gte=submitted_ride['time_start']
+    ).filter(depart_from__contains=submitted_ride['depart_from']
+                     ).filter(destination__contains=submitted_ride['destination']
+                          ).filter(date=submitted_ride['date']
+                               ).filter(~Q(user=request.user)
+                                    ).filter(ride_status_open=True).values()
 
-	try:
-		InputRideInfo.objects.get(group_identifier=ride_id)
-	except InputRideInfo.MultipleObjectsReturned:
-		return render(request, 'joinGroup2.html')
-	submitted_ride = model_to_dict(InputRideInfo.objects.get(group_identifier=ride_id))
-	print("is this the right ride_id")
-	print(ride_id)
-	print("my most recent submitted_ride")
-	print(submitted_ride)
-	values = InputRideInfo.objects.filter(
-		time_start__lte=submitted_ride['time_end']
-	).filter(
-		time_end__gte=submitted_ride['time_start']
-	).filter(depart_from__contains=submitted_ride['depart_from']
-			 ).filter(destination__contains=submitted_ride['destination']
-					  ).filter(date=submitted_ride['date']
-							   ).filter(~Q(user=request.user)
-										).filter(ride_status_open=True).values()
+    if not values:
+        return render(request, 'searchResultsEmpty.html')
 
-	print(values)
-	values_dict = {}
-	ride_info_per_ride = {}
-	for ride in values:
-		# print(ride['id'])
-		group_id = ride['group_identifier']
-		# if a group with your user already exists
-		if InputRideInfo.objects.filter(group_identifier=group_id).filter(user=request.user).exists():
-			continue
+    print(values)
+    values_dict = {}
+    ride_info_per_ride = {}
+    for ride in values:
+        group_id = ride['group_identifier']
+        if InputRideInfo.objects.filter(group_identifier=group_id).filter(user=request.user).exists():
+            continue
 
-		# check to make sure all the riders in that group match with you
-		count = InputRideInfo.objects.filter(group_identifier=group_id).count()
-		count_with_time = InputRideInfo.objects.filter(group_identifier=group_id).filter(
-			time_start__lte=submitted_ride['time_end']
+        # check to make sure all the riders in that group match with you
+        count = InputRideInfo.objects.filter(group_identifier=group_id).count()
+        count_with_time = InputRideInfo.objects.filter(group_identifier=group_id).filter(
+            time_start__lte=submitted_ride['time_end']
 		).filter(
 			time_end__gte=submitted_ride['time_start']
 		).count()
-		if count != count_with_time:
-			continue
-		# groups
-		info_dict = {}
-		all_matchings = InputRideInfo.objects.filter(group_identifier=group_id).values()
-		values_dict[group_id] = all_matchings
-		for save_ride in all_matchings:
-			print("origin")
-			print(save_ride['depart_from'])
-			print("dest")
-			print(save_ride['destination'])
-			print("date")
-			print(save_ride['date'])
-			info_dict['origin'] = save_ride['depart_from']
-			info_dict['destination'] = save_ride['destination']
-			info_dict['date'] = save_ride['date']
-			break
-		ride_info_per_ride[group_id] = info_dict
-
-
-	print(values_dict)
-	return render(request, 'searchResults.html', {'rides': values_dict, 'my_ride_id': ride_id,
-												  'ride_infos': ride_info_per_ride})
+        if count != count_with_time:
+            continue
+        # groups
+        info_dict = {}
+        all_matchings = InputRideInfo.objects.filter(group_identifier=group_id).values()
+        values_dict[group_id] = all_matchings
+        for save_ride in all_matchings:
+            print("origin")
+            print(save_ride['depart_from'])
+            print("dest")
+            print(save_ride['destination'])
+            print("date")
+            print(save_ride['date'])
+            info_dict['origin'] = save_ride['depart_from']
+            info_dict['destination'] = save_ride['destination']
+            info_dict['date'] = save_ride['date']
+            break
+        ride_info_per_ride[group_id] = info_dict
+        print(values_dict)
+        return render(request, 'searchResults.html', {'rides': values_dict, 'my_ride_id': ride_id, 'ride_infos': ride_info_per_ride})
 
 	# return render(request, 'searchResults.html', {'rides': values})
 
