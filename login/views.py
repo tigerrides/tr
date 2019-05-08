@@ -76,7 +76,8 @@ def cas_profile_create(request):
     print("netid hopefully is: " + arr[2])
 
     # set up headers for tigerbook api 
-    url = 'https://tigerbook.herokuapp.com/api/v1/undergraduates'
+    #url = 'https://tigerbook.herokuapp.com/api/v1/undergraduates'
+    url = 'https://tigerbook.herokuapp.com/api/aPNwzUMmFu2UtWVMtil8'
     created = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
     nonce = ''.join([random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/=') for i in range(32)])
     username = 'nbs'
@@ -101,7 +102,7 @@ def cas_profile_create(request):
     
     # get photos from url 
     profile.save()
-    image_url = student['photo_link']
+    image_url = student['photo_link_raw']
     print(image_url)
     img_temp = NamedTemporaryFile(delete=True)
     img_temp.write(urlopen(image_url).read())
