@@ -32,6 +32,8 @@ def profile_create(request):
         userName = request.user.username
         arr = userName.split('-')
         netid = arr[2]
+        print("netid")
+        print(netid)
 
         form = forms.CreateProfile(request.POST, request.FILES)
         if form.is_valid():
