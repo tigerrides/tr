@@ -163,5 +163,13 @@ function w3_close() {
             showCursor: true
         });
     });
+    $(document).ready(function(e) {
+      var width = "+=" + $(document).width();
+      $("#animate").animate({
+      left: width
+    }, 5000, function() {
+      // Animation complete.
+    });
+  });
 </script>
 </html>
