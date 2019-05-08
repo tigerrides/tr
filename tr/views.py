@@ -17,10 +17,8 @@ from . import settings
 
 
 def error404(request):
-	response = render_to_response('404.html', {},
-								  context_instance=RequestContext(request))
-	response.status_code = 404
-	return response
+	return render(request, '404.html', status=404)
+
 
 @login_required
 def createUser(request):

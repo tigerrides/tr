@@ -62,7 +62,7 @@ urlpatterns = [
     path('completeRide/', views.completeRide, name='completeRide'),
 ]
 
-handler404 = views.error404
+handler404 = views.handler404
 
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,
