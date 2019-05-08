@@ -203,6 +203,8 @@ def searchResults(request, ride_id):
 
     if not values:
         return render(request, 'searchResultsEmpty.html')
+    print("values")
+	print(values)
 
     print(values)
     values_dict = {}
