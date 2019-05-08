@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+from urlparse import urlparse
 from django.http import HttpResponse, Http404
 from .models import LogInInfo
+import urllib2
 from . import forms
 # imports for tigerbook api headers
 import hashlib
@@ -10,7 +12,7 @@ from datetime import datetime
 import requests
 import json
 # imports needed to get photo from url 
-from django.core.files import File
+from django.core.files import File, ContentFile
 from urllib.request import urlopen
 from tempfile import NamedTemporaryFile
 
@@ -105,13 +107,16 @@ def cas_profile_create(request):
     
     # get photos from url 
     profile.save()
-    # image_url = student['photo_link']
-    # print(image_url)
+    image_url = student['photo_link']
+    print(image_url)
+    name = "image_" + urlparse(image_url).path.split('/')[-1]
+    content=ContentFile(urllib2.urlopen(image_url).read())
+    profile.image.save(name, content, save=True)
     # img_temp = NamedTemporaryFile(delete=True)
     # img_temp.write(urlopen(image_url).read())
     # img_temp.flush()
     # profile.image.save(f"image_{netid}", File(img_temp))
-    profile.image= '/static/myapp/christyl'
+    # profile.image = '/static/myapp/christyl'
     profile.save()
 
     return redirect('currentprof')
