@@ -40,10 +40,10 @@
 
       {% if user.is_authenticated %}
       <div class="stuff">
-        <a href="{% url 'currentprof' %}" class="shortcut bar-item bar-button">user.get_username</a>
+        <a href="{% url 'currentprof' %}" class="shortcut bar-item bar-button">{{ user.get_username }}</a>
       </div>
       <div class="stuff">
-        <a href="{% url 'currentprof' %}" class="shortcut bar-item bar-button">user.get_short_name</a>
+        <a href="{% url 'currentprof' %}" class="shortcut bar-item bar-button">{{ user.get_short_name }}</a>
       </div>
       <div class="stuff">
       <a href="{% url 'logout' %}" class="shortcut bar-item bar-button">logout</a>
