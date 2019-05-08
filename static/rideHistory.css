@@ -110,3 +110,12 @@ font-size: 10pt;
         width: 40px;
         margin:1%;
     }
+
+.name {
+    color: #A55858;
+    font-weight: 700;
+    text-decoration: underline;
+    font-size: 18px;
+}
+
+
