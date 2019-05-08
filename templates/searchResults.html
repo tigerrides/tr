@@ -8,50 +8,80 @@
 {% block content %}
 <div class="w3-row w3-myfont">
 <div class="w3-container w3-center" style="margin:50px">
- <div class="w3-display-center w3-text-white" style="padding:5%">
+    <div class="w3-display-center w3-text-white" style="padding:5%">
     <!-- page header -->
-    <h1 class="title w3-center w3-padding-16">here r sum potential ride buddies 4 u !</h1>
+        <h1 class="title w3-center w3-padding-16">here r sum potential ride buddies 4 u !</h1>
     <!-- first result -->
     <p></p>
-    <!--<ol>-->
-      {% for key, values in rides.items %}
-      <!--<li>-->
+
+        {% for key, values in open_rides.items %}
+        <!--<li>-->
         <div class="box w3-container w3-padding-16 w3-center w3-myfont">
-            {% for k, v in ride_infos.items %}
+
+            {% for k, v in rides.items %}
             {% if k == key %}
             <p class="name">ride details:</p>
-            {% for k1, v1 in v.items %}
+            {% for k1, v1 in ride_infos.items %}
             {{k1}}: {{v1}} <br>
             {% endfor %}
             {% endif %}
             {% endfor %}
-
-          {% for val in values %}
+            {% for val in values %}
             <p class="name">{{ val.user_first_name }} {{ val.user_last_name }}:</p>
             {{ val.time_start }} --> {{ val.time_end }} <br>
             notes: {{ val.notes}}<br>
             {% endfor %}
+            <!--{% load static %}-->
+            <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
+            <br>
+            <form action="{% url 'groupInfo' %}" method="post" id="toGroupButton">
+                {% csrf_token %}
+                            {{ form }}
+                <button class="buttons w3-center" name="rideId" value="{{key}}"
+                        form="toGroupButton" type="submit">see more</button>
+            </form>
+            </div>
+        {% endfor %}
+        <!--uncentered button lol-->
+      <!--{% for key, values in rides.items %}-->
+      <!--&lt;!&ndash;<li>&ndash;&gt;-->
+        <!--<div class="box w3-container w3-padding-16 w3-center w3-myfont">-->
+            <!--{% for k, v in ride_infos.items %}-->
+            <!--{% if k == key %}-->
+            <!--<p class="name">ride details:</p>-->
+            <!--{% for k1, v1 in v.items %}-->
+            <!--{{k1}}: {{v1}} <br>-->
+            <!--{% endfor %}-->
+            <!--{% endif %}-->
+            <!--{% endfor %}-->
 
-            <!--<p class="name">riders:</p>-->
-          <!--{{ val.user_first_name }} {{ val.user_last_name }}-->
-            <!--<p class="w3-center">notes:</p> {{val.notes}}-->
+          <!--{% for val in values %}-->
+            <!--<p class="name">{{ val.user_first_name }} {{ val.user_last_name }}:</p>-->
+            <!--{{ val.time_start }} &ndash;&gt; {{ val.time_end }} <br>-->
+            <!--notes: {{ val.notes}}<br>-->
+            <!--{% endfor %}-->
+
+            <!--&lt;!&ndash;<p class="name">riders:</p>&ndash;&gt;-->
+          <!--&lt;!&ndash;{{ val.user_first_name }} {{ val.user_last_name }}&ndash;&gt;-->
+            <!--&lt;!&ndash;<p class="w3-center">notes:</p> {{val.notes}}&ndash;&gt;-->
 
 
-          <!--{% load static %}-->
-          <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
-          <br>
-          <form action="{% url 'groupInfo' %}" method="post" id="toGroupButton">
-            {% csrf_token %}
-            {{ form }}
-            <button class="buttons w3-center" name="rideId" value="{{key}}"
-                    form="toGroupButton" type="submit">see more</button>
-          </form>
-          <!--<a href="{% url 'searchResults' ride_id=key %}" class="shortcut bar-item w3-hover-none w3-button">home</a>-->
-        </div>
-      <!--</li>-->
-      {% endfor %}
+          <!--&lt;!&ndash;{% load static %}&ndash;&gt;-->
+          <!--&lt;!&ndash;<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">&ndash;&gt;-->
+          <!--<br>-->
+          <!--<form action="{% url 'groupInfo' %}" method="post" id="toGroupButton">-->
+            <!--{% csrf_token %}-->
+<!--            {{ form }}-->
+            <!--<button class="buttons w3-center" name="rideId" value="{{key}}"-->
+                    <!--form="toGroupButton" type="submit">see more</button>-->
+          <!--</form>-->
+          <!--&lt;!&ndash;<a href="{% url 'searchResults' ride_id=key %}" class="shortcut bar-item w3-hover-none w3-button">home</a>&ndash;&gt;-->
+        <!--</div>-->
+      <!--&lt;!&ndash;</li>&ndash;&gt;-->
+      <!--{% endfor %}-->
+
+
       <!--{% for ride in rides %}-->
-      <!--<li>-->
         <!--<div class="box w3-container w3-padding-16 w3-center w3-myfont">-->
           <!--<p class="w3-center">-->
           <!--</p>-->
@@ -68,9 +98,7 @@
               <!--<br/>-->
           <!--<button onclick="location.href='{% url 'groupInfo' %}'" class="buttons" type="button">see more</button>-->
         <!--</div>-->
-      <!--</li>-->
       <!--{% endfor %}-->
-    <!--</ol>-->
     <br/>
 </div>
 </div>
