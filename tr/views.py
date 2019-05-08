@@ -177,6 +177,9 @@ def searchResults(request, ride_id):
 							   ).filter(~Q(user=request.user)
 										).filter(ride_status_open=True).values()
 
+        if not values:
+            return render(request, 'searchResultsEmpty.html')
+
 	print(values)
 	values_dict = {}
 	ride_info_per_ride = {}
