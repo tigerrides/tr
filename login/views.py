@@ -35,7 +35,9 @@ def profile_create(request):
         netid = arr[2]
         print("netid")
         print(netid)
-        User.objects.get(username=userName).update(first_name=netid)
+        print("get object")
+        print(User.objects.get(username=userName))
+            #.update(first_name=netid)
 
         form = forms.CreateProfile(request.POST, request.FILES)
         if form.is_valid():
