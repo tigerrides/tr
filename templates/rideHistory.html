@@ -41,8 +41,6 @@
           {{ val.time_start }} --> {{ val.time_end }} <br>
           notes: {{ val.notes}}<br>
           {% endfor %}
-        {% empty %}
-          <p class="name">sorry, you have no current rides at the moment!</p>
           <!--{% load static %}-->
           <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
           <br>
@@ -131,9 +129,6 @@
           {{ val.time_start }} --> {{ val.time_end }} <br>
           notes: {{ val.notes}}<br>
           {% endfor %}
-
-          {% empty %}
-          <p class="name">sorry, you have no past rides at the moment!</p>
 
           <!--{% load static %}-->
           <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
