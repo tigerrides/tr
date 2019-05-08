@@ -110,13 +110,11 @@ def cas_profile_create(request):
     name = image_url.split('/')
     image_name = "image_" + name[4]
     print(name)
-    content = File(urllib.request.urlopen(image_url).read())
-    profile.image.save(image_name, content, save=True)
     # img_temp = NamedTemporaryFile(delete=True)
     # img_temp.write(urlopen(image_url).read())
     # img_temp.flush()
     # profile.image.save(f"image_{netid}", File(img_temp))
-    # profile.image = '/static/myapp/christyl'
+    profile.image = '/static/myapp/christyl'
     profile.save()
 
     return redirect('currentprof')
