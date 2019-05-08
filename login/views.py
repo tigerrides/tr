@@ -94,18 +94,20 @@ def cas_profile_create(request):
     r = requests.get(url + '/' + netid, headers=headers)
     student = json.loads(r.text)
 
+    # get photos from url
+    image_url = student['photo_link']
     # create user
     profile = LogInInfo(
         user=request.user,
         first_name=student['first_name'],
         last_name=student['last_name'],
         phone_number=phone,
-        netid=netid
+        netid=netid,
+        pic_url=image_url,
         )
-    
-    # get photos from url 
+
     profile.save()
-    image_url = student['photo_link']
+
     print(image_url)
     # img_temp = NamedTemporaryFile(delete=True)
     # img_temp.write(urlopen(image_url).read())
