@@ -16,7 +16,7 @@ from django.template import RequestContext
 from . import settings
 
 
-def handler404(request):
+def my_custom_page_not_found_view(request, exception):
 	return render(request, '404.html', status=404)
 
 

@@ -62,7 +62,7 @@ urlpatterns = [
     path('completeRide/', views.completeRide, name='completeRide'),
 ]
 
-handler404 = views.handler404
+handler404 = 'tr.views.my_custom_page_not_found_view'
 
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,
