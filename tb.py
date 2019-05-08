@@ -5,7 +5,8 @@ from datetime import datetime
 import requests
 import json
 
-url = 'https://tigerbook.herokuapp.com/api/aPNwzUMmFu2UtWVMtil8'
+url = 'https://tigerbook.herokuapp.com/api/v1/undergraduates'
+#url = 'https://tigerbook.herokuapp.com/api/aPNwzUMmFu2UtWVMtil8'
 created = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
 nonce = ''.join([random.choice('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/=') for i in range(32)])
 username = 'nbs'
