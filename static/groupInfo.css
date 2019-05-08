@@ -59,7 +59,7 @@ font-size: 10pt;
   align-content: center;
 }
 
-/*.buttons {
+button {
     height: 36px;
     line-height:20px;
     background-color: rgba(165,88,88,.3);
@@ -73,12 +73,12 @@ font-size: 10pt;
     cursor: url('my_app/shield.png'), auto; 
 }
 
-.buttons:hover {
+button:hover {
     background: #A55858;
     border-radius: 10px;
     background-color: rgba(165,88,88,.6);
     cursor: url('my_app/shield.png'), auto; 
-}*/
+}
 
 .site {
 width: 130px;
