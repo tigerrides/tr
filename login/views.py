@@ -10,7 +10,7 @@ from datetime import datetime
 import requests
 import json
 # imports needed to get photo from url 
-from django.core.files import File, ContentFile
+from django.core.files import File
 from tempfile import NamedTemporaryFile
 
 # Create your views here.
