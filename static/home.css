@@ -21,3 +21,13 @@
 }*/
 
 #animate { position: relative; border; 1px solid green; background: yellow; width: 100px; height: 100px;}
+
+img {
+/*  display: block;*/
+    width: 130px;
+    height: 130px;
+    display: inline-block;
+    /*border-radius: 50%;*/
+  box-shadow: 0 0 10px 5px white;
+  margin: 20px;
+}
