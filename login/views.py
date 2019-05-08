@@ -50,6 +50,7 @@ def profile_create(request):
             else:
                 instance = form.save(commit=False)
                 instance.user = request.user
+                instance.netid = netid
             # check if it's in the database. if so, update the info else, create a new entry
             # login_infos = LogInInfo.objects.filter(user=request.user)
                 instance.save()
