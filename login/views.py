@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from .models import LogInInfo
-import urllib2
 from . import forms
 # imports for tigerbook api headers
 import hashlib
@@ -12,7 +11,6 @@ import requests
 import json
 # imports needed to get photo from url 
 from django.core.files import File, ContentFile
-from urllib.request import urlopen
 from tempfile import NamedTemporaryFile
 
 # Create your views here.
