@@ -16,6 +16,8 @@
     <link rel="shortcut icon" type="image/png" href="{% static "my_app/favicon.png" %}"/>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/typed.js/1.1.4/typed.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
     {% block stylesheet %}
     {% endblock %}
 </head>
@@ -163,25 +165,19 @@ function w3_close() {
             showCursor: true
         });
     });
-    $(document).ready(function(e) {
-    var width = $(document).width();
+$(function() {
+    var img = $("#car"),
+        width = img.get(0).width,
+        screenWidth = $(window).width(),
+        duration = 5000;
 
-    function goRight() {
-        $("#animate").animate({
-        left: width
-      }, 5000, function() {
-         setTimeout(goLeft, 50);
-      });
-    }
-    function goLeft() {
-        $("#animate").animate({
-        left: 0
-      }, 5000, function() {
-         setTimeout(goRight, 50);
-      });
+    function animateCar() {
+        img.css("left", -width).animate({
+            "left": screenWidth
+        }, duration, animateCar);
     }
 
-    setTimeout(goRight, 50);
+    animateCar();
 });
 </script>
 </html>
