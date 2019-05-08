@@ -111,6 +111,7 @@
 }
 
 input[type=text] {
+     margin: 0 auto;
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
@@ -137,7 +138,6 @@ input[type=time] {
 }
 
 textarea {
-
     margin: 0 auto;
     width: 240px;
     /*width: 80%;
