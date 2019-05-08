@@ -130,7 +130,7 @@ html *:after {
   border: 1px solid currentColor;
   font-weight: 700;
     line-height: 60px;
-    border-radius: 10px;
+    border-radius: 5px;
       text-decoration: none;
   color: white;
 }

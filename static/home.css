@@ -30,3 +30,6 @@ position: relative;
     /*border-radius: 50%;*/
   margin: 20px;
 }
+
+body { overflow: hidden }
+#plane { position: absolute; left: -1000px; width: 50% /* <- not relevant for the animation */ }
