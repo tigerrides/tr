@@ -142,8 +142,8 @@ html *:after {
   right: 0;
   bottom: 0;
   left: 0;
-  border-top: 30px solid white;
-  border-bottom: 30px solid white;
+  border-top: 30px solid #EFA09E;
+  border-bottom: 30px solid #EFA09E;
 }
 .buttons:before {
   border-right: 30px solid transparent;
@@ -156,7 +156,7 @@ html *:after {
           transform: translateX(100%);
 }
 .buttons:hover {
-  color: #F7B5B0;
+  color: white;
   cursor: url('my_app/shield-w.png'), auto; 
 }
 .buttons:hover:before {
