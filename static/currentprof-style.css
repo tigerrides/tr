@@ -1,8 +1,8 @@
 .pic {
 /*  display: block;*/
     object-fit: cover;
-    width: 130px;
-    height: 130px;
+    width: 150px;
+    height: 150px;
     display: inline-block;
     border-radius: 50%;
   box-shadow: 0 0 10px 5px white;
