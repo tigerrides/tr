@@ -17,7 +17,7 @@ img {
 }
 
 body {
-     background-image: url("my_app/princeton.png");
+     background-image: url("my_app/background.png");
      background-repeat: no-repeat;
      background-position: center;
      background-attachment: fixed;
