@@ -21,34 +21,35 @@
     <img class="car" src="{% static "my_app/car_large.png" %}">
     {% load static %}
     <img class="car" src="{% static "my_app/car_large.png" %}">
-    <section id="rides-list">
+    <p id="rides-list">
       <!--<ul>-->
 
         {% for key, values in open_rides.items %}
         <!--<li>-->
         <div class="box w3-container w3-padding-16 w3-center w3-myfont">
+
           {% for k, v in open_sing.items %}
           {% if k == key %}
+          <p class="name">ride details:</p>
           {% for k1, v1 in v.items %}
-          {{k1}}: <p>{{v1}}</p>
+          {{k1}}: {{v1}} <br>
           {% endfor %}
           {% endif %}
           {% endfor %}
-
           {% for val in values %}
-          {{ val.user_first_name }} {{ val.user_last_name }}:
-          <p>{{ val.time_start }} --> {{ val.time_end }}</p>
-          notes: <p>{{ val.notes}}</p>
+          <p class="name">{{ val.user_first_name }} {{ val.user_last_name }}:</p>
+          {{ val.time_start }} --> {{ val.time_end }} <br>
+          notes: {{ val.notes}}<br>
           {% endfor %}
 
 
           <!--{% load static %}-->
           <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
-          <br/>
+          <br>
           <form action="{% url 'completeRide' %}" method="post" id="complete">
             {% csrf_token %}
             {{ form }}
-            <button class="buttons" name="rideId" value="{{ key }}" form="complete" type="submit">
+            <button class="buttons-special" name="rideId" value="{{ key }}" form="complete" type="submit">
               see more or complete ride
             </button>
           </form>
@@ -60,7 +61,13 @@
               leave ride
             </button>
           </form>
-          <!--<a href="{% url 'searchResults' ride_id=key %}" class="shortcut bar-item w3-hover-none w3-button">home</a>-->
+          <form action="{% url 'deleteRide' %}" method="post" id="delete">
+            {% csrf_token %}
+            {{ form }}
+            <button class="buttons" name="rideId" value="{{ key }}" form="delete" type="submit">
+              delete ride
+            </button>
+          </form><!--<a href="{% url 'searchResults' ride_id=key %}" class="shortcut bar-item w3-hover-none w3-button">home</a>-->
         </div>
         <!--</li>-->
         {% endfor %}
@@ -113,21 +120,21 @@
         <div class="box w3-container w3-padding-16 w3-center w3-myfont">
           {% for k, v in closed_sing.items %}
           {% if k == key %}
+          <p class="name">ride details:</p>
           {% for k1, v1 in v.items %}
-          {{k1}}: <p>{{v1}}</p>
+          {{k1}}: {{v1}} <br>
           {% endfor %}
           {% endif %}
           {% endfor %}
-
           {% for val in values %}
-          {{ val.user_first_name }} {{ val.user_last_name }}:
-          <p>{{ val.time_start }} --> {{ val.time_end }}</p>
-          notes: <p>{{ val.notes}}</p>
+          <p class="name">{{ val.user_first_name }} {{ val.user_last_name }}:</p>
+          {{ val.time_start }} --> {{ val.time_end }} <br>
+          notes: {{ val.notes}}<br>
           {% endfor %}
 
 
-          {% load static %}
-          <img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">
+          <!--{% load static %}-->
+          <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
           <br/>
           <!--<form action="{% url 'completeRide' %}" method="post" id="toGroupButton">-->
             <!--{% csrf_token %}-->
