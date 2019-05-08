@@ -243,8 +243,8 @@ def searchResults(request, ride_id):
 			info_dict['date'] = save_ride['date']
 			break
 		ride_info_per_ride[group_id] = info_dict
-		print(values_dict)
-		return render(request, 'searchResults.html', {'rides': values_dict, 'my_ride_id': ride_id, 'ride_infos': ride_info_per_ride})
+	print(values_dict)
+	return render(request, 'searchResults.html', {'rides': values_dict, 'my_ride_id': ride_id, 'ride_infos': ride_info_per_ride})
 
 	# return render(request, 'searchResults.html', {'rides': values})
 @login_required
