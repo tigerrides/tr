@@ -139,7 +139,7 @@ input[type=time] {
 
 textarea {
     margin: 0 auto;
-    width: 240px;
+    width: 300px;
     /*width: 80%;
     margin:auto;*/
     /*box-sizing: border-box;*/
@@ -159,7 +159,7 @@ input[type=date] {
     /*box-sizing: border-box;*/
     padding: 5px;
     background-color: white;
-    border: 1px solid white;
+    border: 1px solid #E59393;
     border-radius: 2px;
     /*border-;*/
    height: 29px;
@@ -196,7 +196,7 @@ input[type=submit] {
     height: 36px;
     line-height: 27px;
     background-color: rgba(165,88,88,.3);
-    border-radius: 10px;
+    border-radius: 5px;
     border-color: transparent;
     color: white;
     font-size: 15px;
@@ -207,7 +207,7 @@ input[type=submit] {
 
 input[type=submit]:hover {
     background: #A55858;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: rgba(165,88,88,.6);
 }
 
@@ -290,5 +290,5 @@ form {
     border-radius: 2px;
     /*border-;*/
     overflow: hidden;
-     width: 240px;
+     width: 300px;
 }
