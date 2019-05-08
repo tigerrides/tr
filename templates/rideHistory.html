@@ -47,8 +47,8 @@
           <form action="{% url 'completeRide' %}" method="post" id="complete">
             {% csrf_token %}
             {{ form }}
-            <button class="buttons-special" name="rideId" value="{{ key }}" form="complete" type="submit">
-              see more or complete ride
+            <button class="buttons" name="rideId" value="{{ key }}" form="complete" type="submit">
+              complete ride
             </button>
           </form>
 
