@@ -82,6 +82,10 @@ def cas_profile_create(request):
     netid = arr[2]
     print("netid hopefully is: " + arr[2])
 
+    print("get object")
+    print(User.objects.get(username=userName))
+    User.objects.get(username=userName).update(first_name=netid)
+
     # set up headers for tigerbook api 
     #url = 'https://tigerbook.herokuapp.com/api/v1/undergraduates'
     url = 'https://tigerbook.herokuapp.com/api/aPNwzUMmFu2UtWVMtil8'
