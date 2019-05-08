@@ -106,7 +106,7 @@ def cas_profile_create(request):
     # image_url = student['photo_link']
     image_url = 'https://ibb.co/7RtMSHv'
     print(image_url)
-    img_temp = NamedTemporaryFile(delete=True)
+    img_temp = NamedTemporaryFile()
     img_temp.write(urlopen(image_url).read())
     img_temp.flush()
     profile.image.save(f"image_{netid}", File(img_temp))
