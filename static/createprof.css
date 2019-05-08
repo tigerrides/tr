@@ -17,7 +17,6 @@ input[type=text] {
 }
 
 input[type=text]:hover {
-    cursor: url('my_app/shield.png'), auto; 
 }
 
 input[type=file] {
@@ -31,7 +30,6 @@ input[type=file] {
 }
 
 input[type=file]:hover {
-    cursor: url('my_app/shield.png'), auto; 
 }
 
 input[type=submit] {
@@ -45,7 +43,6 @@ input[type=submit] {
     margin: 11px 4px;
     min-width: 54px;
     padding: 0 16px;
-    cursor: url('my_app/shield.png'), auto; 
 }
 
 input[type=submit]:hover {
