@@ -41,16 +41,14 @@
           {{ val.time_start }} --> {{ val.time_end }} <br>
           notes: {{ val.notes}}<br>
           {% endfor %}
-
-
           <!--{% load static %}-->
           <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
           <br>
           <form action="{% url 'completeRide' %}" method="post" id="complete">
             {% csrf_token %}
             {{ form }}
-            <button class="buttons-special" name="rideId" value="{{ key }}" form="complete" type="submit">
-              see more or complete ride
+            <button class="buttons" name="rideId" value="{{ key }}" form="complete" type="submit">
+              complete ride
             </button>
           </form>
 
@@ -131,7 +129,6 @@
           {{ val.time_start }} --> {{ val.time_end }} <br>
           notes: {{ val.notes}}<br>
           {% endfor %}
-
 
           <!--{% load static %}-->
           <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
