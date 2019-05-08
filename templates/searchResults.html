@@ -20,15 +20,16 @@
             {% for k, v in ride_infos.items %}
             {% if k == key %}
             {% for k1, v1 in v.items %}
-            {{k1}}: <p>{{v1}}</p>
+            {{k1}}: {{v1}} <br>
             {% endfor %}
             {% endif %}
             {% endfor %}
 
           {% for val in values %}
-            {{ val.user_first_name }} {{ val.user_last_name }}:
-            <p>{{ val.time_start }} --> {{ val.time_end }}</p>
-            notes: <p>{{ val.notes}}</p>
+            <p class="name">{{ val.user_first_name }} {{ val.user_last_name }}:</p>
+            {{ val.time_start }} --> {{ val.time_end }} <br>
+            notes: {{ val.notes}}<br>
+            {% endfor %}
 
             <!--<p class="name">riders:</p>-->
           <!--{{ val.user_first_name }} {{ val.user_last_name }}-->

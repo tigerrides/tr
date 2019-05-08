@@ -80,6 +80,10 @@ def groupInfo(request):
 	# print("group info")
 	# print(ride_id)
 	rideId = request.POST.get('rideId', None)
+	try:
+		InputRideInfo.objects.get(group_identifier=rideId)
+	except InputRideInfo.MultipleObjectsReturned:
+		return render(request, 'joinGroup2.html')
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
 	for ride in ridesFiltered:
 		origin = ride['depart_from']
