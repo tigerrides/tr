@@ -155,7 +155,7 @@ html *:after {
           transform: translateX(100%);
 }
 .buttons:hover {
-  color: #A55858;
+  color: #F7B5B0;
   cursor: url('my_app/shield-w.png'), auto; 
 }
 .buttons:hover:before {
