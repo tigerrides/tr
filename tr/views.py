@@ -80,7 +80,7 @@ def groupInfo(request):
 	# print("group info")
 	# print(ride_id)
 	rideId = request.POST.get('rideId', None)
-	if InputRideInfo.objects.filter(group_identifier=rideId).count() == 0
+	if InputRideInfo.objects.filter(group_identifier=rideId).count() == 0:
 		return render(request, 'joinGroup2.html')
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
 	for ride in ridesFiltered:
