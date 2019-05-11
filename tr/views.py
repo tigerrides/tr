@@ -216,6 +216,40 @@ def reloadRideHistory(request, which_one):
 	return redirect('rideHistory')
 
 @login_required
+def rideHistory(request):
+	open_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=True).values()
+	closed_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).values()
+	open_rides_dict = {}
+	closed_rides_dict = {}
+	open_info_singular = {}
+	close_info_singular = {}
+	for ride in open_rides:
+		group_id = ride['group_identifier']
+		info_dict = {}
+		all_matchings = InputRideInfo.objects.filter(group_identifier=group_id).values()
+		open_rides_dict[group_id] = all_matchings
+		for save_ride in all_matchings:
+			info_dict['origin'] = save_ride['depart_from']
+			info_dict['destination'] = save_ride['destination']
+			info_dict['date'] = save_ride['date']
+			break
+		open_info_singular[group_id] = info_dict
+	for ride in closed_rides:
+		group_id = ride['group_identifier']
+		info_dict = {}
+		all_matchings = InputRideInfo.objects.filter(group_identifier=group_id).values()
+		closed_rides_dict[group_id] = all_matchings
+		for save_ride in all_matchings:
+			info_dict['origin'] = save_ride['depart_from']
+			info_dict['destination'] = save_ride['destination']
+			info_dict['date'] = save_ride['date']
+			break
+		close_info_singular[group_id] = info_dict
+	return render(request, 'rideHistory.html', {'open_rides': open_rides_dict,
+							'closed_rides': closed_rides_dict, 'open_sing': open_info_singular,
+							'closed_sing': close_info_singular})
+
+@login_required
 def searchResults(request, ride_id):
 	try:
 		submitted_ride = model_to_dict(InputRideInfo.objects.get(group_identifier=ride_id))
@@ -272,12 +306,10 @@ def searchResults(request, ride_id):
 @login_required
 def userProf(request):
 	userNetid = request.POST.get('userNetid', None)
-	# save login info of the current authenticated user if he exists
+	print(userNetid)
 	login_infos = LogInInfo.objects.filter(netid=userNetid)
-	# number of rides the user has completed
-	number_of_rides_completed = InputRideInfo.objects.filter(user=User.objects.get(username="cas-princeton-{{userNetid}}")).filter(ride_status_open=False).count()
-	return render(request, 'userProf.html', {'login_infos': login_infos,
-													'rides_comp': number_of_rides_completed})
+	number_of_rides_completed = InputRideInfo.objects.filter(netid=userNetid).filter(ride_status_open=False).count()
+	return render(request, 'userProf.html', {'login_infos': login_infos, 'rides_comp': number_of_rides_completed})
 
 def welcome(request):
 	return render(request, 'welcome.html')
