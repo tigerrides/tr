@@ -116,14 +116,11 @@ def joinGroup(request, ride_id):
 	except InputRideInfo.MultipleObjectsReturned:
 		return render(request, 'joinGroup2.html')
 	save_details = model_to_dict(InputRideInfo.objects.get(group_identifier=my_last_ride_id))
-	print("save_details")
-	print(save_details)
 	origin = save_details['depart_from']
 	destination = save_details['destination']
 	date = save_details['date']
-	update_ride = InputRideInfo.objects.filter(group_identifier=my_last_ride_id).update(group_identifier=rideId)
-	print("adding myself to the group")
-	print(update_ride)
+	# this user joins the ride
+	InputRideInfo.objects.filter(group_identifier=my_last_ride_id).update(group_identifier=rideId)
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
 	print(ridesFiltered)
 
