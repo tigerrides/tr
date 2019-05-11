@@ -47,7 +47,7 @@ urlpatterns = [
     path(r'^see_rides$', include('create_ride.urls'), name='see_rides'),
     path('newride/', views.newRide, name='newRide'),
     path('searchResults/<int:ride_id>/', views.searchResults, name='searchResults'),
-    path('searchResults/<int:ride_id>/', views.searchResults1, name='searchResults1'),
+    path('sr/<int:ride_id>/', views.searchResults1, name='SR'),
 
     # path(r'^searchResults/(?P<int:ride_id>[-\w]+)/$', views.searchResults, name='searchResults'),
 
