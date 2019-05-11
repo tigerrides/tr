@@ -129,11 +129,12 @@ def joinGroup(request, ride_id):
 		netid = rides['netid']
 		email = netid + '@princeton.edu'
 		recipient_list.append(email)
-		current = LogInInfo.objects.filter(netid=netid).values()
+		current = LogInInfo.objects.get(netid=netid)
 		print("current")
 		print(current)
-		print(current['phone_number'])
-		name_phone_num = name_phone_num + netid + ": " + current['phone_number'] + "\n"
+		# print(current['phone_number'])
+		print(current.phone_number)
+		name_phone_num = name_phone_num + netid + ": " + current.phone_number + "\n"
 
 	subject = 'TigerRide Group for %s' % date
 	message = 'Dear TigerRider, \n\n' \
