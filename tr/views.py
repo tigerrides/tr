@@ -319,12 +319,12 @@ def seeGroup(request, ride_id):
 											  'date': date, 'my_ride_id': ride_id})
 
 @login_required
-def userProf(request):
-	userNetid = request.POST.get('userNetid', None)
-	print(userNetid)
-	login_infos = LogInInfo.objects.filter(netid=userNetid)
-	number_of_rides_completed = InputRideInfo.objects.filter(netid=userNetid).filter(ride_status_open=False).count()
-	return render(request, 'userProf.html', {'login_infos': login_infos, 'rides_comp': number_of_rides_completed})
+# def userProf(request):
+# 	userNetid = request.POST.get('userNetid', None)
+# 	print(userNetid)
+# 	login_infos = LogInInfo.objects.filter(netid=userNetid)
+# 	number_of_rides_completed = InputRideInfo.objects.filter(netid=userNetid).filter(ride_status_open=False).count()
+# 	return render(request, 'userProf.html', {'login_infos': login_infos, 'rides_comp': number_of_rides_completed})
 
 def welcome(request):
 	return render(request, 'welcome.html')
