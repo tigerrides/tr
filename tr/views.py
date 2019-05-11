@@ -309,7 +309,7 @@ def userProf(request):
 	# save login info of the current authenticated user if he exists
 	login_infos = LogInInfo.objects.filter(netid=userNetid)
 	# number of rides the user has completed
-	number_of_rides_completed = InputRideInfo.objects.filter(user=User.objects.get(username="cas-princeton-{{userNetid}}")).filter(ride_status_open=False).count()
+	number_of_rides_completed = InputRideInfo.objects.filter(netid=userNetid).filter(ride_status_open=False).count()
 	return render(request, 'userProf.html', {'login_infos': login_infos,
 													'rides_comp': number_of_rides_completed})
 
