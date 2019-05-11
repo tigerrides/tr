@@ -45,7 +45,7 @@ def profile_create(request):
                     last_name=request.POST["last_name"],
                     phone_number=request.POST["phone_number"],
                     netid=netid,
-                    pic_url=inapplicable
+                    pic_url="N/A"
                 )
                 var = LogInInfo.objects.filter(user=request.user).get()
                 var.image = form.cleaned_data['image']
@@ -54,7 +54,7 @@ def profile_create(request):
                 instance = form.save(commit=False)
                 instance.user = request.user
                 instance.netid = netid
-                instance.pic_url = inapplicable
+                instance.pic_url = "N/A"
             # check if it's in the database. if so, update the info else, create a new entry
             # login_infos = LogInInfo.objects.filter(user=request.user)
                 instance.save()
@@ -107,7 +107,7 @@ def cas_profile_create(request):
         last_name=student['last_name'],
         phone_number=phone,
         netid=netid,
-        pic_url=tigerbook,
+        pic_url="tigerbook",
         )
 
     profile.save()
