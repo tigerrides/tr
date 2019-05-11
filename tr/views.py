@@ -306,12 +306,9 @@ def searchResults(request, ride_id):
 @login_required
 def userProf(request, userNetid):
 	print(userNetid)
-	# save login info of the current authenticated user if he exists
 	login_infos = LogInInfo.objects.filter(netid=userNetid)
-	# number of rides the user has completed
 	number_of_rides_completed = InputRideInfo.objects.filter(netid=userNetid).filter(ride_status_open=False).count()
-	return render(request, 'userProf.html', {'login_infos': login_infos,
-													'rides_comp': number_of_rides_completed})
+	return render(request, 'userProf.html', {'login_infos': login_infos, 'rides_comp': number_of_rides_completed})
 
 def welcome(request):
 	return render(request, 'welcome.html')
