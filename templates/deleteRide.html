@@ -34,6 +34,7 @@
            <img src="{{ MEDIA_URL }}{{ result.image }}" class="pic">
          </div> -->
       {% endfor %}
+      <br><br><br>
       <p class="name">WARNING: action cannot be undone!</p>
       <form action="{% url 'reloadRideHistory' 3 %}" method="post" id="toGroupButton">
         {% csrf_token %}
