@@ -26,7 +26,7 @@ urlpatterns = [
     re_path('accounts/', include('uniauth.urls.cas_only', namespace='uniauth')),
     path('createRide/', include('create_ride.urls'), name='createRide'),
 
-    path('groupInfo/<int:please>/', include('org_rides.urls'), name='groupInfoPLS'),
+    path('groupInfo/<int:please>/', include('org_rides.urls'), name='what'),
     path('groupInfo/', views.groupInfo, name='groupInfo'),
     path('chooseLogin/', include('login.urls'), name='chooselogin'),
     path('login/', views.login, name='login'),
