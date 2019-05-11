@@ -25,7 +25,6 @@ urlpatterns = [
     # path('accounts/', include('django.contrib.auth.urls')),
     re_path('accounts/', include('uniauth.urls.cas_only', namespace='uniauth')),
     path('createRide/', include('create_ride.urls'), name='createRide'),
-    path('groupInfo/<int:please>/', include('org_rides.urls'), name='what'),
     path('groupInfo/', views.groupInfo, name='groupInfo'),
     path('chooseLogin/', include('login.urls'), name='chooselogin'),
     path('login/', views.login, name='login'),
@@ -37,7 +36,6 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('reloadRideHistory/<int:which_one>/', views.reloadRideHistory, name="reloadRideHistory"),
     # path('createRide/', views.createRide, name='createRide'),
-    # path('groupInfo/', views.groupInfo, name='groupInfo'),
     path('joinGroup/', views.joinGroup, name='joinGroup'),
     path('rideHistory/', views.rideHistory, name='rideHistory'),
     path('leaveRide/', views.leaveRide, name='leaveRide'),
@@ -48,6 +46,7 @@ urlpatterns = [
     path('newride/', views.newRide, name='newRide'),
     path('searchResults/<int:ride_id>/', views.searchResults, name='searchResults'),
     path('seeMore/<int:ride_id>/', views.seeMore, name='seeMore'),
+    path('join/<int:ride_id>/', views.join, name='join'),
 
     # path(r'^searchResults/(?P<int:ride_id>[-\w]+)/$', views.searchResults, name='searchResults'),
 
