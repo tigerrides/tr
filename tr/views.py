@@ -110,9 +110,6 @@ def index(request):
 @login_required
 def join(request, ride_id):
 	my_last_ride_id = ride_id
-# 	all_my_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=True).values()
-# 	my_last_ride = all_my_rides.order_by('created').last()
-# 	my_last_ride_id = my_last_ride['group_identifier']
 	rideId = request.POST.get('rideId', None)
 	try:
 		InputRideInfo.objects.get(group_identifier=my_last_ride_id)
@@ -269,6 +266,9 @@ def searchResults(request, ride_id):
 							   ).filter(date=submitted_ride['date']
 										).filter(ride_status_open=True).values()
 	# if no objects return, tell the user that no riders match with them
+	print("Values..")
+	print(values)
+	print(values.objects.count())
 	if not values:
 		return render(request, 'searchResultsEmpty.html')
 	# dictionary that organizes the group, where the key is the id of the group,
