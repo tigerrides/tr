@@ -60,6 +60,7 @@ urlpatterns = [
     #path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
     # path('accounts/logout/', include('login.urls'), name='logout'),
     path('completeRide/', views.completeRide, name='completeRide'),
+    path('userProf/', views.userProf, name='userProf'),
 ]
 
 handler404 = 'tr.views.my_custom_page_not_found_view'
