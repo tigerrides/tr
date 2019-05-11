@@ -18,21 +18,23 @@
 
     {% for ride in rides %}
     <div class="w3-padding-36 w3-center w3-myfont">
-      <p class="name">{{ ride.user_first_name }} {{ ride.user_last_name }}:</p>
+      <form action="{% url 'userProf' %}" target="_blank" method="post" id="see_user">
+        {% csrf_token %}
+        {{ form }}
+        <button class="buttons" name="userNetid" value="{{ ride.netid }}" form="see_user" type="submit">
+          {{ ride.user_first_name }} {{ ride.user_last_name }}:
+        </button>
+      </form>
       {{ ride.time_start }} --> {{ ride.time_end }}<br>
       notes: {{ ride.notes}}<br>
       {% endfor %}
-      <br><br><br>
+      <br><br><
       <form action="{% url 'reloadRideHistory' 1 %}" method="post" id="toGroupButton">
         {% csrf_token %}
         {{ form }}
         <button class="buttons" name="rideId" value="{{rideId}}" form="toGroupButton" type="submit">complete!</button>
       </form>
     </div>
-      <!--<div class="buddy w3-container w3-center">
-        <img class="pic" src="my_app/christy.jpg" alt="Christy" class="w3-round-xxlarge">
-        <p class="w3-center">name</p>
-      </div>-->
   </div> 
 </div>
 </div>
