@@ -1,0 +1,6 @@
+img {
+    display: block;
+    width: 40%;
+    min-width: 250px;
+    margin: 16px auto;
+}
