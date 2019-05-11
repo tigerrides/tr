@@ -306,6 +306,7 @@ def searchResults(request, ride_id):
 @login_required
 def userProf(request):
 	userNetid = request.POST.get('userNetid', None)
+	print(userNetid)
 	# save login info of the current authenticated user if he exists
 	login_infos = LogInInfo.objects.filter(netid=userNetid)
 	# number of rides the user has completed
