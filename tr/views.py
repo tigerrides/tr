@@ -264,11 +264,8 @@ def searchResults(request, ride_id):
 			 ).filter(depart_from__contains=submitted_ride['depart_from']
 					  ).filter(destination__contains=submitted_ride['destination']
 							   ).filter(date=submitted_ride['date']
-										).filter(ride_status_open=True).values()
+										).filter(ride_status_open=True).filter(~Q(user=request.user)).values()
 	# if no objects return, tell the user that no riders match with them
-	print("Values..")
-	print(values)
-	print(values.objects.count())
 	if not values:
 		return render(request, 'searchResultsEmpty.html')
 	# dictionary that organizes the group, where the key is the id of the group,
@@ -300,6 +297,8 @@ def searchResults(request, ride_id):
 			info_dict['date'] = save_ride['date']
 			break
 		ride_info_per_ride[group_id] = info_dict
+	if not groups_dict:
+		return render(request, 'searchResultsEmpty.html')
 	return render(request, 'searchResults.html', {'rides': groups_dict, 'my_ride_id': ride_id,
 												  'ride_infos': ride_info_per_ride})
 
