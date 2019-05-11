@@ -17,9 +17,10 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from . import views
 from django.conf import settings
+from django.conf.urls import url
 from django.conf.urls.static import static
 
-
+app_name = 'ratings'
 urlpatterns = [
     path('', views.index, name='index'),
     # path('accounts/', include('django.contrib.auth.urls')),
@@ -43,7 +44,6 @@ urlpatterns = [
     path('rideHistory/', views.rideHistory, name='rideHistory'),
     path('leaveRide/', views.leaveRide, name='leaveRide'),
     path('deleteRide/', views.deleteRide, name='deleteRide'),
-#<<<<<<< HEAD
     #path('searchResults/', views.searchResults, name='searchResults'),
     path(r'^see_rides$', include('create_ride.urls'), name='see_rides'),
     path('newride/', views.newRide, name='newRide'),
@@ -54,12 +54,12 @@ urlpatterns = [
 
     # path('searchResults/', views.searchResults, name='searchResults'),
     # path(r'^see_rides$', include('create_ride.urls'), name='see_rides'),
-#>>>>>>> 58e80ac679c4a1fe980f2eebabeabb66794c8712
     # path('accounts/login/', include('login.urls'), name='login'),
     path('createUser/', views.createUser, name='createUser'),
     #path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
     # path('accounts/logout/', include('login.urls'), name='logout'),
     path('completeRide/', views.completeRide, name='completeRide'),
+    url(r'^ratings/', include('star_ratings.urls')), 
 ]
 
 handler404 = 'tr.views.my_custom_page_not_found_view'
