@@ -318,7 +318,7 @@ def seeGroup(request, ride_id):
 											  'origin': origin, 'destination' : destination,
 											  'date': date, 'my_ride_id': ride_id})
 
-@login_required
+# @login_required
 # def userProf(request):
 # 	userNetid = request.POST.get('userNetid', None)
 # 	print(userNetid)
