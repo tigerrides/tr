@@ -44,7 +44,8 @@ def profile_create(request):
                     first_name=request.POST["first_name"],
                     last_name=request.POST["last_name"],
                     phone_number=request.POST["phone_number"],
-                    netid=netid
+                    netid=netid,
+                    pic_url=inapplicable
                 )
                 var = LogInInfo.objects.filter(user=request.user).get()
                 var.image = form.cleaned_data['image']
@@ -53,6 +54,7 @@ def profile_create(request):
                 instance = form.save(commit=False)
                 instance.user = request.user
                 instance.netid = netid
+                instance.pic_url = inapplicable
             # check if it's in the database. if so, update the info else, create a new entry
             # login_infos = LogInInfo.objects.filter(user=request.user)
                 instance.save()
@@ -105,7 +107,7 @@ def cas_profile_create(request):
         last_name=student['last_name'],
         phone_number=phone,
         netid=netid,
-        pic_url=image_url,
+        pic_url=tigerbook,
         )
 
     profile.save()
@@ -119,6 +121,7 @@ def cas_profile_create(request):
     # profile.image.save(f"image_{netid}", File(img_temp))
     # profile.save()
 
+    # dummy pic to fill image field
     image_url = "https://campusplan.princeton.edu/sites/campusplan2/files/styles/pwds_media_xxlarge_no_crop/public/banner-2017-campus-plan-28.jpg?itok=QwrGwh5R"
     img_temp = NamedTemporaryFile()
     img_temp.write(urlopen(image_url, data=None).read())
