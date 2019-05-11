@@ -17,6 +17,29 @@ from . import settings
 def my_custom_page_not_found_view(request, exception):
 	return render(request, '404.html', status=404)
 
+def about(request):
+	return render(request, 'about.html')
+
+def chooselogin(request):
+	return render(request, 'chooseLogin.html')
+
+def completeRide(request):
+	rideId = request.POST.get('rideId', None)
+	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
+	for ride in ridesFiltered:
+		origin = ride['depart_from']
+		destination = ride['destination']
+		date = ride['date']
+		break
+	return render(request, 'completeRide.html', {'rides': ridesFiltered, 'rideId': rideId,
+											  'origin': origin, 'destination' : destination,
+											  'date': date})
+def contact(request):
+	return render(request, 'contact.html')
+
+@login_required
+def createRide(request):
+	return render(request, 'createRide.html')
 
 @login_required
 def createUser(request):
@@ -31,34 +54,6 @@ def createUser(request):
 	return render(request, 'createUser.html', {'form': form})
 
 @login_required
-def login(request):
-	if LogInInfo.objects.filter(user=request.user).exists():
-		return render(request, 'home.html')
-	else:
-		return render(request, 'chooseLogin.html')
-
-# Create your views here.
-def index(request):
-	if request.user.is_authenticated:
-		return render(request, 'home.html')
-	# return HttpResponse("welcome.html")
-	return render(request, 'welcome.html')
-
-@login_required
-def home(request):
-	if LogInInfo.objects.filter(user=request.user).exists():
-		return render(request, 'home.html')
-	else:
-		return render(request, 'chooseLogin.html')
-	# return render(request, 'home.html')
-
-def welcome(request):
-	return render(request, 'welcome.html')
-
-def chooselogin(request):
-	return render(request, 'chooseLogin.html')
-
-@login_required
 def currentprof(request):
 	if LogInInfo.objects.filter(user=request.user).exists():
 		# save login info of the current authenticated user if he exists
@@ -71,16 +66,18 @@ def currentprof(request):
 	else:
 		return render(request, 'chooseLogin.html')
 
-def about(request):
-	return render(request, 'about.html')
-
-def contact(request):
-	return render(request, 'contact.html')
-
-@login_required
-def createRide(request):
-	return render(request, 'createRide.html')
-
+def deleteRide(request):
+	rideId = request.POST.get('rideId', None)
+	print("rideId")
+	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
+	for ride in ridesFiltered:
+		origin = ride['depart_from']
+		destination = ride['destination']
+		date = ride['date']
+		break
+	return render(request, 'deleteRide.html', {'rides': ridesFiltered, 'rideId': rideId,
+											  'origin': origin, 'destination' : destination,
+											  'date': date})
 @login_required
 def groupInfo(request):
 	rideId = request.POST.get('rideId', None)
@@ -95,6 +92,21 @@ def groupInfo(request):
 	return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId,
 											  'origin': origin, 'destination' : destination,
 											  'date': date})
+
+@login_required
+def home(request):
+	if LogInInfo.objects.filter(user=request.user).exists():
+		return render(request, 'home.html')
+	else:
+		return render(request, 'chooseLogin.html')
+	# return render(request, 'home.html')
+
+# Create your views here.
+def index(request):
+	if request.user.is_authenticated:
+		return render(request, 'home.html')
+	# return HttpResponse("welcome.html")
+	return render(request, 'welcome.html')
 
 @login_required
 def joinGroup(request):
@@ -135,45 +147,81 @@ def joinGroup(request):
 											  'origin': origin, 'destination' : destination,
 											  'date': date})
 
+def leaveRide(request):
+	rideId = request.POST.get('rideId', None)
+	print("rideId")
+	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
+	for ride in ridesFiltered:
+		origin = ride['depart_from']
+		destination = ride['destination']
+		date = ride['date']
+		break
+	return render(request, 'leaveRide.html', {'rides': ridesFiltered, 'rideId': rideId,
+                                                 'origin': origin, 'destination' : destination,
+                                                 'date': date})
+
 @login_required
-def rideHistory(request):
-	open_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=True).values()
-	closed_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).values()
-	open_rides_dict = {}
-	closed_rides_dict = {}
-	open_info_singular = {}
-	close_info_singular = {}
-	for ride in open_rides:
-		group_id = ride['group_identifier']
-		info_dict = {}
-		all_matchings = InputRideInfo.objects.filter(group_identifier=group_id).values()
-		open_rides_dict[group_id] = all_matchings
-		for save_ride in all_matchings:
-			info_dict['origin'] = save_ride['depart_from']
-			info_dict['destination'] = save_ride['destination']
-			info_dict['date'] = save_ride['date']
-			break
-		open_info_singular[group_id] = info_dict
-	for ride in closed_rides:
-		group_id = ride['group_identifier']
-		info_dict = {}
-		all_matchings = InputRideInfo.objects.filter(group_identifier=group_id).values()
-		closed_rides_dict[group_id] = all_matchings
-		for save_ride in all_matchings:
-			info_dict['origin'] = save_ride['depart_from']
-			info_dict['destination'] = save_ride['destination']
-			info_dict['date'] = save_ride['date']
-			break
-		close_info_singular[group_id] = info_dict
-	return render(request, 'rideHistory.html', {'open_rides': open_rides_dict,
-												'closed_rides': closed_rides_dict, 'open_sing': open_info_singular,
-												'closed_sing': close_info_singular})
+def login(request):
+	if LogInInfo.objects.filter(user=request.user).exists():
+		return render(request, 'home.html')
+	else:
+		return render(request, 'chooseLogin.html')
+
+@login_required
+def newRide(request):
+	return render(request, 'newride.html')
+
+def reloadRideHistory(request, which_one):
+	no = InputRideInfo.objects.count()
+	val = 0
+	if no == 0:
+		val = 1
+	else:
+		get_highest = InputRideInfo.objects.all().order_by('group_identifier').last()
+		val = get_highest.group_identifier + 1
+	rideId = request.POST.get('rideId', None)
+	# complete ride
+	if which_one == 1:
+		InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).update(ride_status_open=False)
+	# leave ride
+	elif which_one == 2:
+		my_ride = InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).values()
+		print("my ride")
+		print(my_ride)
+		for ride in my_ride:
+			id = ride['id']
+			me_fn = ride['user_first_name']
+			me_ln = ride['user_last_name']
+		InputRideInfo.objects.filter(id=id).update(group_identifier=val)
+		other_riders = InputRideInfo.objects.filter(group_identifier=rideId).values()
+		subject = 'TigerRide Trip Update'
+		email_from = settings.EMAIL_HOST_USER
+		recipient_list = []
+		for rides in other_riders:
+			netid = rides['netid']
+			email = netid + '@princeton.edu'
+			recipient_list.append(email)
+			origin = rides['depart_from']
+			destination = rides['destination']
+			date = rides['date']
+		message = 'Dear TigerRider, \n\n' \
+				  '%s %s has left your group for your trip scheduled from %s to %s on %s. \n\n' \
+				  'Safe travels! \n\n' \
+				  'TigerRide' % (me_fn, me_ln, origin, destination, date)
+		send_mail(subject, message, email_from, recipient_list)
+	# delete ride
+	elif which_one == 3:
+		InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).delete()
+
+	return redirect('rideHistory')
 
 @login_required
 def searchResults(request, ride_id):
 	try:
 		submitted_ride = model_to_dict(InputRideInfo.objects.get(group_identifier=ride_id))
-	except InputRideInfo.MultipleObjectsReturned or InputRideInfo.DoesNotExist:
+	except InputRideInfo.MultipleObjectsReturned:
+		return render(request, 'joinGroup2.html')
+	except InputRideInfo.DoesNotExist:
 		return render(request, 'joinGroup2.html')
 
 	# filter all the InputRideInfo objects that are open rides and overlap with
@@ -221,89 +269,15 @@ def searchResults(request, ride_id):
 		ride_info_per_ride[group_id] = info_dict
 	return render(request, 'searchResults.html', {'rides': groups_dict, 'my_ride_id': ride_id, 'ride_infos': ride_info_per_ride})
 
-	# return render(request, 'searchResults.html', {'rides': values})
 @login_required
-def newRide(request):
-	return render(request, 'newride.html')
+def userProf(request):
+	userNetid = request.POST.get('userNetid', None)
+	# save login info of the current authenticated user if he exists
+	login_infos = LogInInfo.objects.filter(netid=userNetid)
+	# number of rides the user has completed
+	number_of_rides_completed = InputRideInfo.objects.filter(user=User.objects.get(username="cas-princeton-{{userNetid}}")).filter(ride_status_open=False).count()
+	return render(request, 'userProf.html', {'login_infos': login_infos,
+													'rides_comp': number_of_rides_completed})
 
-def completeRide(request):
-	rideId = request.POST.get('rideId', None)
-	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
-	for ride in ridesFiltered:
-		origin = ride['depart_from']
-		destination = ride['destination']
-		date = ride['date']
-		break
-	return render(request, 'completeRide.html', {'rides': ridesFiltered, 'rideId': rideId,
-											  'origin': origin, 'destination' : destination,
-											  'date': date})
-
-def reloadRideHistory(request, which_one):
-	no = InputRideInfo.objects.count()
-	val = 0
-	if no == 0:
-		val = 1
-	else:
-		get_highest = InputRideInfo.objects.all().order_by('group_identifier').last()
-		val = get_highest.group_identifier + 1
-	rideId = request.POST.get('rideId', None)
-	# complete ride
-	if which_one == 1:
-		InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).update(ride_status_open=False)
-	# leave ride
-	elif which_one == 2:
-		my_ride = InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).values()
-		print("my ride")
-		print(my_ride)
-		for ride in my_ride:
-			id = ride['id']
-			me_fn = ride['user_first_name']
-			me_ln = ride['user_last_name']
-		InputRideInfo.objects.filter(id=id).update(group_identifier=val)
-		other_riders = InputRideInfo.objects.filter(group_identifier=rideId).values()
-		subject = 'TigerRide Trip Update'
-		email_from = settings.EMAIL_HOST_USER
-		recipient_list = []
-		for rides in other_riders:
-			netid = rides['netid']
-			email = netid + '@princeton.edu'
-			recipient_list.append(email)
-			origin = rides['depart_from']
-			destination = rides['destination']
-			date = rides['date']
-		message = 'Dear TigerRider, \n\n' \
-				  '%s %s has left your group for your trip scheduled from %s to %s on %s. \n\n' \
-				  'Safe travels! \n\n' \
-				  'TigerRide' % (me_fn, me_ln, origin, destination, date)
-		send_mail(subject, message, email_from, recipient_list)
-	# delete ride
-	elif which_one == 3:
-		InputRideInfo.objects.filter(group_identifier=rideId).filter(user=request.user).delete()
-
-	return redirect('rideHistory')
-
-def leaveRide(request):
-	rideId = request.POST.get('rideId', None)
-	print("rideId")
-	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
-	for ride in ridesFiltered:
-		origin = ride['depart_from']
-		destination = ride['destination']
-		date = ride['date']
-		break
-	return render(request, 'leaveRide.html', {'rides': ridesFiltered, 'rideId': rideId,
-                                                 'origin': origin, 'destination' : destination,
-                                                 'date': date})
-
-def deleteRide(request):
-	rideId = request.POST.get('rideId', None)
-	print("rideId")
-	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
-	for ride in ridesFiltered:
-		origin = ride['depart_from']
-		destination = ride['destination']
-		date = ride['date']
-		break
-	return render(request, 'deleteRide.html', {'rides': ridesFiltered, 'rideId': rideId,
-											  'origin': origin, 'destination' : destination,
-											  'date': date})
+def welcome(request):
+	return render(request, 'welcome.html')
