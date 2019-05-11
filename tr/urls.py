@@ -43,7 +43,7 @@ urlpatterns = [
     path('rideHistory/', views.rideHistory, name='rideHistory'),
     path('searchResults/<int:ride_id>/', views.searchResults, name='searchResults'),
     path(r'^see_rides$', include('create_ride.urls'), name='see_rides'),
-    path('userProf/<slug:userNetid>/', views.userProf, name='userProf'),
+    path('userProf/', views.userProf, name='userProf'),
     path('welcome/', views.welcome, name='welcome'),
 ]
 
