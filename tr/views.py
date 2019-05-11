@@ -115,6 +115,8 @@ def joinGroup(request, ride_id):
 		InputRideInfo.objects.get(group_identifier=my_last_ride_id)
 	except InputRideInfo.MultipleObjectsReturned:
 		return render(request, 'joinGroup2.html')
+	except InputRideInfo.DoesNotExist:
+		return render(request, '404.html')
 	save_details = model_to_dict(InputRideInfo.objects.get(group_identifier=my_last_ride_id))
 	origin = save_details['depart_from']
 	destination = save_details['destination']
