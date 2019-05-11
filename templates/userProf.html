@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block stylesheet %}
+{% load static %}
+<link rel="stylesheet" href="{% static "currentprof-style.css" %}">
+{% endblock %}
+
+{% block content %}
+<div class="w3-row w3-myfont">
+  <div class="w3-container w3-center" style="margin:5%">
+    <div class="w3-display-center w3-text-white" style="padding:5%">
+      {% if user.is_authenticated %}
+      {% for login_info in login_infos%}
+      <h1 class="title w3-center">{{login_info.first_name}}'s profile.</h1>
+      <div class="left w3-half w3-padding-16 w3-center w3-myfont">
+        {% if login_info.pic_url == "tigerbook" %}
+          <img src="https://tigerbook.herokuapp.com/images/{{login_info.netid}}" class="pic">
+        {% else %}
+          <img src="{{ login_info.image.url }}" class="pic">
+        {% endif %}
+      </div>
+      <div class="right w3-half w3-padding-16 w3-center w3-myfont">
+        <!-- code 1 commented out from here and moved to bottom for clarity --> 
+        <h2 class="name">
+          {{ login_info.first_name }} {{ login_info.last_name }}
+        </h2>
+        <p class="description">&#9733;&#9733;&#9733;&#9733;&#9733;<br/></p>
+        <p class="description">netid: {{ login_info.netid }}</p>
+        <p class="description">phone number: {{ login_info.phone_number }}</p>
+        <p class="description">trips taken: {{ rides_comp }}</p>
+      {% endfor %}
+      <a href='{% url 'createprof' %}' class="buttons">edit</a>
+      </div>
+
+      {% else %}
+      <div class="right w3-half w3-padding-16 w3-center w3-myfont">
+        <p>You are not logged in</p>
+        <a href="{% url 'login' %}">login</a>
+      </div>
+      {% endif %}
+      <!-- code 2 commented out from here -->
+      <br>
+    </div>
+  </div> 
+</div>
+</div>
+{% endblock %}
