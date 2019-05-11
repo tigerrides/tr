@@ -5,7 +5,7 @@
     height: 130px;
     display: inline-block;
     border-radius: 50%;
-  box-shadow: 0 0 10px 5px white;
+    box-shadow: 0 0 10px 5px white;
 }
 
 .pic:hover {

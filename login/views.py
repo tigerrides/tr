@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from .models import LogInInfo
 from . import forms
+from django.contrib.auth.models import User
 # imports for tigerbook api headers
 import hashlib
 import random
@@ -32,6 +33,8 @@ def profile_create(request):
         userName = request.user.username
         arr = userName.split('-')
         netid = arr[2]
+        print("netid")
+        print(netid)
 
         form = forms.CreateProfile(request.POST, request.FILES)
         if form.is_valid():
@@ -49,6 +52,7 @@ def profile_create(request):
             else:
                 instance = form.save(commit=False)
                 instance.user = request.user
+                instance.netid = netid
             # check if it's in the database. if so, update the info else, create a new entry
             # login_infos = LogInInfo.objects.filter(user=request.user)
                 instance.save()
@@ -92,17 +96,20 @@ def cas_profile_create(request):
     r = requests.get(url + '/' + netid, headers=headers)
     student = json.loads(r.text)
 
+    # get photos from url
+    image_url = student['photo_link']
     # create user
     profile = LogInInfo(
         user=request.user,
         first_name=student['first_name'],
         last_name=student['last_name'],
         phone_number=phone,
-        netid=netid
+        netid=netid,
+        pic_url=image_url,
         )
-    
-    # get photos from url 
+
     profile.save()
+
     # image_url = student['photo_link']
     image_url = 'https://tigerbook.herokuapp.com/images/christyl'
     print(image_url)
