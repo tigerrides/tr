@@ -111,7 +111,8 @@ def cas_profile_create(request):
     profile.save()
 
     # image_url = student['photo_link']
-    image_url = 'https://www.princeton.edu/sites/default/files/styles/full_2x/public/images/2019/05/20190403_Class-on_MorrisonT_DJA_090.jpg?itok=q_UyB0AX'
+    # image_url = 'https://www.princeton.edu/sites/default/files/styles/full_2x/public/images/2019/05/20190403_Class-on_MorrisonT_DJA_090.jpg?itok=q_UyB0AX'
+    image_url = "https://tigerbook.herokuapp.com/student/christyl"
     print(image_url)
     img_temp = NamedTemporaryFile()
     img_temp.write(urlopen(image_url).read())
