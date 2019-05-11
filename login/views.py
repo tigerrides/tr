@@ -115,7 +115,7 @@ def cas_profile_create(request):
     # image_url = 'https://www.princeton.edu/sites/default/files/styles/full_2x/public/images/2019/05/20190403_Class-on_MorrisonT_DJA_090.jpg?itok=q_UyB0AX'
     image_url = "https://tigerbook.herokuapp.com/images/christyl"
 
-    img_temp = io.BytesIO(urlopen(URL).read())
+    img_temp = io.BytesIO(urlopen(image_url).read())
 
     # print(image_url)
     # img_temp = NamedTemporaryFile()
