@@ -130,19 +130,15 @@ def joinGroup(request, ride_id):
 		email = netid + '@princeton.edu'
 		recipient_list.append(email)
 		current = LogInInfo.objects.get(netid=netid)
-		print("current")
-		print(current)
-		# print(current['phone_number'])
-		print(current.phone_number)
 		name_phone_num = name_phone_num + netid + ": " + current.phone_number + "\n"
 
 	subject = 'TigerRide Group for %s' % date
 	message = 'Dear TigerRider, \n\n' \
 			  'Your trip is scheduled from %s to %s on %s. \n\n' \
-			  'Here are the netid\'s and phone numbers of everyone in your group:\n' \
-			  'Safe travels! \n\n' % (origin, destination, date)
+			  'Here are the netid\'s and phone numbers of everyone ' \
+			  'in your group:\n' % (origin, destination, date)
 
-	message = message + name_phone_num + "\nTigerRide"
+	message = message + name_phone_num + "\nSafe travels! \n\nTigerRide"
 	print("message")
 	print(message)
 	email_from = settings.EMAIL_HOST_USER
@@ -328,10 +324,14 @@ def seeGroup(request, ride_id):
 		return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId,
 													'origin': origin, 'destination' : destination,
 											  		'date': date, 'my_ride_id': ride_id})
-	else:
-		return render(request, 'groupInfoOptions.html', {'rides': ridesFiltered, 'rideId': rideId,
+	elif ridesFiltered.count() == 1:
+		return render(request, 'groupInfoCanSearch.html', {'rides': ridesFiltered, 'rideId': rideId,
 														 'origin': origin, 'destination' : destination,
 														 'date': date, 'my_ride_id': ride_id})
+	else:
+		return render(request, 'groupInfoOption.html', {'rides': ridesFiltered, 'rideId': rideId,
+														   'origin': origin, 'destination' : destination,
+														   'date': date, 'my_ride_id': ride_id})
 
 @login_required
 def userProf(request):

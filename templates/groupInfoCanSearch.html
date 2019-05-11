@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block stylesheet %}
+{% load static %}
+  <link rel="stylesheet" href="{% static 'leaveRide.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="w3-row w3-myfont">
+<div class="w3-container w3-center" style="margin:50px">
+  <div class="w3-display-center w3-text-white" style="padding:5%">
+    <h1 class="title w3-center">information.</h1>
+    <p class="name">ride details:</p>
+    origin: {{ origin }}<br>
+    destination: {{ destination }}<br>
+    date: {{ date }}<br>
+    {% for ride in rides %}
+    <div class="w3-padding-36 w3-center w3-myfont">
+      <form action="{% url 'userProf' %}" target="_blank" method="post" id="see_user">
+        {% csrf_token %}
+        {{ form }}
+        <button class="buttons" name="userNetid" value="{{ ride.netid }}" form="see_user" type="submit">
+          {{ ride.user_first_name }} {{ ride.user_last_name }}:
+        </button>
+      </form>
+      {{ ride.time_start }} --> {{ ride.time_end }}<br>
+      notes: {{ ride.notes}}<br>
+      has uber: {{ ride.uber }}, has lyft: {{ ride.lyft }} <br>
+
+      {% endfor %}
+      <br><br>
+      <form action="{% url 'searchResults' rideId%}" method="post" id="search">
+        {% csrf_token %}
+        {{ form }}
+        <button class="buttons" name="rideId" value="{{ rideId }}" form="search" type="submit">
+          complete ride
+        </button>
+      </form>
+
+      <form action="{% url 'deleteRide' %}" method="post" id="delete">
+        {% csrf_token %}
+        {{ form }}
+        <button class="buttons" name="rideId" value="{{ rideId }}" form="delete" type="submit">
+          delete ride
+        </button>
+      </form>
+      </div>
+      <!--<div class="buddy w3-container w3-center">
+        <img class="pic" src="my_app/christy.jpg" alt="Christy" class="w3-round-xxlarge">
+        <p class="w3-center">name</p>
+      </div>-->
+  </div> 
+</div>
+
+</div>
+{% endblock %}
