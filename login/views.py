@@ -121,4 +121,11 @@ def cas_profile_create(request):
     # profile.image.save(f"image_{netid}", File(img_temp))
     # profile.save()
 
+    image_url = "https://campusplan.princeton.edu/sites/campusplan2/files/styles/pwds_media_xxlarge_no_crop/public/banner-2017-campus-plan-28.jpg?itok=QwrGwh5R"
+    img_temp = NamedTemporaryFile()
+    img_temp.write(urlopen(image_url, data=None).read())
+    img_temp.flush()
+    profile.image.save(f"tigerbook", File(img_temp))
+    profile.save()
+
     return redirect('currentprof')
