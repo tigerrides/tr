@@ -222,7 +222,7 @@ def searchResults(request, ride_id):
 	return render(request, 'searchResults.html', {'rides': groups_dict, 'my_ride_id': ride_id, 'ride_infos': ride_info_per_ride})
 
 @login_required
-def searchResults1(request, ride_id):
+def join(request, ride_id):
 	print("ride_id")
 	print(ride_id)
 	# all_my_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=True).values()
