@@ -46,10 +46,8 @@ def profile_create(request):
                     phone_number=request.POST["phone_number"],
                     netid=netid
                 )
-                # var = LogInInfo.objects.filter(user=request.user).get()
-                # var.image = form.cleaned_data['image']
-                # var.save()
-                var.image = request.FILES['image']
+                var = LogInInfo.objects.filter(user=request.user).get()
+                var.image = form.cleaned_data['image']
                 var.save()
             else:
                 instance = form.save(commit=False)
