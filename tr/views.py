@@ -66,15 +66,16 @@ def chooselogin(request):
 
 @login_required
 def currentprof(request):
-	# save login info of the current authenticated user.
 	if LogInInfo.objects.filter(user=request.user).exists():
+		# save login info of the current authenticated user if he exists
 		login_infos = LogInInfo.objects.filter(user=request.user)
+		# number of rides the user has completed
 		number_of_rides_completed = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count()
 		return render(request, 'currentprof.html', {'login_infos': login_infos,
 													'rides_comp': number_of_rides_completed})
+	# if current user's login info doesn't exist, tell him/her to make one
 	else:
 		return render(request, 'chooseLogin.html')
-	# login_infos = LogInInfo.objects.filter(user=request.user)
 
 def about(request):
 	return render(request, 'about.html')
@@ -88,8 +89,6 @@ def createRide(request):
 
 @login_required
 def groupInfo(request):
-	# print("group info")
-	# print(ride_id)
 	rideId = request.POST.get('rideId', None)
 	if InputRideInfo.objects.filter(group_identifier=rideId).count() == 0:
 		return render(request, 'joinGroup2.html')
@@ -105,13 +104,10 @@ def groupInfo(request):
 
 @login_required
 def joinGroup(request):
-	# print("join group")
-	# print(my_ride_id)
 	all_my_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=True).values()
 	my_last_ride = all_my_rides.order_by('created').last()
 	my_last_ride_id = my_last_ride['group_identifier']
 	rideId = request.POST.get('rideId', None)
-	save_details = model_to_dict(InputRideInfo.objects.filter(group_identifier=my_last_ride_id).order_by('id').first())
 	try:
 		InputRideInfo.objects.get(group_identifier=my_last_ride_id)
 	except InputRideInfo.MultipleObjectsReturned:
@@ -249,7 +245,7 @@ def searchResults(request, ride_id):
 			break
 		ride_info_per_ride[group_id] = info_dict
 	print(values_dict)
-	return render(request, 'searchResults2.html', {'rides': values_dict, 'my_ride_id': ride_id, 'ride_infos': ride_info_per_ride})
+	return render(request, 'searchResults.html', {'rides': values_dict, 'my_ride_id': ride_id, 'ride_infos': ride_info_per_ride})
 
 	# return render(request, 'searchResults.html', {'rides': values})
 @login_required
