@@ -66,6 +66,7 @@ def chooselogin(request):
 
 @login_required
 def currentprof(request):
+	# save login info of the current authenticated user.
 	if LogInInfo.objects.filter(user=request.user).exists():
 		login_infos = LogInInfo.objects.filter(user=request.user)
 		number_of_rides_completed = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count()
