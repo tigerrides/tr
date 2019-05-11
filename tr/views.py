@@ -304,7 +304,8 @@ def searchResults(request, ride_id):
 	return render(request, 'searchResults.html', {'rides': groups_dict, 'my_ride_id': ride_id, 'ride_infos': ride_info_per_ride})
 
 @login_required
-def userProf(request, userNetid):
+def userProf(request):
+	userNetid = request.POST.get('userNetid', None)
 	print(userNetid)
 	login_infos = LogInInfo.objects.filter(netid=userNetid)
 	number_of_rides_completed = InputRideInfo.objects.filter(netid=userNetid).filter(ride_status_open=False).count()

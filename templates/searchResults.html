@@ -30,10 +30,10 @@
 
           {% for val in values %}
           <!-- <p class="name">{{ val.user_first_name }} {{ val.user_last_name }}:</p> -->
+          <!-- <a href="{% url 'userProf' val.netid %}">{{ val.user_first_name }} {{ val.user_last_name }}</a> -->
           <form action="{% url 'userProf' %}" method="post" id="see_user">
             {% csrf_token %}
             {{ form }}
-            print(val.netid)
             <button class="buttons" name="userNetid" value="{{ val.netid }}" form="see_user" type="submit">
               {{ val.user_first_name }} {{ val.user_last_name }}
             </button>
