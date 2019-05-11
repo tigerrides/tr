@@ -2,19 +2,16 @@
 
 {% block stylesheet %}
 {% load static %}
-{% load ratings %}
 <link rel="stylesheet" href="{% static "currentprof-style.css" %}">
-<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
-<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script> 
 {% endblock %}
 
 {% block content %}
 <div class="w3-row w3-myfont">
   <div class="w3-container w3-center" style="margin:5%">
     <div class="w3-display-center w3-text-white" style="padding:5%">
-      <h1 class="title w3-center">my profile.</h1>
       {% if user.is_authenticated %}
       {% for login_info in login_infos%}
+      <h1 class="title w3-center">{{login_info.first_name}}'s profile.</h1>
       <div class="left w3-half w3-padding-16 w3-center w3-myfont">
         {% if login_info.pic_url == "tigerbook" %}
           <img src="https://tigerbook.herokuapp.com/images/{{login_info.netid}}" class="pic">
@@ -27,8 +24,7 @@
         <h2 class="name">
           {{ login_info.first_name }} {{ login_info.last_name }}
         </h2>
-        <!--<p class="description">&#9733;&#9733;&#9733;&#9733;&#9733;<br/></p>-->
-        <p class="description">ratings: {{ login_info.rating }}</p>
+        <p class="description">&#9733;&#9733;&#9733;&#9733;&#9733;<br/></p>
         <p class="description">netid: {{ login_info.netid }}</p>
         <p class="description">phone number: {{ login_info.phone_number }}</p>
         <p class="description">trips taken: {{ rides_comp }}</p>
@@ -49,30 +45,3 @@
 </div>
 </div>
 {% endblock %}
-
-
-<!-- code 1 -->
-<!--<h2 class="name">-->
-  <!--{% if user.is_authenticated %}-->
-  <!--test 1-->
-  <!--{{ user.username }}-->
-  <!--{{ user.email }}-->
-  <!--{% else %}-->
-  <!--<p>You are not logged in</p>-->
-  <!--&lt;!&ndash;<a href="{% url 'login' %}">login</a>&ndash;&gt;-->
-  <!--{% endif %}-->
-  <!--</h2>-->
-  <!-- code 2  -->
-  <!--{% for login_info in login_infos %}-->
-  <!--<p class="description">&#9733;&#9733;&#9733;&#9733;&#9733;<br/><br/></p>-->
-  <!--<p class="description">-->
-    <!--name@princeton.edu-->
-    <!--</p>-->
-    <!--<p class="description">-->
-      <!--{{ login_info.phone_number }}-->
-      <!--(000) 000 - 0000-->
-      <!--</p>-->
-      <!--<p class="description">-->
-        <!--trips taken: 0-->
-        <!--</p>-->
-        <!--{% endfor %}-->
