@@ -123,18 +123,24 @@ def joinGroup(request, ride_id):
 	InputRideInfo.objects.filter(group_identifier=my_last_ride_id).update(group_identifier=rideId)
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
 	print(ridesFiltered)
-
-	subject = 'TigerRide Group for %s' % date
-	message = 'Dear TigerRider, \n\n' \
-			  'Your trip is scheduled from %s to %s on %s. \n\n' \
-			  'Safe travels! \n\n' \
-			  'TigerRide' % (origin, destination, date)
-	email_from = settings.EMAIL_HOST_USER
 	recipient_list = []
+	name_phone_num = ""
 	for rides in ridesFiltered:
 		netid = rides['netid']
 		email = netid + '@princeton.edu'
 		recipient_list.append(email)
+		current = InputRideInfo.objects.filter(netid=netid).values()
+		name_phone_num = name_phone_num + netid + ": " + current['phone_number'] + "\n"
+
+	subject = 'TigerRide Group for %s' % date
+	message = 'Dear TigerRider, \n\n' \
+			  'Your trip is scheduled from %s to %s on %s. \n\n' \
+			  'Here are the netid\'s and phone numbers of everyone in your group:\n' \
+			  'Safe travels! \n\n' % (origin, destination, date)
+
+	message = message + name_phone_num + "\nTigerRide"
+	email_from = settings.EMAIL_HOST_USER
+
 	send_mail(subject, message, email_from, recipient_list)
 
 	return render(request, 'joinGroup.html', {'rides_filt': ridesFiltered, 'single_ride': save_details,
@@ -191,20 +197,18 @@ def reloadRideHistory(request, which_one):
 		subject = 'TigerRide Trip Update'
 		email_from = settings.EMAIL_HOST_USER
 		recipient_list = []
-		name_phone_num = ""
 		for rides in other_riders:
 			netid = rides['netid']
 			email = netid + '@princeton.edu'
 			recipient_list.append(email)
-			current = InputRideInfo.objects.filter(netid=netid).values()
-			name_phone_num = name_phone_num + netid + ": " + current[phone_num] + "\n"
 			origin = rides['depart_from']
 			destination = rides['destination']
 			date = rides['date']
 		message = 'Dear TigerRider, \n\n' \
 				  '%s %s has left your group for your trip scheduled from %s to %s on %s. \n\n' \
-				  'Safe travels! \n\n' % (me_fn, me_ln, origin, destination, date)
-		message = message + name_phone_num + "\n\nTigerRide"
+				  'Safe travels! \n\n' \
+				  'TigerRide' % (me_fn, me_ln, origin, destination, date)
+
 
 		send_mail(subject, message, email_from, recipient_list)
 	# delete ride
