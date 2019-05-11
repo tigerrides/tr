@@ -14,6 +14,7 @@ import json
 from django.core.files import File
 from urllib.request import urlopen
 from tempfile import NamedTemporaryFile
+import io
 
 # Create your views here.
 
@@ -113,10 +114,13 @@ def cas_profile_create(request):
     # image_url = student['photo_link']
     # image_url = 'https://www.princeton.edu/sites/default/files/styles/full_2x/public/images/2019/05/20190403_Class-on_MorrisonT_DJA_090.jpg?itok=q_UyB0AX'
     image_url = "https://tigerbook.herokuapp.com/images/christyl"
-    print(image_url)
-    img_temp = NamedTemporaryFile()
-    img_temp.write(urlopen(image_url).read())
-    img_temp.flush()
+
+    img_temp = io.BytesIO(urllib.urlopen(URL).read())
+
+    # print(image_url)
+    # img_temp = NamedTemporaryFile()
+    # img_temp.write(urlopen(image_url, data=None).read())
+    # img_temp.flush()
     profile.image.save(f"image_{netid}", File(img_temp))
     profile.save()
 
