@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('<int:id>/', views.groupInfo, name='groupInfo'),
+    path('ride/<int:id>/', views.groupInfo, name='what'),
 ] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
 
 

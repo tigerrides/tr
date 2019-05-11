@@ -35,20 +35,23 @@ urlpatterns = [
     path('currentprof/', views.currentprof, name='currentprof'),
     path('deleteRide/', views.deleteRide, name='deleteRide'),
     path('groupInfo/', views.groupInfo, name='groupInfo'),
+    path('join/<int:ride_id>/', views.join, name='join'),
     path('leaveRide/', views.leaveRide, name='leaveRide'),
     path('login/', views.login, name='login'),
     path('home/', views.home, name='home'),
-    path('joinGroup/', views.joinGroup, name='joinGroup'),
+    # path('joinGroup/', views.joinGroup, name='joinGroup'),
     path('newride/', views.newRide, name='newRide'),
     path('reloadRideHistory/<int:which_one>/', views.reloadRideHistory, name="reloadRideHistory"),
     path('rideHistory/', views.rideHistory, name='rideHistory'),
     path('searchResults/<int:ride_id>/', views.searchResults, name='searchResults'),
-    path(r'^see_rides$', include('create_ride.urls'), name='see_rides'),
-    path('userProf/', views.userProf, name='userProf'),
+    path('seeGroup/<int:ride_id>/', views.seeGroup, name='seeGroup'),
+    # path(r'^see_rides$', include('create_ride.urls'), name='see_rides'),
+    # path('userProf/', views.userProf, name='userProf'),
     path('welcome/', views.welcome, name='welcome'),
 ]
 
 handler404 = 'tr.views.my_custom_page_not_found_view'
+
 
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,

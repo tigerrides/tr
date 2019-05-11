@@ -76,8 +76,7 @@ def deleteRide(request):
 		date = ride['date']
 		break
 	return render(request, 'deleteRide.html', {'rides': ridesFiltered, 'rideId': rideId,
-											  'origin': origin, 'destination' : destination,
-											  'date': date})
+											   'origin': origin, 'destination' : destination, 'date': date})
 @login_required
 def groupInfo(request):
 	rideId = request.POST.get('rideId', None)
@@ -109,10 +108,8 @@ def index(request):
 	return render(request, 'welcome.html')
 
 @login_required
-def joinGroup(request):
-	all_my_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=True).values()
-	my_last_ride = all_my_rides.order_by('created').last()
-	my_last_ride_id = my_last_ride['group_identifier']
+def join(request, ride_id):
+	my_last_ride_id = ride_id
 	rideId = request.POST.get('rideId', None)
 	try:
 		InputRideInfo.objects.get(group_identifier=my_last_ride_id)
@@ -251,6 +248,7 @@ def rideHistory(request):
 
 @login_required
 def searchResults(request, ride_id):
+	# if a rider already simultaneously matched with them
 	try:
 		submitted_ride = model_to_dict(InputRideInfo.objects.get(group_identifier=ride_id))
 	except InputRideInfo.MultipleObjectsReturned:
@@ -262,14 +260,15 @@ def searchResults(request, ride_id):
 	# your time, have the same origin, destination, and date
 	values = InputRideInfo.objects.filter(
 		time_start__lte=submitted_ride['time_end']
-    ).filter(
-            time_end__gte=submitted_ride['time_start']
-    ).filter(depart_from__contains=submitted_ride['depart_from']
-                     ).filter(destination__contains=submitted_ride['destination']
-                          ).filter(date=submitted_ride['date']
-                               ).filter(~Q(user=request.user)
-                                    ).filter(ride_status_open=True).values()
-	# if no objects return, tell the person it is empty
+	).filter(time_end__gte=submitted_ride['time_start']
+			 ).filter(depart_from__contains=submitted_ride['depart_from']
+					  ).filter(destination__contains=submitted_ride['destination']
+							   ).filter(date=submitted_ride['date']
+										).filter(ride_status_open=True).values()
+	# if no objects return, tell the user that no riders match with them
+	print("Values..")
+	print(values)
+	print(values.objects.count())
 	if not values:
 		return render(request, 'searchResultsEmpty.html')
 	# dictionary that organizes the group, where the key is the id of the group,
@@ -285,7 +284,7 @@ def searchResults(request, ride_id):
 		# check to make sure all the riders in that group also overlap with your time
 		count = InputRideInfo.objects.filter(group_identifier=group_id).count()
 		count_with_time = InputRideInfo.objects.filter(group_identifier=group_id).filter(
-            time_start__lte=submitted_ride['time_end']
+			time_start__lte=submitted_ride['time_end']
 		).filter(
 			time_end__gte=submitted_ride['time_start']
 		).count()
@@ -301,15 +300,31 @@ def searchResults(request, ride_id):
 			info_dict['date'] = save_ride['date']
 			break
 		ride_info_per_ride[group_id] = info_dict
-	return render(request, 'searchResults.html', {'rides': groups_dict, 'my_ride_id': ride_id, 'ride_infos': ride_info_per_ride})
+	return render(request, 'searchResults.html', {'rides': groups_dict, 'my_ride_id': ride_id,
+												  'ride_infos': ride_info_per_ride})
 
 @login_required
-def userProf(request):
-	userNetid = request.POST.get('userNetid', None)
-	print(userNetid)
-	login_infos = LogInInfo.objects.filter(netid=userNetid)
-	number_of_rides_completed = InputRideInfo.objects.filter(netid=userNetid).filter(ride_status_open=False).count()
-	return render(request, 'userProf.html', {'login_infos': login_infos, 'rides_comp': number_of_rides_completed})
+def seeGroup(request, ride_id):
+	rideId = request.POST.get('rideId', None)
+	if InputRideInfo.objects.filter(group_identifier=rideId).count() == 0:
+		return render(request, 'joinGroup2.html')
+	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
+	for ride in ridesFiltered:
+		origin = ride['depart_from']
+		destination = ride['destination']
+		date = ride['date']
+		break
+	return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId,
+											  'origin': origin, 'destination' : destination,
+											  'date': date, 'my_ride_id': ride_id})
+
+# @login_required
+# def userProf(request):
+# 	userNetid = request.POST.get('userNetid', None)
+# 	print(userNetid)
+# 	login_infos = LogInInfo.objects.filter(netid=userNetid)
+# 	number_of_rides_completed = InputRideInfo.objects.filter(netid=userNetid).filter(ride_status_open=False).count()
+# 	return render(request, 'userProf.html', {'login_infos': login_infos, 'rides_comp': number_of_rides_completed})
 
 def welcome(request):
 	return render(request, 'welcome.html')
