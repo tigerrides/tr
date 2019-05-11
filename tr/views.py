@@ -329,7 +329,7 @@ def seeGroup(request, ride_id):
 														 'origin': origin, 'destination' : destination,
 														 'date': date, 'my_ride_id': ride_id})
 	else:
-		return render(request, 'groupInfoOption.html', {'rides': ridesFiltered, 'rideId': rideId,
+		return render(request, 'groupInfoOptions.html', {'rides': ridesFiltered, 'rideId': rideId,
 														   'origin': origin, 'destination' : destination,
 														   'date': date, 'my_ride_id': ride_id})
 
