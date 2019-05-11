@@ -46,9 +46,10 @@ def profile_create(request):
                     phone_number=request.POST["phone_number"],
                     netid=netid
                 )
-                var = LogInInfo.objects.filter(user=request.user).get()
-                var.image = form.cleaned_data['image']
-                print(var.image)
+                # var = LogInInfo.objects.filter(user=request.user).get()
+                # var.image = form.cleaned_data['image']
+                # var.save()
+                var.image = request.FILES['image']
                 var.save()
             else:
                 instance = form.save(commit=False)
@@ -111,17 +112,13 @@ def cas_profile_create(request):
 
     profile.save()
 
+    # none of this works because CAS protects accessing Tigerbook images in this way :(
     # image_url = student['photo_link']
-    # image_url = 'https://www.princeton.edu/sites/default/files/styles/full_2x/public/images/2019/05/20190403_Class-on_MorrisonT_DJA_090.jpg?itok=q_UyB0AX'
-    image_url = "https://tigerbook.herokuapp.com/images/christyl"
-
-    # img_temp = io.BytesIO(urlopen(image_url).read())
-
-    print(image_url)
-    img_temp = NamedTemporaryFile()
-    img_temp.write(urlopen(image_url, data=None).read())
-    img_temp.flush()
-    profile.image.save(f"image_{netid}", File(img_temp))
-    profile.save()
+    # print(image_url)
+    # img_temp = NamedTemporaryFile()
+    # img_temp.write(urlopen(image_url, data=None).read())
+    # img_temp.flush()
+    # profile.image.save(f"image_{netid}", File(img_temp))
+    # profile.save()
 
     return redirect('currentprof')
