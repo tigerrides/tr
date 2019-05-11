@@ -241,10 +241,12 @@ def join(request, ride_id):
 	print("join with url")
 	print(ride_id)
 	# last_ride_id = ride_id
-	
+
 	all_my_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=True).values()
 	my_last_ride = all_my_rides.order_by('created').last()
 	my_last_ride_id = my_last_ride['group_identifier']
+	print("my last ride id")
+	print(my_last_ride_id)
 	rideId = request.POST.get('rideId', None)
 	try:
 		InputRideInfo.objects.get(group_identifier=my_last_ride_id)
