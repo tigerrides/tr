@@ -22,10 +22,27 @@
       has uber: {{ ride.uber }}, has lyft: {{ ride.lyft }} <br>
 
       {% endfor %}
-      <form action="{% url 'joinGroup' my_ride_id %}" method="post" id="toGroupButton">
+      <form action="{% url 'completeRide' %}" method="post" id="complete">
         {% csrf_token %}
         {{ form }}
-        <button name="rideId" value="{{rideId}}" form="toGroupButton" type="submit">join this ride</button>
+        <button class="buttons" name="rideId" value="{{ key }}" form="complete" type="submit">
+          complete ride
+        </button>
+      </form>
+
+      <form action="{% url 'leaveRide' %}" method="post" id="leave">
+        {% csrf_token %}
+        {{ form }}
+        <button class="buttons" name="rideId" value="{{ key }}" form="leave" type="submit">
+          leave ride
+        </button>
+      </form>
+      <form action="{% url 'deleteRide' %}" method="post" id="delete">
+        {% csrf_token %}
+        {{ form }}
+        <button class="buttons" name="rideId" value="{{ key }}" form="delete" type="submit">
+          delete ride
+        </button>
       </form>
       </div>
       <!--<div class="buddy w3-container w3-center">

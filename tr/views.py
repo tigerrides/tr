@@ -108,7 +108,7 @@ def index(request):
 	return render(request, 'welcome.html')
 
 @login_required
-def join(request, ride_id):
+def joinGroup(request, ride_id):
 	my_last_ride_id = ride_id
 	rideId = request.POST.get('rideId', None)
 	try:
@@ -313,9 +313,14 @@ def seeGroup(request, ride_id):
 		destination = ride['destination']
 		date = ride['date']
 		break
-	return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId,
-											  'origin': origin, 'destination' : destination,
-											  'date': date, 'my_ride_id': ride_id})
+	if ride_id != 0:
+		return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId,
+													'origin': origin, 'destination' : destination,
+											  		'date': date, 'my_ride_id': ride_id})
+	else:
+		return render(request, 'groupInfoOptions.html', {'rides': ridesFiltered, 'rideId': rideId,
+														 'origin': origin, 'destination' : destination,
+														 'date': date, 'my_ride_id': ride_id})
 
 # @login_required
 # def userProf(request):
