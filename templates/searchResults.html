@@ -34,14 +34,14 @@
                 notes: {{ val.notes}}<br>
                 {% endfor %}
                 <br>
-                <form action="{% url 'join' my_ride_id %}" method="post" id="see_more">
+                <form action="{% url 'seeMore' my_ride_id %}" method="post" id="see_more">
                     {% csrf_token %}
                     {{ form }}
                     <button class="buttons" name="rideId" value="{{ key }}" form="see_more" type="submit">
                         see more
                     </button>
                 </form>
-                <a href="{% url 'join' my_ride_id %}">um please work</a>
+                <!--<a href="{% url 'join' my_ride_id %}">um please work</a>-->
             </div>
             {% endfor %}
             <br>

@@ -222,43 +222,19 @@ def searchResults(request, ride_id):
 	return render(request, 'searchResults.html', {'rides': groups_dict, 'my_ride_id': ride_id, 'ride_infos': ride_info_per_ride})
 
 @login_required
-def join(request, ride_id):
-	print("ride_id")
-	print(ride_id)
-	# all_my_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=True).values()
-	# my_last_ride = all_my_rides.order_by('created').last()
-	# my_last_ride_id = my_last_ride['group_identifier']
-	# rideId = request.POST.get('rideId', None)
-	# try:
-	# 	InputRideInfo.objects.get(group_identifier=my_last_ride_id)
-	# except InputRideInfo.MultipleObjectsReturned:
-	# 	return render(request, 'joinGroup2.html')
-	# save_details = model_to_dict(InputRideInfo.objects.get(group_identifier=my_last_ride_id))
-	# print("save_details")
-	# print(save_details)
-	# origin = save_details['depart_from']
-	# destination = save_details['destination']
-	# date = save_details['date']
-	# update_ride = InputRideInfo.objects.filter(group_identifier=my_last_ride_id).update(group_identifier=rideId)
-	# print("adding myself to the group")
-	# print(update_ride)
-	# ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
-	# print(ridesFiltered)
-	#
-	# subject = 'TigerRide Group for %s' % date
-	# message = 'Dear TigerRider, \n\n' \
-	# 		  'Your trip is scheduled from %s to %s on %s. \n\n' \
-	# 		  'Safe travels! \n\n' \
-	# 		  'TigerRide' % (origin, destination, date)
-	# email_from = settings.EMAIL_HOST_USER
-	# recipient_list = []
-	# for rides in ridesFiltered:
-	# 	netid = rides['netid']
-	# 	email = netid + '@princeton.edu'
-	# 	recipient_list.append(email)
-	# send_mail(subject, message, email_from, recipient_list)
-
-	return render(request, 'home.html')
+def seeMore(request, ride_id):
+	rideId = request.POST.get('rideId', None)
+	if InputRideInfo.objects.filter(group_identifier=rideId).count() == 0:
+		return render(request, 'joinGroup2.html')
+	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
+	for ride in ridesFiltered:
+		origin = ride['depart_from']
+		destination = ride['destination']
+		date = ride['date']
+		break
+	return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId,
+											  'origin': origin, 'destination' : destination,
+											  'date': date, 'my_ride_id': ride_id})
 
 	# return render(request, 'searchResults.html', {'rides': values})
 @login_required
