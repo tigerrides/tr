@@ -97,7 +97,7 @@ def groupInfo(request):
 											  'date': date})
 
 @login_required
-def joinGroup(request):
+def join(request, ride_id):
 	all_my_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=True).values()
 	my_last_ride = all_my_rides.order_by('created').last()
 	my_last_ride_id = my_last_ride['group_identifier']
@@ -171,6 +171,7 @@ def rideHistory(request):
 
 @login_required
 def searchResults(request, ride_id):
+	# if a rider already simultaneously matched with them
 	try:
 		submitted_ride = model_to_dict(InputRideInfo.objects.get(group_identifier=ride_id))
 	except InputRideInfo.MultipleObjectsReturned or InputRideInfo.DoesNotExist:
@@ -187,7 +188,7 @@ def searchResults(request, ride_id):
                           ).filter(date=submitted_ride['date']
                                ).filter(~Q(user=request.user)
                                     ).filter(ride_status_open=True).values()
-	# if no objects return, tell the person it is empty
+	# if no objects return, tell the user that no riders match with them
 	if not values:
 		return render(request, 'searchResultsEmpty.html')
 	# dictionary that organizes the group, where the key is the id of the group,
@@ -219,7 +220,8 @@ def searchResults(request, ride_id):
 			info_dict['date'] = save_ride['date']
 			break
 		ride_info_per_ride[group_id] = info_dict
-	return render(request, 'searchResults.html', {'rides': groups_dict, 'my_ride_id': ride_id, 'ride_infos': ride_info_per_ride})
+	return render(request, 'searchResults.html', {'rides': groups_dict, 'my_ride_id': ride_id,
+												  'ride_infos': ride_info_per_ride})
 
 @login_required
 def seeMore(request, ride_id):
@@ -237,51 +239,50 @@ def seeMore(request, ride_id):
 											  'date': date, 'my_ride_id': ride_id})
 
 @login_required
-def join(request, ride_id):
-	print("join with url")
-	print(ride_id)
-	# last_ride_id = ride_id
+# def join(request, ride_id):
+# 	print("join with url")
+# 	print(ride_id)
+# 	# last_ride_id = ride_id
+#
+# 	all_my_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=True).values()
+# 	my_last_ride = all_my_rides.order_by('created').last()
+# 	my_last_ride_id = my_last_ride['group_identifier']
+# 	print("my last ride id")
+# 	print(my_last_ride_id)
+# 	rideId = request.POST.get('rideId', None)
+# 	try:
+# 		InputRideInfo.objects.get(group_identifier=my_last_ride_id)
+# 	except InputRideInfo.MultipleObjectsReturned:
+# 		return render(request, 'joinGroup2.html')
+# 	save_details = model_to_dict(InputRideInfo.objects.get(group_identifier=my_last_ride_id))
+# 	print("save_details")
+# 	print(save_details)
+# 	origin = save_details['depart_from']
+# 	destination = save_details['destination']
+# 	date = save_details['date']
+# 	update_ride = InputRideInfo.objects.filter(group_identifier=my_last_ride_id).update(group_identifier=rideId)
+# 	print("adding myself to the group")
+# 	print(update_ride)
+# 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
+# 	print(ridesFiltered)
+#
+# 	subject = 'TigerRide Group for %s' % date
+# 	message = 'Dear TigerRider, \n\n' \
+# 			  'Your trip is scheduled from %s to %s on %s. \n\n' \
+# 			  'Safe travels! \n\n' \
+# 			  'TigerRide' % (origin, destination, date)
+# 	email_from = settings.EMAIL_HOST_USER
+# 	recipient_list = []
+# 	for rides in ridesFiltered:
+# 		netid = rides['netid']
+# 		email = netid + '@princeton.edu'
+# 		recipient_list.append(email)
+# 	send_mail(subject, message, email_from, recipient_list)
+#
+# 	return render(request, 'joinGroup.html', {'rides_filt': ridesFiltered, 'single_ride': save_details,
+# 											  'origin': origin, 'destination' : destination,
+# 											  'date': date})
 
-	all_my_rides = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=True).values()
-	my_last_ride = all_my_rides.order_by('created').last()
-	my_last_ride_id = my_last_ride['group_identifier']
-	print("my last ride id")
-	print(my_last_ride_id)
-	rideId = request.POST.get('rideId', None)
-	try:
-		InputRideInfo.objects.get(group_identifier=my_last_ride_id)
-	except InputRideInfo.MultipleObjectsReturned:
-		return render(request, 'joinGroup2.html')
-	save_details = model_to_dict(InputRideInfo.objects.get(group_identifier=my_last_ride_id))
-	print("save_details")
-	print(save_details)
-	origin = save_details['depart_from']
-	destination = save_details['destination']
-	date = save_details['date']
-	update_ride = InputRideInfo.objects.filter(group_identifier=my_last_ride_id).update(group_identifier=rideId)
-	print("adding myself to the group")
-	print(update_ride)
-	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
-	print(ridesFiltered)
-
-	subject = 'TigerRide Group for %s' % date
-	message = 'Dear TigerRider, \n\n' \
-			  'Your trip is scheduled from %s to %s on %s. \n\n' \
-			  'Safe travels! \n\n' \
-			  'TigerRide' % (origin, destination, date)
-	email_from = settings.EMAIL_HOST_USER
-	recipient_list = []
-	for rides in ridesFiltered:
-		netid = rides['netid']
-		email = netid + '@princeton.edu'
-		recipient_list.append(email)
-	send_mail(subject, message, email_from, recipient_list)
-
-	return render(request, 'joinGroup.html', {'rides_filt': ridesFiltered, 'single_ride': save_details,
-											  'origin': origin, 'destination' : destination,
-											  'date': date})
-
-	# return render(request, 'searchResults.html', {'rides': values})
 @login_required
 def newRide(request):
 	return render(request, 'newride.html')
