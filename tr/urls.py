@@ -24,9 +24,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     # path('accounts/', include('django.contrib.auth.urls')),
     re_path('accounts/', include('uniauth.urls.cas_only', namespace='uniauth')),
+    path('completeRide/', views.completeRide, name='completeRide'),
     path('createRide/', include('create_ride.urls'), name='createRide'),
-
-    # path('groupInfo/', include('org_rides.urls'), name='groupInfo'),
     path('groupInfo/', views.groupInfo, name='groupInfo'),
     path('chooseLogin/', include('login.urls'), name='chooselogin'),
     path('login/', views.login, name='login'),
@@ -37,30 +36,15 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     path('reloadRideHistory/<int:which_one>/', views.reloadRideHistory, name="reloadRideHistory"),
-    # path('createRide/', views.createRide, name='createRide'),
-    # path('groupInfo/', views.groupInfo, name='groupInfo'),
     path('joinGroup/', views.joinGroup, name='joinGroup'),
     path('rideHistory/', views.rideHistory, name='rideHistory'),
     path('leaveRide/', views.leaveRide, name='leaveRide'),
     path('deleteRide/', views.deleteRide, name='deleteRide'),
-#<<<<<<< HEAD
-    #path('searchResults/', views.searchResults, name='searchResults'),
     path(r'^see_rides$', include('create_ride.urls'), name='see_rides'),
     path('newride/', views.newRide, name='newRide'),
     path('searchResults/<int:ride_id>/', views.searchResults, name='searchResults'),
-    # path(r'^searchResults/(?P<int:ride_id>[-\w]+)/$', views.searchResults, name='searchResults'),
-
-         # 'searchResults/', views.searchResults, name='searchResults'),
-
-    # path('searchResults/', views.searchResults, name='searchResults'),
-    # path(r'^see_rides$', include('create_ride.urls'), name='see_rides'),
-#>>>>>>> 58e80ac679c4a1fe980f2eebabeabb66794c8712
-    # path('accounts/login/', include('login.urls'), name='login'),
     path('createUser/', views.createUser, name='createUser'),
-    #path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
-    # path('accounts/logout/', include('login.urls'), name='logout'),
-    path('completeRide/', views.completeRide, name='completeRide'),
-    path('userProf/', views.userProf, name='userProf'),
+    path('userProf/<slug:userNetid>/', views.userProf, name='userProf'),
 ]
 
 handler404 = 'tr.views.my_custom_page_not_found_view'
