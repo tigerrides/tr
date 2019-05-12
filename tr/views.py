@@ -82,6 +82,10 @@ def deleteRide(request):
 		break
 	return render(request, 'deleteRide.html', {'rides': ridesFiltered, 'rideId': rideId,
 											   'origin': origin, 'destination' : destination, 'date': date})
+
+def goToRate(request, netid):
+    return render(request, 'rateRider.html')
+
 @login_required
 def groupInfo(request):
 	rideId = request.POST.get('rideId', None)
