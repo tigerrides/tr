@@ -30,6 +30,13 @@ body {
     font-weight: 700;
 }
 
+.disclaimer {
+  margin: 5px auto;
+  padding: 0px;
+  color: #823737;
+  text-align: center;
+}
+
 a[class=buttons]:hover {
   cursor: url('my_app/shield.png'), auto;
 }
