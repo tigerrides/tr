@@ -84,7 +84,7 @@ def deleteRide(request):
 											   'origin': origin, 'destination' : destination, 'date': date})
 
 def goToRate(request, netid):
-    return render(request, 'rateRider.html')
+    return render(request, 'rateRider.html', {'netid': netid})
 
 @login_required
 def groupInfo(request):
@@ -184,7 +184,8 @@ def login(request):
 def newRide(request):
 	return render(request, 'newride.html')
 
-def rateRider(request, netid):
+def rateRider(request):
+    netid = request.POST.get('netid', None)
     if request.method == "POST":
         if request.user == netid:
             return render(request, 'failureRate.html')
@@ -375,7 +376,11 @@ def userProf(request):
     if not val:
     	return render(request, 'noUserFound.html', {'usernet':usernet})
     number_of_rides_completed = InputRideInfo.objects.filter(netid=usernet).filter(ride_status_open=False).count()
-    return render(request, 'userProf.html', {'login_infos': login_infos, 'rides_comp': number_of_rides_completed, 'rating': LogInInfo.objects.get(netid=usernet).rating})
+    myself = InputRideInfo.objects.get(user=request.user)
+    return render(request, 'userProf.html', {'login_infos': login_infos,
+											 'rides_comp': number_of_rides_completed,
+											 'rating': LogInInfo.objects.get(netid=usernet).rating,
+											 'myself': myself})
 
 def userGuide(request):
 	return render(request, 'userGuide.html')
