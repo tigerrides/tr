@@ -10,31 +10,32 @@
   <div class="w3-text-white" style="padding:10%">
     <h1 class="title w3-center">What is tigerride?</h1>
     <div class="w3-container">
-        <p class="text w3-animate-bottom">Tigerride is a student-run application created to streamline the process of students sharing transportation services to and from the Princeton University campus. Sharing such services allows users to save money, travel more safely, as well as take a step towards a greener environment. Users fill out a simple form to find other users to share rides with, and have the flexibility of requesting to join and leave rides at any time.</p>
+        <p class="text">Tigerride is a student-run application created to streamline the process of students sharing transportation services to and from the Princeton University campus. Sharing such services allows users to save money, travel more safely, as well as take a step towards a greener environment. Users fill out a simple form to find other users to share rides with, and have the flexibility of requesting to join and leave rides at any time.</p>
     </div>
     <h1 class="title w3-center">User Guide</h1>
     <div class="w3-container">
-        <p class="text w3-animate-bottom">Note: All users of tigerride must be Princeton students or faculty members with a valid netID and password because our website utilizes a Central Authentication Service system to make the app safe and reliable for all users.</p>
+        <p class="text">Note: All users of tigerride must be Princeton students or faculty members with a valid netID and password because our website utilizes a Central Authentication Service system to make the app safe and reliable for all users.</p>
     </div>
     <h1 class="title w3-center">Logging In</h1>
     <div class="w3-container">
-        <ol class="text w3-left-align w3-animate-bottom">
+        <ol class="text w3-left-align">
             <li>Navigate to http://tigerride.herokuapp.com/.</li>
             <li>Click the “login” button at the bottom, which takes the user to the Princeton University Central Authentication Service authentication page.</li>
             <li>Fill out input fields for NetID and Password, click “LOGIN” and proceed with preferred method of DUO security authentication.</li>
         </ol>
     </div>
     <h1 class="title w3-center">Creating a Profile</h1>
-    <div class="w3-container">
-        <ol class="text w3-left-align w3-animate-bottom">
+    <div class="w3-container w3-left-align text">
+        <ol>
             <li>The first-time user must create a profile in order to create or view rides.</li>
             <li>Users are presented with two options: creating a new profile from scratch, or importing their information from Tigerbook.</li>
-            <ol class="text w3-left-align w3-animate-bottom" type="a">
+            <ol type="a">
                 <li>Starting from scratch:</li>
                 <ol type="i">
-                    <li>Fill out fields for preferred first name and last name.<li>
+                    <li>Fill out fields for preferred first name and last name.</li>
                     <li>Input phone number.</li>
                     <li>Upload a profile photo.</li>
+                </ol>
                 </li>Using Tigerbook information:</li>
                 <ol type="i">
                     <li>clicking the button automatically imports the user’s name, netID, and photo.</li>
@@ -44,8 +45,35 @@
         </ol>
     </div>
     <h1 class="title w3-center">Finding Rideshare Buddies</h1>
-    <div class="w3-container">
-        
+    <div class="w3-container w3-left-align text">
+        <ol>
+            <li>Once the user is logs in, they are redirected to a welcome page with presented with two buttons. Click on “plan a trip.”</li>
+            <li>Under “origin,” select desired origin from the dropdown menu. Options are EWR, PHL, JFK airports and Princeton University.</li>
+            <li>Under “destination,” Select desired destination from the dropdown menu. Options are EWR, PHL, JFK airports and Princeton University.</li>
+            <li>Under “date,” input the day, month, and year of departure. Clicking the small arrow on the right opens up a calendar for easy selection.</li>
+            <li>Under “time frame,” there are two fields. In the first field, enter the earliest possible time of departure. In the second field (after “~”), enter the latest possible time of departure</li>
+            <ol type="a">
+                <li>Tip: Entering a flexible time frame is more likely to return more options.</li>
+            </ol>
+            <li>Under “notes,” enter any information that may be useful for potential ride sharers to know. Some things to consider:</li>
+            <ol type="a">
+                <li>desired rideshare option (ex. Standard Lyft, Lyft XL, Lyft Lux, Uber X)</li>
+                <li>flight number (be cautious!)</li>
+                <li>terminal details</li>
+                <li>amount of luggage</li>
+                <li>preferred seating arrangement (ex. next to the driver, in the back)</li>
+                <li>desired number of rideshare partners</li>
+                <li>your airline is known to be frequently delayed</li>
+            </ol>
+            <li>Click “submit.”</li>
+            <li>If user is the first to submit a ride in their desired time frame, they are redirected to a page that displays the following message: “Your ride has been created and we will notify you via your Princeton email when other students join your group!”</li>
+            <ol type="a">
+                <li>User will receive e-mail notifications of trip details and group members when others join their group.</li>
+            </ol>
+            <li>If another user has joined the ride immediately after the current user has submitted his/her ride, the following message will be displayed: “A rider beat you to it and has already joined your ride!” The user can then see this ride group by clicking on “my rides,” which navigates to his/her ride history.</li>
+            <li>Otherwise, user is redirected to page displaying all open rides that match their search. User can join a ride. This notifies all members in the group via their Princeton e-mail of the trip details.</li>
+            <li>If the user does not join someone else’s group, tigerride automatically creates a ride with their own preferences for others to join in the future.</li>
+        </ol>
     </div>
   </div> 
 </div>
