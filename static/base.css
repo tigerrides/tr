@@ -313,7 +313,7 @@ input[class=glow]:hover {
 
 button[class=buttons] {
   background: #F7B5B0;
-
+  text-transform: uppercase;
     cursor: url('my_app/shield.png'), auto; 
 }
 
