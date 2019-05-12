@@ -18,7 +18,7 @@
 
     {% for ride in rides %}
     <div class="w3-padding-36 w3-center w3-myfont">
-      <form action="{% url 'userProf' %}" target="_blank" method="post" id="see_user">
+      <form action="{% url 'seeUser' 0 %}" target="_blank" method="post" id="see_user">
         {% csrf_token %}
         {{ form }}
         <button class="buttons" name="userNetid" value="{{ ride.netid }}" form="see_user" type="submit">
