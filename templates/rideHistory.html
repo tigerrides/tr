@@ -37,7 +37,7 @@
             {% csrf_token %}
             {{ form }}
             <button class="buttons" name="userNetid" value="{{ val.netid }}" form="see_user" type="submit">
-              {{ val.user_first_name }} {{ val.user_last_name }}:
+              {{ val.user_first_name }} {{ val.user_last_name }}
             </button>
           </form>
           {{ val.time_start }} --> {{ val.time_end }} <br>

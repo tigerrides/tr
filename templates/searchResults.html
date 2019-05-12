@@ -34,7 +34,7 @@
             {% csrf_token %}
             {{ form }}
             <button class="buttons" name="userNetid" value="{{ val.netid }}" form="see_user" type="submit">
-              {{ val.user_first_name }} {{ val.user_last_name }}:
+              {{ val.user_first_name }} {{ val.user_last_name }}
             </button>
           </form>
 
@@ -45,7 +45,7 @@
           <form action="{% url 'seeGroup' my_ride_id %}" method="post" id="see_more">
             {% csrf_token %}
             {{ form }}
-            <button class="buttons" name="rideId" value="{{ key }}" form="see_more" type="submit">
+            <button class="glow" name="rideId" value="{{ key }}" form="see_more" type="submit">
               see more
             </button>
           </form>

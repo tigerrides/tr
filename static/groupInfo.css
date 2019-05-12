@@ -73,7 +73,7 @@ button[class=buttons]:hover {
     cursor: url('my_app/shield.png'), auto; 
 }
 
-button[class=join] {
+/*button[class=join] {
         display: inline-block;
 
     height: 36px;
@@ -95,7 +95,7 @@ button[class=join]:hover {
     background-color: rgba(165,88,88,.6);
         box-shadow: 0 0 10px 5px white;
 
-}
+}*/
 
 .site {
 width: 130px;

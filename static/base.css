@@ -288,3 +288,62 @@ word-wrap: break-word;
     margin-right: 0px;
     margin-top:30px;
 }
+
+input[class=glow] {
+        display: inline-block;
+
+    height: 36px;
+    line-height: 27px;
+    background-color: rgba(165,88,88,.3);
+    border-color: transparent;
+    color: white;
+    font-size: 15px;
+    margin: 0 auto;
+    min-width: 54px;
+    padding: 0 16px;
+
+}
+
+input[class=glow]:hover {
+    background: #A55858;
+    background-color: rgba(165,88,88,.6);
+        box-shadow: 0 0 10px 5px white;
+
+}
+
+button[class=buttons] {
+  background: #F7B5B0;
+
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+button[class=buttons]:hover {
+  background: transparent;
+    /*background: #A55858;*/
+    border-radius: 5px;
+    /*background-color: rgba(165,88,88,.6);*/
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+button[class=glow] {
+        display: inline-block;
+
+    height: 36px;
+    line-height: 27px;
+    background-color: rgba(165,88,88,.3);
+    border-color: transparent;
+    color: white;
+    font-size: 15px;
+    margin: 0 auto;
+    min-width: 54px;
+    padding: 0 16px;
+
+}
+
+button[class=glow]:hover {
+    background: #A55858;
+    background-color: rgba(165,88,88,.6);
+        box-shadow: 0 0 10px 5px white;
+
+}
+

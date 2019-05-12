@@ -172,7 +172,7 @@ input[type=date] {
 input:hover {
 }
 
-input[type=submit] {
+/*input[type=submit] {
         display: inline-block;
 
     height: 36px;
@@ -194,7 +194,7 @@ input[type=submit]:hover {
     background-color: rgba(165,88,88,.6);
         box-shadow: 0 0 10px 5px white;
 
-}
+}*/
 
 .box {
     width: 100%;
