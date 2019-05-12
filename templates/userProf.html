@@ -29,6 +29,7 @@
         <p class="description">netid: {{ login_info.netid }}</p>
         <p class="description">phone number: {{ login_info.phone_number }}</p>
         <p class="description">trips taken: {{ rides_comp }}</p>
+        <a onclick="location.href='{% url 'goToRate' netid=login_info.netid %}'" class="buttons">rate</a>
       {% endfor %}
       </div>
 
