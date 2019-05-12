@@ -20,7 +20,7 @@
         {% csrf_token %}
         {{ form }}
         <button class="buttons" name="userNetid" value="{{ ride.netid }}" form="see_user" type="submit">
-          {{ ride.user_first_name }} {{ ride.user_last_name }}:
+          {{ ride.user_first_name }} {{ ride.user_last_name }}
         </button>
       </form>
       {{ ride.time_start }} --> {{ ride.time_end }}<br>
@@ -32,7 +32,7 @@
       <form action="{% url 'completeRide' %}" method="post" id="complete">
         {% csrf_token %}
         {{ form }}
-        <button class="buttons" name="rideId" value="{{ rideId }}" form="complete" type="submit">
+        <button class="glow" name="rideId" value="{{ rideId }}" form="complete" type="submit">
           complete ride
         </button>
       </form>
@@ -40,7 +40,7 @@
       <form action="{% url 'leaveRide' %}" method="post" id="leave">
         {% csrf_token %}
         {{ form }}
-        <button class="buttons" name="rideId" value="{{ rideId }}" form="leave" type="submit">
+        <button class="glow" name="rideId" value="{{ rideId }}" form="leave" type="submit">
           leave ride
         </button>
       </form>
