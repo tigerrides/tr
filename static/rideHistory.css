@@ -150,3 +150,11 @@ button[class=buttons]:hover {
     /*background-color: rgba(165,88,88,.6);*/
     cursor: url('my_app/shield.png'), auto; 
 }
+
+a[class=user] {
+  color: #A55858;
+}
+
+.user {
+  color: #A55858;
+}
