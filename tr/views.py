@@ -371,7 +371,7 @@ def seeGroup(request, ride_id):
 														   'date': date, 'my_ride_id': ride_id})
 
 @login_required
-def userProf(request):
+def userProf(request, display):
     usernet = request.POST.get('userNetid', None)
     print(usernet)
     login_infos = LogInInfo.objects.filter(netid=usernet)
@@ -383,7 +383,7 @@ def userProf(request):
     return render(request, 'userProf.html', {'login_infos': login_infos,
 											 'rides_comp': number_of_rides_completed,
 											 'rating': LogInInfo.objects.get(netid=usernet).rating,
-											 'myself': myself})
+											 'myself': myself, 'display': display})
 
 def userGuide(request):
 	return render(request, 'userGuide.html')

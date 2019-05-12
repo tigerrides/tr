@@ -27,8 +27,10 @@
         <p class="description">netid: {{ login_info.netid }}</p>
         <p class="description">phone number: {{ login_info.phone_number }}</p>
         <p class="description">trips taken: {{ rides_comp }}</p>
+        {% if display == 1 %}
         {% if myself.netid != login_info.netid %}
         <a onclick="location.href='{% url 'goToRate' login_info.netid %}'" class="buttons">rate</a>
+        {% endif %}
         {% endif %}
       {% endfor %}
       <br><br>
