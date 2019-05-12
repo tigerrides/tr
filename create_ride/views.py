@@ -50,9 +50,9 @@ def submit_ride(request):
             return render(request, 'createRide.html', {'err_message': message})
         time_start = request.POST["time_start"]
         time_end = request.POST["time_end"]
-        dt_start = datetime.datetime.combine(datetime.date.today(),
+        dt_start = datetime.datetime.combine(dt_date,
                                              datetime.datetime.strptime(time_start, '%H:%M:%S').time())
-        dt_end = datetime.datetime.combine(datetime.date.today(),
+        dt_end = datetime.datetime.combine(dt_date,
                                            datetime.datetime.strptime(time_end, '%H:%M:%S').time())
         if dt_end < dt_start:
             message = "your departure interval is invalid!"
