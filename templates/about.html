@@ -11,14 +11,15 @@
   <div class="w3-display-center w3-text-white" style="padding:10%">
     <h1 class="title w3-center">about us.</h1>
     <div class="w3-container">
-    	{% load static %}
+        <p class="text w3-center w3-animate-bottom">TigerRides is a student run app created to streamline the process of students sharing Uber/Lyft/other transportation services to and from the Princeton University campus. This will reduce transportation costs by allowing for easier communication between traveling students. Essentially, we hope to create a ride-share-share application for Princeton students.</p>
+
+        {% load static %}
     	<img src="{% static "my_app/princeton100.png" %}" alt="princeton" class="graphic w3-center">
-        <p class="text w3-center w3-animate-bottom">TigerRides is a student run app created to streamline the process of students sharing Uber/Lyft/other transportation services to and from the Princeton University campus. This will reduce transportation costs by allowing for easier communication between traveling students. Essentially, we hope to create a ride-share-share application for Princeton students.
-        <br>
-        Simply add your location, date, and time requirements and some info about your preferences, and we will help you find students to split a ride with! You can join or leave a ride as needed, and see other students' profile information to easily connect and communicate. You can also create your profile quickly with your TigerBook information and edit it as preferred. Lastly, we implement a 5-star rating system in order to encourage accountability for all participating riders when it comes to communication, promptness, and responsibility with splitting payments.
-        <br>
+
+        <p>Simply add your location, date, and time requirements and some info about your preferences, and we will help you find students to split a ride with! You can join or leave a ride as needed, and see other students' profile information to easily connect and communicate. You can also create your profile quickly with your TigerBook information and edit it as preferred. Lastly, we implement a 5-star rating system in order to encourage accountability for all participating riders when it comes to communication, promptness, and responsibility with splitting payments.
+        <br><br>
         For more information, click <a href="{% url 'userGuide' %}">~here~</a> for the full user guide!
-        <br>
+        <br><br>
         Thank you for choosing tigerride, and safe travels!
         </p>
     </div>
