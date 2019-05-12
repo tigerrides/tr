@@ -15,7 +15,7 @@ margin-top: 5%;
 width: 90%;
 border-radius: 30px;
 background-color: transparent;
--webkit-transition: 300ms; 
+-webkit-transition: 300ms;
     transition: 300ms;
 align-content: center;
   color: white;
@@ -23,12 +23,12 @@ align-content: center;
 
 .box:hover {
 filter: alpha(opacity=0);
--webkit-transition: 300ms; 
+-webkit-transition: 300ms;
     transition: 300ms;
   box-shadow: 0 0 8px 5px #E59393;
   color: #E59393;
   background: white;
-  cursor: url('my_app/shield.png'), auto; 
+  cursor: url('my_app/shield.png'), auto;
 }*/
 
 .pic {
