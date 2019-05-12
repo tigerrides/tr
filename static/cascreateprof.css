@@ -16,8 +16,6 @@ input[type=text] {
     /*border-;*/
 }
 
-input[type=text]:hover {
-}
 
 input[type=file] {
     width: 250px;
@@ -29,28 +27,6 @@ input[type=file] {
     align-content: center;
 }
 
-input[type=file]:hover {
-}
-
-input[type=submit] {
-    height: 36px;
-    line-height: 27px;
-    background-color: rgba(165,88,88,.3);
-    border-radius: 2px;
-    border-color: transparent;
-    color: white;
-    font-size: 15px;
-    margin: 11px 4px;
-    min-width: 54px;
-    padding: 0 16px;
-}
-
-input[type=submit]:hover {
-    background: #A55858;
-    border-radius: 10px;
-    background-color: rgba(165,88,88,.6);
-    cursor: url('my_app/shield.png'), auto; 
-}
 
 .sections {
     color: #A55858;
