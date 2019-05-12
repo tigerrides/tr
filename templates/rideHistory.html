@@ -37,35 +37,28 @@
           {% endif %}
           {% endfor %}
           {% for val in values %}
-          <p class="name">{{ val.user_first_name }} {{ val.user_last_name }}:</p>
+          <form action="{% url 'userProf' %}" target="_blank" method="post" id="see_user">
+            {% csrf_token %}
+            {{ form }}
+            <button class="buttons" name="userNetid" value="{{ val.netid }}" form="see_user" type="submit">
+              {{ val.user_first_name }} {{ val.user_last_name }}:
+            </button>
+          </form>
           {{ val.time_start }} --> {{ val.time_end }} <br>
           notes: {{ val.notes}}<br>
           {% endfor %}
           <!--{% load static %}-->
           <!--<img class="pic" src="{% static "my_app/anabelle.jpg" %}" alt="Anabelle" class="w3-round-xxlarge">-->
           <br>
-          <form action="{% url 'completeRide' %}" method="post" id="complete">
+          <form action="{% url 'seeGroup' 0 %}" method="post" id="seeMore">
             {% csrf_token %}
             {{ form }}
-            <button class="buttons" name="rideId" value="{{ key }}" form="complete" type="submit">
-              complete ride
+            <button class="buttons" name="rideId" value="{{ key }}" form="seeMore" type="submit">
+              see more
             </button>
           </form>
 
-          <form action="{% url 'leaveRide' %}" method="post" id="leave">
-            {% csrf_token %}
-            {{ form }}
-            <button class="buttons" name="rideId" value="{{ key }}" form="leave" type="submit">
-              leave ride
-            </button>
-          </form>
-          <form action="{% url 'deleteRide' %}" method="post" id="delete">
-            {% csrf_token %}
-            {{ form }}
-            <button class="buttons" name="rideId" value="{{ key }}" form="delete" type="submit">
-              delete ride
-            </button>
-          </form><!--<a href="{% url 'searchResults' ride_id=key %}" class="shortcut bar-item w3-hover-none w3-button">home</a>-->
+          <!--<a href="{% url 'searchResults' ride_id=key %}" class="shortcut bar-item w3-hover-none w3-button">home</a>-->
         </div>
         <!--</li>-->
         {% endfor %}

@@ -108,36 +108,43 @@ def index(request):
 	return render(request, 'welcome.html')
 
 @login_required
-def join(request, ride_id):
+def joinGroup(request, ride_id):
 	my_last_ride_id = ride_id
 	rideId = request.POST.get('rideId', None)
 	try:
 		InputRideInfo.objects.get(group_identifier=my_last_ride_id)
 	except InputRideInfo.MultipleObjectsReturned:
 		return render(request, 'joinGroup2.html')
+	except InputRideInfo.DoesNotExist:
+		return render(request, '404.html')
 	save_details = model_to_dict(InputRideInfo.objects.get(group_identifier=my_last_ride_id))
-	print("save_details")
-	print(save_details)
 	origin = save_details['depart_from']
 	destination = save_details['destination']
 	date = save_details['date']
-	update_ride = InputRideInfo.objects.filter(group_identifier=my_last_ride_id).update(group_identifier=rideId)
-	print("adding myself to the group")
-	print(update_ride)
+	# this user joins the ride
+	InputRideInfo.objects.filter(group_identifier=my_last_ride_id).update(group_identifier=rideId)
 	ridesFiltered = InputRideInfo.objects.filter(group_identifier=rideId).filter(ride_status_open=True).values()
 	print(ridesFiltered)
-
-	subject = 'TigerRide Group for %s' % date
-	message = 'Dear TigerRider, \n\n' \
-			  'Your trip is scheduled from %s to %s on %s. \n\n' \
-			  'Safe travels! \n\n' \
-			  'TigerRide' % (origin, destination, date)
-	email_from = settings.EMAIL_HOST_USER
 	recipient_list = []
+	name_phone_num = ""
 	for rides in ridesFiltered:
 		netid = rides['netid']
 		email = netid + '@princeton.edu'
 		recipient_list.append(email)
+		current = LogInInfo.objects.get(netid=netid)
+		name_phone_num = name_phone_num + netid + ": " + current.phone_number + "\n"
+
+	subject = 'TigerRide Group for %s' % date
+	message = 'Dear TigerRider, \n\n' \
+			  'Your trip is scheduled from %s to %s on %s. \n\n' \
+			  'Here are the netid\'s and phone numbers of everyone ' \
+			  'in your group:\n' % (origin, destination, date)
+
+	message = message + name_phone_num + "\nSafe travels! \n\nTigerRide"
+	print("message")
+	print(message)
+	email_from = settings.EMAIL_HOST_USER
+
 	send_mail(subject, message, email_from, recipient_list)
 
 	return render(request, 'joinGroup.html', {'rides_filt': ridesFiltered, 'single_ride': save_details,
@@ -205,6 +212,8 @@ def reloadRideHistory(request, which_one):
 				  '%s %s has left your group for your trip scheduled from %s to %s on %s. \n\n' \
 				  'Safe travels! \n\n' \
 				  'TigerRide' % (me_fn, me_ln, origin, destination, date)
+
+
 		send_mail(subject, message, email_from, recipient_list)
 	# delete ride
 	elif which_one == 3:
@@ -264,7 +273,7 @@ def searchResults(request, ride_id):
 			 ).filter(depart_from__contains=submitted_ride['depart_from']
 					  ).filter(destination__contains=submitted_ride['destination']
 							   ).filter(date=submitted_ride['date']
-										).filter(ride_status_open=True).values()
+										).filter(ride_status_open=True).filter(~Q(user=request.user)).values()
 	# if no objects return, tell the user that no riders match with them
 	if not values:
 		return render(request, 'searchResultsEmpty.html')
@@ -313,9 +322,18 @@ def seeGroup(request, ride_id):
 		destination = ride['destination']
 		date = ride['date']
 		break
-	return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId,
-											  'origin': origin, 'destination' : destination,
-											  'date': date, 'my_ride_id': ride_id})
+	if ride_id != 0:
+		return render(request, 'groupInfo.html', {'rides': ridesFiltered, 'rideId': rideId,
+													'origin': origin, 'destination' : destination,
+											  		'date': date, 'my_ride_id': ride_id})
+	elif ridesFiltered.count() == 1:
+		return render(request, 'groupInfoCanSearch.html', {'rides': ridesFiltered, 'rideId': rideId,
+														 'origin': origin, 'destination' : destination,
+														 'date': date, 'my_ride_id': ride_id})
+	else:
+		return render(request, 'groupInfoOptions.html', {'rides': ridesFiltered, 'rideId': rideId,
+														   'origin': origin, 'destination' : destination,
+														   'date': date, 'my_ride_id': ride_id})
 
 @login_required
 def userProf(request):
