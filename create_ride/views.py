@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
-import datetime, strptime
+import datetime
 
 from .models import InputRideInfo
 from login.models import LogInInfo
@@ -50,8 +50,8 @@ def submit_ride(request):
             return render(request, 'createRide.html', {'form': form, 'err_message': message})
         time_start = request.POST["time_start"]
         time_end = request.POST["time_end"]
-        dt_start = datetime.strptime(time_start, '%H:%M:%S')
-        dt_end = datetime.strptime(time_end, '%H:%M:%S')
+        dt_start = datetime.datetime.strptime(time_start, '%H:%M:%S')
+        dt_end = datetime.datetime.strptime(time_end, '%H:%M:%S')
         if dt_end < dt_start:
             message = "your departure interval is invalid!"
             return render(request, 'createRide.html', {'form': form, 'err_message': message})
