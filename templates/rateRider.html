@@ -11,12 +11,13 @@
   <div class="w3-display-center w3-text-white" style="padding-top:10%">
     <h1 class="title w3-center w3-padding-16">you are rating {{ netid }}</h1>
     <div class="w3-center w3-myfont">
+      <p>rate this rider on a scale of 1 (a bad ride-share buddy) to 5 (an excellent ride-share buddy).</p>
       <form action="{% url 'rateRider' %}" method = "post">
         {% csrf_token %}
         {{ form }}
         <input type="number" name="rater" min="1" max="5"><br>
-        <button class="buttons" name="netid" value="{{ netid }}" type="submit">
-          submit
+        <button class="glow" name="netid" value="{{ netid }}" type="submit">
+          submit rating!
         </button>
       </form>
     </div>
