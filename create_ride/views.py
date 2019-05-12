@@ -5,8 +5,6 @@ from .models import InputRideInfo
 from login.models import LogInInfo
 from . import forms
 from django.views import generic
-from django.core.exceptions import ValidationError
-
 # Create your views here.
 def rides(request):
     # print("hi")
@@ -43,7 +41,7 @@ def submit_ride(request):
         destination = request.POST["destination"]
         if depart_from == destination:
             message = "you cannot travel to the same place!"
-            return render(request, 'createRide.html', {'form': form, 'err_message': message})
+            return render(request, 'createRide.html', {'err_message': message})
         date = request.POST["date"]
         if date < datetime.date.today():
             message = "the date cannot be in the past!"
