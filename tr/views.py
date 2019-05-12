@@ -146,7 +146,7 @@ def joinGroup(request, ride_id):
 	subject = 'TigerRide Group for %s' % date
 	message = 'Dear TigerRider, \n\n' \
 			  'Your trip is scheduled from %s to %s on %s. \n\n' \
-			  'Here are the netid\'s and phone numbers of everyone ' \
+			  'Here are the netids and phone numbers of everyone ' \
 			  'in your group:\n' % (origin, destination, date)
 
 	message = message + name_phone_num + "\nSafe travels! \n\nTigerRide"
@@ -185,21 +185,25 @@ def newRide(request):
 	return render(request, 'newride.html')
 
 def rateRider(request):
-    netid = request.POST.get('netid', None)
-    if request.method == "POST":
-        if request.user == netid:
-            return render(request, 'failureRate.html')
-        form = UserForm(request.POST)
-        if form.is_valid():
-            rate = request.POST.get('rater', None)
-            old_rating = LogInInfo.objects.get(user=request.user).rating
-            old_count = LogInInfo.objects.get(user=request.user).num_rates
-            new_avg = ((old_rating * old_count) + rate) / (old_count + 1)
-            new_count = old_count + 1
-            LogInInfo.objects.filter(user=request.user).update(rating=new_avg)
-            LogInInfo.objects.filter(user=request.user).update(num_rates=new_count)
-
-    return render(request, 'successRate.html')
+	netid = request.POST.get('netid', None)
+	rate = request.POST.get('rater', None)
+	print("rate1")
+	print(rate)
+	if request.method == "POST":
+		if request.user == netid:
+			return render(request, 'failureRate.html')
+		form = UserForm(request.POST)
+		if form.is_valid():
+			rate = request.POST.get('rater', None)
+			print("rate2")
+			print(rate)
+			old_rating = LogInInfo.objects.get(user=request.user).rating
+			old_count = LogInInfo.objects.get(user=request.user).num_rates
+			new_avg = ((old_rating * old_count) + rate) / (old_count + 1)
+			new_count = old_count + 1
+			LogInInfo.objects.filter(user=request.user).update(rating=new_avg)
+			LogInInfo.objects.filter(user=request.user).update(num_rates=new_count)
+	return render(request, 'successRate.html')
 
 def reloadRideHistory(request, which_one):
 	no = InputRideInfo.objects.count()
