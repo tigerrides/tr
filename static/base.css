@@ -147,8 +147,8 @@ a[class=buttons]:before, a[class=buttons]:after {
   right: 0;
   bottom: 0;
   left: 0;
-  border-top: 30px solid #EFA09E;
-  border-bottom: 30px solid #EFA09E;
+  border-top: 30px solid white;
+  border-bottom: 30px solid white;
 }
 a[class=buttons]:before {
   border-right: 30px solid transparent;
@@ -161,7 +161,7 @@ a[class=buttons]:after {
           transform: translateX(100%);
 }
 a[class=buttons]:hover {
-  color: white;
+  color: #EFA09E;
   border: 1px solid transparent;
   cursor: url('my_app/shield-w.png'), auto; 
 }
@@ -335,7 +335,7 @@ button[class=buttons] {
   /*text-transform: uppercase;*/
   border: 3px solid currentColor;
   font-weight: 700;
-    line-height: 54px;
+    line-height: 53px;
     /*border-radius: 5px;*/
       text-decoration: none;
   color: #A55858;
@@ -348,8 +348,8 @@ button[class=buttons]:before, button[class=buttons]:after {
   right: 0;
   bottom: 0;
   left: 0;
-  border-top: 30px solid white;
-  border-bottom: 30px solid white;
+  border-top: 30px solid #A55858;
+  border-bottom: 30px solid #A55858;
 }
 button[class=buttons]:before {
   border-right: 30px solid transparent;
