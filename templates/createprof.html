@@ -12,6 +12,7 @@
     </p>
       <div class="w3-padding-24 w3-center w3-myfont">
         <form action="{% url 'profile_create' %}" method = "post" enctype="multipart/form-data">
+          <div>
           {% csrf_token %}
           {{ form }}
           <p class="sections">preferred first name:</p>
@@ -22,7 +23,7 @@
           <input type="text" name="phone_number" value="{{ phone_number }}" required
                  placeholder="(XXX) XXX - XXXX"><br>
           <p class="sections">upload a profile photo:</p>
-          <input type="file" name="image" accept="image/*" value="{{ image }}" required><br><br>
+          <input type="file" name="image" accept="image/*" value="{{ image }}" required><br><br></div>
           <input class="glow" type="submit" value="submit">
         </form>
       </div>
