@@ -185,12 +185,12 @@ input[type=date] {
     color: #A55858;
 }
 
-form {
+/*form {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
     align-content: center;
-}
+}*/
 
 .styled-select {
    background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
