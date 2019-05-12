@@ -286,6 +286,8 @@ def searchResults(request, ride_id):
 	# if no objects return, tell the user that no riders match with them
 	if not values:
 		return render(request, 'searchResultsEmpty.html')
+	print("values")
+	print(values)
 	# dictionary that organizes the group, where the key is the id of the group,
 	# and value are the filtered InputRideInfo objects
 	groups_dict = {}
@@ -317,6 +319,8 @@ def searchResults(request, ride_id):
 		ride_info_per_ride[group_id] = info_dict
 	if not groups_dict:
 		return render(request, 'searchResultsEmpty.html')
+	print("groups dict")
+	print(groups_dict)
 	return render(request, 'searchResults.html', {'rides': groups_dict, 'my_ride_id': ride_id,
 												  'ride_infos': ride_info_per_ride})
 
