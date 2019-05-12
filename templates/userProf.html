@@ -25,10 +25,13 @@
           {{ login_info.first_name }} {{ login_info.last_name }}
         </h2>
         <p class="description">&#9733;&#9733;&#9733;&#9733;&#9733;<br/></p>
+        <p class="description">rating: {{ rating }} / 5</p>
         <p class="description">netid: {{ login_info.netid }}</p>
         <p class="description">phone number: {{ login_info.phone_number }}</p>
         <p class="description">trips taken: {{ rides_comp }}</p>
+        <a href="{% url rateRider.html netid=login_info.netid %}">Rate this rider!</a>
       {% endfor %}
+      <br></br>
       </div>
 
       {% else %}

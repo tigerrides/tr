@@ -12,10 +12,13 @@ from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.template import RequestContext
 from . import settings
+import datetime
 
 
-def my_custom_page_not_found_view(request, exception):
-	return render(request, '404.html', status=404)
+def my_custom_page_not_found_view(request, exception, template_name="404.html"):
+	response = render_to_response("404.html")
+	response.status_code = 404
+	return response
 
 def about(request):
 	return render(request, 'about.html')
@@ -55,16 +58,18 @@ def createUser(request):
 
 @login_required
 def currentprof(request):
-	if LogInInfo.objects.filter(user=request.user).exists():
-		# save login info of the current authenticated user if he exists
-		login_infos = LogInInfo.objects.filter(user=request.user)
-		# number of rides the user has completed
-		number_of_rides_completed = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count()
-		return render(request, 'currentprof.html', {'login_infos': login_infos,
-													'rides_comp': number_of_rides_completed})
+    if LogInInfo.objects.filter(user=request.user).exists():
+        # save login info of the current authenticated user if he exists
+        login_infos = LogInInfo.objects.filter(user=request.user)
+        # number of rides the user has completed
+        number_of_rides_completed = InputRideInfo.objects.filter(user=request.user).filter(
+                ride_status_open=False).count()
+        rating = LogInInfo.objects.filter(user=request.user).values()
+        return render(request, 'currentprof.html', {'login_infos': login_infos,
+            'rides_comp': number_of_rides_completed, 'rating': rating})
 	# if current user's login info doesn't exist, tell him/her to make one
-	else:
-		return render(request, 'chooseLogin.html')
+    else:
+        return render(request, 'chooseLogin.html')
 
 def deleteRide(request):
 	rideId = request.POST.get('rideId', None)
@@ -175,6 +180,22 @@ def login(request):
 def newRide(request):
 	return render(request, 'newride.html')
 
+def rateRider(request, netid):
+    if request.method == "POST":
+        if request.user == netid:
+            return render(request, 'failureRate.html')
+        form = UserForm(request.POST)
+        if form.is_valid():
+            rate = request.POST.get('rater', None)
+            old_rating = LogInInfo.objects.filter(user=request.user).rating
+            old_count = LogInInfo.objects.filter(user=request.user).num_rates
+            new_avg = ((old_rating * old_count) + rate) / (old_count + 1)
+            new_count = old_count + 1
+            LogInInfo.objects.filter(user=request.user).update(rating=new_avg)
+            LogInInfo.objects.filter(user=request.user).update(num_rates=new_count)
+
+    return render(request, 'successRate.html')
+
 def reloadRideHistory(request, which_one):
 	no = InputRideInfo.objects.count()
 	val = 0
@@ -235,9 +256,15 @@ def rideHistory(request):
 		all_matchings = InputRideInfo.objects.filter(group_identifier=group_id).values()
 		open_rides_dict[group_id] = all_matchings
 		for save_ride in all_matchings:
-			info_dict['origin'] = save_ride['depart_from']
-			info_dict['destination'] = save_ride['destination']
-			info_dict['date'] = save_ride['date']
+			# if ride has already expired
+			dt_date = save_ride['date']
+			dt_date = dt_date + datetime.timedelta(days=1)
+			if dt_date < datetime.date.today():
+				InputRideInfo.objects.filter(group_identifier=group_id).update(ride_status_open=False)
+			else:
+				info_dict['origin'] = save_ride['depart_from']
+				info_dict['destination'] = save_ride['destination']
+				info_dict['date'] = save_ride['date']
 			break
 		open_info_singular[group_id] = info_dict
 	for ride in closed_rides:
@@ -337,11 +364,14 @@ def seeGroup(request, ride_id):
 
 @login_required
 def userProf(request):
-	usernet = request.POST.get('userNetid', None)
-	print(usernet)
-	login_infos = LogInInfo.objects.filter(netid=usernet)
-	number_of_rides_completed = InputRideInfo.objects.filter(netid=usernet).filter(ride_status_open=False).count()
-	return render(request, 'userProf.html', {'login_infos': login_infos, 'rides_comp': number_of_rides_completed})
+    usernet = request.POST.get('userNetid', None)
+    print(usernet)
+    login_infos = LogInInfo.objects.filter(netid=usernet)
+    val = login_infos.values()
+    if not val:
+    	return render(request, 'noUserFound.html', {'usernet':usernet})
+    number_of_rides_completed = InputRideInfo.objects.filter(netid=usernet).filter(ride_status_open=False).count()
+    return render(request, 'userProf.html', {'login_infos': login_infos, 'rides_comp': number_of_rides_completed, 'rating': LogInInfo.objects.filter(net=usernet).rating})
 
 def userGuide(request):
 	return render(request, 'userGuide.html')

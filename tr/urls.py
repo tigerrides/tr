@@ -17,9 +17,10 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from . import views
 from django.conf import settings
+from django.conf.urls import url
 from django.conf.urls.static import static
 
-
+app_name = 'ratings'
 urlpatterns = [
     path('', views.index, name='index'),
     path('about/', views.about, name='about'),
@@ -40,6 +41,7 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     # path('joinGroup/', views.joinGroup, name='joinGroup'),
     path('newRide/', views.newRide, name='newRide'),
+    path('rateRider/', views.rateRider, name='rateRider'),
     path('reloadRideHistory/<int:which_one>/', views.reloadRideHistory, name="reloadRideHistory"),
     path('rideHistory/', views.rideHistory, name='rideHistory'),
     path('searchResults/<int:ride_id>/', views.searchResults, name='searchResults'),
