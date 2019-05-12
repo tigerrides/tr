@@ -8,7 +8,8 @@
 {% block content %}
   <div class="w3-display-center w3-text-white" style="padding-top:100px">
     <h1 class="title w3-center">plan your next trip.</h1>
-        error: {{ err_message }}
+        <p class="w3-center">error: {{ err_message }}<br>
+        </p>
         <div class="w3-center w3-myfont">
     <form action="{% url 'submit_ride' %}" method="post">
       <div class="w3-container w3-center">
@@ -71,7 +72,7 @@
         <label class="container w3-center">lyft
             <input type="checkbox" name="lyft">
             <span class="checkmark"></span><br>
-        </label><br></div>
+        </label><br><br></div>
         <!--<button class="buttons" type="submit">find me sum buds</button>-->
 		<input class="glow" type="submit" value="submit">
     </form>
