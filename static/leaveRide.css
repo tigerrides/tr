@@ -144,7 +144,7 @@ button[class=buttons] {
 }
 
 button[class=buttons]:hover {
-  background: white;
+  background: transparent;
     /*background: #A55858;*/
     /*background-color: rgba(165,88,88,.6);*/
     cursor: url('my_app/shield.png'), auto; 
