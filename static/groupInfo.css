@@ -59,7 +59,7 @@ font-size: 10pt;
   align-content: center;
 }
 
-button {
+.join {
     height: 36px;
     line-height:20px;
     background-color: rgba(165,88,88,.3);
@@ -73,7 +73,7 @@ button {
     cursor: url('my_app/shield.png'), auto; 
 }
 
-button:hover {
+.join:hover {
     background: #A55858;
     border-radius: 10px;
     background-color: rgba(165,88,88,.6);
