@@ -84,7 +84,7 @@ def deleteRide(request):
 											   'origin': origin, 'destination' : destination, 'date': date})
 
 def goToRate(request, netid):
-    return render(request, 'rateRider.html')
+    return render(request, 'rateRider.html', {'netid': netid})
 
 @login_required
 def groupInfo(request):
@@ -191,12 +191,12 @@ def rateRider(request, netid):
         form = UserForm(request.POST)
         if form.is_valid():
             rate = request.POST.get('rater', None)
-            old_rating = LogInInfo.objects.get(user=request.user).rating
-            old_count = LogInInfo.objects.get(user=request.user).num_rates
+            old_rating = LogInInfo.objects.get(netid=netid).rating
+            old_count = LogInInfo.objects.get(netid=netid).num_rates
             new_avg = ((old_rating * old_count) + rate) / (old_count + 1)
             new_count = old_count + 1
-            LogInInfo.objects.filter(user=request.user).update(rating=new_avg)
-            LogInInfo.objects.filter(user=request.user).update(num_rates=new_count)
+            LogInInfo.objects.filter(netid=netid).update(rating=new_avg)
+            LogInInfo.objects.filter(netid=netid).update(num_rates=new_count)
 
     return render(request, 'successRate.html')
 
