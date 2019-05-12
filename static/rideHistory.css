@@ -134,7 +134,7 @@ font-size: 10pt;
 .name {
     color: #A55858;
     font-weight: 700;
-    text-decoration: underline;
+    text-decoration: none;
     font-size: 18px;
 }
 

@@ -12,13 +12,13 @@
     <h1 class="title w3-center w3-padding-16">current rides.</h1>
 
     {% load static %}
-    <img class="car" src="{% static "my_app/car_large.png" %}">
+    <img class="car" src="{% static "my_app/logo.png" %}">
     {% load static %}
-    <img class="car" src="{% static "my_app/car_large.png" %}">
+    <img class="car" src="{% static "my_app/logo.png" %}">
     {% load static %}
-    <img class="car" src="{% static "my_app/car_large.png" %}">
+    <img class="car" src="{% static "my_app/logo.png" %}">
     {% load static %}
-    <img class="car" src="{% static "my_app/car_large.png" %}">
+    <img class="car" src="{% static "my_app/logo.png" %}">
   <p id="rides-list"></p>
 
         {% for key, values in open_rides.items %}
@@ -59,13 +59,13 @@
   <h1 class="title w3-center w3-padding-16">past rides.</h1>
 
   {% load static %}
-  <img class="car" src="{% static "my_app/car_large.png" %}">
+  <img class="car" src="{% static "my_app/logo.png" %}">
   {% load static %}
-  <img class="car" src="{% static "my_app/car_large.png" %}">
+  <img class="car" src="{% static "my_app/logo.png" %}">
   {% load static %}
-  <img class="car" src="{% static "my_app/car_large.png" %}">
+  <img class="car" src="{% static "my_app/logo.png" %}">
   {% load static %}
-  <img class="car" src="{% static "my_app/car_large.png" %}">
+  <img class="car" src="{% static "my_app/logo.png" %}">
   <section id="rides-list">
 
       {% for key, values in closed_rides.items %}
@@ -74,7 +74,7 @@
           {% if k == key %}
           <p class="name">ride details:</p>
           {% for k1, v1 in v.items %}
-          {{k1}}: {{v1}} <br>
+          {{k1}}: {{v1}} <br><br>
           {% endfor %}
           {% endif %}
           {% endfor %}
@@ -86,7 +86,7 @@
               {{ val.user_first_name }} {{ val.user_last_name }}:
             </button>
           </form>
-          {{ val.time_start }} --> {{ val.time_end }} <br>
+          {{ val.time_start }} --> {{ val.time_end }} <br><br>
           notes: {{ val.notes}}<br>
           {% endfor %}
           <br/>
