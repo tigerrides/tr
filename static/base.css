@@ -348,8 +348,8 @@ button[class=buttons]:before, button[class=buttons]:after {
   right: 0;
   bottom: 0;
   left: 0;
-  border-top: 30px solid #A55858;
-  border-bottom: 30px solid #A55858;
+  border-top: 30px solid white;
+  border-bottom: 30px solid white;
 }
 button[class=buttons]:before {
   border-right: 30px solid transparent;
