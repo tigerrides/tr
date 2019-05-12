@@ -60,7 +60,7 @@ font-size: 10pt;
 }
 
 button {
-  background: transparent;
+  background: #F7B5B0;
     height: 36px;
     line-height:20px;
     /*background-color: rgba(165,88,88,.3);*/
@@ -75,7 +75,7 @@ button {
 }
 
 button:hover {
-  background: transparent;
+  background: #F7B5B0;
     /*background: #A55858;*/
     border-radius: 5px;
     /*background-color: rgba(165,88,88,.6);*/
