@@ -20,9 +20,9 @@
       <form action="{% url 'userProf' %}" target="_blank" method="post" id="see_user">
         {% csrf_token %}
         {{ form }}
-        <button class="buttons" name="userNetid" value="{{ ride.netid }}" form="see_user" type="submit">
+        <a class="buttons" name="userNetid" value="{{ ride.netid }}" form="see_user" type="submit">
           {{ ride.user_first_name }} {{ ride.user_last_name }}:
-        </button>
+        </a>
       </form>
       {{ ride.time_start }} --> {{ ride.time_end }}<br>
       notes: {{ ride.notes}}<br>

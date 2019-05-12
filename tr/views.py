@@ -345,5 +345,8 @@ def userProf(request):
 	number_of_rides_completed = InputRideInfo.objects.filter(netid=usernet).filter(ride_status_open=False).count()
 	return render(request, 'userProf.html', {'login_infos': login_infos, 'rides_comp': number_of_rides_completed})
 
+def userGuide(request):
+	return render(request, 'userGuide.html')
+
 def welcome(request):
 	return render(request, 'welcome.html')
