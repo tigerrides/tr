@@ -25,7 +25,8 @@
           {{ login_info.first_name }} {{ login_info.last_name }}
         </h2>
         <!--<p class="description">&#9733;&#9733;&#9733;&#9733;&#9733;<br/></p>-->
-        <p class="description">rating: {{ login_info.rating }} / 5</p>
+        <!-- <p class="description">rating: {{ login_info.rating }} / 5</p> -->
+        <p class="description" id="rating"></p>
         <p class="description">netid: {{ login_info.netid }}</p>
         <p class="description">phone number: {{ login_info.phone_number }}</p>
         <p class="description">trips taken: {{ rides_comp }}</p>
@@ -47,29 +48,14 @@
 </div>
 {% endblock %}
 
-
-<!-- code 1 -->
-<!--<h2 class="name">-->
-  <!--{% if user.is_authenticated %}-->
-  <!--test 1-->
-  <!--{{ user.username }}-->
-  <!--{{ user.email }}-->
-  <!--{% else %}-->
-  <!--<p>You are not logged in</p>-->
-  <!--&lt;!&ndash;<a href="{% url 'login' %}">login</a>&ndash;&gt;-->
-  <!--{% endif %}-->
-  <!--</h2>-->
-  <!-- code 2  -->
-  <!--{% for login_info in login_infos %}-->
-  <!--<p class="description">&#9733;&#9733;&#9733;&#9733;&#9733;<br/><br/></p>-->
-  <!--<p class="description">-->
-    <!--name@princeton.edu-->
-    <!--</p>-->
-    <!--<p class="description">-->
-      <!--{{ login_info.phone_number }}-->
-      <!--(000) 000 - 0000-->
-      <!--</p>-->
-      <!--<p class="description">-->
-        <!--trips taken: 0-->
-        <!--</p>-->
-        <!--{% endfor %}-->
+<script>
+  var stars = "rating: ";
+  var i;
+  for (i = 0; i < { login_info.rating }; i++) {
+    stars += &#9733;
+  }
+  for (i = 0; i < 5 - { login_info.rating }; i++) {
+    stars += &#9734;
+  }
+  document.getElementById("rating").innerHTML = stars;
+</script>
