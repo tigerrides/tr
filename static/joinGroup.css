@@ -157,8 +157,6 @@ button[class=buttons] {
 
 button[class=buttons]:hover {
   background: transparent;
-    /*background: #A55858;*/
-    /*background-color: rgba(165,88,88,.6);*/
 }
 
 a[class=user] {

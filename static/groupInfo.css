@@ -69,6 +69,14 @@ button[class=buttons]:hover {
     /*background-color: rgba(165,88,88,.6);*/
 }
 
+a[class=buttons]:hover {
+  cursor: url('my_app/shield.png'), auto;
+}
+
+button[class=buttons]:hover {
+  cursor: url('my_app/shield.png'), auto;
+}
+
 /*button[class=join] {
         display: inline-block;
 

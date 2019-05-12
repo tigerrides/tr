@@ -54,3 +54,7 @@ input[type=text] {
 input[type=text]:hover {
   box-shadow: 2px 4px 8px 0px rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 }
+
+button[class=buttons]:hover {
+  cursor: url('my_app/shield.png'), auto;
+}
