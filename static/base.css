@@ -6,7 +6,7 @@ html {
     color: #A55858;
     text-align: center;
      background-image: url("my_app/background.png");
-     background-repeat: no-repeat;
+     background-repeat: repeat;
      background-position: center;
      background-size: 100%;
 }

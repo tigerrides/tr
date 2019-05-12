@@ -12,8 +12,8 @@
     <h1 class="title w3-center">information.</h1>
     <div class="w3-display-center w3-text-white" style="padding:20px">
     <p class="name">ride details:</p>
-    origin: {{ origin }}<br><br>
-    destination: {{ destination }}<br><br>
+    origin: {{ origin }}<br>
+    destination: {{ destination }}<br>
     date: {{ date }}<br><br>
     {% for ride in rides %}
     <div class="w3-padding-36 w3-center w3-myfont">
@@ -24,8 +24,8 @@
           {{ ride.user_first_name }} {{ ride.user_last_name }}
         </button>
       </form>
-      <a class="user">{{ ride.time_start }} --> {{ ride.time_end }}<br><br>
-      notes: {{ ride.notes}}<br><br>
+      <a class="user">{{ ride.time_start }} --> {{ ride.time_end }}<br>
+      notes: {{ ride.notes}}<br>
       has uber: {{ ride.uber }}, has lyft: {{ ride.lyft }} <br><br></a>
 
       {% endfor %}
