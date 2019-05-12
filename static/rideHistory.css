@@ -8,7 +8,7 @@ padding-right: auto;
   align-content: center;
 }
 
-.box {
+/*.box {
 margin-right: auto;
 margin-left: auto;
 margin-top: 5%;
@@ -29,7 +29,7 @@ filter: alpha(opacity=0);
   color: #E59393;
   background: white;
   cursor: url('my_app/shield.png'), auto; 
-}
+}*/
 
 .pic {
 /*  display: block;*/
@@ -43,7 +43,7 @@ filter: alpha(opacity=0);
     box-shadow: 0 0 10px 5px #E59393;
 }
 
-.buttons {
+/*.buttons {
     height: 36px;
     line-height:20px;
     background-color: rgba(165,88,88,.3);
@@ -55,7 +55,7 @@ filter: alpha(opacity=0);
     min-width: 54px;
     padding: 0 16px;
     cursor: url('my_app/shield.png'), auto; 
-}
+}*/
 
 .buttons-special {
     height: 45px;
@@ -77,12 +77,12 @@ filter: alpha(opacity=0);
     cursor: url('my_app/shield.png'), auto;
 }
 
-.buttons:hover {
+/*.buttons:hover {
     background: #A55858;
     border-radius: 10px;
     background-color: rgba(165,88,88,.6);
     cursor: url('my_app/shield.png'), auto; 
-}
+}*/
 
 .buddies {
 /*  display: block;*/
