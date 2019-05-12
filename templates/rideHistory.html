@@ -28,7 +28,7 @@
           {% if k == key %}
           <p class="name">ride details:</p>
           {% for k1, v1 in v.items %}
-          {{k1}}: {{v1}} <br><br>
+          {{k1}}: {{v1}} <br>
           {% endfor %}
           {% endif %}
           {% endfor %}
@@ -40,7 +40,7 @@
               {{ val.user_first_name }} {{ val.user_last_name }}
             </button>
           </form>
-          <a class="user">{{ val.time_start }} --> {{ val.time_end }} <br><br>
+          <a class="user">{{ val.time_start }} --> {{ val.time_end }} <br>
           notes: {{ val.notes}}<br><br>
           {% endfor %}</a>
           <br>
