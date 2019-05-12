@@ -172,7 +172,25 @@ input[type=date] {
 input:hover {
 }
 
+input[type=submit] {
+    display: inline-block;
+    height: 36px;
+    line-height: 27px;
+    background-color: #EFA09E;
+    border-color: transparent;
+    color: white;
+    font-size: 15px;
+    margin: 0 auto;
+    min-width: 54px;
+    padding: 0 16px;
 
+}
+
+input[type=submit]:hover {
+    background: #A55858;
+    box-shadow: 0 0 10px 5px white;
+    cursor: url('my_app/shield-w.png'), auto;
+}
 
 .box {
     width: 100%;
