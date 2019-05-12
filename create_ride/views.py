@@ -44,12 +44,12 @@ def submit_ride(request):
             message = "you cannot travel to the same place!"
             return render(request, 'createRide.html', {'err_message': message})
         date = request.POST["date"]
-        dt_date = datetime.datetime.strptime(date, "%Y-%m-%d")
+        dt_date = datetime.datetime.strptime(date, "%Y-%m-%d").date()
         if dt_date < datetime.date.today():
             message = "the date cannot be in the past!"
             return render(request, 'createRide.html', {'form': form, 'err_message': message})
-        time_start = request.POST["time_start"]
-        time_end = request.POST["time_end"]
+        time_start = request.POST["time_start"].time()
+        time_end = request.POST["time_end"].time()
         dt_start = datetime.datetime.strptime(time_start, '%H:%M:%S')
         dt_end = datetime.datetime.strptime(time_end, '%H:%M:%S')
         if dt_end < dt_start:
