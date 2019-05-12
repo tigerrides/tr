@@ -29,9 +29,6 @@ input[type=file] {
     align-content: center;
 }
 
-input[type=file]:hover {
-}
-
 /*input[type=submit] {
     height: 36px;
     line-height: 27px;
