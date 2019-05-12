@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
-
+import datetime
 from .models import InputRideInfo
 from login.models import LogInInfo
 from . import forms
@@ -39,9 +39,15 @@ def submit_ride(request):
 
         depart_from = request.POST["depart_from"]
         destination = request.POST["destination"]
+        if depart_from == destination:
+            raise forms.ValidationError("You cannot travel to the same place!")
         date = request.POST["date"]
+        if date < datetime.date.today():
+            raise forms.ValidationError("The date cannot be in the past!")
         time_start = request.POST["time_start"]
         time_end = request.POST["time_end"]
+        if time_end < time_start:
+            raise forms.ValidationError("Your departure interval is invalid!")
         notes = request.POST["notes"]
         uber = request.POST.get('uber', False)
         lyft = request.POST.get('lyft', False)

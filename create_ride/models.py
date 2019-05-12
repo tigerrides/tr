@@ -42,11 +42,8 @@ class InputRideInfo(models.Model):
     user_last_name = models.CharField(max_length=200, default="last")
     depart_from = models.CharField(max_length=20, choices=ORIGIN_CHOICES, default=campus)
     destination = models.CharField(max_length=20, choices=DESTINATION_CHOICES, default=campus)
-    # drop down menu
-    # depart_from = Choices('ewr', 'phl', 'jfk', 'princeton')
-    # destination = Choices('ewr', 'phl', 'jfk', 'princeton')
+
     date = models.DateField()
-    # not sure what auto_now and auto_now_add means
     time_start = models.TimeField(auto_now=False, auto_now_add=False)
     time_end = models.TimeField(auto_now=False, auto_now_add=False)
     notes = models.CharField(max_length=500)
@@ -55,8 +52,6 @@ class InputRideInfo(models.Model):
     lyft = models.BooleanField(default=False)
     ride_status_open = models.BooleanField(default=True)
 
- 
-    # img = models.ImageField(default='default.png', blank=True)
 
     def __str__(self):
         return '%s %s' % (self.user_first_name, self.user_last_name)
