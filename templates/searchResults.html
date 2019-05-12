@@ -27,7 +27,6 @@
           {% endfor %}
           {% endif %}
           {% endfor %}
-
           {% for val in values %}
           <!-- <p class="name">{{ val.user_first_name }} {{ val.user_last_name }}:</p> -->
           <form action="{% url 'userProf' %}" target="_blank" method="post" id="see_user">
@@ -37,11 +36,9 @@
               {{ val.user_first_name }} {{ val.user_last_name }}
             </button>
           </form>
-
           <a class="user">{{ val.time_start }} --> {{ val.time_end }} <br>
           notes: {{ val.notes}}<br>
           {% endfor %}</a>
-          <br>
           <form action="{% url 'seeGroup' my_ride_id %}" method="post" id="see_more">
             {% csrf_token %}
             {{ form }}

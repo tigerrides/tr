@@ -33,7 +33,6 @@
           {% endif %}
           {% endfor %}
           {% for val in values %}
-          <br>
           <form action="{% url 'userProf' %}" target="_blank" method="post" id="see_user">
             {% csrf_token %}
             {{ form }}
@@ -42,9 +41,8 @@
             </button>
           </form>
           <a class="user">{{ val.time_start }} --> {{ val.time_end }} <br>
-          notes: {{ val.notes}}<br><br>
+          notes: {{ val.notes}}<br>
           {% endfor %}</a>
-          <br>
           <form action="{% url 'seeGroup' 0 %}" method="post" id="seeMore">
             {% csrf_token %}
             {{ form }}
@@ -75,7 +73,7 @@
           {% if k == key %}
           <p class="name">ride details:</p>
           {% for k1, v1 in v.items %}
-          {{k1}}: {{v1}} <br><br><br>
+          {{k1}}: {{v1}} <br>
           {% endfor %}
           {% endif %}
           {% endfor %}
@@ -87,9 +85,9 @@
               {{ val.user_first_name }} {{ val.user_last_name }}:
             </button>
           </form>
-          {{ val.time_start }} --> {{ val.time_end }} <br><br><br>
-          notes: {{ val.notes}}<br>
-          {% endfor %}
+            <a class="user">{{ val.time_start }} --> {{ val.time_end }} <br>
+                notes: {{ val.notes}}<br>
+                {% endfor %}</a>
           <br/>
         </div>
       {% endfor %}
