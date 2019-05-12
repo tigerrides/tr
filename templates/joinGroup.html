@@ -17,7 +17,7 @@
       date: {{ date }}<br><br>
       
       {% for ride in rides_filt %}
-      <form action="{% url 'userProf' %}" target="_blank" method="post" id="see_user">
+      <form action="{% url 'seeUser' 0 %}" target="_blank" method="post" id="see_user">
         {% csrf_token %}
         {{ form }}
         <button class="buttons" name="userNetid" value="{{ ride.netid }}" form="see_user" type="submit">
