@@ -29,6 +29,7 @@
       notes: {{ ride.notes}}<br>
       {% endfor %}
       <br><br>
+      <p class="name">WARNING: action cannot be undone!</p>
       <form action="{% url 'reloadRideHistory' 1 %}" method="post" id="toGroupButton">
         {% csrf_token %}
         {{ form }}
