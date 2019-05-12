@@ -191,19 +191,17 @@ def rateRider(request):
 			return render(request, 'failureRate.html')
 		rate = request.POST.get('rater', None)
 		rate = int(rate)
-		old_rating = LogInInfo.objects.get(user=request.user).rating
+		old_rating = LogInInfo.objects.get(netid=netid).rating
 		print("old rating")
 		print(old_rating)
-		old_count = LogInInfo.objects.get(user=request.user).num_rates
+		old_count = LogInInfo.objects.get(netid=netid).num_rates
 		new_avg = ((old_rating * old_count) + rate) / (old_count + 1)
 		print("new rating")
 		print(new_avg)
 		new_count = old_count + 1
-		get_user = LogInInfo.objects.get(user=request.user)
-		get_user.rating = new_avg
-		get_user.num_rates = new_count
-		get_user.save()
-		# LogInInfo.objects.get(user=request.user).update(num_rates=new_count)
+		LogInInfo.objects.filter(netid=netid).update(rating=new_avg)
+		LogInInfo.objects.filter(netid=netid).update(num_rates=new_count)
+
 	return render(request, 'successRate.html')
 
 def reloadRideHistory(request, which_one):
