@@ -340,6 +340,9 @@ def userProf(request):
 	usernet = request.POST.get('userNetid', None)
 	print(usernet)
 	login_infos = LogInInfo.objects.filter(netid=usernet)
+	val = login_infos.values()
+	if not val:
+		return render(request, 'noUserFound.html', {'usernet':usernet})
 	number_of_rides_completed = InputRideInfo.objects.filter(netid=usernet).filter(ride_status_open=False).count()
 	return render(request, 'userProf.html', {'login_infos': login_infos, 'rides_comp': number_of_rides_completed})
 
