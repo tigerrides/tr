@@ -33,6 +33,7 @@
           {% endif %}
           {% endfor %}
           {% for val in values %}
+          <br>
           <form action="{% url 'userProf' %}" target="_blank" method="post" id="see_user">
             {% csrf_token %}
             {{ form }}
