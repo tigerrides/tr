@@ -90,6 +90,7 @@ footer {
     color: white;
     font-weight: 700;
     /*text-align: left;*/
+    text-transform: lowercase;
     font-size: 20px;
     text-align: center;
     text-shadow: 2px 2px 2px #A55858;

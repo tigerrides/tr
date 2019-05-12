@@ -133,4 +133,9 @@ margin-right: auto;
     font-family: 'Roboto Mono', monospace;
     font-style: normal;
     font-size: 30px;
+    text-transform: lowercase;
+}
+
+.title {
+  margin-bottom: 32px;
 }
