@@ -48,10 +48,12 @@ def submit_ride(request):
         if dt_date < datetime.date.today():
             message = "the date cannot be in the past!"
             return render(request, 'createRide.html', {'err_message': message})
-        time_start = request.POST["time_start"].time()
-        time_end = request.POST["time_end"].time()
-        dt_start = datetime.datetime.strptime(time_start, '%H:%M:%S')
-        dt_end = datetime.datetime.strptime(time_end, '%H:%M:%S')
+        time_start = request.POST["time_start"]
+        time_end = request.POST["time_end"]
+        dt_start = datetime.datetime.combine(datetime.date.today(),
+                                             datetime.datetime.strptime(time_start, '%H:%M:%S').time())
+        dt_end = datetime.datetime.combine(datetime.date.today(),
+                                           datetime.datetime.strptime(time_end, '%H:%M:%S').time())
         if dt_end < dt_start:
             message = "your departure interval is invalid!"
             return render(request, 'createRide.html', {'err_message': message})
