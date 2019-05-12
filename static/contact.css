@@ -90,3 +90,8 @@ font-size: 10pt;
     background-color: rgba(165,88,88,.6);
     cursor: url('my_app/shield.png'), auto;
 }
+
+.box {
+  background: #E08C8C;
+  box-shadow: 0 0 10px 5px white;
+}
