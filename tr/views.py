@@ -190,6 +190,7 @@ def rateRider(request):
 		if request.user == netid:
 			return render(request, 'failureRate.html')
 		rate = request.POST.get('rater', None)
+		rate = int(rate)
 		old_rating = LogInInfo.objects.get(user=request.user).rating
 		old_count = LogInInfo.objects.get(user=request.user).num_rates
 		new_avg = ((old_rating * old_count) + rate) / (old_count + 1)
