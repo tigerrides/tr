@@ -192,8 +192,12 @@ def rateRider(request):
 		rate = request.POST.get('rater', None)
 		rate = int(rate)
 		old_rating = LogInInfo.objects.get(user=request.user).rating
+		print("old rating")
+		print(old_rating)
 		old_count = LogInInfo.objects.get(user=request.user).num_rates
 		new_avg = ((old_rating * old_count) + rate) / (old_count + 1)
+		print("new rating")
+		print(new_avg)
 		new_count = old_count + 1
 		LogInInfo.objects.filter(user=request.user).update(rating=new_avg)
 		LogInInfo.objects.filter(user=request.user).update(num_rates=new_count)
