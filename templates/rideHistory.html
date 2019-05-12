@@ -47,7 +47,7 @@
           <form action="{% url 'seeGroup' 0 %}" method="post" id="seeMore">
             {% csrf_token %}
             {{ form }}
-            <button class="buttons" name="rideId" value="{{ key }}" form="seeMore" type="submit">
+            <button class="glow" name="rideId" value="{{ key }}" form="seeMore" type="submit">
               see more
             </button>
           </form>
