@@ -33,7 +33,7 @@
           {% endif %}
           {% endfor %}
           {% for val in values %}
-          <form action="{% url 'userProf' 0 %}" target="_blank" method="post" id="see_user">
+          <form action="{% url 'seeUser' 0 %}" target="_blank" method="post" id="see_user">
             {% csrf_token %}
             {{ form }}
             <button class="buttons" name="userNetid" value="{{ val.netid }}" form="see_user" type="submit">
