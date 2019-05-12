@@ -122,7 +122,7 @@ html *:after {
   }
 }
 
-.buttons {
+a[class=buttons] {
   position: relative;
   display: inline-block;
   overflow: hidden;
@@ -140,7 +140,7 @@ html *:after {
   color: white;
 }
 
-.buttons:before, .buttons:after {
+a[class=buttons]:before, a[class=buttons]:after {
   content: '';
   position: absolute;
   top: 0;
@@ -150,26 +150,26 @@ html *:after {
   border-top: 30px solid #EFA09E;
   border-bottom: 30px solid #EFA09E;
 }
-.buttons:before {
+a[class=buttons]:before {
   border-right: 30px solid transparent;
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
 }
-.buttons:after {
+a[class=buttons]:after {
   border-left: 30px solid transparent;
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
 }
-.buttons:hover {
+a[class=buttons]:hover {
   color: white;
   border: 1px solid transparent;
   cursor: url('my_app/shield-w.png'), auto; 
 }
-.buttons:hover:before {
+a[class=buttons]:hover:before {
   -webkit-transform: translateX(-30%);
           transform: translateX(-30%);
 }
-.buttons:hover:after {
+a[class=buttons]:hover:after {
   -webkit-transform: translateX(30%);
           transform: translateX(30%);
 }
