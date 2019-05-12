@@ -12,9 +12,9 @@
     <h1 class="title w3-center">information.</h1>
     <div class="w3-display-center w3-text-white" style="padding:20px">
     <p class="name">ride details:</p>
-    origin: {{ origin }}<br>
+    origin: {{ origin }}<br><br><br>
     destination: {{ destination }}<br>
-    date: {{ date }}<br>
+    date: {{ date }}<br><br><br>
     {% for ride in rides %}
     <div class="w3-padding-36 w3-center w3-myfont">
       <form action="{% url 'userProf' %}" target="_blank" method="post" id="see_user">
