@@ -178,8 +178,10 @@ def login(request):
 def newRide(request):
 	return render(request, 'newride.html')
 
-def rateRider(request):
+def rateRider(request, netid):
     if request.method == "POST":
+        if request.user == netid:
+            return render(request, 'failureRate.html')
         form = UserForm(request.POST)
         if form.is_valid():
             rate = request.POST.get('rater', None)
