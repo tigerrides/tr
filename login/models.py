@@ -15,7 +15,7 @@ class LogInInfo(models.Model):
     last_name = models.CharField(max_length=200)
     phone_number = models.CharField(max_length=20)
     image = models.ImageField(upload_to='images/', default="")
-    rating = models.IntegerField(default=5)
+    rating = models.FloatField(default=5.0)
     num_rates = models.IntegerField()
 
     pic_url = models.CharField(max_length=200,
