@@ -18,17 +18,20 @@ class InputRideInfo(models.Model):
     ewr = "EWR"
     phl = "PHL"
     jfk = "JFK"
+    p_j = "PRINCETON JUNCTION"
     campus = "PRINCETON"
     ORIGIN_CHOICES = (
         (ewr, "ewr"),
         (phl, "phl"),
         (jfk, "jfk"),
+        (p_j, "princeton junction"),
         (campus, "princeton")
     )
     DESTINATION_CHOICES = (
         (ewr, "ewr"),
         (phl, "phl"),
         (jfk, "jfk"),
+        (p_j, "princeton junction"),
         (campus, "princeton")
     )
     netid = models.CharField(max_length=200, default="princeton")
