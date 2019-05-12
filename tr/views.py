@@ -184,23 +184,6 @@ def login(request):
 def newRide(request):
 	return render(request, 'newride.html')
 
-<<<<<<< HEAD
-def rateRider(request, netid):
-    if request.method == "POST":
-        if request.user == netid:
-            return render(request, 'failureRate.html')
-        form = UserForm(request.POST)
-        if form.is_valid():
-            rate = request.POST.get('rater', None)
-            old_rating = LogInInfo.objects.get(netid=netid).rating
-            old_count = LogInInfo.objects.get(netid=netid).num_rates
-            new_avg = ((old_rating * old_count) + rate) / (old_count + 1)
-            new_count = old_count + 1
-            LogInInfo.objects.filter(netid=netid).update(rating=new_avg)
-            LogInInfo.objects.filter(netid=netid).update(num_rates=new_count)
-
-    return render(request, 'successRate.html')
-=======
 def rateRider(request):
 	if request.method == "POST":
 		netid = request.POST.get('netid', None)
@@ -220,7 +203,6 @@ def rateRider(request):
 		LogInInfo.objects.filter(netid=netid).update(num_rates=new_count)
 
 	return render(request, 'successRate.html')
->>>>>>> d0834cb0da5af13077074937cfe1a6c79257d194
 
 def reloadRideHistory(request, which_one):
 	no = InputRideInfo.objects.count()
