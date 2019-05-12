@@ -298,7 +298,7 @@ input[class=glow] {
     border-color: transparent;
     color: white;
     font-size: 15px;
-    margin: 0 auto;
+    margin: 10px auto;
     min-width: 54px;
     padding: 0 16px;
 
@@ -334,7 +334,7 @@ button[class=glow] {
     border-color: transparent;
     color: white;
     font-size: 15px;
-    margin: 0 auto;
+    margin: 10px auto;
     min-width: 54px;
     padding: 0 16px;
 
@@ -343,7 +343,7 @@ button[class=glow] {
 button[class=glow]:hover {
     background: #A55858;
     background-color: rgba(165,88,88,.6);
-        box-shadow: 0 0 10px 5px white;
+    box-shadow: 0 0 10px 5px white;
 
 }
 
