@@ -59,6 +59,18 @@ font-size: 10pt;
   align-content: center;
 }
 
+button[class=buttons] {
+  background: #F7B5B0;
+
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+button[class=buttons]:hover {
+  background: transparent;
+    /*background: #A55858;*/
+    /*background-color: rgba(165,88,88,.6);*/
+    cursor: url('my_app/shield.png'), auto; 
+}
 
 /*button[class=join] {
         display: inline-block;

@@ -138,7 +138,7 @@ margin-right: auto;
 }
 
 button[class=buttons] {
-  background: white;
+  background: transparent;
 
     cursor: url('my_app/shield.png'), auto; 
 }
