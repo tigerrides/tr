@@ -128,3 +128,11 @@ margin-right: auto;
 .title {
   margin-bottom: 32px;
 }
+
+a[class=buttons]:hover {
+  cursor: url('my_app/shield.png'), auto;
+}
+
+button[class=buttons]:hover {
+  cursor: url('my_app/shield.png'), auto;
+}

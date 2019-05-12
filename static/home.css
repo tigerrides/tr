@@ -21,6 +21,14 @@
 }*/
 body { overflow: hidden }
 
+a[class=buttons]:hover {
+  cursor: url('my_app/shield.png'), auto;
+}
+
+button[class=buttons]:hover {
+  cursor: url('my_app/shield.png'), auto;
+}
+
 img {
 /*  display: block;*/
 position: relative; 
