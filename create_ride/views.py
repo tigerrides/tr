@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
+import datetime
 
 from .models import InputRideInfo
 from login.models import LogInInfo
 from . import forms
 from django.views import generic
-
 # Create your views here.
 def rides(request):
     # print("hi")
@@ -23,6 +23,7 @@ def see_Rides(request):
     return HttpResponse(html)
 
 def submit_ride(request):
+    form = forms.CreateRide()
     if request.method == 'POST':
         # print("it works!")
         # validate info against form
@@ -39,9 +40,30 @@ def submit_ride(request):
 
         depart_from = request.POST["depart_from"]
         destination = request.POST["destination"]
+        if depart_from == destination:
+            message = "you cannot travel to the same place!"
+            return render(request, 'createRide.html', {'err_message': message})
         date = request.POST["date"]
+        dt_date = datetime.datetime.strptime(date, "%Y-%m-%d").date()
         time_start = request.POST["time_start"]
         time_end = request.POST["time_end"]
+        dt_start = datetime.datetime.combine(dt_date,
+                                             datetime.datetime.strptime(time_start, '%H:%M'
+                                                                        ).time())
+        dt_end = datetime.datetime.combine(dt_date,
+                                           datetime.datetime.strptime(time_end, '%H:%M').time())
+        if dt_end < dt_start:
+            message = "your departure interval is invalid!"
+            return render(request, 'createRide.html', {'err_message': message})
+        print("datetime")
+        print(dt_end)
+        print(datetime.datetime.now())
+        if dt_end < datetime.datetime.now():
+            print("datetime")
+            print(dt_end)
+            print(datetime.datetime.now())
+            message = "the date cannot be in the past!"
+            return render(request, 'createRide.html', {'err_message': message})
         notes = request.POST["notes"]
         uber = request.POST.get('uber', False)
         lyft = request.POST.get('lyft', False)
@@ -86,8 +108,6 @@ def submit_ride(request):
         print("submit_ride")
         print(input_ride_info.group_identifier)
         return redirect('searchResults', ride_id=input_ride_info.group_identifier)
-    else:
-        form = forms.CreateRide()
     return render(request, 'createRide.html', {'form': form})
 
 # def searchResults(request):

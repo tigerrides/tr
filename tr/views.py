@@ -12,6 +12,7 @@ from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.template import RequestContext
 from . import settings
+import datetime
 
 
 def my_custom_page_not_found_view(request, exception, template_name="404.html"):
@@ -251,9 +252,15 @@ def rideHistory(request):
 		all_matchings = InputRideInfo.objects.filter(group_identifier=group_id).values()
 		open_rides_dict[group_id] = all_matchings
 		for save_ride in all_matchings:
-			info_dict['origin'] = save_ride['depart_from']
-			info_dict['destination'] = save_ride['destination']
-			info_dict['date'] = save_ride['date']
+			# if ride has already expired
+			dt_date = save_ride['date']
+			dt_date = dt_date + datetime.timedelta(days=1)
+			if dt_date < datetime.date.today():
+				InputRideInfo.objects.filter(group_identifier=group_id).update(ride_status_open=False)
+			else:
+				info_dict['origin'] = save_ride['depart_from']
+				info_dict['destination'] = save_ride['destination']
+				info_dict['date'] = save_ride['date']
 			break
 		open_info_singular[group_id] = info_dict
 	for ride in closed_rides:
