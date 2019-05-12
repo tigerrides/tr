@@ -38,9 +38,9 @@
             </button>
           </form>
 
-          {{ val.time_start }} --> {{ val.time_end }} <br>
+          <a class="user">{{ val.time_start }} --> {{ val.time_end }} <br>
           notes: {{ val.notes}}<br>
-          {% endfor %}
+          {% endfor %}</a>
           <br>
           <form action="{% url 'seeGroup' my_ride_id %}" method="post" id="see_more">
             {% csrf_token %}

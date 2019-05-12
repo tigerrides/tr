@@ -14,7 +14,7 @@
     <p class="name">ride details:</p>
     origin: {{ origin }}<br><br>
     destination: {{ destination }}<br><br>
-    date: {{ date }}<br>
+    date: {{ date }}<br><br>
     {% for ride in rides %}
     <div class="w3-padding-36 w3-center w3-myfont">
       <form action="{% url 'userProf' %}" target="_blank" method="post" id="see_user">
@@ -24,9 +24,9 @@
           {{ ride.user_first_name }} {{ ride.user_last_name }}
         </button>
       </form>
-      {{ ride.time_start }} --> {{ ride.time_end }}<br><br>
+      <a class="user">{{ ride.time_start }} --> {{ ride.time_end }}<br><br>
       notes: {{ ride.notes}}<br><br>
-      has uber: {{ ride.uber }}, has lyft: {{ ride.lyft }} <br>
+      has uber: {{ ride.uber }}, has lyft: {{ ride.lyft }} <br><br></a>
 
       {% endfor %}
       <br><br>
