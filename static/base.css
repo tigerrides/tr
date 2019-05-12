@@ -135,7 +135,7 @@ html *:after {
   border: 1px solid currentColor;
   font-weight: 700;
     line-height: 60px;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
       text-decoration: none;
   color: white;
 }
@@ -307,7 +307,7 @@ input[class=glow] {
 input[class=glow]:hover {
     background: #A55858;
     background-color: rgba(165,88,88,.6);
-        box-shadow: 0 0 10px 5px white;
+    box-shadow: 0 0 10px 5px white;
 
 }
 
@@ -320,7 +320,7 @@ button[class=buttons] {
 button[class=buttons]:hover {
   background: transparent;
     /*background: #A55858;*/
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     /*background-color: rgba(165,88,88,.6);*/
     cursor: url('my_app/shield.png'), auto; 
 }
