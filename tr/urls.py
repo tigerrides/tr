@@ -44,6 +44,7 @@ urlpatterns = [
     path('rideHistory/', views.rideHistory, name='rideHistory'),
     path('searchResults/<int:ride_id>/', views.searchResults, name='searchResults'),
     path('seeGroup/<int:ride_id>/', views.seeGroup, name='seeGroup'),
+    path('userGuide/', views.userGuide, name='userGuide'),
     path('userProf/', views.userProf, name='userProf'),
     path('welcome/', views.welcome, name='welcome'),
 ]
