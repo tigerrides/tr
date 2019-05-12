@@ -240,7 +240,7 @@ def rideHistory(request):
 		for save_ride in all_matchings:
 			# if ride has already expired
 			dt_date = save_ride['date']
-			dt_date = dt_date - datetime.timedelta(days=1)
+			dt_date = dt_date + datetime.timedelta(days=1)
 			if dt_date < datetime.date.today():
 				InputRideInfo.objects.filter(group_identifier=group_id).update(ride_status_open=False)
 			else:
