@@ -139,7 +139,7 @@ font-size: 10pt;
 }
 
 button[class=buttons] {
-  background: #F7B5B0;
+  background: transparent;
 
     cursor: url('my_app/shield.png'), auto; 
 }
