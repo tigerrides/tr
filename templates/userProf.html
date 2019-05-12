@@ -24,7 +24,8 @@
         <h2 class="name">
           {{ login_info.first_name }} {{ login_info.last_name }}
         </h2>
-        <p class="description">rating: {{ rating }} / 5</p>
+        <!-- <p class="description">rating: {{ rating }} / 5</p> -->
+        <p class="description" id="rating"></p>
         <p class="description">netid: {{ login_info.netid }}</p>
         <p class="description">phone number: {{ login_info.phone_number }}</p>
         <p class="description">trips taken: {{ rides_comp }}</p>
@@ -47,3 +48,15 @@
 </div>
 </div>
 {% endblock %}
+
+<script>
+  var stars = "rating: ";
+  var i;
+  for (i = 0; i < { login_info.rating }; i++) {
+    stars += &#9733;
+  }
+  for (i = 0; i < 5 - { login_info.rating }; i++) {
+    stars += &#9734;
+  }
+  document.getElementById("rating").innerHTML = stars;
+</script>
