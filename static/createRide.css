@@ -172,7 +172,7 @@ input[type=date] {
 input:hover {
 }
 
-/*input[type=submit] {
+input[type=submit] {
         display: inline-block;
 
     height: 36px;
@@ -191,28 +191,6 @@ input:hover {
 input[type=submit]:hover {
     background: #A55858;
     border-radius: 5px;
-    background-color: rgba(165,88,88,.6);
-        box-shadow: 0 0 10px 5px white;
-
-}*/
-
-input[class=glow] {
-        display: inline-block;
-
-    height: 36px;
-    line-height: 27px;
-    background-color: rgba(165,88,88,.3);
-    border-color: transparent;
-    color: white;
-    font-size: 15px;
-    margin: 0 auto;
-    min-width: 54px;
-    padding: 0 16px;
-
-}
-
-input[class=glow]:hover {
-    background: #A55858;
     background-color: rgba(165,88,88,.6);
         box-shadow: 0 0 10px 5px white;
 
