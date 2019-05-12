@@ -41,6 +41,7 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     # path('joinGroup/', views.joinGroup, name='joinGroup'),
     path('newRide/', views.newRide, name='newRide'),
+    path('rateRider/', views.rateRider, name='rateRider'),
     path('reloadRideHistory/<int:which_one>/', views.reloadRideHistory, name="reloadRideHistory"),
     path('rideHistory/', views.rideHistory, name='rideHistory'),
     path('searchResults/<int:ride_id>/', views.searchResults, name='searchResults'),

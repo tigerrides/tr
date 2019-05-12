@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block stylesheet %}
+{% load static %}
+  <link rel="stylesheet" href="{% static 'searchResultsEmpty.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="w3-padding-24 w3-row w3-myfont">
+<div class="w3-container w3-center">
+  <div class="w3-display-center w3-text-white" style="padding-top:10%">
+    <div class="w3-center w3-myfont">
+      <form action="{% url 'rateRider' %}" method="post">
+        {% csrf_token %}
+        <input type="number" name="rater" min="1" max="5">
+        <input type="submit" value="submit">
+    </div>
+  </div> 
+</div>
+</div>
+{% endblock %}
