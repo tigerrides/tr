@@ -79,10 +79,10 @@
           {% endfor %}
           {% for val in values %}
 
-            <form action="{% url 'seeUser' display=10 %}" target="_blank" method="post" id="see_user">
+            <form action="{% url 'seeUser' display=10 %}" target="_blank" method="post" id="see_user1">
                 {% csrf_token %}
                 {{ form }}
-                <button class="buttons" name="userNetid" value="{{ val.netid }}" form="see_user" type="submit">
+                <button class="buttons" name="userNetid" value="{{ val.netid }}" form="see_user1" type="submit">
                     {{ val.user_first_name }}-{{ val.user_last_name }}:
                 </button>
             </form>
