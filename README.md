@@ -84,5 +84,5 @@ Note: All users of tigerride must be Princeton students or faculty members with 
 ### logging out
 1. Click the “logout” button on the top right corner of any page.
 ## contact us
-Email us at princetontigerrides@gmail.com with any questins, comments, or concerns!
+Email us at princetontigerrides@gmail.com with any questions, comments, or concerns!
 
