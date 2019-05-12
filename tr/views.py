@@ -376,7 +376,7 @@ def userProf(request):
     if not val:
     	return render(request, 'noUserFound.html', {'usernet':usernet})
     number_of_rides_completed = InputRideInfo.objects.filter(netid=usernet).filter(ride_status_open=False).count()
-    myself = InputRideInfo.objects.get(user=request.user)
+    myself = LogInInfo.objects.get(user=request.user)
     return render(request, 'userProf.html', {'login_infos': login_infos,
 											 'rides_comp': number_of_rides_completed,
 											 'rating': LogInInfo.objects.get(netid=usernet).rating,
