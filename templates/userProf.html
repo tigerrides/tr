@@ -10,7 +10,7 @@
   <div class="w3-container w3-center" style="margin:5%">
     <div class="w3-display-center w3-text-white" style="padding:5%">
       {% if user.is_authenticated %}
-      {% for login_info in login_infos %}
+      {% for login_info in login_infos%}
       <h1 class="title w3-center">{{login_info.first_name}}'s profile.</h1>
       <div class="left w3-half w3-padding-16 w3-center w3-myfont">
         {% if login_info.pic_url == "tigerbook" %}
@@ -24,14 +24,11 @@
         <h2 class="name">
           {{ login_info.first_name }} {{ login_info.last_name }}
         </h2>
-        <p class="description">&#9733;&#9733;&#9733;&#9733;&#9733;<br></p>
-        <p class="description">rating: {{ rating }} / 5</p>
+        <p class="description">&#9733;&#9733;&#9733;&#9733;&#9733;<br/></p>
         <p class="description">netid: {{ login_info.netid }}</p>
         <p class="description">phone number: {{ login_info.phone_number }}</p>
         <p class="description">trips taken: {{ rides_comp }}</p>
-        <a href="{% url rateRider.html netid=login_info.netid %}">Rate this rider!</a>
       {% endfor %}
-      <br><br>
       </div>
 
       {% else %}
@@ -42,6 +39,7 @@
       {% endif %}
       <!-- code 2 commented out from here -->
       <br>
+    </div>
   </div> 
 </div>
 </div>
