@@ -58,16 +58,18 @@ def createUser(request):
 
 @login_required
 def currentprof(request):
-	if LogInInfo.objects.filter(user=request.user).exists():
-		# save login info of the current authenticated user if he exists
-		login_infos = LogInInfo.objects.filter(user=request.user)
-		# number of rides the user has completed
-		number_of_rides_completed = InputRideInfo.objects.filter(user=request.user).filter(ride_status_open=False).count()
-		return render(request, 'currentprof.html', {'login_infos': login_infos,
-													'rides_comp': number_of_rides_completed})
+    if LogInInfo.objects.filter(user=request.user).exists():
+        # save login info of the current authenticated user if he exists
+        login_infos = LogInInfo.objects.filter(user=request.user)
+        # number of rides the user has completed
+        number_of_rides_completed = InputRideInfo.objects.filter(user=request.user).filter(
+                ride_status_open=False).count()
+        rating = LogInInfo.objects.filter(user=request.user).values()
+        return render(request, 'currentprof.html', {'login_infos': login_infos,
+            'rides_comp': number_of_rides_completed, 'rating': rating})
 	# if current user's login info doesn't exist, tell him/her to make one
-	else:
-		return render(request, 'chooseLogin.html')
+    else:
+        return render(request, 'chooseLogin.html')
 
 def deleteRide(request):
 	rideId = request.POST.get('rideId', None)
@@ -185,12 +187,12 @@ def rateRider(request, netid):
         form = UserForm(request.POST)
         if form.is_valid():
             rate = request.POST.get('rater', None)
-            old_rating = InputRideInfo.objects.filter(user=request.user).rating
-            old_count = InputRideInfo.objects.filter(user=request.user).num_rates
+            old_rating = LogInInfo.objects.filter(user=request.user).rating
+            old_count = LogInInfo.objects.filter(user=request.user).num_rates
             new_avg = ((old_rating * old_count) + rate) / (old_count + 1)
             new_count = old_count + 1
-            InputRideInfo.objects.filter(user=request.user).update(rating=new_avg)
-            InputRideInfo.objects.filter(user=request.user).update(num_rates=new_count)
+            LogInInfo.objects.filter(user=request.user).update(rating=new_avg)
+            LogInInfo.objects.filter(user=request.user).update(num_rates=new_count)
 
     return render(request, 'successRate.html')
 
@@ -362,14 +364,14 @@ def seeGroup(request, ride_id):
 
 @login_required
 def userProf(request):
-	usernet = request.POST.get('userNetid', None)
-	print(usernet)
-	login_infos = LogInInfo.objects.filter(netid=usernet)
-	val = login_infos.values()
-	if not val:
-		return render(request, 'noUserFound.html', {'usernet':usernet})
-	number_of_rides_completed = InputRideInfo.objects.filter(netid=usernet).filter(ride_status_open=False).count()
-	return render(request, 'userProf.html', {'login_infos': login_infos, 'rides_comp': number_of_rides_completed})
+    usernet = request.POST.get('userNetid', None)
+    print(usernet)
+    login_infos = LogInInfo.objects.filter(netid=usernet)
+    val = login_infos.values()
+    if not val:
+    	return render(request, 'noUserFound.html', {'usernet':usernet})
+    number_of_rides_completed = InputRideInfo.objects.filter(netid=usernet).filter(ride_status_open=False).count()
+    return render(request, 'userProf.html', {'login_infos': login_infos, 'rides_comp': number_of_rides_completed, 'rating': LogInInfo.objects.filter(net=usernet).rating})
 
 def userGuide(request):
 	return render(request, 'userGuide.html')
