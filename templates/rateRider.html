@@ -10,10 +10,16 @@
 <div class="w3-container w3-center">
   <div class="w3-display-center w3-text-white" style="padding-top:10%">
     <div class="w3-center w3-myfont">
-      <form action="{% url 'rateRider' %}" method="post">
+
+      <form action="{% url 'rateRider' %}" method = "post">
         {% csrf_token %}
+        {{ form }}
+        <p class="sections">phone number:</p>
         <input type="number" name="rater" min="1" max="5">
-        <input type="submit" value="submit">
+        <button class="buttons" name="netid" value="{{ netid }}" type="submit">
+          submit
+        </button>
+      </form>
     </div>
   </div> 
 </div>

@@ -34,6 +34,7 @@ urlpatterns = [
     path('createUser/', views.createUser, name='createUser'),
     path('currentProf/', views.currentprof, name='currentprof'),
     path('deleteRide/', views.deleteRide, name='deleteRide'),
+    path('goToRate/<slug:netid>/', views.goToRate, name='goToRate'),
     path('groupInfo/', views.groupInfo, name='groupInfo'),
     path('joinGroup/<int:ride_id>/', views.joinGroup, name='joinGroup'),
     path('leaveRide/', views.leaveRide, name='leaveRide'),

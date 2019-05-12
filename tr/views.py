@@ -82,6 +82,10 @@ def deleteRide(request):
 		break
 	return render(request, 'deleteRide.html', {'rides': ridesFiltered, 'rideId': rideId,
 											   'origin': origin, 'destination' : destination, 'date': date})
+
+def goToRate(request, netid):
+    return render(request, 'rateRider.html', {'netid': netid})
+
 @login_required
 def groupInfo(request):
 	rideId = request.POST.get('rideId', None)
@@ -142,7 +146,7 @@ def joinGroup(request, ride_id):
 	subject = 'TigerRide Group for %s' % date
 	message = 'Dear TigerRider, \n\n' \
 			  'Your trip is scheduled from %s to %s on %s. \n\n' \
-			  'Here are the netid\'s and phone numbers of everyone ' \
+			  'Here are the netids and phone numbers of everyone ' \
 			  'in your group:\n' % (origin, destination, date)
 
 	message = message + name_phone_num + "\nSafe travels! \n\nTigerRide"
@@ -180,21 +184,19 @@ def login(request):
 def newRide(request):
 	return render(request, 'newride.html')
 
-def rateRider(request, netid):
-    if request.method == "POST":
-        if request.user == netid:
-            return render(request, 'failureRate.html')
-        form = UserForm(request.POST)
-        if form.is_valid():
-            rate = request.POST.get('rater', None)
-            old_rating = LogInInfo.objects.filter(user=request.user).rating
-            old_count = LogInInfo.objects.filter(user=request.user).num_rates
-            new_avg = ((old_rating * old_count) + rate) / (old_count + 1)
-            new_count = old_count + 1
-            LogInInfo.objects.filter(user=request.user).update(rating=new_avg)
-            LogInInfo.objects.filter(user=request.user).update(num_rates=new_count)
-
-    return render(request, 'successRate.html')
+def rateRider(request):
+	if request.method == "POST":
+		netid = request.POST.get('netid', None)
+		if request.user == netid:
+			return render(request, 'failureRate.html')
+		rate = request.POST.get('rater', None)
+		old_rating = LogInInfo.objects.get(user=request.user).rating
+		old_count = LogInInfo.objects.get(user=request.user).num_rates
+		new_avg = ((old_rating * old_count) + rate) / (old_count + 1)
+		new_count = old_count + 1
+		LogInInfo.objects.filter(user=request.user).update(rating=new_avg)
+		LogInInfo.objects.filter(user=request.user).update(num_rates=new_count)
+	return render(request, 'successRate.html')
 
 def reloadRideHistory(request, which_one):
 	no = InputRideInfo.objects.count()
@@ -371,7 +373,11 @@ def userProf(request):
     if not val:
     	return render(request, 'noUserFound.html', {'usernet':usernet})
     number_of_rides_completed = InputRideInfo.objects.filter(netid=usernet).filter(ride_status_open=False).count()
-    return render(request, 'userProf.html', {'login_infos': login_infos, 'rides_comp': number_of_rides_completed, 'rating': LogInInfo.objects.filter(netid=usernet).rating})
+    myself = LogInInfo.objects.get(user=request.user)
+    return render(request, 'userProf.html', {'login_infos': login_infos,
+											 'rides_comp': number_of_rides_completed,
+											 'rating': LogInInfo.objects.get(netid=usernet).rating,
+											 'myself': myself})
 
 def userGuide(request):
 	return render(request, 'userGuide.html')
