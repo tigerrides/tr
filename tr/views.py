@@ -199,8 +199,8 @@ def rateRider(request):
 		print("new rating")
 		print(new_avg)
 		new_count = old_count + 1
-		LogInInfo.objects.filter(user=request.user).update(rating=new_avg)
-		LogInInfo.objects.filter(user=request.user).update(num_rates=new_count)
+		LogInInfo.objects.get(user=request.user).update(rating=new_avg)
+		LogInInfo.objects.get(user=request.user).update(num_rates=new_count)
 	return render(request, 'successRate.html')
 
 def reloadRideHistory(request, which_one):
