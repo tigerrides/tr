@@ -56,6 +56,9 @@ def submit_ride(request):
             message = "your departure interval is invalid!"
             return render(request, 'createRide.html', {'err_message': message})
         if dt_end < datetime.datetime.now():
+            print("datetime")
+            print(dt_end)
+            print(datetime.datetime.now())
             message = "the date cannot be in the past!"
             return render(request, 'createRide.html', {'err_message': message})
         notes = request.POST["notes"]
