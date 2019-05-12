@@ -25,15 +25,15 @@
           {{ ride.user_first_name }} {{ ride.user_last_name }}:
         </button>
       </form>
-      {{ ride.time_start }} --> {{ ride.time_end }}<br>
-      notes: {{ ride.notes}}<br>
+      <a class="user">{{ ride.time_start }} --> {{ ride.time_end }}<br>
+      notes: {{ ride.notes}}<br></a>
       {% endfor %}
       <br><br>
       <p class="name">WARNING: action cannot be undone!</p>
       <form action="{% url 'reloadRideHistory' 3 %}" method="post" id="toGroupButton">
         {% csrf_token %}
         {{ form }}
-        <button class="buttons" name="rideId" value="{{rideId}}" form="toGroupButton" type="submit">delete!</button>
+        <button class="glow" name="rideId" value="{{rideId}}" form="toGroupButton" type="submit">delete</button>
       </form>
     </div>
   </div> 
