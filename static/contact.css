@@ -12,7 +12,7 @@ p {
   color: white;
 }
 
-.box {
+/*.box {
 margin-left: 40%;
 margin-right: 40%;
 padding: 20px 20px 20px 20px;
@@ -28,7 +28,7 @@ background-color: transparent;
   content: "";
   display: table;
   clear: both;
-}
+}*/
 
 .sub {
 text-transform: uppercase;
@@ -70,7 +70,7 @@ font-size: 10pt;
     font-weight: 700;
 }
 
-.buttons {
+/*.buttons {
     height: 36px;
     line-height:20px;
     background-color: rgba(165,88,88,.3);
@@ -89,4 +89,14 @@ font-size: 10pt;
     border-radius: 10px;
     background-color: rgba(165,88,88,.6);
     cursor: url('my_app/shield.png'), auto;
+}*/
+
+.box {
+  background: #EFA09E;
+  padding: 5%;
+  margin: 5%;
+}
+
+.email {
+  color: #823737;
 }

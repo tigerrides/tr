@@ -10,29 +10,30 @@
 <div class="w3-container w3-center" style="margin:50px">
   <div class="w3-display-center w3-text-white" style="padding:5%">
     <h1 class="title w3-center">information.</h1>
+    <div class="w3-display-center w3-text-white" style="padding:20px">
     <p class="name">ride details:</p>
     origin: {{ origin }}<br>
     destination: {{ destination }}<br>
-    date: {{ date }}<br>
+    date: {{ date }}<br><br>
     {% for ride in rides %}
     <div class="w3-padding-36 w3-center w3-myfont">
       <form action="{% url 'userProf' %}" target="_blank" method="post" id="see_user">
         {% csrf_token %}
         {{ form }}
         <button class="buttons" name="userNetid" value="{{ ride.netid }}" form="see_user" type="submit">
-          {{ ride.user_first_name }} {{ ride.user_last_name }}:
+          {{ ride.user_first_name }} {{ ride.user_last_name }}
         </button>
       </form>
-      {{ ride.time_start }} --> {{ ride.time_end }}<br>
+      <a class="user">{{ ride.time_start }} --> {{ ride.time_end }}<br>
       notes: {{ ride.notes}}<br>
-      has uber: {{ ride.uber }}, has lyft: {{ ride.lyft }} <br>
+      has uber: {{ ride.uber }}, has lyft: {{ ride.lyft }} <br><br></a>
 
       {% endfor %}
       <br><br>
       <form action="{% url 'completeRide' %}" method="post" id="complete">
         {% csrf_token %}
         {{ form }}
-        <button class="buttons" name="rideId" value="{{ rideId }}" form="complete" type="submit">
+        <button class="glow" name="rideId" value="{{ rideId }}" form="complete" type="submit">
           complete ride
         </button>
       </form>
@@ -40,7 +41,7 @@
       <form action="{% url 'leaveRide' %}" method="post" id="leave">
         {% csrf_token %}
         {{ form }}
-        <button class="buttons" name="rideId" value="{{ rideId }}" form="leave" type="submit">
+        <button class="glow" name="rideId" value="{{ rideId }}" form="leave" type="submit">
           leave ride
         </button>
       </form>
@@ -51,7 +52,7 @@
         <p class="w3-center">name</p>
       </div>-->
   </div> 
-</div>
+</div></div>
 
 </div>
 {% endblock %}

@@ -1,4 +1,4 @@
-input[type=text],input[type=submit], .buttons, .footer {
+input[type=text], .buttons, .footer {
     /*font-family: "Helvetica Neue";*/
     font-family: 'Roboto Mono', monospace;
     font-style: normal;
@@ -29,10 +29,7 @@ input[type=file] {
     align-content: center;
 }
 
-input[type=file]:hover {
-}
-
-input[type=submit] {
+/*input[type=submit] {
     height: 36px;
     line-height: 27px;
     background-color: rgba(165,88,88,.3);
@@ -52,7 +49,8 @@ input[type=submit]:hover {
     cursor: url('my_app/shield.png'), auto; 
       box-shadow: 0 0 10px 5px white;
 
-}
+}*/
+
 
 .sections {
     color: #A55858;

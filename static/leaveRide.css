@@ -59,7 +59,7 @@ font-size: 10pt;
   align-content: center;
 }
 
-.buttons {
+/*.buttons {
     height: 36px;
     line-height:20px;
     background-color: rgba(165,88,88,.3);
@@ -78,7 +78,9 @@ font-size: 10pt;
     border-radius: 10px;
     background-color: rgba(165,88,88,.6);
     cursor: url('my_app/shield.png'), auto;
-}
+}*/
+
+
 
 .site {
 width: 130px;
@@ -129,10 +131,22 @@ margin-right: auto;
 }
 
 .name {
-    color: #A55858;
+    color: #823737;
     font-weight: 700;
-    text-decoration: underline;
+    text-decoration: none;
     font-size: 18px;
 }
 
+button[class=buttons] {
+  background: transparent;
+
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+button[class=buttons]:hover {
+  background: transparent;
+    /*background: #A55858;*/
+    /*background-color: rgba(165,88,88,.6);*/
+    cursor: url('my_app/shield.png'), auto; 
+}
 

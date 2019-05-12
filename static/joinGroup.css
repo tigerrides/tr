@@ -137,9 +137,9 @@ margin-right: auto;
 }
 
 .name {
-    color: #A55858;
+    color: #823737;
     font-weight: 700;
-    text-decoration: underline;
+    text-decoration: none;
     font-size: 18px;
 }
 
@@ -149,4 +149,17 @@ h2 {
   font-weight: 700;
   text-decoration: underline;
   font-size: 20px;
+}
+
+button[class=buttons] {
+  background: transparent;
+
+    cursor: url('my_app/shield.png'), auto; 
+}
+
+button[class=buttons]:hover {
+  background: transparent;
+    /*background: #A55858;*/
+    /*background-color: rgba(165,88,88,.6);*/
+    cursor: url('my_app/shield.png'), auto; 
 }

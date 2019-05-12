@@ -6,9 +6,8 @@ html {
     color: #A55858;
     text-align: center;
      background-image: url("my_app/background.png");
-     background-repeat: no-repeat;
+     background-repeat: repeat;
      background-position: center;
-     background-attachment: fixed;
      background-size: 100%;
 }
 
@@ -28,7 +27,7 @@ footer {
     font-size: 14px;
     text-align: center;
     display: inline-block;
-    color: #A55858;
+    color: white;
     text-decoration: none;
     margin-left: auto;
     margin-right: auto;
@@ -91,6 +90,7 @@ footer {
     color: white;
     font-weight: 700;
     /*text-align: left;*/
+    text-transform: lowercase;
     font-size: 20px;
     text-align: center;
     text-shadow: 2px 2px 2px #A55858;
@@ -122,7 +122,7 @@ html *:after {
   }
 }
 
-.buttons {
+a[class=buttons] {
   position: relative;
   display: inline-block;
   overflow: hidden;
@@ -130,46 +130,46 @@ html *:after {
   width: 100%;
   height: 60px;
   max-width: 200px;
-  margin: 1rem 1rem;
+  margin: 2rem auto;
   /*text-transform: uppercase;*/
   border: 1px solid currentColor;
   font-weight: 700;
-    line-height: 60px;
-    border-radius: 5px;
+    line-height: 59px;
+    /*border-radius: 5px;*/
       text-decoration: none;
   color: white;
 }
 
-.buttons:before, .buttons:after {
+a[class=buttons]:before, a[class=buttons]:after {
   content: '';
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  border-top: 30px solid #EFA09E;
-  border-bottom: 30px solid #EFA09E;
+  border-top: 30px solid white;
+  border-bottom: 30px solid white;
 }
-.buttons:before {
+a[class=buttons]:before {
   border-right: 30px solid transparent;
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
 }
-.buttons:after {
+a[class=buttons]:after {
   border-left: 30px solid transparent;
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
 }
-.buttons:hover {
-  color: white;
+a[class=buttons]:hover {
+  color: #EFA09E;
   border: 1px solid transparent;
   cursor: url('my_app/shield-w.png'), auto; 
 }
-.buttons:hover:before {
+a[class=buttons]:hover:before {
   -webkit-transform: translateX(-30%);
           transform: translateX(-30%);
 }
-.buttons:hover:after {
+a[class=buttons]:hover:after {
   -webkit-transform: translateX(30%);
           transform: translateX(30%);
 }
@@ -287,4 +287,114 @@ word-wrap: break-word;
 .bar {
     margin-right: 0px;
     margin-top:30px;
+}
+
+
+
+/*button[class=buttons] {
+  background: #F7B5B0;
+  text-transform: lowercase;
+    cursor: url('my_app/shield-w.png'), auto; 
+}
+
+button[class=buttons]:hover {
+  background: transparent;
+}
+*/
+
+button[class=buttons] {
+  text-transform: lowercase;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  width: 100%;
+  height: 60px;
+  max-width: 200px;
+  margin: 2rem auto;
+  /*text-transform: uppercase;*/
+  border: 3px solid currentColor;
+  font-weight: 700;
+    line-height: 53px;
+    /*border-radius: 5px;*/
+      text-decoration: none;
+  color: #A55858;
+}
+
+button[class=buttons]:before, button[class=buttons]:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-top: 30px solid #A55858;
+  border-bottom: 30px solid #A55858;
+}
+button[class=buttons]:before {
+  border-right: 30px solid transparent;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+button[class=buttons]:after {
+  border-left: 30px solid transparent;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+button[class=buttons]:hover {
+  color: white;
+  border: 3px solid transparent;
+  cursor: url('my_app/shield-w.png'), auto; 
+}
+button[class=buttons]:hover:before {
+  -webkit-transform: translateX(-30%);
+          transform: translateX(-30%);
+}
+button[class=buttons]:hover:after {
+  -webkit-transform: translateX(30%);
+          transform: translateX(30%);
+}
+
+button[class=glow] {
+    display: inline-block;
+    height: 36px;
+    line-height: 27px;
+    background-color: #E08C8C;
+    border-color: transparent;
+    color: white;
+    font-size: 15px;
+    margin: 20px auto;
+    min-width: 60px;
+    padding: 0 20px;
+}
+
+button[class=glow]:hover {
+    background: #A55858;
+    box-shadow: 0 0 10px 5px white;
+    cursor: url('my_app/shield-w.png'), auto;
+}
+
+input[class=glow] {
+    display: inline-block;
+    height: 36px;
+    line-height: 27px;
+    background-color: #E08C8C;
+    border-color: transparent;
+    color: white;
+    font-size: 15px;
+    margin: 20px auto;
+    min-width: 60px;
+    padding: 0 20px;
+
+}
+
+input[class=glow]:hover {
+    background: #A55858;
+    box-shadow: 0 0 10px 5px white;
+    cursor: url('my_app/shield-w.png'), auto;
+
+}
+
+a[class=user] {
+  color: #A55858;
 }

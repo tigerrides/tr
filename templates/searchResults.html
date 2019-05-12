@@ -34,18 +34,18 @@
             {% csrf_token %}
             {{ form }}
             <button class="buttons" name="userNetid" value="{{ val.netid }}" form="see_user" type="submit">
-              {{ val.user_first_name }} {{ val.user_last_name }}:
+              {{ val.user_first_name }} {{ val.user_last_name }}
             </button>
           </form>
 
-          {{ val.time_start }} --> {{ val.time_end }} <br>
+          <a class="user">{{ val.time_start }} --> {{ val.time_end }} <br>
           notes: {{ val.notes}}<br>
-          {% endfor %}
+          {% endfor %}</a>
           <br>
           <form action="{% url 'seeGroup' my_ride_id %}" method="post" id="see_more">
             {% csrf_token %}
             {{ form }}
-            <button class="buttons" name="rideId" value="{{ key }}" form="see_more" type="submit">
+            <button class="glow" name="rideId" value="{{ key }}" form="see_more" type="submit">
               see more
             </button>
           </form>

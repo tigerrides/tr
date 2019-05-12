@@ -1,24 +1,11 @@
 .pic {
 /*  display: block;*/
     object-fit: cover;
-    width: 130px;
-    height: 130px;
+    width: 150px;
+    height: 150px;
     display: inline-block;
-    border-radius: 50%;
     box-shadow: 0 0 10px 5px white;
 }
-
-.pic:hover {
-/*  display: block;*/
-    object-fit: cover;
-    width: 130px;
-    height: 130px;
-    display: inline-block;
-    border-radius: 50%;
-  box-shadow: none;
-  cursor: url('my_app/shield.png'), auto;
-}
-
 
 .buddy {
   display: inline-block;
@@ -133,4 +120,11 @@ margin-right: auto;
     font-family: 'Roboto Mono', monospace;
     font-style: normal;
     font-size: 30px;
+    font-weight: 700;
+    color: #A55858;
+    text-transform: lowercase;
+}
+
+.title {
+  margin-bottom: 32px;
 }
