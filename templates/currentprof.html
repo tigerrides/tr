@@ -48,6 +48,7 @@
 </div>
 {% endblock %}
 
+{% block js %}
 <script>
   var stars = "rating: ";
   var i;
@@ -59,3 +60,4 @@
   }
   document.getElementById("rating").innerHTML = stars;
 </script>
+{% endblock js %}
