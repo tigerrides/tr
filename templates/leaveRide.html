@@ -18,22 +18,17 @@
 
     {% for ride in rides %}
     <div class="w3-padding-36 w3-center w3-myfont">
-      <p class="name">{{ ride.user_first_name }} {{ ride.user_last_name }}:</p>
+      <form action="{% url 'userProf' %}" target="_blank" method="post" id="see_user">
+        {% csrf_token %}
+        {{ form }}
+        <button class="buttons" name="userNetid" value="{{ ride.netid }}" form="see_user" type="submit">
+          {{ ride.user_first_name }} {{ ride.user_last_name }}:
+        </button>
+      </form>
       {{ ride.time_start }} --> {{ ride.time_end }}<br>
       notes: {{ ride.notes}}<br>
-      <!--<p class="w3-center">Rider: {{ride.user_first_name}} {{ride.user_last_name}}</p>-->
-      <!--<p class="w3-center">Time Frame: {{ ride.time_start }} &ndash;&gt; {{ ride.time_end }}</p>-->
-      <!--<p class="w3-center">Notes: {{ ride.notes }}</p>-->
-      <!--<p class="w3-center">Has Uber: {{ ride.uber }}, Has Lyft: {{ ride.lyft }}</p>-->
-
-      <!--   <div class="buddy w3-container w3-center">
-          {% load static %}
-          <div class="site w3-center" style="background-image: url({% static "my_app/anabelle.jpg" %})">
-        </div> -->
-      <!--    <div class="buddy w3-container w3-center">
-           <img src="{{ MEDIA_URL }}{{ result.image }}" class="pic">
-         </div> -->
       {% endfor %}
+      <br><br>
       <form action="{% url 'reloadRideHistory' 2 %}" method="post" id="toGroupButton">
         {% csrf_token %}
         {{ form }}

@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block stylesheet %}
+{% load static %}
+<link rel="stylesheet" href="{% static "about.css" %}">
+{% endblock %}
+
+{% block content %}
+<div class="w3-row w3-myfont w3-container">
+  <div class="w3-text-white" style="padding:10%">
+    <h1 class="title w3-center">What is tigerride?</h1>
+    <div class="w3-container">
+        <p class="text">Tigerride is a student-run application created to streamline the process of students sharing transportation services to and from the Princeton University campus. Sharing such services allows users to save money, travel more safely, as well as take a step towards a greener environment. Users fill out a simple form to find other users to share rides with, and have the flexibility of requesting to join and leave rides at any time.</p>
+    </div>
+    <h1 class="title w3-center">User Guide</h1>
+    <div class="w3-container">
+        <p class="text">Note: All users of tigerride must be Princeton students or faculty members with a valid netID and password because our website utilizes a Central Authentication Service system to make the app safe and reliable for all users.</p>
+    </div>
+    <h1 class="title w3-center">Logging In</h1>
+    <div class="w3-container">
+        <ol class="text w3-left-align">
+            <li>Navigate to http://tigerride.herokuapp.com/.</li>
+            <li>Click the “login” button at the bottom, which takes the user to the Princeton University Central Authentication Service authentication page.</li>
+            <li>Fill out input fields for NetID and Password, click “LOGIN” and proceed with preferred method of DUO security authentication.</li>
+        </ol>
+    </div>
+    <h1 class="title w3-center">Creating a Profile</h1>
+    <div class="w3-container w3-left-align text">
+        <ol>
+            <li>The first-time user must create a profile in order to create or view rides.</li>
+            <li>Users are presented with two options: creating a new profile from scratch, or importing their information from Tigerbook.</li>
+            <ol type="a">
+                <li>Starting from scratch:</li>
+                <ol type="i">
+                    <li>Fill out fields for preferred first name and last name.</li>
+                    <li>Input phone number.</li>
+                    <li>Upload a profile photo.</li>
+                </ol>
+                </li>Using Tigerbook information:</li>
+                <ol type="i">
+                    <li>clicking the button automatically imports the user’s name, netID, and photo.</li>
+                </ol>
+            </ol>
+            <li>Users can update their profile information anytime by navigating to their profile page by selecting the “profile” option on the menu bar and clicking the “edit” button.</li>
+        </ol>
+    </div>
+    <h1 class="title w3-center">Finding Rideshare Buddies</h1>
+    <div class="w3-container w3-left-align text">
+        <ol>
+            <li>Once the user is logs in, they are redirected to a welcome page with presented with two buttons. Click on “plan a trip.”</li>
+            <li>Under “origin,” select desired origin from the dropdown menu. Options are EWR, PHL, JFK airports and Princeton University.</li>
+            <li>Under “destination,” Select desired destination from the dropdown menu. Options are EWR, PHL, JFK airports and Princeton University.</li>
+            <li>Under “date,” input the day, month, and year of departure. Clicking the small arrow on the right opens up a calendar for easy selection.</li>
+            <li>Under “time frame,” there are two fields. In the first field, enter the earliest possible time of departure. In the second field (after “~”), enter the latest possible time of departure</li>
+            <ol type="a">
+                <li>Tip: Entering a flexible time frame is more likely to return more options.</li>
+            </ol>
+            <li>Under “notes,” enter any information that may be useful for potential ride sharers to know. Some things to consider:</li>
+            <ol type="a">
+                <li>desired rideshare option (ex. Standard Lyft, Lyft XL, Lyft Lux, Uber X)</li>
+                <li>flight number (be cautious!)</li>
+                <li>terminal details</li>
+                <li>amount of luggage</li>
+                <li>preferred seating arrangement (ex. next to the driver, in the back)</li>
+                <li>desired number of rideshare partners</li>
+                <li>your airline is known to be frequently delayed</li>
+            </ol>
+            <li>Click “submit.”</li>
+            <li>If user is the first to submit a ride in their desired time frame, they are redirected to a page that displays the following message: “Your ride has been created and we will notify you via your Princeton email when other students join your group!”</li>
+            <ol type="a">
+                <li>User will receive e-mail notifications of trip details and group members when others join their group.</li>
+            </ol>
+            <li>If another user has joined the ride immediately after the current user has submitted his/her ride, the following message will be displayed: “A rider beat you to it and has already joined your ride!” The user can then see this ride group by clicking on “my rides,” which navigates to his/her ride history.</li>
+            <li>Otherwise, user is redirected to page displaying all open rides that match their search. User can join a ride. This notifies all members in the group via their Princeton e-mail of the trip details.</li>
+            <li>If the user does not join someone else’s group, tigerride automatically creates a ride with their own preferences for others to join in the future.</li>
+        </ol>
+    </div>
+    <h1 class="title w3-center">Viewing Your Ride History</h1>
+    <div class="w3-container w3-left-align text">
+        <ol>
+            <li>From the home page (the first page user sees after logging in, can be accessed by clicking “home” in menu bar), click “see all rides.”</li>
+            <li>Under “current rides,” you can view all your current open rides. Under “past rides,” you can see all your completed rides. </li>
+        </ol>
+    </div>
+    <h1 class="title w3-center">Re-Searching for Rideshare Buddies</h1>
+    <div class="w3-container w3-left-align text">
+        <ol>
+            <li>Note: Re-searching for ride share buddies is only possible if you have not yet joined a group.</li>
+            <li>From the home page (the first page user sees after logging in, can be accessed by clicking “home” in menu bar), click “see all rides.”</li>
+            <li>Under “current rides,” locate the ride you would like to find rideshare buddies for and click “see more.” You will be taken to a page that shows all the details of the ride with the option to “continue search.” </li>
+            <li>If there are no current rides that match their ride details, the student will be redirected to a page that displays the following message: “Your ride has been created and we will notify you via your Princeton email when other students join your group!”</li>
+            <ol type="a">
+                <li>User will receive e-mail notifications when others request to join their ride.</li>
+            </ol>
+            <li>Otherwise, user is redirected to page displaying all open rides that match their search. User can join a ride. This notifies all members in the group via their Princeton e-mail of the trip details.</li>
+        </ol>
+    </div>
+    <h1 class="title w3-center">Deleting a Ride</h1>
+    <div class="w3-container w3-left-align text">
+        <ol>
+            <li>Note: Deleting a ride is only possible if you have not joined a group and are the initial creator of the ride, and completely removes the ride from the tigerride database.</li>
+            <li>From the home page (the first page user sees after logging in, can be accessed by clicking “home” in menu bar), click “see all rides.”</li>
+            <li>Under “current rides,” locate the ride you wish to delete and click “see more.” You will be taken to a page that shows all the details of the ride with the option to click “delete ride.” </li>
+            <li>You will be taken to a confirmation page that asks “are you sure you want to delete this ride?” Click “delete!” Note: this action cannot be reversed.</li>
+            <li>The ride is deleted from your ride history as well as the database.</li>
+        </ol>
+    </div>
+    <h1 class="title w3-center">Completing a Ride</h1>
+    <div class="w3-container w3-left-align text">
+        <ol>
+            <li>Note: Completing a ride is only possible if you have joined a group.</li>
+            <li>From the home page (the first page user sees after logging in, can be accessed by clicking “home” in menu bar), click “see all rides.”</li>
+            <li>Under “current rides,” locate the ride you wish to complete and click “see more.” You will be taken to a page that shows all the details of the ride with the option to click “complete ride.”</li>
+            <li>You will be taken to a confirmation page that asks “are you sure you want to complete this ride?” Click “complete!” Note: this action cannot be reversed.</li>
+            <li>The ride is now moved down to the “past rides” section and other users can no longer request to join your ride.</li>
+        </ol>
+    </div>
+    <h1 class="title w3-center">Leaving a Ride</h1>
+    <div class="w3-container w3-left-align text">
+        <ol>
+            <li>Note: Leaving a ride is only possible if you have joined a group.</li>
+            <li>From the home page (the first page user sees after logging in, can be accessed by clicking “home” in menu bar), click “see all rides.”</li>
+            <li>Under “current rides,” locate the ride you wish to complete and click “see more.” You will be taken to a page that shows all the details of the ride with the option to click leave ride.”</li>
+            <li>You will be taken to a confirmation page that asks “are you sure you want to leave this ride?” Click leave!” Note: this action cannot be reversed.</li>
+            <li>You are no longer a part of this group, but your individual ride will still be visible under “current rides” in your ride history.</li>
+        </ol>
+    </div>
+    <h1 class="title w3-center">Addressing Questions, Concerns, and Suggestions</h1>
+    <div class="w3-container w3-left-align text">
+        <ol>
+            <li>Click the “contact” button on the menu bar.</li>
+            <li>Email any of the four developers listed on the page with your question, concern, or suggestion.</li>
+        </ol>
+    </div>
+    <h1 class="title w3-center">Logging Out</h1>
+    <div class="w3-container w3-left-align text">
+        <ol>
+            <li>Click the “logout” button on the top right corner of any page.</li>
+        </ol>
+    </div>
+  </div> 
+</div>
+{% endblock %}
