@@ -41,7 +41,7 @@ def submit_ride(request):
         depart_from = request.POST["depart_from"]
         destination = request.POST["destination"]
         if depart_from == destination:
-            message = "you cannot travel to the same place!"
+            message = "error: you cannot travel to the same place!"
             return render(request, 'createRide.html', {'err_message': message})
         date = request.POST["date"]
         dt_date = datetime.datetime.strptime(date, "%Y-%m-%d").date()
@@ -53,7 +53,7 @@ def submit_ride(request):
         dt_end = datetime.datetime.combine(dt_date,
                                            datetime.datetime.strptime(time_end, '%H:%M').time())
         if dt_end < dt_start:
-            message = "your departure interval is invalid!"
+            message = "error: your departure interval is invalid!"
             return render(request, 'createRide.html', {'err_message': message})
         print("datetime")
         print(dt_end)
@@ -62,7 +62,7 @@ def submit_ride(request):
             print("datetime")
             print(dt_end)
             print(datetime.datetime.now())
-            message = "the date cannot be in the past!"
+            message = "error: the date cannot be in the past!"
             return render(request, 'createRide.html', {'err_message': message})
         notes = request.POST["notes"]
         uber = request.POST.get('uber', False)

@@ -135,3 +135,11 @@ margin-right: auto;
     font-size: 18px;
 }
 
+a[class=user] {
+  color: #A55858;
+}
+
+.user {
+  color: #A55858;
+}
+

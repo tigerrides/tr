@@ -30,6 +30,14 @@ body {
     font-weight: 700;
 }
 
+a[class=buttons]:hover {
+  cursor: url('my_app/shield.png'), auto;
+}
+
+button[class=buttons]:hover {
+  cursor: url('my_app/shield.png'), auto;
+}
+
 /*.buttons {
     height: 36px;
     line-height: 27px;
