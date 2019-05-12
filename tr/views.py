@@ -386,21 +386,6 @@ def seeUser(request, display):
 										 'rating': LogInInfo.objects.get(netid=usernet).rating,
 										 'myself': myself, 'display': display})
 
-@login_required
-def userProf(request, display):
-    usernet = request.POST.get('userNetid', None)
-    print(usernet)
-    login_infos = LogInInfo.objects.filter(netid=usernet)
-    val = login_infos.values()
-    if not val:
-    	return render(request, 'noUserFound.html', {'usernet':usernet})
-    number_of_rides_completed = InputRideInfo.objects.filter(netid=usernet).filter(ride_status_open=False).count()
-    myself = LogInInfo.objects.get(user=request.user)
-    return render(request, 'userProf.html', {'login_infos': login_infos,
-											 'rides_comp': number_of_rides_completed,
-											 'rating': LogInInfo.objects.get(netid=usernet).rating,
-											 'myself': myself, 'display': display})
-
 def userGuide(request):
 	return render(request, 'userGuide.html')
 

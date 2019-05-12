@@ -48,8 +48,7 @@ urlpatterns = [
     path('searchResults/<int:ride_id>/', views.searchResults, name='searchResults'),
     path('seeGroup/<int:ride_id>/', views.seeGroup, name='seeGroup'),
     path('userGuide/', views.userGuide, name='userGuide'),
-    path('userProf/<int:display>/', views.userProf, name='userProf'),
-    path('user/<int:display>/', views.seeUser, name='seeUser'),
+    path('userProf/<int:display>/', views.seeUser, name='seeUser'),
     path('welcome/', views.welcome, name='welcome'),
 ]
 
