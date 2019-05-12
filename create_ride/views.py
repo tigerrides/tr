@@ -24,6 +24,7 @@ def see_Rides(request):
     return HttpResponse(html)
 
 def submit_ride(request):
+    form = forms.CreateRide()
     if request.method == 'POST':
         # print("it works!")
         # validate info against form
@@ -41,14 +42,17 @@ def submit_ride(request):
         depart_from = request.POST["depart_from"]
         destination = request.POST["destination"]
         if depart_from == destination:
-            raise ValidationError("You cannot travel to the same place!")
+            message = "you cannot travel to the same place!"
+            return render(request, 'createRide.html', {'form': form, 'err_message': message})
         date = request.POST["date"]
         if date < datetime.date.today():
-            raise ValidationError("The date cannot be in the past!")
+            message = "the date cannot be in the past!"
+            return render(request, 'createRide.html', {'form': form, 'err_message': message})
         time_start = request.POST["time_start"]
         time_end = request.POST["time_end"]
         if time_end < time_start:
-            raise ValidationError("Your departure interval is invalid!")
+            message = "your departure interval is invalid!"
+            return render(request, 'createRide.html', {'form': form, 'err_message': message})
         notes = request.POST["notes"]
         uber = request.POST.get('uber', False)
         lyft = request.POST.get('lyft', False)
@@ -93,8 +97,6 @@ def submit_ride(request):
         print("submit_ride")
         print(input_ride_info.group_identifier)
         return redirect('searchResults', ride_id=input_ride_info.group_identifier)
-    else:
-        form = forms.CreateRide()
     return render(request, 'createRide.html', {'form': form})
 
 # def searchResults(request):
