@@ -371,6 +371,8 @@ def seeGroup(request, ride_id):
 														   'date': date, 'my_ride_id': ride_id})
 @login_required
 def seeUser(request, display):
+	print("display")
+	print(display)
 	usernet = request.POST.get('userNetid', None)
 	print(usernet)
 	login_infos = LogInInfo.objects.filter(netid=usernet)
