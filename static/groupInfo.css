@@ -82,6 +82,30 @@ button:hover {
     cursor: url('my_app/shield.png'), auto; 
 }
 
+button[type=submit] {
+        display: inline-block;
+
+    height: 36px;
+    line-height: 27px;
+    background-color: rgba(165,88,88,.3);
+    border-radius: 2px;
+    border-color: transparent;
+    color: white;
+    font-size: 15px;
+    margin: 0 auto;
+    min-width: 54px;
+    padding: 0 16px;
+
+}
+
+button[type=submit]:hover {
+    background: #A55858;
+    border-radius: 5px;
+    background-color: rgba(165,88,88,.6);
+        box-shadow: 0 0 10px 5px white;
+
+}
+
 .site {
 width: 130px;
 height: 130px;

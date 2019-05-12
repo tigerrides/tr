@@ -32,7 +32,7 @@
       <form action="{% url 'joinGroup' my_ride_id %}" method="post" id="toGroupButton">
         {% csrf_token %}
         {{ form }}
-        <button class="buttons" name="rideId" value="{{rideId}}" form="toGroupButton" type="submit">join this ride</button>
+        <button name="rideId" value="{{rideId}}" form="toGroupButton" type="submit">join this ride</button>
       </form>
       </div>
   </div> 
