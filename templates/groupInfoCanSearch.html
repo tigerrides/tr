@@ -33,7 +33,7 @@
       <form action="{% url 'searchResults' rideId%}" method="post" id="search">
         {% csrf_token %}
         {{ form }}
-        <button class="buttons" name="rideId" value="{{ rideId }}" form="search" type="submit">
+        <button class="glow" name="rideId" value="{{ rideId }}" form="search" type="submit">
           continue search
         </button>
       </form>
@@ -41,7 +41,7 @@
       <form action="{% url 'deleteRide' %}" method="post" id="delete">
         {% csrf_token %}
         {{ form }}
-        <button class="buttons" name="rideId" value="{{ rideId }}" form="delete" type="submit">
+        <button class="glow" name="rideId" value="{{ rideId }}" form="delete" type="submit">
           delete ride
         </button>
       </form>

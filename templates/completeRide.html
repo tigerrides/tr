@@ -33,7 +33,7 @@
       <form action="{% url 'reloadRideHistory' 1 %}" method="post" id="toGroupButton">
         {% csrf_token %}
         {{ form }}
-        <button class="buttons" name="rideId" value="{{rideId}}" form="toGroupButton" type="submit">complete!</button>
+        <button class="glow" name="rideId" value="{{rideId}}" form="toGroupButton" type="submit">complete</button>
       </form>
     </div>
   </div> 
