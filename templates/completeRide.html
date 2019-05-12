@@ -25,8 +25,8 @@
           {{ ride.user_first_name }} {{ ride.user_last_name }}:
         </button>
       </form>
-      {{ ride.time_start }} --> {{ ride.time_end }}<br>
-      notes: {{ ride.notes}}<br>
+      <a class="user">{{ ride.time_start }} --> {{ ride.time_end }}<br>
+      notes: {{ ride.notes}}<br></a>
       {% endfor %}
       <br><br>
       <p class="name">WARNING: action cannot be undone!</p>
