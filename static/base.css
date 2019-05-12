@@ -362,7 +362,7 @@ button[class=buttons]:after {
           transform: translateX(100%);
 }
 button[class=buttons]:hover {
-  color: #F7B5B0;
+  color: white;
   border: 3px solid transparent;
   cursor: url('my_app/shield-w.png'), auto; 
 }
