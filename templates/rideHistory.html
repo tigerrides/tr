@@ -79,20 +79,13 @@
           {% endfor %}
           {% for val in values %}
 
-            <form action="{% url 'seeUser' display=10 %}" target="_blank" method="post" id="see_user1">
+            <form action="{% url 'seeUser' display=1 %}" target="_blank" method="post" id="see_user1">
                 {% csrf_token %}
                 {{ form }}
                 <button class="buttons" name="userNetid" value="{{ val.netid }}" form="see_user1" type="submit">
-                    {{ val.user_first_name }}-{{ val.user_last_name }}:
+                    {{ val.user_first_name }} {{ val.user_last_name }}:
                 </button>
             </form>
-          <form action="{% url 'seeUser' 1 %}" target="_blank" method="post" id="see_user">
-            {% csrf_token %}
-            {{ form }}
-            <button class="buttons" name="userNetid" value="{{ val.netid }}" form="see_user" type="submit">
-              {{ val.user_first_name }} {{ val.user_last_name }}:
-            </button>
-          </form>
             <a class="user">{{ val.time_start }} --> {{ val.time_end }} <br>
                 notes: {{ val.notes}}<br>
                 {% endfor %}</a>
